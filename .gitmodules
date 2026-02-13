@@ -1,0 +1,3 @@
+[submodule "tokenizers-fork"]
+	path = tokenizers-fork
+	url = https://github.com/antalvdb/tokenizers.git
