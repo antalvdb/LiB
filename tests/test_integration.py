@@ -4,6 +4,7 @@ import os
 import tempfile
 import pytest
 from tokenizers import Tokenizer
+from tokenizers.decoders import Fuse
 from tokenizers.models import LiB
 from tokenizers.trainers import LiBTrainer
 from lib_tokenizers import LiBTokenizerFast
@@ -31,6 +32,7 @@ class TestLiBModel:
 
     def test_encode_decode_roundtrip(self):
         tok = Tokenizer(LiB())
+        tok.decoder = Fuse()
         trainer = LiBTrainer(vocab_size=200, num_epochs=100, seed=42)
         tok.train([CORPUS_PATH], trainer)
 
