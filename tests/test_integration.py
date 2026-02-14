@@ -126,3 +126,26 @@ class TestLiBTokenizerFast:
             with open(os.path.join(tmpdir, "tokenizer.json")) as f:
                 data = json.load(f)
             assert data["model"]["type"] == "LiB"
+
+
+def test_use_supra_words_toggle():
+    """Test that disabling supra-words skips multi-word tokens."""
+    from tokenizers import Tokenizer
+    from tokenizers.models import LiB
+
+    model = LiB(vocab={
+        "t": 0, "h": 1, "e": 2, " ": 3, "c": 4, "a": 5,
+        "the": 6, "cat": 7, "the cat": 8,
+    })
+    tokenizer = Tokenizer(model)
+
+    # Default: supra-words enabled
+    output = tokenizer.encode("the cat")
+    assert "the cat" in output.tokens
+
+    # Disable supra-words via model property
+    tokenizer.model.use_supra_words = False
+    output = tokenizer.encode("the cat")
+    assert "the cat" not in output.tokens
+    assert "the" in output.tokens
+    assert "cat" in output.tokens
