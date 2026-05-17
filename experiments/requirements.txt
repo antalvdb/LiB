@@ -1,0 +1,4 @@
+sentencepiece>=0.1.99
+nltk>=3.8
+datasets>=2.0
+psutil>=5.9
