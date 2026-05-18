@@ -142,15 +142,8 @@ def encode_corpus(wrapper, lines: Iterable[str]) -> list[str]:
 # Bits-per-character  (n-gram LM)
 # ---------------------------------------------------------------------------
 
-def _sentence_ngrams(tokens: list[str], n: int):
-    """Yield (context_tuple, word) pairs with <s>/<\s> padding."""
-    padded = ["<s>"] * (n - 1) + tokens + ["</s>"]
-    for i in range(n - 1, len(padded)):
-        yield tuple(padded[i - n + 1 : i]), padded[i]
-
-
 def train_ngram_lm(tokenized_sents: list[list[str]], n: int):
-    """Train a Kneser-Ney interpolated n-gram LM with NLTK."""
+    """Train a Kneser-Ney interpolated n-gram LM with NLTK (slow fallback)."""
     import nltk
     from nltk.lm import KneserNeyInterpolated
     from nltk.lm.preprocessing import padded_everygram_pipeline
@@ -167,20 +160,91 @@ def compute_bpc(
     raw_test_chars: int,
     n: int,
 ) -> float:
-    """
-    BPC = total surprisal (bits) / total characters in raw test text.
+    """BPC using NLTK LM (slow; prefer compute_bpc_kenlm)."""
+    def _sentence_ngrams(tokens, n):
+        padded = ["<s>"] * (n - 1) + tokens + ["</s>"]
+        for i in range(n - 1, len(padded)):
+            yield tuple(padded[i - n + 1 : i]), padded[i]
 
-    Uses NLTK logscore() which returns log₂(P(w|context)).
-    """
     total_bits = 0.0
     for tokens in tokenized_test:
         for context, word in _sentence_ngrams(tokens, n):
             ls = lm.logscore(word, list(context))
-            # logscore returns -inf for unseen events; clip to a floor
             if math.isfinite(ls):
-                total_bits -= ls          # surprisal = -log₂(P)
+                total_bits -= ls
             else:
-                total_bits += 20.0        # ~1e-6 probability floor
+                total_bits += 20.0
+    return total_bits / max(raw_test_chars, 1)
+
+
+# ---------------------------------------------------------------------------
+# KenLM-based BPC  (fast — requires lmplz binary and kenlm Python package)
+# ---------------------------------------------------------------------------
+
+import shutil
+import subprocess
+import tempfile
+
+LOG10_TO_LOG2 = math.log2(10)   # multiply log10 probs by this to get bits
+
+
+def _write_tokenized(tokenized_sents: list[list[str]], path: str):
+    """Write one sentence of space-joined tokens per line."""
+    with open(path, "w", encoding="utf-8") as f:
+        for sent in tokenized_sents:
+            if sent:
+                f.write(" ".join(sent) + "\n")
+
+
+def train_ngram_lm_kenlm(
+    tokenized_sents: list[list[str]],
+    n: int,
+    tmp_dir: str,
+    name: str = "lm",
+):
+    """
+    Build a Kneser-Ney n-gram LM with lmplz and return a kenlm.Model.
+
+    Writes temporary files under tmp_dir.
+    """
+    import kenlm
+
+    lmplz = shutil.which("lmplz")
+    if lmplz is None:
+        raise RuntimeError("lmplz not found on PATH — install KenLM")
+
+    txt_path  = os.path.join(tmp_dir, f"{name}.txt")
+    arpa_path = os.path.join(tmp_dir, f"{name}.arpa")
+
+    _write_tokenized(tokenized_sents, txt_path)
+
+    with open(txt_path, "rb") as fin, open(arpa_path, "w", encoding="utf-8") as fout:
+        subprocess.run(
+            [lmplz, "-o", str(n), "--discount_fallback"],
+            stdin=fin, stdout=fout, stderr=subprocess.DEVNULL, check=True,
+        )
+
+    return kenlm.Model(arpa_path)
+
+
+def compute_bpc_kenlm(
+    model,                          # kenlm.Model
+    tokenized_test: list[list[str]],
+    raw_test_chars: int,
+) -> float:
+    """
+    BPC = total surprisal (bits) / raw character count of test text.
+
+    kenlm full_scores() yields (log10_prob, ngram_length, oov) per token,
+    already conditioned on sentence-boundary context.
+    """
+    total_bits = 0.0
+    for tokens in tokenized_test:
+        if not tokens:
+            continue
+        sentence = " ".join(tokens)
+        for log10_prob, _, _ in model.full_scores(sentence, bos=True, eos=True):
+            total_bits -= log10_prob * LOG10_TO_LOG2   # surprisal in bits
     return total_bits / max(raw_test_chars, 1)
 
 

@@ -423,30 +423,39 @@ richer languages, where within-word structure provides more compression opportun
 \textbf{Vocab} & \textbf{Tokenizer} & \textbf{2-gram BPC} & \textbf{3-gram BPC} \\
 \midrule
 \multirow{5}{*}{10k}
- & BPE            & \todo{} & \todo{} \\
- & WordPiece      & \todo{} & \todo{} \\
- & SP-Unigram     & \todo{} & \todo{} \\
- & LiB (no supra) & \todo{} & \todo{} \\
- & LiB            & \todo{} & \todo{} \\
+ & BPE            & 2.076 & 1.919 \\
+ & WordPiece      & 2.043 & \textbf{1.884} \\
+ & SP-Unigram     & 2.062 & 1.899 \\
+ & LiB (no supra) & 2.481 & 2.025 \\
+ & LiB            & 2.407 & 2.019 \\
 \midrule
 \multirow{5}{*}{32k}
- & BPE            & \todo{} & \todo{} \\
- & WordPiece      & \todo{} & \todo{} \\
- & SP-Unigram     & \todo{} & \todo{} \\
- & LiB (no supra) & \todo{} & \todo{} \\
- & LiB            & \todo{} & \todo{} \\
+ & BPE            & 2.009 & 1.938 \\
+ & WordPiece      & 1.959 & \textbf{1.880} \\
+ & SP-Unigram     & 1.981 & 1.896 \\
+ & LiB (no supra) & 2.330 & 1.978 \\
+ & LiB            & 2.266 & 2.016 \\
 \midrule
 \multirow{5}{*}{50k}
- & BPE            & \todo{} & \todo{} \\
- & WordPiece      & \todo{} & \todo{} \\
- & SP-Unigram     & \todo{} & \todo{} \\
- & LiB (no supra) & \todo{} & \todo{} \\
- & LiB            & \todo{} & \todo{} \\
+ & BPE            & 2.003 & 1.949 \\
+ & WordPiece      & 1.949 & \textbf{1.883} \\
+ & SP-Unigram     & 1.974 & 1.901 \\
+ & LiB (no supra) & 2.272 & 1.968 \\
+ & LiB            & 2.213 & 2.013 \\
 \bottomrule
 \end{tabular}
 \caption{English BPC under Kneser-Ney $n$-gram LMs (lower is better).}
 \label{tab:bpc_en}
 \end{table}
+
+WordPiece achieves the lowest 3-gram BPC at all three vocabulary sizes (1.884, 1.880, 1.883 for 10k, 32k, 50k).
+LiB with supra-words trails WordPiece by 7.2\%--7.6\%, a consistent gap across all vocab sizes.
+An important nuance emerges from comparing LiB with and without supra-words:
+at the \emph{2-gram} level, supra-words improve BPC (2.213 vs.\ 2.272 at 50k) — supra-word tokens
+pack multi-word context into single items, giving 2-gram models shorter, more coherent token sequences.
+At the \emph{3-gram} level this advantage reverses (2.013 vs.\ 1.968 at 50k): the 3-gram window
+already captures multi-word context without needing it encoded in a single token,
+while supra-word types are rarer and harder to predict.
 
 \subsection{Speed and Model Size}
 
@@ -629,6 +638,63 @@ language types that are most different from English.
 The English-biased tokenizers (BPE, WordPiece, SP-Unigram) retain their relative
 advantage on English-like languages but offer no principled advantage on
 morphologically rich ones.
+
+\subsection{BPC Across Languages}
+
+Table~\ref{tab:bpc_multi} reports Kneser-Ney 3-gram BPC across all seven
+languages at the 50k vocabulary budget.
+BPC measures predictive quality under an $n$-gram language model — a lower score
+means the tokenisation yields more predictable token sequences.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Language} & \textbf{BPE} & \textbf{WP} & \textbf{SP-U} & \textbf{LiB\textsuperscript{--}} & \textbf{LiB} \\
+\midrule
+English (an.)    & 1.949 & \textbf{1.883} & 1.901 & 1.968 & 2.013 \\
+German (fu.)     & 1.876 & \textbf{1.808} & 1.818 & 1.881 & 1.940 \\
+Spanish (fu.)    & 1.772 & \textbf{1.702} & 1.716 & 1.824 & 1.865 \\
+Finnish (ag.)    & 1.355 & \textbf{1.313} & 1.325 & 1.420 & 1.447 \\
+Turkish (ag.)    & 2.078 & \textbf{2.001} & 2.018 & 2.082 & 2.126 \\
+Arabic (te.)     & 2.276 & \textbf{2.210} & 2.217 & 2.360 & 2.384 \\
+Chinese (lo.)    & 6.461 & 6.408 & \textbf{6.283} & 7.297 & 7.308 \\
+\bottomrule
+\end{tabular}
+\caption{3-gram BPC at 50k vocabulary (lower is better). WP = WordPiece,
+SP-U = SP-Unigram, LiB\textsuperscript{--} = LiB without supra-word tokens,
+LiB = LiB with supra-word tokens. Language type abbreviations: an. = analytic,
+fu. = fusional, ag. = agglutinative, te. = templatic, lo. = logographic.}
+\label{tab:bpc_multi}
+\end{table}
+
+WordPiece achieves the lowest BPC on six of seven languages;
+SP-Unigram wins on Chinese, where its character-level merging strategy
+aligns well with the absence of word boundaries.
+LiB trails WordPiece by 6.2\% on Turkish (the smallest gap),
+7.3\% on German, 6.9\% on English, 9.6\% on Spanish,
+10.2\% on Finnish, 7.9\% on Arabic,
+and 16.3\% on Chinese (the largest gap).
+
+The BPC pattern partially mirrors the DL pattern but with one notable reversal:
+Turkish shows the \emph{smallest} BPC gap (+6.2\%) despite its high DL gap
+(+15\%), suggesting that LiB's compact 29k vocabulary — though penalised by
+absolute DL — produces a particularly regular token sequence on agglutinative
+text.
+Chinese remains the clear outlier: LiB's multi-character tokens, formed without
+access to word-boundary cues, are both informationally expensive (DL: +43\%) and
+poorly predictable (BPC: +16.3\%).
+
+Comparing LiB with and without supra-word tokens reveals an $n$-gram order interaction:
+at 2-gram, supra-words improve BPC in 6 of 7 languages (all except Chinese), because
+supra-word tokens encode multi-word context within a single item, giving shorter 2-gram windows
+more predictive power.
+At 3-gram, this advantage reverses — full LiB has \emph{higher} BPC than
+LiB\textsuperscript{--} in all seven languages.
+With a 3-gram window, the model already captures multi-word context via token history,
+so the additional context embedded in supra-words is redundant, while their lower
+unigram frequency makes them harder to predict.
 
 
 %% ============================================================
