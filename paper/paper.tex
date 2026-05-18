@@ -18,9 +18,9 @@ Based on Minimum Description Length}
 
 \author{
   Antal van den Bosch$^1$ \quad Jinbiao Yang$^{2}$ \quad Maarten van Gompel$^1$ \\
-  $^1$Radboud University, Nijmegen, The Netherlands \\
+  $^1$Utrecht University \\
   $^2$Max Planck Institute for Psycholinguistics \\
-  \texttt{antal.vandenbosch@ru.nl}
+  \texttt{a.p.j.vandenbosch@uu.nl}
 }
 
 \begin{document}
@@ -267,21 +267,23 @@ We select seven languages covering a broad typological range (Table~\ref{tab:lan
 
 \begin{table}[h]
 \centering
-\small
+\footnotesize
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{llll}
 \toprule
 \textbf{Language} & \textbf{Family} & \textbf{Morphology} & \textbf{Script} \\
 \midrule
-English  & Germanic    & Analytic       & Latin (spaces) \\
-German   & Germanic    & Fusional/cmpd  & Latin (spaces) \\
-Spanish  & Romance     & Fusional       & Latin (spaces) \\
-Finnish  & Uralic      & Agglutinative  & Latin (spaces) \\
-Turkish  & Turkic      & Agglutinative  & Latin (spaces) \\
-Arabic   & Semitic     & Templatic      & Arabic (spaces) \\
-Chinese  & Sino-Tibetan & Isolating     & Logographic (no spaces) \\
+English  & Germanic     & Analytic      & Latin \\
+German   & Germanic     & Fusional      & Latin \\
+Spanish  & Romance      & Fusional      & Latin \\
+Finnish  & Uralic       & Agglutinative & Latin \\
+Turkish  & Turkic       & Agglutinative & Latin \\
+Arabic   & Semitic      & Templatic     & Arabic \\
+Chinese  & Sino-Tibetan & Isolating     & Logographic$^\dagger$ \\
 \bottomrule
-\end{tabular}
-\caption{Languages included in the evaluation.}
+\end{tabular}}
+\caption{Languages included in the evaluation. All Latin/Arabic-script
+languages use word spaces; $^\dagger$Chinese does not.}
 \label{tab:langs}
 \end{table}
 
@@ -353,11 +355,12 @@ demonstrating that multi-word tokens carry significant compression benefit.
 \begin{table}[t]
 \centering
 \small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lrrrrr}
 \toprule
 \textbf{Tokenizer} & \textbf{|V|} & \textbf{avg} & \textbf{supra} &
 \textbf{DL\textsubscript{lex}} & \textbf{DL\textsubscript{corp}} \\
-& & \textbf{len} & \textbf{ratio} & \textbf{(kb)} & \textbf{(kb)} \\
+& & \textbf{len} & \textbf{ratio} & & \\
 \midrule
 Symbol        &    —   & 1.00 &  —   &     0 & 10,349 \\
 BPE           & 49,996 & 5.13 & 0.00 & 1,642 &  5,222 \\
@@ -366,9 +369,10 @@ SP-Unigram    & 49,996 & 4.77 & 0.00 & 1,768 &  5,147 \\
 LiB (no supra)& 49,991 & 2.50 & 0.78 & 1,670 &  8,237 \\
 LiB           & 49,991 & 4.74 & 0.78 & 1,670 &  6,406 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \caption{Description Length on English test set (50k vocab, FineWeb-Edu).
-\emph{supra ratio}: fraction of vocabulary entries containing an embedded space.
+All DL values in kilobits. \emph{supra ratio}: fraction of vocabulary
+entries containing an embedded space.
 DL\textsubscript{total} = DL\textsubscript{lex} + DL\textsubscript{corp}.}
 \label{tab:dl_en}
 \end{table}
@@ -384,11 +388,12 @@ richer languages, where within-word structure provides more compression opportun
 \begin{table}[t]
 \centering
 \small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{llrrrr}
 \toprule
 \textbf{Vocab} & \textbf{Tokenizer} & \textbf{supra} &
 \textbf{DL\textsubscript{lex}} & \textbf{DL\textsubscript{corp}} & \textbf{DL\textsubscript{total}} \\
-& & \textbf{types} & \textbf{(kb)} & \textbf{(kb)} & \textbf{(kb)} \\
+& & \textbf{types} & & & \\
 \midrule
 \multirow{5}{*}{10k}
  & BPE            &    0 &   254 & 6,010 & 6,264 \\
@@ -411,8 +416,8 @@ richer languages, where within-word structure provides more compression opportun
  & LiB (no supra) & 38,731 & 1,670 & 8,237 & 9,907 \\
  & LiB            & 38,731 & 1,670 & 6,406 & 8,076 \\
 \bottomrule
-\end{tabular}
-\caption{English Description Length across vocabulary sizes.}
+\end{tabular}}
+\caption{English Description Length across vocabulary sizes (all DL values in kilobits).}
 \label{tab:dl_en_all}
 \end{table}
 
@@ -421,6 +426,7 @@ richer languages, where within-word structure provides more compression opportun
 \begin{table}[t]
 \centering
 \small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{llrr}
 \toprule
 \textbf{Vocab} & \textbf{Tokenizer} & \textbf{2-gram BPC} & \textbf{3-gram BPC} \\
@@ -446,7 +452,7 @@ richer languages, where within-word structure provides more compression opportun
  & LiB (no supra) & 2.272 & 1.968 \\
  & LiB            & 2.213 & 2.013 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \caption{English BPC under Kneser-Ney $n$-gram LMs (lower is better).}
 \label{tab:bpc_en}
 \end{table}
@@ -518,11 +524,11 @@ Table~\ref{tab:dl_summary} provides a cross-language summary of DL\textsubscript
 \begin{table}[t]
 \centering
 \small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{llrrrr}
 \toprule
 \textbf{Language} & \textbf{Tokenizer} & \textbf{supra\%} &
 \textbf{DL\textsubscript{lex}} & \textbf{DL\textsubscript{corp}} & \textbf{DL\textsubscript{total}} \\
-& & & \textbf{(kb)} & \textbf{(kb)} & \textbf{(kb)} \\
 \midrule
 \multirow{4}{*}{English}
  & BPE        &  0\% & 1,639 & 6,499 & 8,138 \\
@@ -566,8 +572,9 @@ Table~\ref{tab:dl_summary} provides a cross-language summary of DL\textsubscript
  & SP-Unigram &  0\% & 1,478 & 7,539 & 9,018 \\
  & LiB        &  2\% & 1,445 & 11,330 & 12,775 \\
 \bottomrule
-\end{tabular}
-\caption{Description Length across languages at 50k vocabulary (bold = best per language).
+\end{tabular}}
+\caption{Description Length across languages at 50k vocabulary (bold = best per language;
+all DL values in kilobits).
 $^\dagger$Turkish LiB saturated at 28,951 tokens (target: 50k) — see text.}
 \label{tab:dl_multilingual}
 \end{table}
@@ -575,19 +582,20 @@ $^\dagger$Turkish LiB saturated at 28,951 tokens (target: 50k) — see text.}
 \begin{table}[t]
 \centering
 \small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lrrrr r}
 \toprule
-\textbf{Language} & \textbf{BPE} & \textbf{WP} & \textbf{SP} & \textbf{LiB} & \textbf{gap\%} \\
+\textbf{Language} & \textbf{BPE} & \textbf{WP} & \textbf{SP-U} & \textbf{LiB} & \textbf{gap\%} \\
 \midrule
-English (analytic)        & 8,138 & \textbf{7,814} & 8,146 & 9,603 & +23\% \\
-German (fusional/cmpd)    & 8,653 & \textbf{8,408} & 8,702 & 10,223 & +22\% \\
-Spanish (fusional)        & 5,140 & \textbf{4,946} & 5,248 & 6,037 & +22\% \\
-Finnish (agglutinative)   & 3,635 & \textbf{3,588} & 3,943 & 4,047 & +13\% \\
-Turkish (agglutinative)   & 6,658 & \textbf{6,510} & 6,794 & 7,507 & +15\% \\
-Arabic (templatic)        & 8,550 & \textbf{8,277} & 8,456 & 10,401 & +26\% \\
-Chinese (logographic)     & \textbf{8,944} & 9,365 & 9,018 & 12,775 & +43\% \\
+English (analytic)      & 8,138 & \textbf{7,814} & 8,146 &  9,603 & +23\% \\
+German (fusional)       & 8,653 & \textbf{8,408} & 8,702 & 10,223 & +22\% \\
+Spanish (fusional)      & 5,140 & \textbf{4,946} & 5,248 &  6,037 & +22\% \\
+Finnish (agglutinative) & 3,635 & \textbf{3,588} & 3,943 &  4,047 & +13\% \\
+Turkish (agglutinative) & 6,658 & \textbf{6,510} & 6,794 &  7,507 & +15\% \\
+Arabic (templatic)      & 8,550 & \textbf{8,277} & 8,456 & 10,401 & +26\% \\
+Chinese (logographic)   & \textbf{8,944} & 9,365 & 9,018 & 12,775 & +43\% \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \caption{DL\textsubscript{total} (kb) cross-language summary at 50k vocab.
 \emph{gap\%}: LiB relative to best baseline (WP = WordPiece).}
 \label{tab:dl_summary}
@@ -652,6 +660,7 @@ means the tokenisation yields more predictable token sequences.
 \begin{table}[t]
 \centering
 \small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lrrrrr}
 \toprule
 \textbf{Language} & \textbf{BPE} & \textbf{WP} & \textbf{SP-U} & \textbf{LiB\textsuperscript{--}} & \textbf{LiB} \\
@@ -664,7 +673,7 @@ Turkish (ag.)    & 2.078 & \textbf{2.001} & 2.018 & 2.082 & 2.126 \\
 Arabic (te.)     & 2.276 & \textbf{2.210} & 2.217 & 2.360 & 2.384 \\
 Chinese (lo.)    & 6.461 & 6.408 & \textbf{6.283} & 7.297 & 7.308 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \caption{3-gram BPC at 50k vocabulary (lower is better). WP = WordPiece,
 SP-U = SP-Unigram, LiB\textsuperscript{--} = LiB without supra-word tokens,
 LiB = LiB with supra-word tokens. Language type abbreviations: an. = analytic,
