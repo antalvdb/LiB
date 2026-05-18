@@ -66,15 +66,16 @@ def build_tokenizers(vocab_size: int) -> list[tuple[str, object]]:
     else:
         print(f"[skip] SP-Unigram {vocab_size} not found at {sp_path}")
 
-    # LiB (supra-words disabled — ablation)
-    if os.path.exists(LIB_DIR):
+    # LiB — prefer size-specific model, fall back to default lib-tokenizer-trained/
+    lib_size_dir = os.path.join(MODELS_DIR, f"lib_{vocab_size}")
+    lib_dir = lib_size_dir if os.path.exists(lib_size_dir) else LIB_DIR
+    if os.path.exists(lib_dir):
         tok_list.append((f"LiB-nosupra-{vocab_size//1000}k",
-                         LiBWrapper(LIB_DIR, use_supra_words=False)))
-        # LiB (supra-words enabled)
+                         LiBWrapper(lib_dir, use_supra_words=False)))
         tok_list.append((f"LiB-{vocab_size//1000}k",
-                         LiBWrapper(LIB_DIR, use_supra_words=True)))
+                         LiBWrapper(lib_dir, use_supra_words=True)))
     else:
-        print(f"[skip] LiB not found at {LIB_DIR}")
+        print(f"[skip] LiB not found (tried {lib_size_dir} and {LIB_DIR})")
 
     return tok_list
 
