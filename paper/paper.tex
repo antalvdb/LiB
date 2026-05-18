@@ -13,7 +13,7 @@
 \definecolor{todocolor}{rgb}{0.8,0.0,0.0}
 \newcommand{\todo}[1]{\textcolor{todocolor}{[\textbf{TODO}: #1]}}
 
-\title{Beyond English: A Language-Agnostic Tokenizer\\
+\title{Beyond English: A Language-Agnostic Sub- and Supra-Word Tokenizer\\
 Based on Minimum Description Length}
 
 \author{
@@ -829,17 +829,40 @@ input may not be comparable to space-delimited input for the other languages.
 \paragraph{Subword tokenization.}
 BPE \citep{sennrich-etal-2016-neural}, WordPiece \citep{schuster1999japanese},
 and Unigram LM \citep{kudo-2018-subword} are the dominant subword tokenization
-methods.
-SentencePiece \citep{kudo-richardson-2018-sentencepiece} provides language-agnostic
-implementations of both.
-\citet{rust2021howgood} show that these methods systematically under-represent
-morphologically rich languages in multilingual models.
+methods; SentencePiece \citep{kudo-richardson-2018-sentencepiece} provides
+language-agnostic implementations of both.
+\citet{bostrom2020bpe} show that BPE's greedy merge order recovers
+morphologically less coherent units than Unigram LM, with measurable downstream
+effects.
+\citet{rust2021howgood} demonstrate that these methods systematically
+under-represent morphologically rich languages in multilingual models;
+\citet{toraman2023impact} confirm this for Turkish specifically, where a
+morphology-aware tokenizer outperforms BPE on six downstream tasks.
+\citet{mielke2021words} survey the full trajectory from word-level to
+character-level to subword models and conclude that no single tokenization
+approach is optimal across all languages.
+
+\paragraph{Tokenization fairness and the cost of English bias.}
+\citet{petrov2023unfairness} show that the same text translated into different
+languages can differ in token count by up to 15$\times$ under standard
+multilingual tokenizers.
+\citet{ahia2023languages} document the economic consequence: speakers of
+morphologically rich and non-Latin-script languages pay more API tokens per
+task while receiving worse results.
+\citet{gutierrez-vasques2023looking} analyse BPE compression across 47
+languages and show that merge patterns cluster by typological distance from
+English, with analytic languages compressed most efficiently.
+\citet{zouhar2023tokenization} frame tokenization as an information channel and
+show that Rényi entropy of a tokenization predicts downstream quality ($r=0.82$
+with BLEU), providing an information-theoretic basis for MDL-based tokenizers.
 
 \paragraph{MDL and tokenization.}
 The connection between tokenization and MDL was noted by
 \citet{brent1999efficient} for word segmentation.
-\citet{yang2020less} formalised the LiB objective on small corpora.
-\citet{yang2022eyefixations} subsequently showed that LiB segmentations predict
+\citet{yang2020less} formalised the LiB objective on small corpora;
+\citet{yang2024rethinking} subsequently argued for an integrated sub- and
+supra-word vocabulary grounded in the Principle of Least Effort.
+\citet{yang2022eyefixations} showed that LiB segmentations predict
 human eye fixations during reading better than word-level segmentations,
 providing psycholinguistic grounding for the units LiB discovers.
 The present work extends LiB to a production-grade multilingual setting.
@@ -847,15 +870,32 @@ The present work extends LiB to a production-grade multilingual setting.
 \paragraph{Supra-word tokens.}
 Multi-word expressions have a long history in NLP
 \citep{sag2002multiword,constant2017multiword}.
-LiB discovers multi-word units automatically without a pre-specified MWE lexicon.
+\citet{gee2023multiword} enrich a pretrained tokenizer's vocabulary with
+frequent MWEs, achieving $\sim$50\% sequence compression with negligible
+performance loss.
+Most closely related to LiB is \emph{SuperBPE} \citep{liu2025superbpe}, which
+extends BPE merges across whitespace to produce multi-word ``superword'' tokens,
+gaining up to $+4\%$ on average across 30 downstream tasks with 27\% less
+inference compute.
+LiB differs from SuperBPE in its motivation and mechanism: rather than
+extending a greedy frequency criterion, LiB uses the MDL objective to
+discover sub- and supra-word units jointly from first principles, with a
+principled stopping criterion tied to information gain rather than a fixed
+vocabulary budget.
+The psycholinguistic motivation for treating multi-word units as lexical entries
+is supported by \citet{wray2002formulaic}, \citet{siyanova2011collocation},
+\citet{christiansen2017more}, and \citet{arnon2021starting}, who show that
+multiword chunks are primary units of language acquisition and real-time
+processing, not post-hoc constructions from words.
 
 \paragraph{English bias in NLP and cognitive science.}
 \citet{blasi2022overreliance} provide the broadest recent review of English bias
 in cognitive science.
-In NLP specifically, English dominance in benchmarks, pre-training data, and model
-development has been documented across tasks
-\citep{joshi2020state,bender2021stochastic}.
-Tokenization is a relatively unexplored dimension of this bias.
+In NLP, English dominance in benchmarks, pre-training data, and model development
+has been documented across tasks \citep{joshi2020state,bender2021stochastic}.
+Tokenization is a relatively underexplored dimension of this bias; the present
+work provides the first systematic MDL-based analysis across seven typologically
+diverse language families.
 
 
 %% ============================================================
