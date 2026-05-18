@@ -120,15 +120,17 @@ def train_lib(train_path: Path, vocab_size: int, cfg: dict, tmp_dir: str) -> tup
     return str(out_dir), vocab_actual
 
 
-def evaluate_bpc(tokenizer_dir: str, valid_lines: list[str],
-                 raw_valid_chars: int, tmp_dir: str, tag: str) -> float:
+def evaluate_bpc(tokenizer_dir: str, train_lines: list[str],
+                 valid_lines: list[str], raw_valid_chars: int,
+                 tmp_dir: str, tag: str) -> float:
     from experiments.compute_metrics import LiBWrapper
 
     wrapper = LiBWrapper(tokenizer_dir, use_supra_words=True)
-    tokenized = [wrapper.encode(l) for l in valid_lines if l]
+    tokenized_train = [wrapper.encode(l) for l in train_lines if l]
+    tokenized_valid = [wrapper.encode(l) for l in valid_lines if l]
 
-    lm = train_ngram_lm_kenlm(tokenized, n=3, tmp_dir=tmp_dir, name=tag)
-    return compute_bpc_kenlm(lm, tokenized, raw_valid_chars)
+    lm = train_ngram_lm_kenlm(tokenized_train, n=3, tmp_dir=tmp_dir, name=tag)
+    return compute_bpc_kenlm(lm, tokenized_valid, raw_valid_chars)
 
 
 # ---------------------------------------------------------------------------
@@ -151,6 +153,7 @@ def run_search(lang: str, vocab_size: int, n_trials: int, resume: bool,
     seen_keys = {config_key({k: row[k] for k in SEARCH_SPACE}) for row in existing}
     next_trial = len(existing) + 1
 
+    train_lines = read_lines(train_path)
     valid_lines = read_lines(valid_path)
     raw_valid_chars = sum(len(l) for l in valid_lines)
 
@@ -193,7 +196,7 @@ def run_search(lang: str, vocab_size: int, n_trials: int, resume: bool,
         with tempfile.TemporaryDirectory(prefix="lib_hps_") as tmp_dir:
             try:
                 tok_dir, vocab_actual = train_lib(train_path, vocab_size, cfg, tmp_dir)
-                bpc = evaluate_bpc(tok_dir, valid_lines, raw_valid_chars, tmp_dir, tag)
+                bpc = evaluate_bpc(tok_dir, train_lines, valid_lines, raw_valid_chars, tmp_dir, tag)
             except Exception as e:
                 print(f"  ERROR: {e}")
                 trials_done += 1
