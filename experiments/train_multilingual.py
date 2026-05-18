@@ -94,14 +94,14 @@ def train_sp_unigram(train_path: str, vocab_size: int, out_dir: Path):
     )
 
 
-def train_lib(train_path: str, vocab_size: int, out_dir: Path):
+def train_lib(train_path: str, vocab_size: int, out_dir: Path, num_epochs: int = 10_000):
     from lib_tokenizers import LiBTokenizerFast
 
     out_dir.mkdir(parents=True, exist_ok=True)
     tok = LiBTokenizerFast.train_new(
         train_path,
         vocab_size=vocab_size,
-        num_epochs=10_000,
+        num_epochs=num_epochs,
     )
     tok.save_pretrained(str(out_dir))
 
@@ -136,6 +136,8 @@ def main():
                         help="Train only these tokenizer types")
     parser.add_argument("--skip-existing", action="store_true",
                         help="Skip if model file already exists")
+    parser.add_argument("--num-epochs", type=int, default=10_000,
+                        help="Number of LiB training epochs (default: 10000)")
     args = parser.parse_args()
 
     for lang in args.langs:
@@ -160,7 +162,8 @@ def main():
                 print(f"  [{tok_name:12s} {vocab_size:>6,}]  training …", end="", flush=True)
                 t0 = time.perf_counter()
                 try:
-                    TRAIN_FNS[tok_name](str(train_path), vocab_size, out_dir)
+                    kwargs = {"num_epochs": args.num_epochs} if tok_name == "lib" else {}
+                    TRAIN_FNS[tok_name](str(train_path), vocab_size, out_dir, **kwargs)
                     elapsed = time.perf_counter() - t0
                     print(f"  done in {fmt_time(elapsed)}")
                 except Exception as exc:

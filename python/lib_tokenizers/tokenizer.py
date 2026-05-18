@@ -56,6 +56,7 @@ class LiBTokenizerFast(PreTrainedTokenizerFast):
         seed: Optional[int] = None,
         deterministic: bool = False,
         max_len: int = 12,
+        life: int = 10,
         memory_in: float = 0.25,
         memory_out: float = 0.0001,
         update_rate: float = 0.2,
@@ -71,6 +72,7 @@ class LiBTokenizerFast(PreTrainedTokenizerFast):
             seed: Random seed for reproducibility.
             deterministic: Use deterministic training mode.
             max_len: Maximum token length in characters.
+            life: Initial life score for new tokens (higher = harder to prune).
             memory_in: Probability of memorizing a candidate (stochastic mode).
             memory_out: Fraction of low-priority units to prune per epoch.
             update_rate: How far units move on reward/punishment.
@@ -88,6 +90,7 @@ class LiBTokenizerFast(PreTrainedTokenizerFast):
             vocab_size=vocab_size,
             num_epochs=num_epochs,
             max_len=max_len,
+            life=life,
             memory_in=memory_in,
             memory_out=memory_out,
             update_rate=update_rate,
