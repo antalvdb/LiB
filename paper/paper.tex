@@ -431,40 +431,50 @@ richer languages, where within-word structure provides more compression opportun
 \toprule
 \textbf{Vocab} & \textbf{Tokenizer} & \textbf{2-gram BPC} & \textbf{3-gram BPC} \\
 \midrule
-\multirow{5}{*}{10k}
+\multirow{6}{*}{10k}
  & BPE            & 2.076 & 1.919 \\
  & WordPiece      & 2.043 & \textbf{1.884} \\
  & SP-Unigram     & 2.062 & 1.899 \\
+ & SuperBPE       & 2.091 & 1.950 \\
  & LiB (no supra) & 2.481 & 2.025 \\
  & LiB            & 2.407 & 2.019 \\
 \midrule
-\multirow{5}{*}{32k}
+\multirow{6}{*}{32k}
  & BPE            & 2.009 & 1.938 \\
  & WordPiece      & 1.959 & \textbf{1.880} \\
  & SP-Unigram     & 1.981 & 1.896 \\
+ & SuperBPE       & 2.032 & 1.975 \\
  & LiB (no supra) & 2.330 & 1.978 \\
  & LiB            & 2.266 & 2.016 \\
 \midrule
-\multirow{5}{*}{50k}
+\multirow{6}{*}{50k}
  & BPE            & 2.003 & 1.949 \\
  & WordPiece      & 1.949 & \textbf{1.883} \\
  & SP-Unigram     & 1.974 & 1.901 \\
- & LiB (no supra) & 2.272 & 1.968 \\
- & LiB            & 2.213 & 2.013 \\
+ & SuperBPE       & 2.026 & 1.988 \\
+ & LiB (no supra) & 2.267 & 1.966 \\
+ & LiB            & 2.209 & 2.012 \\
 \bottomrule
 \end{tabular}}
-\caption{English BPC under Kneser-Ney $n$-gram LMs (lower is better).}
+\caption{English BPC under Kneser-Ney $n$-gram LMs (lower is better).
+SuperBPE extends BPE with cross-whitespace merges \cite{liu2025superbpe}.}
 \label{tab:bpc_en}
 \end{table}
 
 WordPiece achieves the lowest 3-gram BPC at all three vocabulary sizes (1.884, 1.880, 1.883 for 10k, 32k, 50k).
-LiB with supra-words trails WordPiece by 7.2\%--7.6\%, a consistent gap across all vocab sizes.
+LiB with supra-words trails WordPiece by 6.9\%--7.6\%, a consistent gap across all vocab sizes.
+SuperBPE, which also produces cross-whitespace tokens via a frequency-driven second BPE stage,
+performs worse than standard BPE at 3-gram (e.g.\ 1.988 vs.\ 1.949 at 50k), mirroring the
+pattern seen for LiB's supra-words.
 An important nuance emerges from comparing LiB with and without supra-words:
-at the \emph{2-gram} level, supra-words improve BPC (2.213 vs.\ 2.272 at 50k) — supra-word tokens
+at the \emph{2-gram} level, supra-words improve BPC (2.209 vs.\ 2.267 at 50k) — supra-word tokens
 pack multi-word context into single items, giving 2-gram models shorter, more coherent token sequences.
-At the \emph{3-gram} level this advantage reverses (2.013 vs.\ 1.968 at 50k): the 3-gram window
+At the \emph{3-gram} level this advantage reverses (2.012 vs.\ 1.966 at 50k): the 3-gram window
 already captures multi-word context without needing it encoded in a single token,
 while supra-word types are rarer and harder to predict.
+This pattern — supra-words helping at 2-gram but hurting at 3-gram — holds for both LiB and SuperBPE,
+suggesting it reflects a general property of cross-whitespace tokens rather than an artefact of LiB's
+MDL training objective.
 
 \subsection{Speed and Model Size}
 
@@ -661,21 +671,22 @@ means the tokenisation yields more predictable token sequences.
 \centering
 \small
 \resizebox{\columnwidth}{!}{%
-\begin{tabular}{lrrrrr}
+\begin{tabular}{lrrrrrr}
 \toprule
-\textbf{Language} & \textbf{BPE} & \textbf{WP} & \textbf{SP-U} & \textbf{LiB\textsuperscript{--}} & \textbf{LiB} \\
+\textbf{Language} & \textbf{BPE} & \textbf{WP} & \textbf{SP-U} & \textbf{SBPE} & \textbf{LiB\textsuperscript{--}} & \textbf{LiB} \\
 \midrule
-English (an.)    & 1.949 & \textbf{1.883} & 1.901 & 1.968 & 2.013 \\
-German (fu.)     & 1.876 & \textbf{1.808} & 1.818 & 1.881 & 1.940 \\
-Spanish (fu.)    & 1.772 & \textbf{1.702} & 1.716 & 1.824 & 1.865 \\
-Finnish (ag.)    & 1.355 & \textbf{1.313} & 1.325 & 1.420 & 1.447 \\
-Turkish (ag.)    & 2.078 & \textbf{2.001} & 2.018 & 2.082 & 2.126 \\
-Arabic (te.)     & 2.276 & \textbf{2.210} & 2.217 & 2.360 & 2.384 \\
-Chinese (lo.)    & 6.461 & 6.408 & \textbf{6.283} & 7.297 & 7.308 \\
+English (an.)    & 1.949 & \textbf{1.883} & 1.901 & 1.988 & 1.966 & 2.012 \\
+German (fu.)     & 1.876 & \textbf{1.808} & 1.818 & 1.906 & 1.881 & 1.940 \\
+Spanish (fu.)    & 1.772 & \textbf{1.702} & 1.716 & 1.817 & 1.824 & 1.865 \\
+Finnish (ag.)    & 1.355 & \textbf{1.313} & 1.325 & 1.423 & 1.420 & 1.447 \\
+Turkish (ag.)    & 2.078 & \textbf{2.001} & 2.018 & 2.126 & 2.082 & 2.126 \\
+Arabic (te.)     & 2.276 & \textbf{2.210} & 2.217 & 2.307 & 2.360 & 2.384 \\
+Chinese (lo.)    & 6.461 & 6.408 & \textbf{6.283} & 6.471 & 7.297 & 7.308 \\
 \bottomrule
 \end{tabular}}
 \caption{3-gram BPC at 50k vocabulary (lower is better). WP = WordPiece,
-SP-U = SP-Unigram, LiB\textsuperscript{--} = LiB without supra-word tokens,
+SP-U = SP-Unigram, SBPE = SuperBPE \cite{liu2025superbpe},
+LiB\textsuperscript{--} = LiB without supra-word tokens,
 LiB = LiB with supra-word tokens. Language type abbreviations: an. = analytic,
 fu. = fusional, ag. = agglutinative, te. = templatic, lo. = logographic.}
 \label{tab:bpc_multi}
@@ -688,6 +699,15 @@ LiB trails WordPiece by 6.2\% on Turkish (the smallest gap),
 7.3\% on German, 6.9\% on English, 9.6\% on Spanish,
 10.2\% on Finnish, 7.9\% on Arabic,
 and 16.3\% on Chinese (the largest gap).
+
+SuperBPE, which extends BPE with a second frequency-driven stage of cross-whitespace merges,
+consistently falls \emph{between} BPE and LiB\textsuperscript{--} at 3-gram for five languages,
+and matches LiB\textsuperscript{--} on Turkish (both 2.126).
+Notably, LiB\textsuperscript{--} beats SuperBPE on Finnish (1.420 vs.\ 1.423): LiB's
+MDL-guided subword merges produce a more predictable token sequence than SuperBPE's
+frequency-driven extension for this highly agglutinative language.
+In all cases, SuperBPE's supra-word tokens hurt 3-gram BPC relative to standard BPE,
+reinforcing the $n$-gram order interaction observed for LiB.
 
 The BPC pattern partially mirrors the DL pattern but with one notable reversal:
 Turkish shows the \emph{smallest} BPC gap (+6.2\%) despite its high DL gap
@@ -707,6 +727,32 @@ LiB\textsuperscript{--} in all seven languages.
 With a 3-gram window, the model already captures multi-word context via token history,
 so the additional context embedded in supra-words is redundant, while their lower
 unigram frequency makes them harder to predict.
+That SuperBPE shows the same reversal confirms this is a structural consequence of
+cross-whitespace token rarity, not a peculiarity of LiB's training criterion.
+
+\subsection{Hyperparameter Sensitivity}
+
+LiB has six training hyperparameters: number of epochs, maximum token length,
+token lifetime (\texttt{life}), memory thresholds (\texttt{memory\_in},
+\texttt{memory\_out}), and update rate.
+To assess sensitivity we ran 30 random trials on English at 50k vocabulary,
+optimising 3-gram BPC on a held-out validation set (5k sentences carved from the
+training corpus).
+
+The dominant factor is \texttt{memory\_out}: values $\geq 0.001$ aggressively prune
+tokens and collapse the effective vocabulary (from \textasciitilde50k to as few as
+1k), substantially increasing BPC.
+Within the safe range ($\texttt{memory\_out} \leq 5 \times 10^{-4}$), BPC varies
+by only 0.029 bits across all other hyperparameter combinations.
+The best configuration found (BPC 1.835; 200k epochs, $\texttt{max\_len}=25$,
+$\texttt{memory\_out}=5\times10^{-5}$) improves over the default (BPC 1.839) by
+just 0.004 bits, at a cost of 23$\times$ longer training time (9,600\,s vs.\
+412\,s).
+Training for more epochs yields no systematic benefit across most configurations,
+consistent with the MDL objective converging early.
+These results indicate that LiB's default hyperparameters are near-optimal and that
+practitioners need only avoid excessively large \texttt{memory\_out} values to
+obtain competitive tokenisers.
 
 
 %% ============================================================

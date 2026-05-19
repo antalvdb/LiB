@@ -67,6 +67,7 @@ def build_tokenizers(lang: str, vocab_size: int, include_symbol: bool):
         ("BPE",            f"bpe_{vocab_size}",       "tokenizer.json",   "hf"),
         ("WordPiece",      f"wordpiece_{vocab_size}",  "tokenizer.json",   "hf"),
         ("SP-Unigram",     f"sp_unigram_{vocab_size}", "sp_unigram.model", "sp"),
+        ("SuperBPE",       f"superbpe_{vocab_size}",   "tokenizer.json",   "hf"),
         ("LiB (no supra)", f"lib_{vocab_size}",        "tokenizer.json",   "lib_off"),
         ("LiB",            f"lib_{vocab_size}",        "tokenizer.json",   "lib_on"),
     ]

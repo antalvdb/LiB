@@ -94,7 +94,7 @@ def load_existing_configs(csv_path: Path) -> list[dict]:
 
 
 def config_key(cfg: dict) -> tuple:
-    return tuple(cfg[k] for k in sorted(SEARCH_SPACE))
+    return tuple(float(cfg[k]) for k in sorted(SEARCH_SPACE))
 
 
 def train_lib(train_path: Path, vocab_size: int, cfg: dict, tmp_dir: str) -> tuple[str, int]:
@@ -168,7 +168,7 @@ def run_search(lang: str, vocab_size: int, n_trials: int, resume: bool,
     # Always include the default config as trial 0 if not already done
     configs_to_run = []
     if not any(
-        all(str(row[k]) == str(DEFAULTS[k]) for k in SEARCH_SPACE)
+        all(float(row[k]) == float(DEFAULTS[k]) for k in SEARCH_SPACE)
         for row in existing
     ):
         configs_to_run.append(DEFAULTS.copy())
