@@ -60,6 +60,7 @@ class LiBTokenizerFast(PreTrainedTokenizerFast):
         memory_in: float = 0.25,
         memory_out: float = 0.0001,
         update_rate: float = 0.2,
+        doc_size: int = 50,
         special_tokens: Optional[List[str]] = None,
         **kwargs,
     ) -> "LiBTokenizerFast":
@@ -72,10 +73,15 @@ class LiBTokenizerFast(PreTrainedTokenizerFast):
             seed: Random seed for reproducibility.
             deterministic: Use deterministic training mode.
             max_len: Maximum token length in characters.
-            life: Initial life score for new tokens (higher = harder to prune).
+            life: Probation period τ₀ (passive forgetting): documents a tail
+                unit may go unused before it is forgotten.
             memory_in: Probability of memorizing a candidate (stochastic mode).
-            memory_out: Fraction of low-priority units to prune per epoch.
-            update_rate: How far units move on reward/punishment.
+            memory_out: Forgetting ratio ω: fraction of the tail placed on
+                probation per document.
+            update_rate: Ordinal re-ranking rate Δ (active forgetting): sets the
+                promotion/demotion step ⌊ΘΔ⌋+1.
+            doc_size: Sentences per document (one epoch); rewards accumulate over
+                the document before one re-ranking + forgetting step.
             special_tokens: Special tokens to add (default: UNK, PAD, CLS, SEP, MASK).
 
         Returns:
@@ -94,6 +100,7 @@ class LiBTokenizerFast(PreTrainedTokenizerFast):
             memory_in=memory_in,
             memory_out=memory_out,
             update_rate=update_rate,
+            doc_size=doc_size,
             deterministic=deterministic,
             special_tokens=added_tokens,
         )

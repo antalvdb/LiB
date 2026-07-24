@@ -1,0 +1,128 @@
+%% ============================================================
+%% Reframed Introduction — "When do supra-word tokens help?"
+%% Draft companion to paper/reframe_outline.md.
+%% Grounded in the English neural-BPB result: supra-word tokens buy
+%% sequence compression at a small predictive-quality cost, and the
+%% payoff depends on HOW they are selected (frequency vs MDL) and on
+%% language type. Empirical figures marked [EN] are confirmed on
+%% English; \TODO markers await fi/tr/zh.
+%% ============================================================
+
+\newcommand{\TODO}[1]{\textcolor{todocolor}{[\textbf{TODO}: #1]}}
+
+\section{Introduction}
+\label{sec:intro}
+
+Almost every modern tokenizer refuses to place a token above the word.
+Byte-Pair Encoding \citep[BPE;][]{sennrich-etal-2016-neural}, WordPiece
+\citep{schuster1999japanese,wu2016googles}, and Unigram
+\citep{kudo-2018-subword} all pre-tokenize on whitespace and then learn units
+strictly \emph{within} the resulting word-like chunks.  Whitespace is a hard
+floor: no matter how often \texttt{of the} or \texttt{New York} recurs, these
+methods will never store it as a single token.  This convention is so
+universal that it is rarely stated as a design choice at all — yet it is one,
+and an under-motivated one.  It was inherited from early machine-translation
+pipelines built for English, a language whose short, mostly monomorphemic,
+space-delimited words make the word a convenient atom.  Whether the whitespace
+floor is the \emph{right} place to stop has, until recently, gone essentially
+untested.
+
+Recent work has begun to question it.  SuperBPE \citep{liu2025superbpe} lets BPE
+merges cross whitespace in a second training stage, producing multi-word
+``superword'' tokens, and reports downstream gains (up to $+4\%$ across 30
+tasks) with substantially less inference compute.  From a different tradition,
+the LiB tokenizer \citep{yang2020less,yang2024rethinking} derives sub- and
+supra-word units \emph{jointly} from a single Minimum Description Length (MDL)
+objective, and \citet{yang2022eyefixations} show that its segmentations predict
+human eye fixations during reading better than word-based ones — behavioural
+evidence that multi-word units are psycholinguistically real
+\citep{wray2002formulaic,arnon2021starting}.  Supra-word tokens are, suddenly,
+no longer obviously a bad idea.
+
+And yet the standard \emph{intrinsic} metrics of tokenization quality say they
+are.  Under Description Length and under $n$-gram bits-per-character (BPC), both
+LiB and SuperBPE rank \emph{worse} than the whitespace-bounded baselines they
+extend.  This is the puzzle we take up: \textbf{if supra-word tokens help real
+language models, why do intrinsic tokenization metrics penalize them?}
+
+Our first contribution is to show that a large part of this penalty is a
+\emph{measurement artefact}, not a property of the tokens.  Both Description
+Length and $n$-gram BPC punish a tokenizer for having many rare types: DL adds
+$\sim\!\log_2 N$ bits for every singleton type, and a Kneser–Ney $n$-gram model
+has too little evidence to estimate a rare multi-word type, so its surprisal
+explodes through data sparsity.  Supra-word tokens are, by construction, rarer
+than the subwords they replace, so both metrics charge them for redundancy that
+a better estimator would not see.  The tell is already visible in the data: the
+same supra-word tokens \emph{help} a 2-gram model but \emph{hurt} a 3-gram model,
+for both LiB and SuperBPE — a signature of the estimator, not the tokenization.
+
+Our second contribution is to measure supra-word tokens on rulers that do not
+have this bias.  We train a small neural language model on each tokenization and
+report \textbf{bits-per-byte} (BPB) — cross-entropy over the test stream
+normalized by raw UTF-8 bytes, the standard tokenization-fair compression
+metric — alongside \textbf{fertility} (tokens per byte), which determines
+sequence length and inference cost.  The neural metric removes the $n$-gram
+sparsity pathology; the fertility metric exposes the efficiency dimension for
+which supra-word tokens were designed.
+
+The picture that emerges is a \emph{trade-off}, not a free lunch, and it is
+worth stating plainly because it corrects the field in both directions.  On
+English, supra-word tokens deliver a large, real compression benefit —
+SuperBPE encodes the test text in the fewest tokens of any method
+(\textasciitilde$0.18$ tokens/byte vs.\ $0.20$ for BPE) [EN] — but they do
+\emph{not} improve predictive quality: LiB and SuperBPE both trail the
+subword baselines on neural BPB, and turning supra-words on changes BPB only
+marginally [EN].  In other words, the intrinsic metrics were right that
+supra-word tokens cost something on the quality axis; they were wrong about
+\emph{how much}, and they were silent about the compression benefit that
+justifies the cost.  The honest case for supra-word tokens is an
+efficiency-and-downstream case, not an intrinsic-quality case.
+
+Our third contribution is to show that \emph{how} supra-word tokens are chosen
+matters as much as \emph{whether} they are allowed, and that this is where a
+principled objective earns its place.  SuperBPE selects supra-words by
+frequency and compresses well; LiB selects them to minimize description length
+and, on English, admits so many rare, low-yield multi-word types that it ends
+up \emph{less} compressive than plain BPE despite spending 77\% of its
+vocabulary on supra-words [EN].  The MDL objective is thus a double-edged tool:
+it gives LiB a language-agnostic stopping criterion absent from every baseline
+— on Turkish it halts at \TODO{29k} tokens because no further unit reduces
+description length, rather than filling an arbitrary budget — but description
+length is not the same objective as sequence compression, and optimizing it
+does not automatically buy shorter sequences.  We use LiB and SuperBPE together
+as two points in the space of supra-word selection rules to map when the
+supra-word level pays off.
+
+Finally, we ask \emph{for which languages} the trade-off is favourable.
+The whitespace floor is not merely an English default; it interacts with
+morphology.  In analytic languages the compressible redundancy lies mostly
+\emph{above} the word (collocations), while in agglutinative and compounding
+languages it lies \emph{within} it (morphemes) — so the same mechanism that
+discovers ``\_of\_the'' in English should discover morpheme-length units in
+Finnish or Turkish.  We evaluate across seven typologically diverse languages
+— English, German, Spanish, Finnish, Turkish, Arabic, and Chinese — and find
+that the fraction of supra-word tokens LiB discovers tracks the
+analytic--synthetic continuum (\TODO{2\% for Chinese, 65--69\% for
+agglutinative, 76--81\% for analytic and templatic}), giving a data-driven
+typological diagnostic and localizing where a supra-word budget is best spent.
+
+\paragraph{Contributions.}
+\begin{itemize}
+  \item We show that the intrinsic penalty against supra-word tokens under
+        Description Length and $n$-gram BPC is largely a measurement artefact of
+        rare-type sparsity, demonstrated by the 2-gram/3-gram reversal shared by
+        LiB and SuperBPE.
+  \item We provide a tokenization-fair neural evaluation (bits-per-byte plus
+        fertility) that removes the artefact and reveals the true shape of the
+        trade-off: supra-word tokens buy sequence compression at a small
+        predictive-quality cost, not an intrinsic-quality gain.
+  \item We show that the compression payoff depends on the supra-word
+        \emph{selection rule}, contrasting frequency-based (SuperBPE) with
+        MDL-based (LiB) admission, and identify over-admission of rare
+        collocations as a failure mode of the MDL criterion.
+  \item We present LiB as a principled MDL route to a joint sub-/supra-word
+        vocabulary with an information-gain stopping criterion (Turkish
+        saturation), released as a HuggingFace-compatible Rust implementation.
+  \item We introduce the supra-word ratio as a typological diagnostic and
+        characterize the trade-off across seven typologically diverse languages.
+\end{itemize}

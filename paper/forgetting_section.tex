@@ -1,0 +1,151 @@
+%% ============================================================
+%% Draft section: Forgetting in LiB — ordinal re-ranking (active) +
+%% probation/life (passive), matching trainer.rs/trie.rs
+%% Companion to paper.tex. Numbers marked [EN] are measured on English
+%% (Wikipedia, 50k cap, 10k document-epochs, doc_size=50); \TODO marks
+%% values awaiting the multilingual re-run.
+%%
+%% Intended placement: expands §3.2 (which currently describes admission
+%% only) and adds a short results subsection. Two blocks below:
+%%   (A) algorithm description — replaces the admission-only §3.2 text;
+%%   (B) results — the forgetting characterisation.
+%% ============================================================
+
+\newcommand{\TODO}[1]{\textcolor{todocolor}{[\textbf{TODO}: #1]}}
+
+%% ------------------------------------------------------------
+%% (A) Algorithm: memorising AND forgetting
+%% ------------------------------------------------------------
+
+\subsection{Memorising and Forgetting}
+\label{sec:forgetting}
+
+LiB follows the Principle of Least Effort by keeping the lexicon $L$ small: it
+must \emph{forget} units as readily as it memorises them, or the lexicon grows
+without bound and $\mathrm{DL}_\mathrm{lex}$ is never controlled.
+\citet{yang2020less} accordingly build forgetting into the model as a
+first-class mechanism with two routes — an \emph{active} route that demotes
+units judged unhelpful, and a \emph{passive} route that lets unused units decay
+— mirroring the active and passive forgetting observed in human memory.
+We make both routes explicit here, as together they are central to how LiB
+adapts its vocabulary size to a corpus.
+
+The lexicon $L$ is a priority-ordered list: each unit $u$ has an ordinal
+position $\Theta(u)$, with $\Theta=0$ the head. Segmentation itself never
+consults the ranking — it is greedy longest-match with a one-chunk lookahead —
+so $\Theta$ functions purely as a memory: it encodes how strongly a unit is
+currently held, and it decides who is at risk of being forgotten.
+Training proceeds over \emph{documents}: each epoch draws one document of
+$d$ sentences ($d=\texttt{doc\_size}$). Within a document:
+
+\begin{description}
+  \item[Read \& memorise.] Each sentence is segmented with the current $L$;
+    with probability $\alpha$ (\texttt{memory\_in}) the concatenation of two
+    adjacent chunks is proposed as a candidate unit (an unknown character
+    sequence of length ${\le}2$ may itself be a candidate). A candidate
+    sighted \emph{twice within the same document} is admitted, provided
+    $|L|$ is below the cap $|V|$. New units enter at the tail — the lowest
+    rank — and must earn their way up.
+  \item[Evaluate (active forgetting).] At each position the segmenter also
+    considers the second-longest match $c_2$ against the longest $c_1$; both
+    branches are rolled out greedily until they reconverge, and $c_1$ is
+    judged \emph{bad} if its branch needs more unknown symbols, or (at equal
+    unknowns) more chunks, or (at equal both) a higher ordinal sum
+    \citep[\S 2.3.1]{yang2020less}. A good $c_1$ is promoted headward,
+    $\Theta\leftarrow\Theta-(\lfloor\Theta\Delta\rfloor+1)$ with
+    $\Delta=\texttt{update\_rate}$; a bad $c_1$ is demoted tailward by the
+    same step — and a unit demoted \emph{past} the tail ($\Theta\ge|L|$) is
+    deleted outright — while the longest match of its shortened form is
+    promoted in its place \citep[\S 2.3.2]{yang2020less}. Promotion is thus
+    multiplicative: units that keep winning comparisons converge
+    exponentially fast on the head, where they are safe.
+  \item[Probation \& expiry (passive forgetting).] Once per document, every
+    unit on the probation watch has its remaining life decremented, and units
+    whose life expires are forgotten. Then the current tail — the bottom
+    fraction $\omega$ (\texttt{memory\_out}) of $L$ — is placed on watch with
+    life $\lambda$ (\texttt{life}); seed units start on watch. Probation is
+    cancelled the moment a unit is used in a segmentation without being judged
+    bad, so
+    only units that go $\lambda$ consecutive documents without proving
+    themselves are lost.
+\end{description}
+
+Atomic units (single characters, byte-fallback tokens) and special tokens are
+exempt from both deletion routes, guaranteeing lossless reconstruction.
+The two routes play complementary roles: active forgetting is
+\emph{comparative} — it punishes units that lose against an available
+alternative, immediately, wherever they rank — while passive forgetting is
+\emph{absolute} — it removes units that are simply never exercised, after a
+grace period of $\lambda$ documents. A unit that stops being useful is first
+demoted out of the safe head region, then drifts into the watched tail, and
+finally expires.
+
+Crucially, the vocabulary size is \emph{not} imposed by the cap $|V|$: it is an
+emergent equilibrium between admission and the two forgetting routes, governed
+by $\omega$.
+This is the mechanism behind the language-sensitive saturation reported in
+Section~\ref{sec:multilingual}: rather than an accident of one language reaching
+a wall, saturation is the general behaviour of the model once forgetting is
+strong enough to balance admission.
+
+%% ------------------------------------------------------------
+%% (B) Results: forgetting controls vocabulary self-regulation
+%% ------------------------------------------------------------
+
+\subsection{Forgetting Controls Vocabulary Self-Regulation}
+\label{sec:forgetting-results}
+
+The forgetting ratio $\omega$ is the knob that sets where the
+admission--forgetting equilibrium falls.
+Table~\ref{tab:omega} sweeps $\omega$ on English at a 50k cap and reports the
+resulting (emergent) vocabulary size, the supra-word ratio, and the fraction of
+supra-word types that never occur when re-encoding the training corpus — a
+direct measure of \emph{dead weight}, units the lexicon stores but never uses.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{rrrr}
+\toprule
+$\omega$ & \textbf{$|L|$} & \textbf{supra \%} & \textbf{never-used \%} \\
+\midrule
+$1\times10^{-4}$ & 50{,}000 & 56.5 & 5.9 \\
+$1\times10^{-3}$ & 49{,}955 & 53.1 & 3.2 \\
+$5\times10^{-3}$ & 49{,}755 & 50.8 & 1.9 \\
+$2\times10^{-2}$ & 21{,}002 & 37.1 & 0.5 \\
+\bottomrule
+\end{tabular}
+\caption{Effect of the forgetting ratio $\omega$ on English (50k cap, 10k
+document-epochs). As forgetting strengthens, dead weight (never-used supra-word
+types) falls monotonically, and beyond a threshold the vocabulary stops filling
+the cap and self-regulates to a far smaller emergent size. [EN]}
+\label{tab:omega}
+\end{table}
+
+Two effects are visible.
+First, dead weight falls monotonically with $\omega$: the never-used supra-word
+fraction drops from $5.9\%$ to $0.5\%$, because stronger forgetting continually
+evicts the least-used units and fills the freed budget with units that earn
+their place. Even in the regime where the lexicon remains full, its
+\emph{composition} improves.
+Second, there is a sharp transition between $\omega=5\times10^{-3}$ and
+$\omega=2\times10^{-2}$: below it, admission outpaces forgetting and the lexicon
+pins at the cap; above it, forgetting wins and the lexicon self-regulates far
+below the cap (from 50k to 21k for English). The near-discontinuity marks the
+point where the per-document eviction rate overtakes the admission rate.
+
+This reframes the vocabulary size as a \emph{result} rather than a
+hyperparameter. Standard tokenizers fill whatever $|V|$ they are given; LiB, with
+forgetting active, discovers the vocabulary size at which no further unit repays
+its storage cost, and $\omega$ tunes how aggressively it does so. The supra-word
+ratio likewise becomes a controllable, emergent quantity rather than a fixed
+property, which we relate to typology in Section~\ref{sec:multilingual}.
+
+\paragraph{Reproducibility note.}
+The two forgetting routes are the load-bearing part of the LiB training loop.
+The results in this paper use the implementation in which active re-ranking and
+passive probation are both operating (as described above); we release this
+implementation with the paper. \TODO{once the multilingual re-run completes, replace all LiB columns
+in Tables~\ref{tab:dl_multilingual}, \ref{tab:bpc_multi}, etc.\ with the
+forgetting-active numbers and state the $\omega$/\texttt{life}/\texttt{doc\_size}
+used per language.}

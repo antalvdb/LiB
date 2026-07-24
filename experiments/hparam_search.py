@@ -47,19 +47,26 @@ LANGUAGES = ["en", "de", "es", "fi", "tr", "ar", "zh"]
 # Search space
 # ---------------------------------------------------------------------------
 
+# Search space for the faithful 2020 mechanism (Yang et al., §2.3.1–2.3.2).
+# An epoch processes one document (`doc_size` sentences). All five 2020 knobs
+# are live: α=`memory_in` (candidate sampling prob), Δ=`update_rate` (ordinal
+# re-ranking rate for active forgetting), ω=`memory_out` (tail fraction probated
+# per document), τ₀=`life` (probation period), plus `doc_size` and `max_len`.
+# Ranges are centred on the paper's values (α=0.25, Δ=0.2, ω=1e-4, τ₀=10/500).
 SEARCH_SPACE = {
-    "num_epochs":  [10_000, 25_000, 50_000, 100_000, 200_000],
-    "max_len":     [8, 10, 12, 16, 20, 25],
-    "life":        [5, 10, 20, 50, 100],
-    "memory_in":   [0.05, 0.1, 0.2, 0.25, 0.4, 0.5, 0.75],
-    "memory_out":  [1e-5, 5e-5, 1e-4, 5e-4, 1e-3, 5e-3],
-    "update_rate": [0.05, 0.1, 0.2, 0.3, 0.4, 0.5],
+    "num_epochs":  [5_000, 10_000, 20_000],
+    "max_len":     [8, 12, 16, 20],
+    "life":        [10, 50, 100, 500],
+    "memory_in":   [0.1, 0.25, 0.5],
+    "memory_out":  [1e-4, 5e-4, 1e-3, 5e-3, 1e-2],
+    "update_rate": [0.1, 0.2, 0.3, 0.4],
+    "doc_size":    [20, 50, 100],
 }
 
 CSV_FIELDS = [
     "trial", "lang", "vocab_size",
     "num_epochs", "max_len", "life",
-    "memory_in", "memory_out", "update_rate",
+    "memory_in", "memory_out", "update_rate", "doc_size",
     "vocab_actual", "bpc_3gram", "train_time_s",
 ]
 
@@ -70,6 +77,7 @@ DEFAULTS = {
     "memory_in":   0.25,
     "memory_out":  1e-4,
     "update_rate": 0.2,
+    "doc_size":    50,
 }
 
 
@@ -83,7 +91,12 @@ def read_lines(path: Path) -> list[str]:
 
 
 def sample_config(rng: random.Random) -> dict:
-    return {k: rng.choice(v) for k, v in SEARCH_SPACE.items()}
+    # Start from defaults (so fixed params like update_rate are present), then
+    # override the searched dimensions.
+    cfg = DEFAULTS.copy()
+    for k, choices in SEARCH_SPACE.items():
+        cfg[k] = rng.choice(choices)
+    return cfg
 
 
 def load_existing_configs(csv_path: Path) -> list[dict]:
@@ -113,6 +126,7 @@ def train_lib(train_path: Path, vocab_size: int, cfg: dict, tmp_dir: str) -> tup
         memory_in=cfg["memory_in"],
         memory_out=cfg["memory_out"],
         update_rate=cfg["update_rate"],
+        doc_size=cfg["doc_size"],
         seed=42,
     )
     tok.save_pretrained(str(out_dir))
@@ -147,7 +161,9 @@ def run_search(lang: str, vocab_size: int, n_trials: int, resume: bool,
         return
 
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    csv_path = RESULTS_DIR / f"hparam_{lang}_{vocab_size}.csv"
+    # "obs" = repaired observation-count forgetting; kept separate from the old
+    # (broken-mechanism) hparam_{lang}_{vocab}.csv files, which are superseded.
+    csv_path = RESULTS_DIR / f"hparam_obs_{lang}_{vocab_size}.csv"
 
     existing = load_existing_configs(csv_path)
     seen_keys = {config_key({k: row[k] for k in SEARCH_SPACE}) for row in existing}
@@ -185,10 +201,10 @@ def run_search(lang: str, vocab_size: int, n_trials: int, resume: bool,
 
         tag = f"{lang}_{vocab_size}_t{next_trial}"
         print(
-            f"  Trial {next_trial:3d} | epochs={cfg['num_epochs']:>7,} "
-            f"max_len={cfg['max_len']:>2} life={cfg['life']:>3} "
-            f"mem_in={cfg['memory_in']:.3f} mem_out={cfg['memory_out']:.5f} "
-            f"lr={cfg['update_rate']:.3f}",
+            f"  Trial {next_trial:3d} | epochs={cfg['num_epochs']:>6,} "
+            f"doc={cfg['doc_size']:>3} max_len={cfg['max_len']:>2} "
+            f"life={cfg['life']:>3} mem_in={cfg['memory_in']:.2f} "
+            f"mem_out={cfg['memory_out']:.4f}",
             end="", flush=True,
         )
 
@@ -227,10 +243,10 @@ def run_search(lang: str, vocab_size: int, n_trials: int, resume: bool,
     all_rows = load_existing_configs(csv_path)
     if all_rows:
         best = min(all_rows, key=lambda r: float(r["bpc_3gram"]))
-        print(f"\n  Best so far: BPC={best['bpc_3gram']}  "
-              f"epochs={best['num_epochs']} max_len={best['max_len']} "
-              f"life={best['life']} mem_in={best['memory_in']} "
-              f"mem_out={best['memory_out']} lr={best['update_rate']}")
+        print(f"\n  Best so far: BPC={best['bpc_3gram']}  vocab={best['vocab_actual']}  "
+              f"epochs={best['num_epochs']} doc={best.get('doc_size','?')} "
+              f"max_len={best['max_len']} life={best['life']} "
+              f"mem_in={best['memory_in']} mem_out={best['memory_out']}")
 
 
 def main():

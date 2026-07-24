@@ -57,7 +57,12 @@ def read_lines(path: Path) -> list[str]:
 
 
 def count_supra(vocab: list[str]) -> int:
-    return sum(1 for t in vocab if " " in t and len(t) > 1)
+    # A supra-word token spans a word boundary: it has an *internal* space. The
+    # leading space of a metaspace word-initial token (e.g. " cat") does NOT count.
+    def is_supra(t: str) -> bool:
+        core = t[1:] if t[:1] == " " else t
+        return " " in core
+    return sum(1 for t in vocab if is_supra(t))
 
 
 def build_tokenizers(lang: str, vocab_size: int) -> list[tuple[str, object]]:
@@ -70,6 +75,7 @@ def build_tokenizers(lang: str, vocab_size: int) -> list[tuple[str, object]]:
         ("SP-Unigram", f"sp_unigram_{vocab_size}",  "sp_unigram.model", "sp"),
         ("LiB (no supra)", f"lib_{vocab_size}",     "tokenizer.json",   "lib_off"),
         ("LiB",        f"lib_{vocab_size}",         "tokenizer.json",   "lib_on"),
+        ("LiB (no forget)", f"lib_{vocab_size}_noforget", "tokenizer.json", "lib_on"),
     ]
 
     for display, subdir, fname, kind in configs:
