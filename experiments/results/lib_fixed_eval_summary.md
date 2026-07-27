@@ -111,5 +111,6 @@ cap without it. DL/3-gram-BPC of the ablated models: evaluation running
 - Neural BPB: zh (sweep running).
 - Ablation DL/BPC table (running); matched-size + cap DL/BPC evals queued.
 - Encoding-throughput (tokens/sec) for the new LiB + baselines:
-  `python experiments/benchmark_speed.py --no-train` (needs an idle machine —
-  run after the sweep finishes).
+  `python experiments/benchmark_speed.py --no-train --lang <l>` per language
+  (the --lang flag is REQUIRED to hit the fixed models; without it the script
+  falls back to broken-era top-level dirs). Needs an idle machine — run last.

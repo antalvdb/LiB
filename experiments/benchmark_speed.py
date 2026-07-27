@@ -272,9 +272,20 @@ def main():
                         help="Skip training; only measure encoding on existing models")
     parser.add_argument("--encode-reps", type=int, default=3,
                         help="Number of repetitions for encoding benchmark")
+    parser.add_argument("--lang", default=None,
+                        help="Benchmark per-language models/data (models/<lang>/*, "
+                             "data/<lang>/*) instead of the legacy top-level dirs. "
+                             "Use this to time the regenerated (fixed) LiB models.")
     parser.add_argument("--encode-lines", type=int, default=1000,
                         help="Number of test lines to use for encoding benchmark")
     args = parser.parse_args()
+
+    if args.lang:
+        global MODELS_DIR, TRAIN_PATH, TEST_PATH, TRAIN_STR
+        MODELS_DIR = MODELS_DIR / args.lang
+        TRAIN_PATH = DATA_DIR / args.lang / "train.txt"
+        TEST_PATH = DATA_DIR / args.lang / "test.txt"
+        TRAIN_STR = str(TRAIN_PATH)
 
     for p in (TRAIN_PATH, TEST_PATH):
         if not p.exists():
