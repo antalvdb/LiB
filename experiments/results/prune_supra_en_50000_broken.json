@@ -1,0 +1,84 @@
+{
+  "refs": {
+    "full": {
+      "tokens": 619452,
+      "tok_per_byte": 0.22470853643008956,
+      "tok_per_sent": 61.9452,
+      "supra_fired_frac": 0.22767220059019908
+    },
+    "no_supra": {
+      "tokens": 1332925,
+      "tok_per_byte": 0.4835235432625565,
+      "tok_per_sent": 133.2925,
+      "supra_fired_frac": 0.0
+    }
+  },
+  "never_fired": 2177,
+  "n_supra": 29052,
+  "rows": [
+    {
+      "keep_frac": 0.0,
+      "kept_supra": 0,
+      "eff_vocab": 20943,
+      "tok_per_byte": 0.26730380735454207,
+      "tok_per_sent": 73.6874,
+      "supra_fired": 0.0
+    },
+    {
+      "keep_frac": 0.01,
+      "kept_supra": 291,
+      "eff_vocab": 21234,
+      "tok_per_byte": 0.2469678320856418,
+      "tok_per_sent": 68.0814,
+      "supra_fired": 0.1168351414630134
+    },
+    {
+      "keep_frac": 0.02,
+      "kept_supra": 581,
+      "eff_vocab": 21524,
+      "tok_per_byte": 0.24308237666100407,
+      "tok_per_sent": 67.0103,
+      "supra_fired": 0.1451732047162899
+    },
+    {
+      "keep_frac": 0.05,
+      "kept_supra": 1453,
+      "eff_vocab": 22396,
+      "tok_per_byte": 0.237071909764279,
+      "tok_per_sent": 65.3534,
+      "supra_fired": 0.17749650362490704
+    },
+    {
+      "keep_frac": 0.1,
+      "kept_supra": 2905,
+      "eff_vocab": 23848,
+      "tok_per_byte": 0.23245877031557036,
+      "tok_per_sent": 64.0817,
+      "supra_fired": 0.19883991841664625
+    },
+    {
+      "keep_frac": 0.25,
+      "kept_supra": 7263,
+      "eff_vocab": 28206,
+      "tok_per_byte": 0.22740669882841422,
+      "tok_per_sent": 62.689,
+      "supra_fired": 0.2184242849622741
+    },
+    {
+      "keep_frac": 0.5,
+      "kept_supra": 14526,
+      "eff_vocab": 35469,
+      "tok_per_byte": 0.2253038153351246,
+      "tok_per_sent": 62.1093,
+      "supra_fired": 0.22574236064486317
+    },
+    {
+      "keep_frac": 1.0,
+      "kept_supra": 29052,
+      "eff_vocab": 49995,
+      "tok_per_byte": 0.22470853643008956,
+      "tok_per_sent": 61.9452,
+      "supra_fired": 0.22767220059019908
+    }
+  ]
+}

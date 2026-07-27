@@ -5,9 +5,10 @@ disables the probation/life pipeline (passive forgetting): the bottom-ω tail
 slice is empty, so no unit ever enters probation or expires. Active
 forgetting (ordinal reward re-ranking, group_move) still operates — good
 chunks move headward, bad chunks tailward, and a bad chunk demoted past |L|
-is still deleted — so the lexicon hovers at the 50k cap with a slow churn
-rather than self-regulating below it. This isolates exactly the passive
-mechanism. Saves to experiments/models/<lang>/lib_50000_noforget/.
+is still deleted — so some regulation remains: empirically the lexicon
+inflates ~40% over the full mechanism but only Chinese (life=10) approaches
+the 50k cap. This isolates exactly the passive mechanism. Saves to
+experiments/models/<lang>/lib_50000_noforget/.
 """
 
 import sys

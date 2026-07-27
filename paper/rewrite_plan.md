@@ -168,12 +168,27 @@ in the main text.
    evaluate_all_multilingual.py ("LiB (no forget)" row wired in). ω=0
    disables exactly the probation/life pipeline (the repaired mechanism);
    active forgetting (ordinal reward re-ranking with tail-overflow deletion,
-   trie.rs group_move) still operates, so the lexicon hovers at the 50k cap
-   with slow churn. Frame in the paper as ablating *passive* forgetting, per
+   trie.rs group_move) still operates and retains partial regulation:
+   empirically the lexicon inflates ~40% (zh +88%, near the cap) rather than
+   pinning. Frame in the paper as ablating *passive* forgetting, per
    Yang's active/passive decomposition. The bugged-era numbers cannot stand
    in for this — they differ from the final setup in more than just
    forgetting. (Optional second arm, needs a code flag: also disable
    group_move deletion to ablate active forgetting.)
+
+## 8b. Budget-matched controls (added 2026-07-27, AvdB request)
+
+Answer "is LiB's DL win just a smaller vocabulary?" from both sides:
+
+- **Matched-size baselines** (rigorous arm): BPE/WP/SP-U retrained at each
+  language's emergent LiB size (en 28,423 … tr 13,585, zh 26,269); DL/BPC
+  compared at exactly matched budgets. `matched_budget.log`; evaluate per
+  language with `evaluate_all_multilingual.py --langs <l> --vocab-size <n>`.
+- **Cap-filling LiB** (demonstration arm, en only): final config but α=0.5
+  (`train_lib_cap.py` → `lib_50000_cap`; "LiB (cap)" eval row). Honest label:
+  admission-rate change, NOT a decay change — the ω=0 ablation bounds what
+  weaker decay alone can reach (en 41.7k < cap), so cap-filling requires
+  raising supply. Decay stays at final ω=0.005.
 
 ## 9. Venue
 

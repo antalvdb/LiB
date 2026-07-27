@@ -76,6 +76,7 @@ def build_tokenizers(lang: str, vocab_size: int) -> list[tuple[str, object]]:
         ("LiB (no supra)", f"lib_{vocab_size}",     "tokenizer.json",   "lib_off"),
         ("LiB",        f"lib_{vocab_size}",         "tokenizer.json",   "lib_on"),
         ("LiB (no forget)", f"lib_{vocab_size}_noforget", "tokenizer.json", "lib_on"),
+        ("LiB (cap)", f"lib_{vocab_size}_cap", "tokenizer.json", "lib_on"),
     ]
 
     for display, subdir, fname, kind in configs:
