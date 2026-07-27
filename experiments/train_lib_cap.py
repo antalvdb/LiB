@@ -27,8 +27,17 @@ def is_supra(t):
 
 
 def main():
+    # Optional overrides: --omega <float> --suffix <name>
+    # α=0.5 alone reached 46,718 (93.4% of cap); --omega 0.001 additionally
+    # weakens decay to pin the cap fully (two-knob variant, label honestly).
+    args = sys.argv[1:]
+    suffix = "cap"
+    if "--omega" in args:
+        CFG["memory_out"] = float(args[args.index("--omega") + 1])
+    if "--suffix" in args:
+        suffix = args[args.index("--suffix") + 1]
     train = REPO / "experiments" / "data" / "en" / "train.txt"
-    out = REPO / "experiments" / "models" / "en" / "lib_50000_cap"
+    out = REPO / "experiments" / "models" / "en" / f"lib_50000_{suffix}"
     print(f"[en] training (cap-filling, α=0.5): {CFG} ...", flush=True)
     t0 = time.time()
     tok = LiBTokenizerFast.train_new(str(train), vocab_size=50000, seed=42, **CFG)

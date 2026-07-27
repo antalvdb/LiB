@@ -51,8 +51,8 @@ WP/SP-U by ~1–2%). Supra-words now HELP at 3-gram in every language
 
 ## Neural bits-per-byte (TinyGPT, byte-normalised; lower better), 50k budget
 
-Sweep relaunched 2026-07-24 with the fixed LiB models; en/de/es/fi done,
-tr/ar/zh in progress (`neural_bpb_<lang>_50000.csv`; broken-era EN archived as
+Sweep relaunched 2026-07-24 with the fixed LiB models; en/de/es/fi/tr/ar done,
+zh in progress (`neural_bpb_<lang>_50000.csv`; broken-era EN archived as
 `*_broken.csv`).
 
 | lang | BPE | WordPiece | SP-U | SuperBPE | LiB-no-supra | LiB (fixed) |
@@ -61,16 +61,20 @@ tr/ar/zh in progress (`neural_bpb_<lang>_50000.csv`; broken-era EN archived as
 | de | 1.710 | 1.621 | **1.617** | 1.733 | 1.863 | 1.713 |
 | es | 1.580 | **1.505** | 1.508 | 1.569 | 1.775 | 1.595 |
 | fi | 1.220 | 1.155 | **1.150** | 1.243 | 1.385 | 1.262 |
+| tr | 1.703 | **1.640** | 1.671 | 1.731 | 1.862 | 1.702 |
+| ar | 1.159 | **1.111** | 1.112 | 1.177 | 1.253 | 1.169 |
 
-- LiB ≈ parity with BPE (dead even de; −1% en/es; −3.4% fi), trades blows with
-  SuperBPE (beats it de/fi, loses es), WP/SP-U lead by ~5–8% everywhere.
-  Broken-era EN gap (LiB 2.018 vs BPE 1.805, −12%) is gone.
+- LiB ≈ parity with BPE in all six (−0.1% tr — LiB's first BPB win over BPE,
+  with a 13.6k emergent vocab vs BPE's 50k — to +3.4% fi), beats SuperBPE in
+  4/6 (de, fi, tr, ar), WP/SP-U lead by ~4–8% everywhere. Broken-era EN gap
+  (LiB 2.018 vs BPE 1.805, −12%) is gone.
 - Supra-words HELP LiB on neural BPB in every language (−0.12…−0.19 BPB vs
   no-supra, and ~2.2–2.5× shorter sequences).
-- Fertility (tok/byte): SuperBPE best everywhere (en 0.176, de 0.174,
-  es 0.173, fi 0.158); LiB slightly worse than BPE in all langs (en 0.215 vs
-  0.200; fi 0.202 vs 0.165). LiB does NOT win the efficiency axis — paper
-  claims quality/DL, not fertility (rewrite_plan.md §6 branch settled).
+- Fertility (tok/byte): SuperBPE best in 5/6 (en 0.176, de 0.174, es 0.173,
+  fi 0.158, ar 0.112; on tr BPE edges it 0.171 vs 0.173); LiB worse than BPE
+  in all langs (en 0.215 vs 0.200; tr 0.234 vs 0.171). LiB does NOT win the
+  efficiency axis — paper claims quality/DL, not fertility (rewrite_plan.md
+  §6 branch settled).
 
 ## Passive-forgetting ablation (ω=0, all else final config), 2026-07
 
@@ -93,10 +97,19 @@ supra-words. zh (life=10, shortest probation) inflates most — nearly pins the
 cap without it. DL/3-gram-BPC of the ablated models: evaluation running
 (`multilingual_eval_noforget.log`, "LiB (no forget)" rows).
 
+## Budget-matched controls (rewrite_plan.md §8b), 2026-07-27
+
+- Matched-size baselines: BPE/WP/SP-U trained at each language's emergent LiB
+  vocab (en 28,423 … tr 13,585, zh 26,269) — DL/BPC evals queued behind the
+  ablation eval.
+- Cap-filling LiB (en): α=0.5, ω=0.005 (single-knob) → vocab **46,718**
+  (93.4% of cap), supra 30.9%. Two-knob variant (α=0.5, ω=0.001,
+  `lib_50000_cap2`) running to pin the cap fully.
+
 ## Still pending
 
-- Neural BPB: tr, ar, zh (sweep running).
-- Ablation DL/BPC table (running).
+- Neural BPB: zh (sweep running).
+- Ablation DL/BPC table (running); matched-size + cap DL/BPC evals queued.
 - Encoding-throughput (tokens/sec) for the new LiB + baselines:
   `python experiments/benchmark_speed.py --no-train` (needs an idle machine —
   run after the sweep finishes).
