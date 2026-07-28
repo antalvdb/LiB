@@ -51,8 +51,8 @@ WP/SP-U by ~1–2%). Supra-words now HELP at 3-gram in every language
 
 ## Neural bits-per-byte (TinyGPT, byte-normalised; lower better), 50k budget
 
-Sweep relaunched 2026-07-24 with the fixed LiB models; en/de/es/fi/tr/ar done,
-zh in progress (`neural_bpb_<lang>_50000.csv`; broken-era EN archived as
+Sweep relaunched 2026-07-24 with the fixed LiB models; COMPLETE 2026-07-28,
+all 7 languages (`neural_bpb_<lang>_50000.csv`; broken-era EN archived as
 `*_broken.csv`).
 
 | lang | BPE | WordPiece | SP-U | SuperBPE | LiB-no-supra | LiB (fixed) |
@@ -63,10 +63,12 @@ zh in progress (`neural_bpb_<lang>_50000.csv`; broken-era EN archived as
 | fi | 1.220 | 1.155 | **1.150** | 1.243 | 1.385 | 1.262 |
 | tr | 1.703 | **1.640** | 1.671 | 1.731 | 1.862 | 1.702 |
 | ar | 1.159 | **1.111** | 1.112 | 1.177 | 1.253 | 1.169 |
+| zh | 2.129 | 2.116 | **2.042** | 2.124 | 2.119 | 2.111 |
 
-- LiB ≈ parity with BPE in all six (−0.1% tr — LiB's first BPB win over BPE,
-  with a 13.6k emergent vocab vs BPE's 50k — to +3.4% fi), beats SuperBPE in
-  4/6 (de, fi, tr, ar), WP/SP-U lead by ~4–8% everywhere. Broken-era EN gap
+- LiB ≈ parity with BPE in all 7 (beats it outright on tr −0.1% and zh −0.8%;
+  worst gap +3.4% fi; tr win comes with a 13.6k emergent vocab vs BPE's 50k).
+  Beats SuperBPE in 5/7 (de, fi, tr, ar, zh). On zh LiB is 2nd overall,
+  ahead of WordPiece too; elsewhere WP/SP-U lead by ~4–8%. Broken-era EN gap
   (LiB 2.018 vs BPE 1.805, −12%) is gone.
 - Supra-words HELP LiB on neural BPB in every language (−0.12…−0.19 BPB vs
   no-supra, and ~2.2–2.5× shorter sequences).
@@ -104,12 +106,13 @@ cap without it. DL/3-gram-BPC of the ablated models: evaluation running
   ablation eval.
 - Cap-filling LiB (en): α=0.5, ω=0.005 (single-knob) → vocab **46,718**
   (93.4% of cap), supra 30.9%. Two-knob variant (α=0.5, ω=0.001,
-  `lib_50000_cap2`) running to pin the cap fully.
+  `lib_50000_cap2`) → **49,954** — pins the cap. Budget ladder for the
+  comparison: 28.4k (fixed) → 46.7k (α-only) → 50.0k (α+weak ω).
 
 ## Still pending
 
-- Neural BPB: zh (sweep running).
-- Ablation DL/BPC table (running); matched-size + cap DL/BPC evals queued.
+- Ablation DL/BPC table (running); matched-size + cap/cap2 DL/BPC evals
+  queued behind it.
 - Encoding-throughput (tokens/sec) for the new LiB + baselines:
   `python experiments/benchmark_speed.py --no-train --lang <l>` per language
   (the --lang flag is REQUIRED to hit the fixed models; without it the script
