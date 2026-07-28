@@ -115,10 +115,12 @@ $5\times10^{-3}$ & 49{,}755 & 50.8 & 1.9 \\
 $2\times10^{-2}$ & 21{,}002 & 37.1 & 0.5 \\
 \bottomrule
 \end{tabular}
-\caption{Effect of the forgetting ratio $\omega$ on English (50k cap, 10k
-document-epochs). As forgetting strengthens, dead weight (never-used supra-word
-types) falls monotonically, and beyond a threshold the vocabulary stops filling
-the cap and self-regulates to a far smaller emergent size. [EN]}
+\caption{Effect of the forgetting ratio $\omega$ on English (50k cap; sweep
+run at 10k document-epochs with $d{=}50$ — an earlier configuration than the
+headline runs, whose qualitative behaviour it characterises). As forgetting
+strengthens, dead weight (never-used supra-word types) falls monotonically,
+and beyond a threshold the vocabulary stops filling the cap and
+self-regulates to a far smaller emergent size.}
 \label{tab:omega}
 \end{table}
 
@@ -143,9 +145,7 @@ property, which we relate to typology in Section~\ref{sec:multilingual}.
 
 \paragraph{Reproducibility note.}
 The two forgetting routes are the load-bearing part of the LiB training loop.
-The results in this paper use the implementation in which active re-ranking and
-passive probation are both operating (as described above); we release this
-implementation with the paper. \TODO{once the multilingual re-run completes, replace all LiB columns
-in Tables~\ref{tab:dl_multilingual}, \ref{tab:bpc_multi}, etc.\ with the
-forgetting-active numbers and state the $\omega$/\texttt{life}/\texttt{doc\_size}
-used per language.}
+All LiB results in this paper use the implementation in which active
+re-ranking and passive probation are both operating, as described above, with
+the per-language configurations of Section~\ref{sec:setup}; we release this
+implementation with the paper.

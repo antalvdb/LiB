@@ -1,0 +1,807 @@
+
+########################################################################
+  VOCAB SIZE: 28,423
+########################################################################
+
+--- EN: English (analytic) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/en/lib_28423/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/en/lib_28423/tokenizer.json not found
+    [skip] LiB (no forget): /Users/antalb/Experiments/LiB/experiments/models/en/lib_28423_noforget/tokenizer.json not found
+    [skip] LiB (cap): /Users/antalb/Experiments/LiB/experiments/models/en/lib_28423_cap/tokenizer.json not found
+    [skip] LiB (cap2): /Users/antalb/Experiments/LiB/experiments/models/en/lib_28423_cap2/tokenizer.json not found
+
+========================================================================
+  English (analytic) — DL — 28k vocab
+========================================================================
+  Tokenizer             |V|      avg_len       supra%   DL_lex(kb)  DL_corp(kb)   DL_tot(kb)
+  ------------------------------------------------------------------------------------------
+  Symbol                  —         1.00            —          0.0      12647.2      12647.2
+  BPE                 28419         4.69           0%        859.4       6804.3       7663.7
+  WordPiece           28418         4.10           0%        812.9       6592.0       7404.9
+  SP-Unigram          28419         4.49           0%        974.8       6563.1       7538.0
+
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpl2_7prf5/en_Symbol_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpl2_7prf5/en_Symbol_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpv2mhjcl8/en_BPE_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpv2mhjcl8/en_BPE_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpolcg_f3p/en_WordPiece_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpolcg_f3p/en_WordPiece_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpr18xtn4z/en_SP-Unigram_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpr18xtn4z/en_SP-Unigram_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+
+========================================================================
+  English (analytic) — BPC — 28k vocab
+========================================================================
+  Tokenizer     2-gram BPC  3-gram BPC
+  ------------------------------------
+  Symbol             3.388       3.004
+  BPE                2.012       1.935
+  WordPiece          1.963       1.880
+  SP-Unigram         1.985       1.896
+
+
+########################################################################
+  Cross-language summary — DL_total (kb) — 28k vocab
+########################################################################
+  Language                          Symbol         BPE   WordPiece  SP-Unigram         LiB
+  ----------------------------------------------------------------------------------------
+  English (analytic)               12647.2      7663.7      7404.9      7538.0           —
+
+
+########################################################################
+  VOCAB SIZE: 26,579
+########################################################################
+
+--- DE: German (fusional/compound) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/de/lib_26579/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/de/lib_26579/tokenizer.json not found
+    [skip] LiB (no forget): /Users/antalb/Experiments/LiB/experiments/models/de/lib_26579_noforget/tokenizer.json not found
+    [skip] LiB (cap): /Users/antalb/Experiments/LiB/experiments/models/de/lib_26579_cap/tokenizer.json not found
+    [skip] LiB (cap2): /Users/antalb/Experiments/LiB/experiments/models/de/lib_26579_cap2/tokenizer.json not found
+
+========================================================================
+  German (fusional/compound) — DL — 26k vocab
+========================================================================
+  Tokenizer             |V|      avg_len       supra%   DL_lex(kb)  DL_corp(kb)   DL_tot(kb)
+  ------------------------------------------------------------------------------------------
+  Symbol                  —         1.00            —          0.0      13871.5      13871.5
+  BPE                 26575         4.84           0%        849.6       7283.4       8133.0
+  WordPiece           26574         4.51           0%        846.6       7061.4       7908.0
+  SP-Unigram          26575         4.65           0%       1030.3       6901.0       7931.2
+
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp0q39uom6/de_Symbol_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp0q39uom6/de_Symbol_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp5w2apv41/de_BPE_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp5w2apv41/de_BPE_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp3lprmzow/de_WordPiece_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp3lprmzow/de_WordPiece_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpojknd8b7/de_SP-Unigram_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpojknd8b7/de_SP-Unigram_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+
+========================================================================
+  German (fusional/compound) — BPC — 26k vocab
+========================================================================
+  Tokenizer     2-gram BPC  3-gram BPC
+  ------------------------------------
+  Symbol             3.430       2.967
+  BPE                1.950       1.859
+  WordPiece          1.911       1.806
+  SP-Unigram         1.926       1.815
+
+
+########################################################################
+  Cross-language summary — DL_total (kb) — 26k vocab
+########################################################################
+  Language                          Symbol         BPE   WordPiece  SP-Unigram         LiB
+  ----------------------------------------------------------------------------------------
+  German (fusional/compound)       13871.5      8133.0      7908.0      7931.2           —
+
+
+########################################################################
+  VOCAB SIZE: 25,106
+########################################################################
+
+--- ES: Spanish (fusional) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/es/lib_25106/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/es/lib_25106/tokenizer.json not found
+    [skip] LiB (no forget): /Users/antalb/Experiments/LiB/experiments/models/es/lib_25106_noforget/tokenizer.json not found
+    [skip] LiB (cap): /Users/antalb/Experiments/LiB/experiments/models/es/lib_25106_cap/tokenizer.json not found
+    [skip] LiB (cap2): /Users/antalb/Experiments/LiB/experiments/models/es/lib_25106_cap2/tokenizer.json not found
+
+========================================================================
+  Spanish (fusional) — DL — 25k vocab
+========================================================================
+  Tokenizer             |V|      avg_len       supra%   DL_lex(kb)  DL_corp(kb)   DL_tot(kb)
+  ------------------------------------------------------------------------------------------
+  Symbol                  —         1.00            —          0.0       6970.1       6970.1
+  BPE                 25102         4.62           0%        759.4       3717.1       4476.6
+  WordPiece           25101         4.08           0%        728.5       3611.1       4339.5
+  SP-Unigram          25102         4.42           0%        895.9       3532.9       4428.7
+
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpio47m29z/es_Symbol_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpio47m29z/es_Symbol_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp2dpkt7mx/es_BPE_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp2dpkt7mx/es_BPE_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmppnejiot1/es_WordPiece_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmppnejiot1/es_WordPiece_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpgzuk57_o/es_SP-Unigram_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpgzuk57_o/es_SP-Unigram_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+
+========================================================================
+  Spanish (fusional) — BPC — 25k vocab
+========================================================================
+  Tokenizer     2-gram BPC  3-gram BPC
+  ------------------------------------
+  Symbol             3.336       2.954
+  BPE                1.880       1.758
+  WordPiece          1.841       1.701
+  SP-Unigram         1.866       1.713
+
+
+########################################################################
+  Cross-language summary — DL_total (kb) — 25k vocab
+########################################################################
+  Language                          Symbol         BPE   WordPiece  SP-Unigram         LiB
+  ----------------------------------------------------------------------------------------
+  Spanish (fusional)                6970.1      4476.6      4339.5      4428.7           —
+
+
+########################################################################
+  VOCAB SIZE: 20,262
+########################################################################
+
+--- FI: Finnish (agglutinative) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/fi/lib_20262/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/fi/lib_20262/tokenizer.json not found
+    [skip] LiB (no forget): /Users/antalb/Experiments/LiB/experiments/models/fi/lib_20262_noforget/tokenizer.json not found
+    [skip] LiB (cap): /Users/antalb/Experiments/LiB/experiments/models/fi/lib_20262_cap/tokenizer.json not found
+    [skip] LiB (cap2): /Users/antalb/Experiments/LiB/experiments/models/fi/lib_20262_cap2/tokenizer.json not found
+
+========================================================================
+  Finnish (agglutinative) — DL — 20k vocab
+========================================================================
+  Tokenizer             |V|      avg_len       supra%   DL_lex(kb)  DL_corp(kb)   DL_tot(kb)
+  ------------------------------------------------------------------------------------------
+  Symbol                  —         1.00            —          0.0       4488.0       4488.0
+  BPE                 20258         5.07           0%        583.1       2179.5       2762.6
+  WordPiece           20257         4.60           0%        571.2       2184.1       2755.4
+  SP-Unigram          20258         4.71           0%        723.2       2106.3       2829.6
+
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpbugigprp/fi_Symbol_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpbugigprp/fi_Symbol_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp_ycow7np/fi_BPE_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp_ycow7np/fi_BPE_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmptuv1sft_/fi_WordPiece_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmptuv1sft_/fi_WordPiece_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpdd3ab4fw/fi_SP-Unigram_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpdd3ab4fw/fi_SP-Unigram_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+
+========================================================================
+  Finnish (agglutinative) — BPC — 20k vocab
+========================================================================
+  Tokenizer     2-gram BPC  3-gram BPC
+  ------------------------------------
+  Symbol             3.505       2.929
+  BPE                1.558       1.348
+  WordPiece          1.569       1.317
+  SP-Unigram         1.581       1.333
+
+
+########################################################################
+  Cross-language summary — DL_total (kb) — 20k vocab
+########################################################################
+  Language                          Symbol         BPE   WordPiece  SP-Unigram         LiB
+  ----------------------------------------------------------------------------------------
+  Finnish (agglutinative)           4488.0      2762.6      2755.4      2829.6           —
+
+
+########################################################################
+  VOCAB SIZE: 13,585
+########################################################################
+
+--- TR: Turkish (agglutinative) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/tr/lib_13585/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/tr/lib_13585/tokenizer.json not found
+    [skip] LiB (no forget): /Users/antalb/Experiments/LiB/experiments/models/tr/lib_13585_noforget/tokenizer.json not found
+    [skip] LiB (cap): /Users/antalb/Experiments/LiB/experiments/models/tr/lib_13585_cap/tokenizer.json not found
+    [skip] LiB (cap2): /Users/antalb/Experiments/LiB/experiments/models/tr/lib_13585_cap2/tokenizer.json not found
+
+========================================================================
+  Turkish (agglutinative) — DL — 13k vocab
+========================================================================
+  Tokenizer             |V|      avg_len       supra%   DL_lex(kb)  DL_corp(kb)   DL_tot(kb)
+  ------------------------------------------------------------------------------------------
+  Symbol                  —         1.00            —          0.0      10048.9      10048.9
+  BPE                 13581         4.35           0%        377.8       5644.3       6022.2
+  WordPiece           13580         4.19           0%        359.5       5615.4       5974.9
+  SP-Unigram          13581         4.13           0%        445.2       5462.4       5907.6
+
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp_j7hnzoq/tr_Symbol_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp_j7hnzoq/tr_Symbol_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpuyrwo37u/tr_BPE_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpuyrwo37u/tr_BPE_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpe8_zk7hk/tr_WordPiece_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpe8_zk7hk/tr_WordPiece_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp72juwrl6/tr_SP-Unigram_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp72juwrl6/tr_SP-Unigram_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+
+========================================================================
+  Turkish (agglutinative) — BPC — 13k vocab
+========================================================================
+  Tokenizer     2-gram BPC  3-gram BPC
+  ------------------------------------
+  Symbol             3.683       3.169
+  BPE                2.150       2.028
+  WordPiece          2.112       1.976
+  SP-Unigram         2.144       1.993
+
+
+########################################################################
+  Cross-language summary — DL_total (kb) — 13k vocab
+########################################################################
+  Language                          Symbol         BPE   WordPiece  SP-Unigram         LiB
+  ----------------------------------------------------------------------------------------
+  Turkish (agglutinative)          10048.9      6022.2      5974.9      5907.6           —
+
+
+########################################################################
+  VOCAB SIZE: 27,315
+########################################################################
+
+--- AR: Arabic (templatic) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/ar/lib_27315/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/ar/lib_27315/tokenizer.json not found
+    [skip] LiB (no forget): /Users/antalb/Experiments/LiB/experiments/models/ar/lib_27315_noforget/tokenizer.json not found
+    [skip] LiB (cap): /Users/antalb/Experiments/LiB/experiments/models/ar/lib_27315_cap/tokenizer.json not found
+    [skip] LiB (cap2): /Users/antalb/Experiments/LiB/experiments/models/ar/lib_27315_cap2/tokenizer.json not found
+
+========================================================================
+  Arabic (templatic) — DL — 27k vocab
+========================================================================
+  Tokenizer             |V|      avg_len       supra%   DL_lex(kb)  DL_corp(kb)   DL_tot(kb)
+  ------------------------------------------------------------------------------------------
+  Symbol                  —         1.00            —          0.0      12099.3      12099.3
+  BPE                 27311         4.29           0%        704.1       7492.0       8196.1
+  WordPiece           27310         3.93           0%        664.6       7334.0       7998.6
+  SP-Unigram          27311         4.15           0%        757.2       7226.0       7983.2
+
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmphb0y17et/ar_Symbol_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmphb0y17et/ar_Symbol_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpx5452zz3/ar_BPE_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpx5452zz3/ar_BPE_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp1901jxm2/ar_WordPiece_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp1901jxm2/ar_WordPiece_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmprmx8kfg8/ar_SP-Unigram_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmprmx8kfg8/ar_SP-Unigram_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+
+========================================================================
+  Arabic (templatic) — BPC — 27k vocab
+========================================================================
+  Tokenizer     2-gram BPC  3-gram BPC
+  ------------------------------------
+  Symbol             3.545       3.148
+  BPE                2.336       2.258
+  WordPiece          2.278       2.203
+  SP-Unigram         2.292       2.210
+
+
+########################################################################
+  Cross-language summary — DL_total (kb) — 27k vocab
+########################################################################
+  Language                          Symbol         BPE   WordPiece  SP-Unigram         LiB
+  ----------------------------------------------------------------------------------------
+  Arabic (templatic)               12099.3      8196.1      7998.6      7983.2           —
+
+
+########################################################################
+  VOCAB SIZE: 26,269
+########################################################################
+
+--- ZH: Chinese (logographic) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/zh/lib_26269/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/zh/lib_26269/tokenizer.json not found
+    [skip] LiB (no forget): /Users/antalb/Experiments/LiB/experiments/models/zh/lib_26269_noforget/tokenizer.json not found
+    [skip] LiB (cap): /Users/antalb/Experiments/LiB/experiments/models/zh/lib_26269_cap/tokenizer.json not found
+    [skip] LiB (cap2): /Users/antalb/Experiments/LiB/experiments/models/zh/lib_26269_cap2/tokenizer.json not found
+
+========================================================================
+  Chinese (logographic) — DL — 26k vocab
+========================================================================
+  Tokenizer             |V|      avg_len       supra%   DL_lex(kb)  DL_corp(kb)   DL_tot(kb)
+  ------------------------------------------------------------------------------------------
+  Symbol                  —         1.00            —          0.0      10055.9      10055.9
+  BPE                 26265         1.62           0%        560.7       8070.6       8631.3
+  WordPiece           26264         2.79           0%        491.9       8823.7       9315.7
+  SP-Unigram          26265         1.54           0%        638.7       7885.0       8523.7
+
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp2n3rby_k/zh_Symbol_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp2n3rby_k/zh_Symbol_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpsfroghau/zh_BPE_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpsfroghau/zh_BPE_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp7vfifk2e/zh_WordPiece_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp7vfifk2e/zh_WordPiece_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpzp60m524/zh_SP-Unigram_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpzp60m524/zh_SP-Unigram_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+
+========================================================================
+  Chinese (logographic) — BPC — 26k vocab
+========================================================================
+  Tokenizer     2-gram BPC  3-gram BPC
+  ------------------------------------
+  Symbol             7.117       6.352
+  BPE                6.588       6.373
+  WordPiece          6.647       6.321
+  SP-Unigram         6.490       6.248
+
+
+########################################################################
+  Cross-language summary — DL_total (kb) — 26k vocab
+########################################################################
+  Language                          Symbol         BPE   WordPiece  SP-Unigram         LiB
+  ----------------------------------------------------------------------------------------
+  Chinese (logographic)            10055.9      8631.3      9315.7      8523.7           —
+
+MATCHED_EVALS_DONE
+SPEED en
+Encoding benchmark: 1000 lines × 3 reps
+
+############################################################
+  Vocab size: 50,000
+############################################################
+
+  [BPE]
+    benchmarking encoding …
+
+  [WordPiece]
+    benchmarking encoding …
+
+  [SP-Unigram]
+    benchmarking encoding …
+
+  [LiB]
+    benchmarking encoding (supra ON) …
+    benchmarking encoding (supra OFF) …
+
+================================================================================
+  Training — vocab 50,000
+================================================================================
+  Tokenizer     Model size (MB)
+  -----------------------------
+  BPE                       3.5
+  WordPiece                 1.1
+  SP-Unigram                2.0
+  LiB                       1.6
+
+
+================================================================================
+  Encoding throughput — vocab 50,000 — 1000 lines × 3 reps
+================================================================================
+  Tokenizer          Throughput  k tokens/s
+  -----------------------------------------
+  BPE                 6.62 MC/s      1321.0
+  WordPiece           7.91 MC/s      1651.0
+  SP-Unigram         11.64 MC/s      2466.0
+  LiB (supra on)      5.38 MC/s      1155.2
+  LiB (supra off)     3.77 MC/s      1931.0
+
+SPEED de
+Encoding benchmark: 1000 lines × 3 reps
+
+############################################################
+  Vocab size: 50,000
+############################################################
+
+  [BPE]
+    benchmarking encoding …
+
+  [WordPiece]
+    benchmarking encoding …
+
+  [SP-Unigram]
+    benchmarking encoding …
+
+  [LiB]
+    benchmarking encoding (supra ON) …
+    benchmarking encoding (supra OFF) …
+
+================================================================================
+  Training — vocab 50,000
+================================================================================
+  Tokenizer     Model size (MB)
+  -----------------------------
+  BPE                       3.5
+  WordPiece                 1.2
+  SP-Unigram                2.1
+  LiB                       1.5
+
+
+================================================================================
+  Encoding throughput — vocab 50,000 — 1000 lines × 3 reps
+================================================================================
+  Tokenizer          Throughput  k tokens/s
+  -----------------------------------------
+  BPE                 6.39 MC/s      1203.7
+  WordPiece           7.86 MC/s      1540.2
+  SP-Unigram         11.29 MC/s      2268.6
+  LiB (supra on)      5.40 MC/s      1135.7
+  LiB (supra off)     4.03 MC/s      1810.6
+
+SPEED es
+Encoding benchmark: 1000 lines × 3 reps
+
+############################################################
+  Vocab size: 50,000
+############################################################
+
+  [BPE]
+    benchmarking encoding …
+
+  [WordPiece]
+    benchmarking encoding …
+
+  [SP-Unigram]
+    benchmarking encoding …
+
+  [LiB]
+    benchmarking encoding (supra ON) …
+    benchmarking encoding (supra OFF) …
+
+================================================================================
+  Training — vocab 50,000
+================================================================================
+  Tokenizer     Model size (MB)
+  -----------------------------
+  BPE                       3.5
+  WordPiece                 1.1
+  SP-Unigram                2.1
+  LiB                       1.4
+
+
+================================================================================
+  Encoding throughput — vocab 50,000 — 1000 lines × 3 reps
+================================================================================
+  Tokenizer          Throughput  k tokens/s
+  -----------------------------------------
+  BPE                 5.50 MC/s      1135.9
+  WordPiece           6.28 MC/s      1438.9
+  SP-Unigram          9.50 MC/s      2180.9
+  LiB (supra on)      4.40 MC/s      1108.7
+  LiB (supra off)     3.52 MC/s      1841.7
+
+SPEED fi
+Encoding benchmark: 1000 lines × 3 reps
+
+############################################################
+  Vocab size: 50,000
+############################################################
+
+  [BPE]
+    benchmarking encoding …
+
+  [WordPiece]
+    benchmarking encoding …
+
+  [SP-Unigram]
+    benchmarking encoding …
+
+  [LiB]
+    benchmarking encoding (supra ON) …
+    benchmarking encoding (supra OFF) …
+
+================================================================================
+  Training — vocab 50,000
+================================================================================
+  Tokenizer     Model size (MB)
+  -----------------------------
+  BPE                       3.5
+  WordPiece                 1.2
+  SP-Unigram                2.1
+  LiB                       1.1
+
+
+================================================================================
+  Encoding throughput — vocab 50,000 — 1000 lines × 3 reps
+================================================================================
+  Tokenizer          Throughput  k tokens/s
+  -----------------------------------------
+  BPE                 6.06 MC/s      1104.1
+  WordPiece           6.65 MC/s      1364.4
+  SP-Unigram          9.11 MC/s      1927.4
+  LiB (supra on)      4.72 MC/s      1037.8
+  LiB (supra off)     3.79 MC/s      1716.1
+
+SPEED tr
+Encoding benchmark: 1000 lines × 3 reps
+
+############################################################
+  Vocab size: 50,000
+############################################################
+
+  [BPE]
+    benchmarking encoding …
+
+  [WordPiece]
+    benchmarking encoding …
+
+  [SP-Unigram]
+    benchmarking encoding …
+
+  [LiB]
+    benchmarking encoding (supra ON) …
+    benchmarking encoding (supra OFF) …
+
+================================================================================
+  Training — vocab 50,000
+================================================================================
+  Tokenizer     Model size (MB)
+  -----------------------------
+  BPE                       3.5
+  WordPiece                 1.1
+  SP-Unigram                2.0
+  LiB                       0.7
+
+
+================================================================================
+  Encoding throughput — vocab 50,000 — 1000 lines × 3 reps
+================================================================================
+  Tokenizer          Throughput  k tokens/s
+  -----------------------------------------
+  BPE                 5.59 MC/s      1091.2
+  WordPiece           6.28 MC/s      1419.5
+  SP-Unigram          9.10 MC/s      2060.8
+  LiB (supra on)      4.73 MC/s      1114.6
+  LiB (supra off)     3.60 MC/s      1958.7
+
+SPEED ar
+Encoding benchmark: 1000 lines × 3 reps
+
+############################################################
+  Vocab size: 50,000
+############################################################
+
+  [BPE]
+    benchmarking encoding …
+
+  [WordPiece]
+    benchmarking encoding …
+
+  [SP-Unigram]
+    benchmarking encoding …
+
+  [LiB]
+    benchmarking encoding (supra ON) …
+    benchmarking encoding (supra OFF) …
+
+================================================================================
+  Training — vocab 50,000
+================================================================================
+  Tokenizer     Model size (MB)
+  -----------------------------
+  BPE                       3.8
+  WordPiece                 1.3
+  SP-Unigram                2.3
+  LiB                       1.6
+
+
+================================================================================
+  Encoding throughput — vocab 50,000 — 1000 lines × 3 reps
+================================================================================
+  Tokenizer          Throughput  k tokens/s
+  -----------------------------------------
+  BPE                 4.28 MC/s       948.5
+  WordPiece           5.59 MC/s      1270.7
+  SP-Unigram          9.16 MC/s      2146.5
+  LiB (supra on)      4.14 MC/s      1055.7
+  LiB (supra off)     3.23 MC/s      1715.1
+
+SPEED zh
+Encoding benchmark: 1000 lines × 3 reps
+
+############################################################
+  Vocab size: 50,000
+############################################################
+
+  [BPE]
+    benchmarking encoding …
+
+  [WordPiece]
+    benchmarking encoding …
+
+  [SP-Unigram]
+    benchmarking encoding …
+
+  [LiB]
+    benchmarking encoding (supra ON) …
+    benchmarking encoding (supra OFF) …
+
+================================================================================
+  Training — vocab 50,000
+================================================================================
+  Tokenizer     Model size (MB)
+  -----------------------------
+  BPE                       2.9
+  WordPiece                 1.1
+  SP-Unigram                1.8
+  LiB                       1.4
+
+
+================================================================================
+  Encoding throughput — vocab 50,000 — 1000 lines × 3 reps
+================================================================================
+  Tokenizer          Throughput  k tokens/s
+  -----------------------------------------
+  BPE                 3.33 MC/s      2026.2
+  WordPiece           1.82 MC/s      1248.3
+  SP-Unigram          5.99 MC/s      3997.0
+  LiB (supra on)      3.19 MC/s      2302.2
+  LiB (supra off)     3.13 MC/s      2266.5
+
+ALL_RUNS_DONE

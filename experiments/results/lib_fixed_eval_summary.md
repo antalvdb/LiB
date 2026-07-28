@@ -99,6 +99,34 @@ supra-words. zh (life=10, shortest probation) inflates most — nearly pins the
 cap without it. DL/3-gram-BPC of the ablated models: evaluation running
 (`multilingual_eval_noforget.log`, "LiB (no forget)" rows).
 
+### Ablation DL/BPC — COMPLETE, all 7 languages (2026-07-28, KenLM eval)
+
+DL_total (kb), LiB vs LiB (no forget), penalty for ablating passive
+forgetting:
+
+| | en | de | es | fi | tr | ar | zh |
+|---|---|---|---|---|---|---|---|
+| LiB | 7,924 | 8,368 | 4,694 | 2,887 | 6,306 | 8,494 | 8,932 |
+| no forget | 8,373 | 8,759 | 5,072 | 3,176 | 6,431 | 8,886 | 9,481 |
+| penalty | +5.7% | +4.7% | +8.1% | +10.0% | +2.0% | +4.6% | +6.1% |
+
+- No-forget is worse on DL in ALL 7; LiB's best-DL count collapses 5/7 → 2/7
+  (keeps only fi/tr, where even inflated lexicons stay small). In every
+  language the extra units buy slightly better DL_corp but cost far more
+  DL_lex — dead weight that MDL prices in full.
+- **3-gram BPC is forgetting-neutral**: no-forget within ±0.005 of LiB in 6
+  languages (zh +0.04); all LiB variants still beat BPE. KN smoothing barely
+  notices rarely-firing dead types; DL discriminates, BPC does not. Same
+  dissociation for the cap ladder (en): BPC 1.914/1.909/1.909 vs DL
+  7,924/8,323/8,460 (fixed/cap/cap2).
+- Cap ladder DL (en): the self-regulated size is DL-optimal — filling the
+  budget improves DL_corp (6,952→6,598) and avg token length (4.66→5.16,
+  passing BPE's 5.01) but DL_total degrades monotonically. NOTE the flip
+  side: at a matched 50k budget BPE beats LiB on en DL (8,138 vs 8,460) —
+  LiB's DL win comes from choosing its size, not better per-budget encoding.
+  Matched-size baselines (BPE et al. at 28.4k etc.) answer the converse;
+  evals running (`matched_eval_speed.log`).
+
 ## Budget-matched controls (rewrite_plan.md §8b), 2026-07-27
 
 - Matched-size baselines: BPE/WP/SP-U trained at each language's emergent LiB
@@ -109,11 +137,32 @@ cap without it. DL/3-gram-BPC of the ablated models: evaluation running
   `lib_50000_cap2`) → **49,954** — pins the cap. Budget ladder for the
   comparison: 28.4k (fixed) → 46.7k (α-only) → 50.0k (α+weak ω).
 
-## Still pending
+## Matched-size baselines — DL verdict (2026-07-28, `matched_eval_speed.log`)
 
-- Ablation DL/BPC table (running); matched-size + cap/cap2 DL/BPC evals
-  queued behind it.
-- Encoding-throughput (tokens/sec) for the new LiB + baselines:
-  `python experiments/benchmark_speed.py --no-train --lang <l>` per language
-  (the --lang flag is REQUIRED to hit the fixed models; without it the script
-  falls back to broken-era top-level dirs). Needs an idle machine — run last.
+BPE/WP/SP-U retrained at each language's emergent LiB size. **At matched
+vocabulary size the baselines beat LiB on DL in all 7 languages** (zh: BPE
+and SP-U do; WP does not). E.g. en @28.4k: WP 7,405 / SP-U 7,538 / BPE 7,664
+vs LiB 7,924; fi @20.3k: WP 2,755 / BPE 2,763 vs LiB 2,887.
+
+→ **LiB's headline "DL wins 5/7" is a vocabulary-size effect**: DL at these
+corpus sizes favours smaller vocabs for every tokenizer, and only LiB was
+free to choose its size. The defensible claims are (i) self-regulation finds
+a good size autonomously (no budget hyperparameter to tune) and (ii) the
+forgetting ablation (+2–10% DL) shows the mechanism is what finds it — NOT
+that LiB encodes better than budget-matched baselines.
+
+Silver lining — **3-gram BPC at matched size: LiB beats matched BPE in 6/7**
+(en 1.914 vs 1.935, de 1.836 vs 1.859, es 1.754 vs 1.758, tr 2.009 vs 2.028,
+ar 2.222 vs 2.258, zh 6.310 vs 6.373; loses fi 1.364 vs 1.348) and beats WP
+on zh. The per-budget BPC story survives the control; the DL story does not.
+
+## Encoding throughput (idle machine, 2026-07-28)
+
+LiB (supra on) ~5.4 MC/s vs BPE ~6.5, WP ~7.9, SP-U ~11.4 (en/de pattern;
+all langs in log). LiB is 20–50% slower than baselines but same order of
+magnitude; smallest model files (1.5–1.6 MB vs BPE 3.5).
+
+## Status: ALL RUNS COMPLETE (2026-07-28)
+
+Neural BPB (7 langs), passive-forgetting ablation + DL/BPC, cap ladder,
+matched-size baselines, speed benchmarks. No experiments pending.
