@@ -1,0 +1,3 @@
+PUBLISHED  omega=0.005  |L|=49,755  supra=50.8%  never=1.9%
+RERUN      omega=0.005  |L|=19,932  supra=17.5%  never=4.7%  (778s)
+VERDICT: table is PRE-fix (numbers do not reproduce)

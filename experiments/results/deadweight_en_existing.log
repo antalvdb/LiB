@@ -1,0 +1,5 @@
+model                       omega      |L|  supra%  never%  never_n  note
+lib_50000_noforget   0 (ablation)   41,687  33.9%   7.9%    1,116  alpha=0.25
+lib_50000                   0.005   28,423  25.7%   4.6%      335  alpha=0.25 (headline)
+lib_50000_cap2              0.001   49,954  32.8%   7.5%    1,227  alpha=0.5
+lib_50000_cap               0.005   46,718  30.9%   5.8%      834  alpha=0.5
