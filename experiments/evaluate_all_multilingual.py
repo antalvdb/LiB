@@ -45,9 +45,12 @@ LANGUAGES = {
     "zh": "Chinese (logographic)",
 }
 
+import tempfile
+
 from experiments.compute_metrics import (
     HFTokenizerWrapper, SPUnigramWrapper, LiBWrapper, CharTokenizerWrapper,
-    compute_dl, encode_corpus, train_ngram_lm, compute_bpc, avg_token_length,
+    compute_dl, encode_corpus, avg_token_length,
+    train_ngram_lm_kenlm, compute_bpc_kenlm,
 )
 
 
@@ -172,10 +175,12 @@ def evaluate_language(lang: str, vocab_size: int, ngram_ns: list[int], skip_bpc:
         tokenized_train = [wrapper.encode(l) for l in train_lines if l]
         tokenized_test  = tokenized_test_cache[name]
         row = {"name": name}
-        for n in ngram_ns:
-            lm  = train_ngram_lm(tokenized_train, n)
-            bpc = compute_bpc(lm, tokenized_test, raw_test_chars, n)
-            row[f"{n}-gram BPC"] = fmt(bpc, 3)
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            for n in ngram_ns:
+                lm  = train_ngram_lm_kenlm(tokenized_train, n, tmp_dir=tmp_dir,
+                                           name=f"{lang}_{name}_{n}")
+                bpc = compute_bpc_kenlm(lm, tokenized_test, raw_test_chars)
+                row[f"{n}-gram BPC"] = fmt(bpc, 3)
         bpc_rows.append(row)
 
     print_table(bpc_rows, f"{LANGUAGES[lang]} — BPC — {vocab_size//1000}k vocab")
