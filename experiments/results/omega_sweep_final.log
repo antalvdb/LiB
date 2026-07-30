@@ -1,0 +1,15 @@
+queued: waiting for hparam search (pid 50648) to finish
+hparam search exited; starting omega sweep at Wed Jul 29 17:18:04 CEST 2026
+[omega=0.0001] training {'num_epochs': 5000, 'doc_size': 100, 'max_len': 16, 'life': 50, 'memory_in': 0.25, 'update_rate': 0.4} ...
+[omega=0.0001] done in 1502s -> /Users/antalb/Experiments/LiB/experiments/models/en/lib_50000_omega1e4
+[omega=0.02] training {'num_epochs': 5000, 'doc_size': 100, 'max_len': 16, 'life': 50, 'memory_in': 0.25, 'update_rate': 0.4} ...
+[omega=0.02] done in 1211s -> /Users/antalb/Experiments/LiB/experiments/models/en/lib_50000_omega2e2
+
+English, consensus config (alpha=0.25, Delta=0.4, life=50, d=100, max_len=16, 5000 epochs), 50k cap
+
+   omega      |L|  supra%  never%  never_n  note
+       0   41,687  33.9%   7.9%    1,116  ablation
+  0.0001   38,484  32.2%   7.7%      950  
+   0.005   28,423  25.7%   4.6%      335  headline
+    0.02   28,182  25.4%   4.5%      320  
+OMEGA_SWEEP_DONE rc=0 at Wed Jul 29 18:03:40 CEST 2026
