@@ -395,7 +395,6 @@ than morphology.
 \begin{table}[h]
 \centering
 \footnotesize
-\resizebox{\columnwidth}{!}{%
 \begin{tabular}{llll}
 \toprule
 \textbf{Language} & \textbf{Family} & \textbf{Morphology} & \textbf{Script} \\
@@ -408,7 +407,7 @@ Turkish  & Turkic       & Agglutinative & Latin \\
 Arabic   & Semitic      & Templatic     & Arabic \\
 Chinese  & Sino-Tibetan & Isolating     & Logographic$^\dagger$ \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
 \caption{Languages included in the evaluation. All Latin/Arabic-script
 languages use word spaces; $^\dagger$Chinese does not.}
 \label{tab:langs}
@@ -520,7 +519,6 @@ cross-language replication follows in Section~\ref{sec:multilingual}.
 \begin{table}[t]
 \centering
 \small
-\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lrrrrrr}
 \toprule
 \textbf{Tokenizer} & $\mathbf{|V|}$ & \textbf{avg} & \textbf{supra} &
@@ -542,7 +540,7 @@ BPE @28.4k       & 28,419 & 4.69 &  0 &   859 &  6,804 &  7,664 \\
 WordPiece @28.4k & 28,418 & 4.10 &  0 &   813 &  6,592 &  \textbf{7,405} \\
 SP-Unigram @28.4k& 28,419 & 4.49 &  0 &   975 &  6,563 &  7,538 \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
 \caption{English Description Length (kilobits). Top: standard baselines at
 the 50k budget. Middle: LiB, its passive-forgetting ablation, and the
 cap-filling variants. Bottom: budget-matched baselines retrained at LiB's
@@ -635,7 +633,6 @@ the former reveals dead weight.
 \begin{table}[t]
 \centering
 \small
-\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lrrrr}
 \toprule
 \textbf{Language} & $\mathbf{|V|}$ & \textbf{\% of cap} & \textbf{supra\%} &
@@ -649,7 +646,7 @@ Turkish  & 13,580 & 27\% & 19.1 & 18,788 \\
 Arabic   & 27,310 & 55\% & 30.5 & 40,032 \\
 Chinese  & 26,264 & 53\% & $\approx$0 & 49,469 \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
 \caption{Emergent vocabulary sizes under a 50k cap, supra-word ratios, and
 the effect of ablating passive forgetting. The Chinese supra ratio of 0.7\%
 consists of mixed-script (Latin-embedded) noise, not genuine multi-word
@@ -670,7 +667,8 @@ The supra-word ratio doubles as a typological diagnostic, and it patterns on
 two axes.
 Script is decisive: written without spaces, Chinese has essentially no
 supra-word tokens ($0.7\%$, which inspection shows to be mixed-script noise
-rather than genuine multi-word units) — the supra-word mechanism is defined
+rather than genuine multi-word units; see
+Section~\ref{sec:supra-examples}) — the supra-word mechanism is defined
 over spaces and is simply inert without them.
 Among the space-delimited languages, the ratio tracks word-internal
 morphological complexity \emph{inversely}: the agglutinative and compounding
@@ -681,12 +679,99 @@ Spanish 29.6\%, Arabic 30.5\%).
 LiB finds the redundancy where each language keeps it, with the same
 objective and no language-specific rules.
 
+\subsection{What the Supra-Word Units Are}
+\label{sec:supra-examples}
+
+Ratios say how much budget goes above the word, but not what is bought with
+it. Table~\ref{tab:supra-examples} lists, for each of the six space-delimited
+languages, the supra-word units that fire most often when the training corpus
+is re-encoded, so the examples are the ones doing the most work rather than
+lexicon curiosities.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{llrl}
+\toprule
+\textbf{Lang.} & \textbf{Unit} & \textbf{Uses} & \textbf{Gloss / comment} \\
+\midrule
+en & \texttt{\textvisiblespace of the} & 15{,}899 & function-word chain \\
+   & \texttt{. The}                    & 11{,}575 & sentence break + determiner \\
+   & \texttt{s of}                     & 10{,}571 & plural/genitive $+$ preposition \\
+\midrule
+de & \texttt{en und}                   &  8{,}030 & inflection $+$ `and' \\
+   & \texttt{\textvisiblespace in der} &  7{,}202 & `in the' (dat.\ fem.) \\
+   & \texttt{- und}                    &  3{,}927 & elided coordinated compound \\
+\midrule
+es & \texttt{\textvisiblespace de la}  & 16{,}580 & `of the' (fem.) \\
+   & \texttt{a de}                     & 13{,}824 & fem.\ ending $+$ `of' \\
+   & \texttt{\textvisiblespace en el}  &  7{,}591 & `in the' (masc.) \\
+\midrule
+fi & \texttt{, suomalainen}            &  4{,}124 & `, Finnish' (biography lead) \\
+   & \texttt{, ja}                     &  4{,}106 & `, and' \\
+   & \texttt{- ja}                     &  2{,}766 & elided coordinated compound \\
+\midrule
+tr & \texttt{, Türk}                   &  5{,}590 & `, Turkish' (biography lead) \\
+   & \texttt{\textvisiblespace (d. 18} &  4{,}686 & `(b.\ 18\ldots' (\emph{doğum}) \\
+   & \texttt{i ve}                     &  1{,}801 & suffix $+$ `and' \\
+\midrule
+ar & \textit{-a wa}                    & 14{,}986 & comma $+$ \emph{wa} `and' \\
+   & \textit{-a f\={\i}}               &  9{,}953 & fem.\ \emph{t\={a}' marb\={u}\d{t}a} $+$ `in' \\
+   & \textit{-iyya f\={\i}}            &  6{,}480 & \emph{nisba} ending $+$ `in' \\
+\bottomrule
+\end{tabular}
+\caption{The three most-used supra-word units in each of the six
+space-delimited languages, with the number of times each fires when the
+training corpus is re-encoded. A leading \texttt{\textvisiblespace} marks a
+unit that begins at a word boundary; units without one begin mid-word. Arabic
+units are transliterated. Chinese is omitted: it has no supra-word units to
+show (see below).}
+\label{tab:supra-examples}
+\end{table}
+
+Three things stand out.
+First, most of these units are not multi-word expressions in the lexicographic
+sense. Rather than whole-word bigrams, LiB overwhelmingly learns units that
+\emph{straddle} the word border, binding a word-final inflection to a
+following function word: English \texttt{s of}, German \texttt{en und},
+Spanish \texttt{a de}, Turkish \texttt{i ve}, Arabic \emph{-a f\={\i}}. This
+is what an MDL objective should be expected to find — the compressible
+regularity lies in the recurring \emph{join} between a morphological ending
+and a following functor, and a tokenizer forbidden from crossing whitespace
+cannot represent it at all. It also explains why the supra-word ratio tracks
+morphology inversely: the richer the word-internal morphology, the more of the
+budget is already consumed below the word.
+
+Second, a few units are genuinely constructional. German \texttt{- und} and
+Finnish \texttt{- ja} both capture coordinated compounds with an elided
+first head (\emph{Nord- und Südamerika}), a construction whose whole point is
+that it spans the whitespace border. LiB acquires it in two unrelated
+languages from the same objective.
+
+Third, some units reflect the corpus rather than the language. The Finnish
+\texttt{, suomalainen} and Turkish \texttt{, Türk} and
+\texttt{\textvisiblespace (d. 18} units come from Wikipedia biography leads,
+where nationality predicates and birth--death parentheses recur in nearly
+fixed form. These are real regularities of the register LiB was trained on,
+not of Finnish or Turkish generally, and they are a concrete instance of the
+register limitation noted in Section~\ref{sec:discussion}.
+
+Chinese is left out of the table because there is nothing to show. Its
+lexicon retains just 175 supra-word types, firing 8{,}539 times in total
+against 884{,}462 for English, and inspection finds them to be almost
+entirely Latin-script: English fragments, inter-wiki language-variant markup,
+and bibliographic boilerplate embedded in Chinese Wikipedia. Not one is a
+Chinese multi-word unit — which is exactly what one would expect of a
+mechanism defined over spaces, applied to a script that has none. This is the
+evidence behind treating the $0.7\%$ Chinese ratio as mixed-script noise: with
+no border to cross, the mechanism has nothing to act on, and the little it
+finds belongs to the other script in the corpus.
+
 \subsection{Description Length Across Languages}
 
 \begin{table}[t]
 \centering
 \small
-\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lrrrrrr}
 \toprule
 \textbf{Language} & \textbf{BPE} & \textbf{WP} & \textbf{SP-U} &
@@ -700,7 +785,7 @@ Turkish  & 6,658 & 6,510 & 6,794 & \textbf{6,306} & 6,431 & 5,908 (SP-U) \\
 Arabic   & 8,550 & 8,277 & 8,456 & \textbf{8,494}$^2$ & 8,886 & 7,983 (SP-U) \\
 Chinese  & 8,944 & 9,365 & 9,018 & \textbf{8,932} & 9,481 & 8,524 (SP-U) \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
 \caption{DL\textsubscript{total} (kb) across languages. BPE/WP/SP-U at the
 50k budget; LiB at its emergent size; LiB\textsubscript{nf} = passive
 forgetting ablated; best@match = best baseline retrained at LiB's emergent
@@ -732,7 +817,6 @@ fixed 50k convention does not.
 \begin{table}[t]
 \centering
 \small
-\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lrrrrrrr}
 \toprule
 \textbf{Language} & \textbf{BPE} & \textbf{WP} & \textbf{SP-U} & \textbf{SBPE}
@@ -746,7 +830,7 @@ Turkish  & 2.078 & \textbf{2.001} & 2.018 & 2.126 & 2.074 & 2.009 & 2.028 \\
 Arabic   & 2.276 & \textbf{2.210} & 2.217 & 2.307 & 2.272 & 2.222 & 2.258 \\
 Chinese  & 6.461 & 6.408 & \textbf{6.283} & 6.471 & 6.308 & 6.310 & 6.373 \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
 \caption{3-gram BPC at the 50k budget (lower is better). WP = WordPiece,
 SBPE = SuperBPE, LiB\textsuperscript{--} = LiB without supra-word lookup,
 BPE@m = BPE retrained at LiB's emergent vocabulary size.}
@@ -802,7 +886,6 @@ across tokenizations and languages.
 \begin{table}[t]
 \centering
 \small
-\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lrrrrrr}
 \toprule
 \textbf{Language} & \textbf{BPE} & \textbf{WP} & \textbf{SP-U} & \textbf{SBPE}
@@ -816,7 +899,7 @@ Turkish  & 1.703 & \textbf{1.640} & 1.671 & 1.731 & 1.862 & 1.702 \\
 Arabic   & 1.159 & \textbf{1.111} & 1.112 & 1.177 & 1.253 & 1.169 \\
 Chinese  & 2.129 & 2.116 & \textbf{2.042} & 2.124 & 2.119 & 2.111 \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
 \caption{Neural bits per byte (lower is better): one identical small
 Transformer LM per tokenizer, cross-entropy normalised by raw UTF-8 bytes.
 50k budget; LiB at its emergent size.}
@@ -838,7 +921,6 @@ $2.2$--$2.5\times$ the sequence length.
 \begin{table}[t]
 \centering
 \small
-\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lrrrrr}
 \toprule
 \textbf{Language} & \textbf{BPE} & \textbf{WP} & \textbf{SP-U} & \textbf{SBPE}
@@ -852,7 +934,7 @@ Turkish  & \textbf{0.171} & 0.187 & 0.194 & 0.173 & 0.234 \\
 Arabic   & 0.120 & 0.123 & 0.127 & \textbf{0.112} & 0.139 \\
 Chinese  & \textbf{0.205} & 0.229 & 0.222 & 0.208 & 0.244 \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
 \caption{Fertility (tokens per byte; lower = shorter sequences = less
 inference compute).}
 \label{tab:fertility}
@@ -878,7 +960,6 @@ predictive quality.
 \begin{table}[t]
 \centering
 \small
-\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lrrrr}
 \toprule
 \textbf{Language} & \textbf{BPE} & \textbf{WP} & \textbf{SP-U} & \textbf{LiB} \\
@@ -891,7 +972,7 @@ Turkish  & 5.59 & 6.28 &  \textbf{9.10} & 4.73 \\
 Arabic   & 4.28 & 5.59 &  \textbf{9.16} & 4.14 \\
 Chinese  & 3.33 & 1.82 &  \textbf{5.99} & 3.19 \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
 \caption{Encoding throughput in million characters per second (1,000 test
 lines $\times$ 3 repetitions, idle machine). LiB with supra-word lookup
 enabled.}
