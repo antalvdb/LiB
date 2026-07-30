@@ -109,37 +109,45 @@ direct measure of \emph{dead weight}, units the lexicon stores but never uses.
 \toprule
 $\omega$ & \textbf{$|L|$} & \textbf{supra \%} & \textbf{never-used \%} \\
 \midrule
-$1\times10^{-4}$ & 50{,}000 & 56.5 & 5.9 \\
-$1\times10^{-3}$ & 49{,}955 & 53.1 & 3.2 \\
-$5\times10^{-3}$ & 49{,}755 & 50.8 & 1.9 \\
-$2\times10^{-2}$ & 21{,}002 & 37.1 & 0.5 \\
+$0$ (ablation)   & 41{,}682 & 33.9 & 7.9 \\
+$1\times10^{-4}$ & 38{,}479 & 32.2 & 7.7 \\
+$5\times10^{-3}$ & 28{,}418 & 25.7 & 4.6 \\
+$2\times10^{-2}$ & 28{,}177 & 25.4 & 4.5 \\
 \bottomrule
 \end{tabular}
-\caption{Effect of the forgetting ratio $\omega$ on English (50k cap; sweep
-run at 10k document-epochs with $d{=}50$ — an earlier configuration than the
-headline runs, whose qualitative behaviour it characterises). As forgetting
-strengthens, dead weight (never-used supra-word types) falls monotonically,
-and beyond a threshold the vocabulary stops filling the cap and
-self-regulates to a far smaller emergent size.}
+\caption{Effect of the forgetting ratio $\omega$ on English, at the
+configuration used for all reported space-delimited models ($\alpha{=}0.25$,
+$\Delta{=}0.4$, $\lambda{=}50$, $d{=}100$, $\texttt{max\_len}{=}16$,
+5{,}000 document-epochs; 50k cap). Stronger passive forgetting monotonically
+reduces both the emergent lexicon size and its dead weight — the supra-word
+types that never occur when the training corpus is re-encoded. The
+$\omega{=}0$ row is the passive-forgetting ablation of
+Section~\ref{sec:english}; active re-ranking still operates there, which is
+why the lexicon settles well below the cap even with the decay route switched
+off.}
 \label{tab:omega}
 \end{table}
 
 Two effects are visible.
 First, dead weight falls monotonically with $\omega$: the never-used supra-word
-fraction drops from $5.9\%$ to $0.5\%$, because stronger forgetting continually
-evicts the least-used units and fills the freed budget with units that earn
-their place. Even in the regime where the lexicon remains full, its
-\emph{composition} improves.
-Second, there is a sharp transition between $\omega=5\times10^{-3}$ and
-$\omega=2\times10^{-2}$: below it, admission outpaces forgetting and the lexicon
-pins at the cap; above it, forgetting wins and the lexicon self-regulates far
-below the cap (from 50k to 21k for English). The near-discontinuity marks the
-point where the per-document eviction rate overtakes the admission rate.
+fraction drops from $7.9\%$ to $4.5\%$, and in absolute terms from 1{,}116
+unearning types to 320, because stronger forgetting continually evicts the
+least-used units and leaves room for units that earn their place. The lexicon
+does not merely shrink; its \emph{composition} improves.
+Second, the effect of $\omega$ saturates. Most of the reduction is already
+achieved by $\omega=5\times10^{-3}$; raising it fourfold to
+$\omega=2\times10^{-2}$ removes only a further 241 units. Nor does the lexicon
+ever fill its budget at this admission rate: with the passive route switched
+off entirely it still settles at 41{,}682, because active re-ranking continues
+to evict. Filling a 50k budget requires raising admission
+(Section~\ref{sec:budgetmatched}), not weakening decay — the $\omega=0$ row
+bounds what the decay route alone can reach.
 
 This reframes the vocabulary size as a \emph{result} rather than a
 hyperparameter. Standard tokenizers fill whatever $|V|$ they are given; LiB, with
 forgetting active, discovers the vocabulary size at which no further unit repays
-its storage cost, and $\omega$ tunes how aggressively it does so. The supra-word
+its storage cost, and $\omega$ tunes how aggressively it does so within the
+range the admission rate allows. The supra-word
 ratio likewise becomes a controllable, emergent quantity rather than a fixed
 property, which we relate to typology in Section~\ref{sec:multilingual}.
 

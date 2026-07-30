@@ -606,14 +606,16 @@ are selected and, crucially, whether the ones that stop paying are removed.
 \subsection{Hyperparameter Sensitivity}
 \label{sec:hparam}
 
-We ran random search (30--40 trials per language) over all five training
-hyperparameters plus document size on English, Finnish, Turkish, and Chinese,
-scoring held-out validation 3-gram BPC at the 50k cap.
+We ran random search (10 trials per language) over all five training
+hyperparameters plus document size and the number of document-epochs, on
+English, Finnish, Turkish, and Chinese, scoring held-out validation 3-gram BPC
+at the 50k cap.
 The three space-delimited languages agree on a consensus configuration
 ($d{=}100$, $\texttt{max\_len}{=}16$, $\lambda{=}50$, $\omega{=}0.005$,
 $\Delta{=}0.4$), which we adopt for all space-delimited languages.
-The forgetting ratio $\omega$ is the dominant knob, governing the
-admission--forgetting equilibrium (Section~\ref{sec:forgetting-results});
+The forgetting ratio $\omega$ sets where the admission--forgetting equilibrium
+falls, within the range the admission rate allows
+(Section~\ref{sec:forgetting-results});
 $\alpha$ trades vocabulary size against a marginal BPC gain (the
 BPC-best $\alpha{=}0.5$ pins English at the cap for $\approx$0.01 bits over
 the self-regulating $\alpha{=}0.25$, which we prefer for its emergent size
@@ -763,9 +765,9 @@ The MDL lens, and only the MDL lens, prices that storage; and the
 memorise-and-forget dynamics, with their two routes mirroring active and
 passive forgetting in human memory, are what keep the books balanced.
 The $\omega$-sweep (Table~\ref{tab:omega}) shows the same mechanism from a
-different angle: as forgetting strengthens, the never-used fraction of the
-lexicon falls monotonically, and past a threshold the vocabulary stops
-filling its cap and self-regulates.
+different angle: as forgetting strengthens, both the emergent lexicon size and
+its never-used fraction fall monotonically, until the effect saturates and
+further forgetting has almost nothing left to remove.
 
 \paragraph{An honest account of the DL result.}
 Against the standard fixed-budget baselines, LiB attains the best description
