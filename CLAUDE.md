@@ -13,14 +13,16 @@ These apply to the paper and to anything else written for this project.
 - **Avoid the em-dash.** Use a comma, a colon, parentheses, or a full stop
   instead. A colon works when the second half explains the first; a full stop
   works when the aside is really a separate thought.
-- **Orphan check.** No paragraph may end in a line holding only one or two
-  words. Fix by shortening or rephrasing the sentence that ends there so the
-  stray words pull up onto the previous line. Never fix it by padding.
-  Run `python paper/check_orphans.py` after every rebuild; it reads the
-  typeset PDF, since whether a paragraph ends short depends on the layout.
-  It skips run-in headings and the reference list, but table rows can still
-  show up as false positives, so read the output rather than trusting the
-  count.
+- **Orphan check (only when over length).** This one is not a standing rule.
+  Run it when the paper sits slightly over a page limit, where reclaiming
+  short final lines is the cheapest way to recover space. Do not spend edits
+  on it otherwise.
+  `python paper/check_orphans.py` reports paragraphs ending in a line of one
+  or two words. It reads the typeset PDF, since whether a paragraph ends short
+  depends on the layout. Fix by shortening or rephrasing the sentence that
+  ends there, never by padding. It skips run-in headings and the reference
+  list, but table rows can still show up as false positives, so read the
+  output rather than trusting the count.
 
 ## Paper
 
