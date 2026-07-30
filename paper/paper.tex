@@ -75,16 +75,51 @@ Multiword expressions, Cognitive modelling, Multilingual NLP}
 
 Almost every modern tokenizer refuses to place a token above the word.
 Byte-Pair Encoding \citep[BPE;][]{sennrich-etal-2016-neural}, WordPiece
-\citep{schuster1999japanese,wu2016googles}, and Unigram
-\citep{kudo-2018-subword,kudo-richardson-2018-sentencepiece} all pre-tokenize
-on whitespace and then learn units strictly within the resulting
-word-like chunks.
+\citep{schuster2012japanese,wu2016googles}, and the unigram language model
+\citep{kudo-2018-subword,kudo-richardson-2018-sentencepiece} all learn units
+strictly within word-like chunks.
 Whitespace is a hard border: no matter how often \emph{of the} or
 \emph{New York} recurs, these methods will never store it as a single token.
-The convention is so universal that it is rarely stated as a design choice at
-all, yet it is one, and an under-motivated one.
-It was inherited from pipelines built for English, a language whose short,
-mostly monomorphemic, space-delimited words make the word a convenient atom.
+The constraint bites in practice, not merely in principle: across the three
+50k baseline vocabularies we train in Section~\ref{sec:setup}, not one of
+150{,}000 units contains an internal space.
+
+The constraint is not unstated. Where it is stated, however, it is justified
+on computational rather than linguistic grounds.
+\citet{sennrich-etal-2016-neural} give it a single clause: ``for efficiency,
+we do not consider pairs that cross word boundaries. The algorithm can thus be
+run on the dictionary extracted from a text, with each word being weighted by
+its frequency.'' Confining merges to within words is what allows BPE to run
+over a vocabulary of types rather than over running text, which is a large
+constant-factor saving. \citet{kudo-2018-subword} adopts the restriction by
+citation, noting only that, similar to \citet{sennrich-etal-2016-neural}, he
+does not consider subwords that cross word boundaries. The WordPiece
+description in \citet{wu2016googles} does not raise the question at all: words
+are broken into wordpieces, and the boundary symbol exists so that the
+original sequence can be recovered.
+
+The asymmetry is worth stating plainly. These papers argue carefully for
+breaking the word downwards. \citet{sennrich-etal-2016-neural} motivate
+subword units by the open-vocabulary problem and by languages with productive
+word formation, where translation ``require[s] mechanisms that go below the
+word level'', and \citet{schuster2012japanese} developed WordPiece to segment
+Japanese and Korean, languages that do not mark word boundaries at all. No
+comparable argument is offered against building upwards. The downward move was
+defended as a claim about language; the upward prohibition was adopted as an
+implementation convenience, and the two were never weighed on the same terms.
+
+\citet{kudo-richardson-2018-sentencepiece} come closest to reopening the
+question, and for reasons close to ours. They drop the pre-tokenization
+requirement because ``we can not always assume that pre-tokenization is
+available, especially for non-segmented languages'' and because it obstructs
+lossless tokenization, and they report that pre-tokenization can even hurt
+translation quality into Japanese. SentencePiece accordingly treats whitespace
+as an ordinary symbol rather than as a boundary. Yet its pieces still do not
+span a space, so the border outlived the reform that might have removed it.
+
+The convention was inherited from pipelines built for English, a language
+whose short, mostly monomorphemic, space-delimited words make the word a
+convenient atom.
 \citet{blasi2022overreliance} document how systematically the idiosyncrasies
 of English have been mistaken for language-general facts across the cognitive
 sciences, skewing research priorities towards the features English happens to
@@ -1095,7 +1130,7 @@ than a single-knob sweep above 46.7k.
 %% ============================================================
 
 \paragraph{Subword tokenization.}
-BPE \citep{sennrich-etal-2016-neural}, WordPiece \citep{schuster1999japanese},
+BPE \citep{sennrich-etal-2016-neural}, WordPiece \citep{schuster2012japanese},
 and Unigram LM \citep{kudo-2018-subword} are the dominant subword tokenization
 methods; SentencePiece \citep{kudo-richardson-2018-sentencepiece} provides
 language-agnostic implementations of both.
