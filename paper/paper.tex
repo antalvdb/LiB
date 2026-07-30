@@ -79,7 +79,7 @@ Byte-Pair Encoding \citep[BPE;][]{sennrich-etal-2016-neural}, WordPiece
 \citep{kudo-2018-subword,kudo-richardson-2018-sentencepiece} all pre-tokenize
 on whitespace and then learn units strictly \emph{within} the resulting
 word-like chunks.
-Whitespace is a hard floor: no matter how often \emph{of the} or
+Whitespace is a hard border: no matter how often \emph{of the} or
 \emph{New York} recurs, these methods will never store it as a single token.
 The convention is so universal that it is rarely stated as a design choice at
 all — yet it is one, and an under-motivated one.
@@ -93,13 +93,13 @@ universal.
 Tokenization is a particularly consequential instance of that skew, because
 here the assumption is not merely an emphasis in the literature but is
 compiled into the infrastructure: every downstream model inherits the
-whitespace floor from the tokenizer it was trained with, whatever language it
+whitespace border from the tokenizer it was trained with, whatever language it
 is asked to process.
 For the majority of the world's languages, whose compressible structure sits
 below the word (agglutination, compounding, templatic morphology) or above it
-(collocation), that floor is in the wrong place.
+(collocation), that border is in the wrong place.
 
-Recent work has begun to question the floor.
+Recent work has begun to question the border.
 SuperBPE \citep{liu2025superbpe} lets BPE merges cross whitespace in a second
 training stage and reports downstream gains with substantially less inference
 compute.
@@ -185,7 +185,7 @@ Minimising the sum encourages both a compact, regular vocabulary
 (small $\mathrm{DL}_\mathrm{lex}$) and a highly compressive encoding
 (small $\mathrm{DL}_\mathrm{corp}$).
 
-\subsection{Candidates Without a Whitespace Floor}
+\subsection{Candidates Without a Whitespace Border}
 
 Training begins with a seed vocabulary of all observed characters.
 Candidate tokens are concatenations of adjacent chunks in the current
@@ -960,7 +960,7 @@ supra-words win on fertility but lose BPC to plain BPE in all seven
 languages.
 Together the two systems suggest that the supra-word level itself is not the
 problem — how units are admitted, and above all whether unearning units are
-\emph{removed}, determines whether crossing the whitespace floor pays.
+\emph{removed}, determines whether crossing the whitespace border pays.
 The psycholinguistic evidence that LiB's units are cognitively real
 \citep{yang2022eyefixations} gains a computational counterpart here: a
 lexicon curated by forgetting behaves better than one that only grows.
