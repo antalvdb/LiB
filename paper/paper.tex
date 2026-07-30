@@ -38,17 +38,17 @@ LiB (Less is Better) crosses that border from first principles, learning
 sub-word and supra-word units jointly under a single Minimum Description
 Length (MDL) objective.
 We present a production HuggingFace-compatible implementation of LiB and show
-that the component that makes the MDL objective work in practice is a
+that what makes the MDL objective work in practice is a
 cognitively grounded memorise-and-forget loop combining
 an active route (ordinal reward re-ranking) and a passive route (probation
 and decay of unused units).
 With both routes operating, the vocabulary size is no longer a hyperparameter
 but an emergent equilibrium: across seven typologically diverse languages,
 LiB settles at 13.6k--28.4k units under a 50k cap.
-%Ablating passive forgetting inflates the lexicon by 38--88\% and worsens
-%description length by 2--10\% in every language, while leaving trigram
-%bits-per-character essentially unchanged — the retained units are dead weight
-%that a smoothed $n$-gram model never notices but MDL prices in full.
+Ablating passive forgetting inflates the lexicon by 38--88\% and worsens
+description length by 2--10\% in every language, while leaving trigram
+bits-per-character unchanged: the retained units are dead weight that only
+MDL prices.
 Budget-matched controls show that LiB's favourable description length stems
 from its freedom to choose its own vocabulary size; on predictive metrics,
 which are size-robust, LiB outperforms vocabulary size-matched BPE on trigram
@@ -57,7 +57,7 @@ tokenization-fair neural bits-per-byte evaluation in all seven, while
 outperforming SuperBPE, the leading frequency-based supra-word tokenizer, in
 five.
 Supra-word tokens help LiB on every metric in every language, and the
-fraction of them LiB discovers doubles as a typological diagnostic, tracking
+fraction it discovers doubles as a typological diagnostic, tracking
 script and word-internal morphological complexity.
 We release the Rust implementation, trained tokenizers, and all evaluation
 code.}
@@ -84,11 +84,20 @@ Whitespace is a hard floor: no matter how often \emph{of the} or
 The convention is so universal that it is rarely stated as a design choice at
 all — yet it is one, and an under-motivated one.
 It was inherited from pipelines built for English, a language whose short,
-mostly monomorphemic, space-delimited words make the word a convenient atom
-\citep{blasi2022overreliance}; for the majority of the world's languages,
-whose compressible structure sits below the word (agglutination, compounding,
-templatic morphology) or above it (collocation), the floor is in the wrong
-place.
+mostly monomorphemic, space-delimited words make the word a convenient atom.
+\citet{blasi2022overreliance} document how systematically the idiosyncrasies
+of English have been mistaken for language-general facts across the cognitive
+sciences, skewing research priorities towards the features English happens to
+have and encouraging researchers to read findings from English speakers as
+universal.
+Tokenization is a particularly consequential instance of that skew, because
+here the assumption is not merely an emphasis in the literature but is
+compiled into the infrastructure: every downstream model inherits the
+whitespace floor from the tokenizer it was trained with, whatever language it
+is asked to process.
+For the majority of the world's languages, whose compressible structure sits
+below the word (agglutination, compounding, templatic morphology) or above it
+(collocation), that floor is in the wrong place.
 
 Recent work has begun to question the floor.
 SuperBPE \citep{liu2025superbpe} lets BPE merges cross whitespace in a second
