@@ -1,52 +1,57 @@
-\documentclass[11pt,a4paper]{article}
-\usepackage[hyperref]{acl}
-\usepackage{times}
-\usepackage{latexsym}
-\usepackage{microtype}
-\usepackage{booktabs}
-\usepackage{multirow}
-\usepackage{amsmath}
+%% Language Resources and Evaluation (Springer) — sn-jnl, APA author-year.
+%% Springer asks for a single .tex file, so the forgetting section that used
+%% to live in forgetting_section.tex is inlined below (Section 3).
+\documentclass[pdflatex,sn-apa]{sn-jnl}
+
 \usepackage{graphicx}
-\usepackage{url}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
 \usepackage{xcolor}
+\usepackage{textcomp}
 
 \definecolor{todocolor}{rgb}{0.8,0.0,0.0}
 \newcommand{\todo}[1]{\textcolor{todocolor}{[\textbf{TODO}: #1]}}
 
-\title{Less is Better When You Forget:\\
-A Self-Regulating Minimum Description Length Tokenizer}
-
-\author{
-  Antal van den Bosch$^1$ \quad Jinbiao Yang$^{2}$ \quad Maarten van Gompel$^1$ \\
-  $^1$Utrecht University \\
-  $^2$Max Planck Institute for Psycholinguistics \\
-  \texttt{a.p.j.vandenbosch@uu.nl}
-}
+\raggedbottom
 
 \begin{document}
-\maketitle
 
-\begin{abstract}
-Almost every modern tokenizer treats whitespace as a hard floor: no token may
+\title[Less is Better When You Forget]{Less is Better When You Forget:
+A Self-Regulating Minimum Description Length Tokenizer}
+
+\author*[1]{\fnm{Antal} \sur{van den Bosch}}\email{a.p.j.vandenbosch@uu.nl}
+\author[2]{\fnm{Jinbiao} \sur{Yang}}\email{\todo{Jinbiao's email}}
+\author[3]{\fnm{Maarten} \sur{van Gompel}}\email{\todo{Maarten's email}}
+
+\affil*[1]{\orgname{Utrecht University}, \city{Utrecht},
+\country{The Netherlands}}
+\affil[2]{\orgname{Max Planck Institute for Psycholinguistics},
+\city{Nijmegen}, \country{The Netherlands}}
+\affil[3]{\orgname{KNAW Humanities Cluster}, \city{Amsterdam},
+\country{The Netherlands}}
+
+\abstract{Almost every modern tokenizer treats whitespace as a hard delimiter:
+no token may
 span a word boundary, however frequent the collocation.
-LiB (Less is Better) crosses that floor from first principles, learning
+LiB (Less is Better) crosses that border from first principles, learning
 sub-word and supra-word units jointly under a single Minimum Description
 Length (MDL) objective.
 We present a production HuggingFace-compatible implementation of LiB and show
-that the component that makes the MDL objective work in practice is
-\emph{forgetting}: a cognitively grounded memorise-and-forget loop combining
+that the component that makes the MDL objective work in practice is a
+cognitively grounded memorise-and-forget loop combining
 an active route (ordinal reward re-ranking) and a passive route (probation
 and decay of unused units).
 With both routes operating, the vocabulary size is no longer a hyperparameter
 but an emergent equilibrium: across seven typologically diverse languages,
 LiB settles at 13.6k--28.4k units under a 50k cap.
-Ablating passive forgetting inflates the lexicon by 38--88\% and worsens
-description length by 2--10\% in every language, while leaving trigram
-bits-per-character essentially unchanged — the retained units are dead weight
-that a smoothed $n$-gram model never notices but MDL prices in full.
+%Ablating passive forgetting inflates the lexicon by 38--88\% and worsens
+%description length by 2--10\% in every language, while leaving trigram
+%bits-per-character essentially unchanged — the retained units are dead weight
+%that a smoothed $n$-gram model never notices but MDL prices in full.
 Budget-matched controls show that LiB's favourable description length stems
 from its freedom to choose its own vocabulary size; on predictive metrics,
-which are size-robust, LiB outperforms size-matched BPE on trigram
+which are size-robust, LiB outperforms vocabulary size-matched BPE on trigram
 bits-per-character in six of seven languages and matches BPE on a
 tokenization-fair neural bits-per-byte evaluation in all seven, while
 outperforming SuperBPE, the leading frequency-based supra-word tokenizer, in
@@ -55,8 +60,12 @@ Supra-word tokens help LiB on every metric in every language, and the
 fraction of them LiB discovers doubles as a typological diagnostic, tracking
 script and word-internal morphological complexity.
 We release the Rust implementation, trained tokenizers, and all evaluation
-code.
-\end{abstract}
+code.}
+
+\keywords{Tokenization, Minimum description length, Subword segmentation,
+Multiword expressions, Cognitive modelling, Multilingual NLP}
+
+\maketitle
 
 
 %% ============================================================
@@ -189,7 +198,152 @@ morpheme boundaries:
 Whether a candidate \emph{survives} is decided not at admission but by the
 memorise-and-forget dynamics described next.
 
-\input{forgetting_section}
+\newcommand{\TODO}[1]{\textcolor{todocolor}{[\textbf{TODO}: #1]}}
+
+%% ------------------------------------------------------------
+%% (A) Algorithm: memorising AND forgetting
+%% ------------------------------------------------------------
+
+\subsection{Memorising and Forgetting}
+\label{sec:forgetting}
+
+LiB follows the Principle of Least Effort by keeping the lexicon $L$ small: it
+must \emph{forget} units as readily as it memorises them, or the lexicon grows
+without bound and $\mathrm{DL}_\mathrm{lex}$ is never controlled.
+\citet{yang2020less} accordingly build forgetting into the model as a
+first-class mechanism with two routes — an \emph{active} route that demotes
+units judged unhelpful, and a \emph{passive} route that lets unused units decay
+— mirroring the active and passive forgetting observed in human memory.
+We make both routes explicit here, as together they are central to how LiB
+adapts its vocabulary size to a corpus.
+
+The lexicon $L$ is a priority-ordered list: each unit $u$ has an ordinal
+position $\Theta(u)$, with $\Theta=0$ the head. Segmentation itself never
+consults the ranking — it is greedy longest-match with a one-chunk lookahead —
+so $\Theta$ functions purely as a memory: it encodes how strongly a unit is
+currently held, and it decides who is at risk of being forgotten.
+Training proceeds over \emph{documents}: each epoch draws one document of
+$d$ sentences ($d=\texttt{doc\_size}$). Within a document:
+
+\begin{description}
+  \item[Read \& memorise.] Each sentence is segmented with the current $L$;
+    with probability $\alpha$ (\texttt{memory\_in}) the concatenation of two
+    adjacent chunks is proposed as a candidate unit (an unknown character
+    sequence of length ${\le}2$ may itself be a candidate). A candidate
+    sighted \emph{twice within the same document} is admitted, provided
+    $|L|$ is below the cap $|V|$. New units enter at the tail — the lowest
+    rank — and must earn their way up.
+  \item[Evaluate (active forgetting).] At each position the segmenter also
+    considers the second-longest match $c_2$ against the longest $c_1$; both
+    branches are rolled out greedily until they reconverge, and $c_1$ is
+    judged \emph{bad} if its branch needs more unknown symbols, or (at equal
+    unknowns) more chunks, or (at equal both) a higher ordinal sum
+    \citep[\S 2.3.1]{yang2020less}. A good $c_1$ is promoted headward,
+    $\Theta\leftarrow\Theta-(\lfloor\Theta\Delta\rfloor+1)$ with
+    $\Delta=\texttt{update\_rate}$; a bad $c_1$ is demoted tailward by the
+    same step — and a unit demoted \emph{past} the tail ($\Theta\ge|L|$) is
+    deleted outright — while the longest match of its shortened form is
+    promoted in its place \citep[\S 2.3.2]{yang2020less}. Promotion is thus
+    multiplicative: units that keep winning comparisons converge
+    exponentially fast on the head, where they are safe.
+  \item[Probation \& expiry (passive forgetting).] Once per document, every
+    unit on the probation watch has its remaining life decremented, and units
+    whose life expires are forgotten. Then the current tail — the bottom
+    fraction $\omega$ (\texttt{memory\_out}) of $L$ — is placed on watch with
+    life $\lambda$ (\texttt{life}); seed units start on watch. Probation is
+    cancelled the moment a unit is used in a segmentation without being judged
+    bad, so
+    only units that go $\lambda$ consecutive documents without proving
+    themselves are lost.
+\end{description}
+
+Atomic units (single characters, byte-fallback tokens) and special tokens are
+exempt from both deletion routes, guaranteeing lossless reconstruction.
+The two routes play complementary roles: active forgetting is
+\emph{comparative} — it punishes units that lose against an available
+alternative, immediately, wherever they rank — while passive forgetting is
+\emph{absolute} — it removes units that are simply never exercised, after a
+grace period of $\lambda$ documents. A unit that stops being useful is first
+demoted out of the safe head region, then drifts into the watched tail, and
+finally expires.
+
+Crucially, the vocabulary size is \emph{not} imposed by the cap $|V|$: it is an
+emergent equilibrium between admission and the two forgetting routes, governed
+by $\omega$.
+This is the mechanism behind the language-sensitive saturation reported in
+Section~\ref{sec:multilingual}: rather than an accident of one language reaching
+a wall, saturation is the general behaviour of the model once forgetting is
+strong enough to balance admission.
+
+%% ------------------------------------------------------------
+%% (B) Results: forgetting controls vocabulary self-regulation
+%% ------------------------------------------------------------
+
+\subsection{Forgetting Controls Vocabulary Self-Regulation}
+\label{sec:forgetting-results}
+
+The forgetting ratio $\omega$ is the knob that sets where the
+admission--forgetting equilibrium falls.
+Table~\ref{tab:omega} sweeps $\omega$ on English at a 50k cap and reports the
+resulting (emergent) vocabulary size, the supra-word ratio, and the fraction of
+supra-word types that never occur when re-encoding the training corpus — a
+direct measure of \emph{dead weight}, units the lexicon stores but never uses.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{rrrr}
+\toprule
+$\omega$ & \textbf{$|L|$} & \textbf{supra \%} & \textbf{never-used \%} \\
+\midrule
+$0$ (ablation)   & 41{,}682 & 33.9 & 7.9 \\
+$1\times10^{-4}$ & 38{,}479 & 32.2 & 7.7 \\
+$5\times10^{-3}$ & 28{,}418 & 25.7 & 4.6 \\
+$2\times10^{-2}$ & 28{,}177 & 25.4 & 4.5 \\
+\bottomrule
+\end{tabular}
+\caption{Effect of the forgetting ratio $\omega$ on English, at the
+configuration used for all reported space-delimited models ($\alpha{=}0.25$,
+$\Delta{=}0.4$, $\lambda{=}50$, $d{=}100$, $\texttt{max\_len}{=}16$,
+5{,}000 document-epochs; 50k cap). Stronger passive forgetting monotonically
+reduces both the emergent lexicon size and its dead weight — the supra-word
+types that never occur when the training corpus is re-encoded. The
+$\omega{=}0$ row is the passive-forgetting ablation of
+Section~\ref{sec:english}; active re-ranking still operates there, which is
+why the lexicon settles well below the cap even with the decay route switched
+off.}
+\label{tab:omega}
+\end{table}
+
+Two effects are visible.
+First, dead weight falls monotonically with $\omega$: the never-used supra-word
+fraction drops from $7.9\%$ to $4.5\%$, and in absolute terms from 1{,}116
+unearning types to 320, because stronger forgetting continually evicts the
+least-used units and leaves room for units that earn their place. The lexicon
+does not merely shrink; its \emph{composition} improves.
+Second, the effect of $\omega$ saturates. Most of the reduction is already
+achieved by $\omega=5\times10^{-3}$; raising it fourfold to
+$\omega=2\times10^{-2}$ removes only a further 241 units. Nor does the lexicon
+ever fill its budget at this admission rate: with the passive route switched
+off entirely it still settles at 41{,}682, because active re-ranking continues
+to evict. Filling a 50k budget requires raising admission
+(Section~\ref{sec:budgetmatched}), not weakening decay — the $\omega=0$ row
+bounds what the decay route alone can reach.
+
+This reframes the vocabulary size as a \emph{result} rather than a
+hyperparameter. Standard tokenizers fill whatever $|V|$ they are given; LiB, with
+forgetting active, discovers the vocabulary size at which no further unit repays
+its storage cost, and $\omega$ tunes how aggressively it does so within the
+range the admission rate allows. The supra-word
+ratio likewise becomes a controllable, emergent quantity rather than a fixed
+property, which we relate to typology in Section~\ref{sec:multilingual}.
+
+\paragraph{Reproducibility note.}
+The two forgetting routes are the load-bearing part of the LiB training loop.
+All LiB results in this paper use the implementation in which active
+re-ranking and passive probation are both operating, as described above, with
+the per-language configurations of Section~\ref{sec:setup}; we release this
+implementation with the paper.
 
 \subsection{Space Convention}
 
@@ -953,8 +1107,53 @@ yield more equitable allocations than any fixed budget.
 
 
 %% ============================================================
+\section*{Declarations}
+%% ============================================================
+
+\paragraph{Funding.}
+\todo{Funding statement — grant numbers, or ``The authors did not receive
+support from any organization for the submitted work.''}
+
+\paragraph{Competing interests.}
+The authors declare that they have no competing interests.
+
+\paragraph{Ethics approval and consent to participate.}
+Not applicable. This study involves no human participants, human data, or
+animal subjects; all experiments are conducted on publicly available text
+corpora.
+
+\paragraph{Consent for publication.}
+Not applicable.
+
+\paragraph{Data availability.}
+All experiments use publicly available Wikipedia text, obtained through the
+HuggingFace \texttt{datasets} library \citep{lhoest2021datasets}. The
+sampling procedure — 100,000 training and 10,000 evaluation sentences per
+language — is described in Section~\ref{sec:setup}, and the scripts that
+reproduce the exact splits are released with the code, so the corpora used
+here can be regenerated from the public sources.
+
+\paragraph{Materials availability.}
+The trained tokenizers for all seven languages, together with the ablated and
+budget-matched variants reported in this paper, are released with the code.
+
+\paragraph{Code availability.}
+The LiB implementation, the HuggingFace-compatible bindings, and the complete
+evaluation suite are available at \url{https://github.com/antalvdb/LiB}; the
+Rust tokenizer itself is maintained as a fork of the HuggingFace
+\texttt{tokenizers} library at \url{https://github.com/antalvdb/tokenizers}.
+\todo{Confirm both repositories are public, and add a release tag or DOI
+(e.g.\ via Zenodo) pinning the version used for these experiments.}
+
+\paragraph{Author contributions.}
+\todo{Confirm before submission.} A.v.d.B.\ designed the study, implemented
+the experiments, and wrote the manuscript. J.Y.\ developed the original LiB
+model and contributed to the interpretation of the results. M.v.G.\
+contributed to the Rust implementation and its HuggingFace integration. All
+authors read and approved the final manuscript.
+
+%% ============================================================
 \bibliography{references}
-\bibliographystyle{acl_natbib}
 %% ============================================================
 
 \end{document}
