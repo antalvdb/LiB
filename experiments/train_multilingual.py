@@ -87,7 +87,9 @@ def train_sp_unigram(train_path: str, vocab_size: int, out_dir: Path):
         model_prefix=prefix,
         vocab_size=vocab_size,
         model_type="unigram",
-        character_coverage=0.9995,
+        character_coverage=1.0,   # lossless: every corpus character stays
+                                 # in the inventory, so no content is
+                                 # silently dropped to <unk>
         pad_id=0, unk_id=1, bos_id=2, eos_id=3,
         input_sentence_size=200_000,   # cap to avoid OOM on large corpora
         shuffle_input_sentence=True,
