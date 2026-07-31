@@ -24,6 +24,40 @@ These apply to the paper and to anything else written for this project.
   list, but table rows can still show up as false positives, so read the
   output rather than trusting the count.
 
+## Antal's voice
+
+Calibrated from his 2026-07-31 pass over the paper. Draft this way from the
+start rather than making him strip it out.
+
+- **Cut meta-commentary.** Sentences about what the paper is doing get
+  deleted. "We make both routes explicit here, as together they are central
+  to..." and "This is the mechanism behind the saturation reported in..."
+  both went. State the thing; do not announce that you are stating it.
+- **No self-praise adjectives.** "first-class mechanism" became "mechanism";
+  "and crucially they span" became "spanning"; "an honest account of what
+  that buys" was cut. Avoid "crucially", "importantly", "notably".
+- **Never call your own work honest.** "under honest evaluation" became
+  "under fair evaluation". Use "fair", "budget-matched", "controlled".
+- **Plain verbs over vivid ones.** "rolled out greedily" became "expanded
+  greedily"; "units that are simply never exercised" became "units that are
+  not used"; "pins the budget" became "reaches the budget". A sentence of
+  mine built on "the constraint bites in practice" was cut outright.
+- **No anthropomorphising.** "it decides who is at risk" became "which units
+  are at risk".
+- **Attribute claims to their authors.** "behavioural evidence that multi-word
+  units are psycholinguistically real" became "which they take as behavioural
+  evidence that...". Do not assert someone else's interpretation as fact.
+- **Moderate rhetorical labels in formal claims.** In the contributions list
+  "forgetting is load-bearing" became "passive forgetting is functional",
+  even though the thesis keeps the stronger phrase elsewhere.
+- **Prefer agentive first person.** "This paper asks" became "Here, we ask".
+- **Split long coordinated sentences.** A comma-plus-"and" joining two full
+  clauses tends to become a full stop.
+- **Define terms concretely.** "Symbol: character baseline." became "Symbol: a
+  baseline tokenizer that segments every single character."
+- He comments lines out with `%` rather than deleting them. Leave his
+  commented text alone; it is a decision in progress, not dead weight.
+
 ## Paper
 
 - Target venue: Language Resources and Evaluation (Springer journal 10579).

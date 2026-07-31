@@ -386,6 +386,12 @@ def evaluate_lang(lang, vocab_size, args, device):
         test_lines = test_lines[:args.max_test_lines]
 
     tokenizers = build_tokenizers(lang, vocab_size, include_symbol=not args.no_symbol)
+    if args.only:
+        wanted = {w.lower() for w in args.only}
+        available = [n for n, _ in tokenizers]
+        tokenizers = [(n, w) for n, w in tokenizers if n.lower() in wanted]
+        if not tokenizers:
+            print(f"  [{lang}] --only matched nothing; available: {available}")
     if not tokenizers:
         return []
 
@@ -439,6 +445,10 @@ def main():
                    choices=list(LANGUAGES.keys()), metavar="LANG")
     p.add_argument("--vocab-size", type=int, nargs="+", default=[50_000])
     p.add_argument("--no-symbol", action="store_true")
+    p.add_argument("--only", nargs="+", default=None,
+                   help="Evaluate only these tokenizers by name, e.g. "
+                        "--only 'SP-Unigram'. Avoids retraining columns "
+                        "that have not changed.")
     # model
     p.add_argument("--d-model", type=int, default=256)
     p.add_argument("--n-head", type=int, default=4)

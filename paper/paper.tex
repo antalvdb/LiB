@@ -32,26 +32,25 @@ A Self-Regulating Minimum Description Length Tokenizer}
 \country{The Netherlands}}
 
 \abstract{Almost every modern tokenizer treats whitespace as a hard delimiter:
-no token may
-span a word boundary, however frequent the collocation.
+no token may span a word boundary, however frequent the collocation.
 LiB (Less is Better) crosses that border from first principles, learning
 sub-word and supra-word units jointly under a single Minimum Description
 Length (MDL) objective.
 We present a production HuggingFace-compatible implementation of LiB and show
 that what makes the MDL objective work in practice is a
 cognitively grounded memorise-and-forget loop combining
-an active route (ordinal reward re-ranking) and a passive route (probation
-and decay of unused units).
+an active route (reward re-ranking) and a passive route (decay of unused units).
 With both routes operating, the vocabulary size is no longer a hyperparameter
 but an emergent equilibrium: across seven typologically diverse languages,
 LiB settles at 13.6k--28.4k units under a 50k cap.
 Ablating passive forgetting inflates the lexicon by 38--88\% and worsens
 description length by 2--10\% in every language, while leaving trigram
-bits-per-character unchanged: the retained units are dead weight that only
-MDL prices.
+bits-per-character unchanged.%: the retained units are dead weight that only
+%MDL prices.
 Budget-matched controls show that LiB's favourable description length stems
 from its freedom to choose its own vocabulary size; on predictive metrics,
-which are size-robust, LiB outperforms vocabulary size-matched BPE on trigram
+%which are size-robust, 
+LiB outperforms vocabulary size-matched BPE on trigram
 bits-per-character in six of seven languages and matches BPE on a
 tokenization-fair neural bits-per-byte evaluation in all seven, while
 outperforming SuperBPE, the leading frequency-based supra-word tokenizer, in
@@ -80,9 +79,9 @@ Byte-Pair Encoding \citep[BPE;][]{sennrich-etal-2016-neural}, WordPiece
 strictly within word-like chunks.
 Whitespace is a hard border: no matter how often \emph{of the} or
 \emph{New York} recurs, these methods will never store it as a single token.
-The constraint bites in practice, not merely in principle: across the three
-50k baseline vocabularies we train in Section~\ref{sec:setup}, not one of
-150{,}000 units contains an internal space.
+%The constraint bites in practice, not merely in principle: across the three
+%50k baseline vocabularies we train in Section~\ref{sec:setup}, not one of
+%150{,}000 units contains an internal space.
 
 The constraint is not unstated. Where it is stated, however, it is justified
 on computational rather than linguistic grounds.
@@ -135,19 +134,19 @@ below the word (agglutination, compounding, templatic morphology) or above it
 (collocation), that border is in the wrong place.
 
 Recent work has begun to question the border.
-SuperBPE \citep{liu2025superbpe} lets BPE merges cross whitespace in a second
-training stage and reports downstream gains with substantially less inference
+SuperBPE \citep{liu2025superbpe} lets BPE merge across whitespace in a second
+training stage, reporting downstream gains with less inference
 compute.
 From a different tradition, the LiB tokenizer
 \citep{yang2020less,yang2024rethinking} derives sub- and supra-word units
 jointly from a single Minimum Description Length (MDL) objective
-\citep{rissanen1978modeling}, and \citet{yang2022eyefixations} show that its
+\citep{rissanen1978modeling}. \citet{yang2022eyefixations} show that its
 segmentations predict human eye fixations during reading better than
-word-based ones, behavioural evidence that multi-word units are
+word-based ones, which they take as behavioural evidence that multi-word units are
 psycholinguistically real \citep{wray2002formulaic,arnon2021starting}.
 
-This paper asks what it takes to make such an MDL tokenizer work at
-production scale, across typologically diverse languages, and under honest
+Here, we ask what it takes to make such an MDL tokenizer work at
+production scale, across typologically diverse languages, and under fair
 evaluation.
 Our answer, in one word, is forgetting.
 An MDL lexicon must shed units as readily as it admits them, or it silts up
@@ -159,33 +158,34 @@ that lose head-to-head segmentation comparisons, and a passive route
 that places rarely used units on probation and lets them expire.
 With both routes operating, the vocabulary size ceases to be a hyperparameter:
 admission and forgetting reach a language-specific equilibrium well below the
-nominal budget, and the units that survive earn their keep.
+nominal budget, and the units that survive have earned their place.
 
 We evaluate on seven typologically diverse languages with a battery of
 metrics: description length (DL), Kneser--Ney $n$-gram bits-per-character
 (BPC), a tokenization-fair neural bits-per-byte (BPB) evaluation, sequence
 fertility, and encoding throughput. Controls keep the comparison honest,
 including a passive-forgetting ablation and budget-matched baselines
-trained at LiB's self-chosen vocabulary sizes.
+trained at LiB's self-organized vocabulary sizes.
 
 \paragraph{Contributions.}
 \begin{itemize}
   \item We give an explicit algorithmic account of LiB's two-route
-        memorise-and-forget training loop and show that forgetting is
-        load-bearing: ablating the passive route inflates the lexicon by
+        memorise-and-forget training loop. We show that passive forgetting is
+        functional: ablating the passive route inflates the lexicon by
         38--88\% and worsens DL by 2--10\% in all seven languages, while
         trigram BPC is unaffected. The ablated lexicon carries dead weight
         that only a description-length lens reveals.
   \item We show that the vocabulary size self-regulates (13.6k--28.4k under a
-        50k cap, tracking the language), and we give an honest account of
-        what that buys: budget-matched baselines reveal that LiB's DL
+        50k cap, tracking the language).% and we give an account of
+        %what that buys: 
+        Budget-matched baselines reveal that LiB's DL
         advantage over standard 50k-vocabulary baselines is a
         vocabulary-size effect, while LiB's advantage on predictive,
         size-robust metrics survives the control: it beats size-matched BPE
         on trigram BPC in six of seven languages.
   \item We provide a tokenization-fair neural evaluation: under
         bits-per-byte with a small Transformer LM, LiB is at parity with BPE
-        in all seven languages (winning outright on Turkish and Mandarin
+        in all seven languages (with best performances on Turkish and Mandarin
         Chinese) and ahead of SuperBPE in five, while supra-word tokens help
         LiB on every metric in every language.
   \item We introduce the supra-word ratio of the induced vocabulary as a
@@ -223,7 +223,7 @@ Minimising the sum encourages both a compact, regular vocabulary
 
 Training begins with a seed vocabulary of all observed characters.
 Candidate tokens are concatenations of adjacent chunks in the current
-segmentation of the training text, and crucially they span whatever
+segmentation of the training text, spanning whatever
 boundaries the text presents. There is no prior assumption about word or
 morpheme boundaries:
 \begin{itemize}
@@ -254,17 +254,18 @@ LiB follows the Principle of Least Effort by keeping the lexicon $L$ small: it
 must forget units as readily as it memorises them, or the lexicon grows
 without bound and $\mathrm{DL}_\mathrm{lex}$ is never controlled.
 \citet{yang2020less} accordingly build forgetting into the model as a
-first-class mechanism with two routes: an active route that demotes
+%first-class 
+mechanism with two routes: an active route that demotes
 units judged unhelpful, and a passive route that lets unused units decay,
 mirroring the active and passive forgetting observed in human memory.
-We make both routes explicit here, as together they are central to how LiB
-adapts its vocabulary size to a corpus.
+%We make both routes explicit here, as together they are central to how LiB
+%adapts its vocabulary size to a corpus.
 
 The lexicon $L$ is a priority-ordered list: each unit $u$ has an ordinal
 position $\Theta(u)$, with $\Theta=0$ the head. Segmentation itself never
 consults the ranking (it is greedy longest-match with a one-chunk
 lookahead), so $\Theta$ functions purely as a memory: it encodes how strongly a unit is
-currently held, and it decides who is at risk of being forgotten.
+currently held, and it decides which units are at risk of being forgotten.
 Training proceeds over documents: each epoch draws one document of
 $d$ sentences ($d=\texttt{doc\_size}$). Within a document:
 
@@ -278,9 +279,12 @@ $d$ sentences ($d=\texttt{doc\_size}$). Within a document:
     rank, and must earn their way up.
   \item[Evaluate (active forgetting).] At each position the segmenter also
     considers the second-longest match $c_2$ against the longest $c_1$; both
-    branches are rolled out greedily until they reconverge, and $c_1$ is
-    judged bad if its branch needs more unknown symbols, or (at equal
-    unknowns) more chunks, or (at equal both) a higher ordinal sum
+    branches are expanded greedily until they reconverge, and $c_1$ is
+    judged bad if its branch needs more unknown symbols, or 
+    %(at equal unknowns) 
+    more chunks, or 
+    %(at equal both) 
+    a higher ordinal sum
     \citep[\S 2.3.1]{yang2020less}. A good $c_1$ is promoted headward,
     $\Theta\leftarrow\Theta-(\lfloor\Theta\Delta\rfloor+1)$ with
     $\Delta=\texttt{update\_rate}$; a bad $c_1$ is demoted tailward by the
@@ -305,7 +309,7 @@ exempt from both deletion routes, guaranteeing lossless reconstruction.
 The two routes play complementary roles. Active forgetting is
 comparative: it punishes units that lose against an available alternative,
 immediately, wherever they rank. Passive forgetting is absolute: it removes
-units that are simply never exercised, after a grace period of $\lambda$
+units that are not used, after a grace period of $\lambda$
 documents. A unit that stops being useful is first
 demoted out of the safe head region, then drifts into the watched tail, and
 finally expires.
@@ -313,80 +317,15 @@ finally expires.
 Crucially, the vocabulary size is not imposed by the cap $|V|$: it is an
 emergent equilibrium between admission and the two forgetting routes, governed
 by $\omega$.
-This is the mechanism behind the language-sensitive saturation reported in
-Section~\ref{sec:multilingual}: rather than an accident of one language reaching
-a wall, saturation is the general behaviour of the model once forgetting is
-strong enough to balance admission.
+%This is the mechanism behind the language-sensitive saturation reported in
+%Section~\ref{sec:multilingual}: rather than an accident of one language reaching
+%a wall, saturation is the general behaviour of the model once forgetting is
+%strong enough to balance admission.
 
 %% ------------------------------------------------------------
 %% (B) Results: forgetting controls vocabulary self-regulation
 %% ------------------------------------------------------------
 
-\subsection{Forgetting Controls Vocabulary Self-Regulation}
-\label{sec:forgetting-results}
-
-The forgetting ratio $\omega$ is the knob that sets where the
-admission--forgetting equilibrium falls.
-Table~\ref{tab:omega} sweeps $\omega$ on English at a 50k cap and reports the
-resulting (emergent) vocabulary size, the supra-word ratio, and the fraction of
-supra-word types that never occur when re-encoding the training corpus, a
-direct measure of dead weight, units the lexicon stores but never uses.
-
-\begin{table}[t]
-\centering
-\small
-\begin{tabular}{rrrr}
-\toprule
-$\omega$ & \textbf{$|L|$} & \textbf{supra \%} & \textbf{never-used \%} \\
-\midrule
-$0$ (ablation)   & 41{,}682 & 33.9 & 7.9 \\
-$1\times10^{-4}$ & 38{,}479 & 32.2 & 7.7 \\
-$5\times10^{-3}$ & 28{,}418 & 25.7 & 4.6 \\
-$2\times10^{-2}$ & 28{,}177 & 25.4 & 4.5 \\
-\bottomrule
-\end{tabular}
-\caption{Effect of the forgetting ratio $\omega$ on English, at the
-configuration used for all reported space-delimited models ($\alpha{=}0.25$,
-$\Delta{=}0.4$, $\lambda{=}50$, $d{=}100$, $\texttt{max\_len}{=}16$,
-5{,}000 document-epochs; 50k cap). Stronger passive forgetting monotonically
-reduces both the emergent lexicon size and its dead weight, the supra-word
-types that never occur when the training corpus is re-encoded. The
-$\omega{=}0$ row is the passive-forgetting ablation of
-Section~\ref{sec:english}; active re-ranking still operates there, which is
-why the lexicon settles well below the cap even with the decay route switched
-off.}
-\label{tab:omega}
-\end{table}
-
-Two effects are visible.
-First, dead weight falls monotonically with $\omega$: the never-used supra-word
-fraction drops from $7.9\%$ to $4.5\%$, and in absolute terms from 1{,}116
-unearning types to 320, because stronger forgetting continually evicts the
-least-used units and leaves room for units that earn their place. The lexicon
-does not merely shrink; its composition improves.
-Second, the effect of $\omega$ saturates. Most of the reduction is already
-achieved by $\omega=5\times10^{-3}$; raising it fourfold to
-$\omega=2\times10^{-2}$ removes only a further 241 units. Nor does the lexicon
-ever fill its budget at this admission rate: with the passive route switched
-off entirely it still settles at 41{,}682, because active re-ranking continues
-to evict. Filling a 50k budget requires raising admission
-(Section~\ref{sec:budgetmatched}), not weakening decay: the $\omega=0$ row
-bounds what the decay route alone can reach.
-
-This reframes the vocabulary size as a result rather than a
-hyperparameter. Standard tokenizers fill whatever $|V|$ they are given; LiB, with
-forgetting active, discovers the vocabulary size at which no further unit repays
-its storage cost, and $\omega$ tunes how aggressively it does so within the
-range the admission rate allows. The supra-word
-ratio likewise becomes a controllable, emergent quantity rather than a fixed
-property, which we relate to typology in Section~\ref{sec:multilingual}.
-
-\paragraph{Reproducibility note.}
-The two forgetting routes are the load-bearing part of the LiB training loop.
-All LiB results in this paper use the implementation in which active
-re-ranking and passive probation are both operating, as described above, with
-the per-language configurations of Section~\ref{sec:setup}; we release this
-implementation with the paper.
 
 \subsection{Space Convention}
 
@@ -473,7 +412,7 @@ We compare the following tokenizers, all with a vocabulary budget of 50k:
         tokenizer.
   \item \textbf{LiB}: our implementation, evaluated with and without
         supra-word lookup, plus the ablations and controls below.
-  \item \textbf{Symbol}: character baseline.
+  \item \textbf{Symbol}: a baseline tokenizer that segments every single character.
 \end{itemize}
 
 All tokenizers are trained on the per-language training set.
@@ -494,7 +433,7 @@ Three additional LiB variants isolate the mechanisms at work:
 LiB (no forget) ablates passive forgetting ($\omega{=}0$, everything
 else unchanged); LiB (cap) and LiB (cap2) raise the admission
 rate ($\alpha{=}0.5$; cap2 additionally weakens decay to $\omega{=}0.001$) so
-that the English lexicon approaches (46.7k) and pins (50.0k) the budget,
+that the English lexicon approaches (46.7k) and reaches (50.0k) the budget,
 giving a budget ladder from the self-regulated size to the cap.
 Finally, budget-matched baselines retrain BPE, WordPiece, and
 SP-Unigram at each language's emergent LiB vocabulary size, separating
@@ -520,7 +459,7 @@ character normalisation makes scores comparable across tokenizations.
 $n$-gram estimators penalise rare token types through data sparsity, which
 systematically disadvantages any tokenizer with a long tail of supra-word
 types.
-As a tokenization-fair complement we train one small Transformer LM per
+As a tokenization-fair complement we train one small decoder-only Transformer LM per
 tokenizer (4 layers, 4 heads, $d{=}256$, context 256; identical architecture,
 training schedule, and data for every tokenizer) and report cross-entropy
 over the test stream normalised by its raw UTF-8 byte count.
@@ -597,6 +536,73 @@ pushes the average token past BPE's length (5.16 vs.\ 5.01 characters), yet
 total DL only degrades.
 The equilibrium the forgetting dynamics find is, for LiB, the DL-optimal
 operating point.
+
+\subsection{Forgetting Controls Vocabulary Self-Regulation}
+\label{sec:forgetting-results}
+
+The forgetting ratio $\omega$ is the hyperparameter that sets where the
+admission--forgetting equilibrium falls.
+Table~\ref{tab:omega} sweeps $\omega$ on English at a 50k cap and reports the
+resulting (emergent) vocabulary size, the supra-word ratio, and the fraction of
+supra-word types that never occur when re-encoding the training corpus, a
+direct measure of dead weight, units the lexicon stores but never uses.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{rrrr}
+\toprule
+$\omega$ & \textbf{$|L|$} & \textbf{supra \%} & \textbf{never-used \%} \\
+\midrule
+$0$ (ablation)   & 41{,}682 & 33.9 & 7.9 \\
+$1\times10^{-4}$ & 38{,}479 & 32.2 & 7.7 \\
+$5\times10^{-3}$ & 28{,}418 & 25.7 & 4.6 \\
+$2\times10^{-2}$ & 28{,}177 & 25.4 & 4.5 \\
+\bottomrule
+\end{tabular}
+\caption{Effect of the forgetting ratio $\omega$ on English, at the
+configuration used for all reported space-delimited models ($\alpha{=}0.25$,
+$\Delta{=}0.4$, $\lambda{=}50$, $d{=}100$, $\texttt{max\_len}{=}16$,
+5{,}000 document-epochs; 50k cap). Stronger passive forgetting monotonically
+reduces both the emergent lexicon size and its dead weight, the supra-word
+types that never occur when the training corpus is re-encoded. The
+$\omega{=}0$ row is the passive-forgetting ablation of
+Section~\ref{sec:english}; active re-ranking still operates there, which is
+why the lexicon settles well below the cap even with the decay route switched
+off.}
+\label{tab:omega}
+\end{table}
+
+Two effects are visible.
+First, dead weight falls monotonically with $\omega$: the never-used supra-word
+fraction drops from $7.9\%$ to $4.5\%$, and in absolute terms from 1{,}116
+unearning types to 320, because stronger forgetting continually evicts the
+least-used units and leaves room for units that earn their place. The lexicon
+does not merely shrink; its composition improves.
+Second, the effect of $\omega$ saturates. Most of the reduction is already
+achieved by $\omega=5\times10^{-3}$; raising it fourfold to
+$\omega=2\times10^{-2}$ removes only a further 241 units. Nor does the lexicon
+ever fill its budget at this admission rate: with the passive route switched
+off entirely it still settles at 41{,}682, because active re-ranking continues
+to evict. Filling a 50k budget requires raising admission
+(Section~\ref{sec:budgetmatched}), not weakening decay: the $\omega=0$ row
+bounds what the decay route alone can reach.
+
+This reframes the vocabulary size as a result rather than a
+hyperparameter. Standard tokenizers fill whatever $|V|$ they are given; LiB, with
+forgetting active, discovers the vocabulary size at which no further unit repays
+its storage cost, and $\omega$ tunes how aggressively it does so within the
+range the admission rate allows. The supra-word
+ratio likewise becomes a controllable, emergent quantity rather than a fixed
+property, which we relate to typology in Section~\ref{sec:multilingual}.
+
+\paragraph{Reproducibility note.}
+The two forgetting routes are the load-bearing part of the LiB training loop.
+All LiB results in this paper use the implementation in which active
+re-ranking and passive probation are both operating, as described above, with
+the per-language configurations of Section~\ref{sec:setup}; we release this
+implementation with the paper.
+
 
 \subsection{The Budget-Matched Control}
 \label{sec:budgetmatched}
@@ -1130,7 +1136,7 @@ than a single-knob sweep above 46.7k.
 %% ============================================================
 
 \paragraph{Subword tokenization.}
-BPE \citep{sennrich-etal-2016-neural}, WordPiece \citep{schuster2012japanese},
+BPE \citep{sennrich-etal-2016-neural}, WordPiece \citep{schuster1999japanese},
 and Unigram LM \citep{kudo-2018-subword} are the dominant subword tokenization
 methods; SentencePiece \citep{kudo-richardson-2018-sentencepiece} provides
 language-agnostic implementations of both.
