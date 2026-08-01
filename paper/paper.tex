@@ -1122,11 +1122,17 @@ for equitable multilingual tokenization
 DL is LiB's own training objective; we therefore lean on the independent
 metrics (BPC, BPB, fertility) for cross-tokenizer claims, and on the
 ablation, not the baseline comparison, for the mechanism claim.
-Our neural evaluation uses a small LM; whether the 4--8\% BPB gap to the
+Our neural evaluation uses a small LM; whether the 3.7--13.6\% BPB gap to the
 subword leaders persists, shrinks, or reverses at scale, and how these
 differences translate to downstream task quality, remains open. SuperBPE's
 downstream gains \citep{liu2025superbpe} suggest intrinsic metrics
 undersell supra-word tokenizers.
+The BPB figures are also sensitive to the training budget. Every tokenizer is
+trained for the same 5{,}000 steps, so the comparison is internally
+consistent, but extending that budget to 8{,}000 steps moved a single
+tokenizer's score by $4.6\%$, which exceeds most of the gaps we report. The
+BPB column should therefore be read as a ranking at a fixed budget rather
+than as a set of stable absolute margins.
 Wikipedia may underrepresent colloquial registers; Chinese preprocessing
 (no word segmentation) makes its results a script-level, not
 morphology-level, comparison; and the cap-filling variants change the
