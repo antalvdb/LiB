@@ -1,0 +1,102 @@
+device: mps
+
+############################################################
+  Vocab size: 50,000
+############################################################
+
+--- EN: English (analytic) ---
+
+    === SP-Unigram ===
+      |V|=50,000  train_toks=5,064,827
+      step    500  train_ce=6.687  val_bits/tok=9.5208
+      step   1000  train_ce=5.932  val_bits/tok=8.9563
+      step   1500  train_ce=5.762  val_bits/tok=8.5662
+      step   2000  train_ce=5.369  val_bits/tok=8.2791
+      step   2500  train_ce=5.393  val_bits/tok=8.0477
+      step   3000  train_ce=5.396  val_bits/tok=7.8819
+      step   3500  train_ce=5.159  val_bits/tok=7.7405
+      step   4000  train_ce=5.282  val_bits/tok=7.6083
+      step   4500  train_ce=4.846  val_bits/tok=7.5216
+      step   5000  train_ce=4.905  val_bits/tok=7.4163
+      step   5500  train_ce=4.917  val_bits/tok=7.3424
+      step   6000  train_ce=4.699  val_bits/tok=7.2621
+      step   6500  train_ce=4.806  val_bits/tok=7.1980
+      step   7000  train_ce=4.732  val_bits/tok=7.1194
+      step   7500  train_ce=4.603  val_bits/tok=7.0703
+      step   8000  train_ce=4.537  val_bits/tok=7.0236
+
+==============================================================================
+  English (analytic) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer          BPB       BPC  tok/byte  byte/tok  tok/sent
+  --------------------------------------------------------------
+  SP-Unigram      1.6529    1.6574    0.2141      4.67      59.0
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_en_50000.csv
+
+--- DE: German (fusional/compound) ---
+
+    === SP-Unigram ===
+      |V|=49,999  train_toks=4,805,165
+      step    500  train_ce=6.887  val_bits/tok=10.1391
+      step   1000  train_ce=6.432  val_bits/tok=9.4552
+      step   1500  train_ce=6.061  val_bits/tok=9.0041
+      step   2000  train_ce=5.886  val_bits/tok=8.7028
+      step   2500  train_ce=5.796  val_bits/tok=8.4602
+      step   3000  train_ce=5.526  val_bits/tok=8.2507
+      step   3500  train_ce=5.350  val_bits/tok=8.0945
+      step   4000  train_ce=5.411  val_bits/tok=7.9396
+      step   4500  train_ce=5.162  val_bits/tok=7.8325
+      step   5000  train_ce=5.174  val_bits/tok=7.7204
+      step   5500  train_ce=5.143  val_bits/tok=7.6195
+      step   6000  train_ce=5.096  val_bits/tok=7.5449
+      step   6500  train_ce=4.843  val_bits/tok=7.4631
+      step   7000  train_ce=4.885  val_bits/tok=7.3956
+      step   7500  train_ce=4.785  val_bits/tok=7.3421
+      step   8000  train_ce=4.807  val_bits/tok=7.2707
+
+==============================================================================
+  German (fusional/compound) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer          BPB       BPC  tok/byte  byte/tok  tok/sent
+  --------------------------------------------------------------
+  SP-Unigram      1.5305    1.5585    0.1994      5.02      59.2
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_de_50000.csv
+
+--- ES: Spanish (fusional) ---
+
+    === SP-Unigram ===
+      |V|=49,999  train_toks=5,145,879
+      step    500  train_ce=6.319  val_bits/tok=9.1697
+      step   1000  train_ce=5.669  val_bits/tok=8.5910
+      step   1500  train_ce=5.660  val_bits/tok=8.1759
+      step   2000  train_ce=5.315  val_bits/tok=7.8779
+      step   2500  train_ce=5.228  val_bits/tok=7.6382
+      step   3000  train_ce=4.963  val_bits/tok=7.4619
+      step   3500  train_ce=4.962  val_bits/tok=7.3047
+      step   4000  train_ce=4.763  val_bits/tok=7.1874
+      step   4500  train_ce=4.761  val_bits/tok=7.0875
+      step   5000  train_ce=4.603  val_bits/tok=6.9977
+      step   5500  train_ce=4.385  val_bits/tok=6.9076
+      step   6000  train_ce=4.398  val_bits/tok=6.8246
+      step   6500  train_ce=4.320  val_bits/tok=6.7657
+      step   7000  train_ce=4.237  val_bits/tok=6.7171
+      step   7500  train_ce=4.084  val_bits/tok=6.6534
+      step   8000  train_ce=4.336  val_bits/tok=6.6025
+
+==============================================================================
+  Spanish (fusional) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer          BPB       BPC  tok/byte  byte/tok  tok/sent
+  --------------------------------------------------------------
+  SP-Unigram      1.4152    1.4451    0.2098      4.77      32.2
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_es_50000.csv
+
+--- FI: Finnish (agglutinative) ---
+
+    === SP-Unigram ===
+      |V|=49,999  train_toks=3,340,458
+      step    500  train_ce=7.078  val_bits/tok=10.2240
+      step   1000  train_ce=6.235  val_bits/tok=9.4461
+      step   1500  train_ce=5.785  val_bits/tok=8.9776
+      step   2000  train_ce=5.494  val_bits/tok=8.6160
+      step   2500  train_ce=5.480  val_bits/tok=8.3464

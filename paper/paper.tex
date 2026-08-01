@@ -406,7 +406,9 @@ We compare the following tokenizers, all with a vocabulary budget of 50k:
   \item \textbf{WordPiece}: HuggingFace \texttt{tokenizers} with whitespace
         pre-tokenizer.
   \item \textbf{SP-Unigram}: SentencePiece Unigram
-        (\texttt{character\_coverage=0.9995}).
+        (\texttt{character\_coverage=1.0}, so that every character seen in
+        training stays in the inventory and the model is not credited for
+        discarding rare characters).
   \item \textbf{SuperBPE}: BPE with a second, cross-whitespace merge stage
         \citep{liu2025superbpe}, the leading frequency-based supra-word
         tokenizer.
@@ -932,13 +934,13 @@ across tokenizations and languages.
 \textbf{Language} & \textbf{BPE} & \textbf{WP} & \textbf{SP-U} & \textbf{SBPE}
 & \textbf{LiB\textsuperscript{--}} & \textbf{LiB} \\
 \midrule
-English  & 1.805 & \textbf{1.718} & 1.733 & 1.815 & 2.009 & 1.822 \\
-German   & 1.710 & 1.621 & \textbf{1.617} & 1.733 & 1.863 & 1.713 \\
-Spanish  & 1.580 & \textbf{1.505} & 1.508 & 1.569 & 1.775 & 1.595 \\
-Finnish  & 1.220 & 1.155 & \textbf{1.150} & 1.243 & 1.385 & 1.262 \\
-Turkish  & 1.703 & \textbf{1.640} & 1.671 & 1.731 & 1.862 & 1.702 \\
-Arabic   & 1.159 & \textbf{1.111} & 1.112 & 1.177 & 1.253 & 1.169 \\
-Chinese  & 2.129 & 2.116 & \textbf{2.042} & 2.124 & 2.119 & 2.111 \\
+English  & 1.805 & 1.718 & \textbf{1.693} & 1.815 & 2.009 & 1.822 \\
+German   & 1.710 & 1.621 & \textbf{1.577} & 1.733 & 1.863 & 1.713 \\
+Spanish  & 1.580 & 1.505 & \textbf{1.462} & 1.569 & 1.775 & 1.595 \\
+Finnish  & 1.220 & 1.155 & \textbf{1.110} & 1.243 & 1.385 & 1.262 \\
+Turkish  & 1.703 & \textbf{1.640} & 1.652 & 1.731 & 1.862 & 1.702 \\
+Arabic   & 1.159 & 1.111 & \textbf{1.084} & 1.177 & 1.253 & 1.169 \\
+Chinese  & 2.129 & 2.116 & \textbf{1.982} & 2.124 & 2.119 & 2.111 \\
 \bottomrule
 \end{tabular}
 \caption{Neural bits per byte (lower is better): one identical small
@@ -953,8 +955,10 @@ ahead outright on Turkish ($1.702$ vs.\ $1.703$, with a 13.6k vocabulary
 against BPE's 50k) and on Chinese, where LiB also overtakes WordPiece and
 SuperBPE and places second overall.
 LiB is ahead of SuperBPE in five of seven languages.
-The subword leaders retain a 4--8\% margin, so supra-word tokenizers do pay
-a modest, consistent predictive cost at this model scale; but the
+SP-Unigram is the strongest baseline here, leading in six of seven languages,
+and the subword leaders retain a 3.7--13.6\% margin over LiB (narrowest on
+Turkish, widest on Finnish). Supra-word tokenizers therefore pay a real and
+consistent predictive cost at this model scale; but the
 supra-word units themselves are unambiguously beneficial within LiB:
 removing them costs 0.12--0.19 BPB in the six spaced languages and roughly
 $2.2$--$2.5\times$ the sequence length.
@@ -973,7 +977,7 @@ Spanish  & 0.195 & 0.208 & 0.210 & \textbf{0.173} & 0.220 \\
 Finnish  & 0.165 & 0.186 & 0.187 & \textbf{0.158} & 0.202 \\
 Turkish  & \textbf{0.171} & 0.187 & 0.194 & 0.173 & 0.234 \\
 Arabic   & 0.120 & 0.123 & 0.127 & \textbf{0.112} & 0.139 \\
-Chinese  & \textbf{0.205} & 0.229 & 0.222 & 0.208 & 0.244 \\
+Chinese  & \textbf{0.205} & 0.229 & 0.224 & 0.208 & 0.244 \\
 \bottomrule
 \end{tabular}
 \caption{Fertility (tokens per byte; lower = shorter sequences = less
@@ -1136,7 +1140,7 @@ than a single-knob sweep above 46.7k.
 %% ============================================================
 
 \paragraph{Subword tokenization.}
-BPE \citep{sennrich-etal-2016-neural}, WordPiece \citep{schuster1999japanese},
+BPE \citep{sennrich-etal-2016-neural}, WordPiece \citep{schuster2012japanese},
 and Unigram LM \citep{kudo-2018-subword} are the dominant subword tokenization
 methods; SentencePiece \citep{kudo-richardson-2018-sentencepiece} provides
 language-agnostic implementations of both.

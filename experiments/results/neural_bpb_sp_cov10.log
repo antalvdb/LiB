@@ -1,0 +1,133 @@
+device: mps
+
+############################################################
+  Vocab size: 50,000
+############################################################
+
+--- EN: English (analytic) ---
+
+    === SP-Unigram ===
+      |V|=50,000  train_toks=5,064,827
+      step   1000  train_ce=5.932  val_bits/tok=8.9563
+      step   2000  train_ce=5.369  val_bits/tok=8.2791
+      step   3000  train_ce=5.396  val_bits/tok=7.8819
+      step   4000  train_ce=5.282  val_bits/tok=7.6083
+      step   5000  train_ce=4.905  val_bits/tok=7.4163
+
+==============================================================================
+  English (analytic) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer          BPB       BPC  tok/byte  byte/tok  tok/sent
+  --------------------------------------------------------------
+  SP-Unigram      1.6933    1.6979    0.2141      4.67      59.0
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_en_50000.csv
+
+--- DE: German (fusional/compound) ---
+
+    === SP-Unigram ===
+      |V|=49,999  train_toks=4,805,165
+      step   1000  train_ce=6.432  val_bits/tok=9.4552
+      step   2000  train_ce=5.886  val_bits/tok=8.7028
+      step   3000  train_ce=5.526  val_bits/tok=8.2507
+      step   4000  train_ce=5.411  val_bits/tok=7.9396
+      step   5000  train_ce=5.174  val_bits/tok=7.7204
+
+==============================================================================
+  German (fusional/compound) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer          BPB       BPC  tok/byte  byte/tok  tok/sent
+  --------------------------------------------------------------
+  SP-Unigram      1.5769    1.6057    0.1994      5.02      59.2
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_de_50000.csv
+
+--- ES: Spanish (fusional) ---
+
+    === SP-Unigram ===
+      |V|=49,999  train_toks=5,145,879
+      step   1000  train_ce=5.669  val_bits/tok=8.5910
+      step   2000  train_ce=5.315  val_bits/tok=7.8779
+      step   3000  train_ce=4.963  val_bits/tok=7.4619
+      step   4000  train_ce=4.763  val_bits/tok=7.1874
+      step   5000  train_ce=4.603  val_bits/tok=6.9977
+
+==============================================================================
+  Spanish (fusional) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer          BPB       BPC  tok/byte  byte/tok  tok/sent
+  --------------------------------------------------------------
+  SP-Unigram      1.4624    1.4934    0.2098      4.77      32.2
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_es_50000.csv
+
+--- FI: Finnish (agglutinative) ---
+
+    === SP-Unigram ===
+      |V|=49,999  train_toks=3,340,458
+      step   1000  train_ce=6.235  val_bits/tok=9.4461
+      step   2000  train_ce=5.494  val_bits/tok=8.6160
+      step   3000  train_ce=5.094  val_bits/tok=8.0875
+      step   4000  train_ce=4.821  val_bits/tok=7.7534
+      step   5000  train_ce=4.738  val_bits/tok=7.4650
+
+==============================================================================
+  Finnish (agglutinative) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer          BPB       BPC  tok/byte  byte/tok  tok/sent
+  --------------------------------------------------------------
+  SP-Unigram      1.1100    1.1601    0.1870      5.35      18.3
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_fi_50000.csv
+
+--- TR: Turkish (agglutinative) ---
+
+    === SP-Unigram ===
+      |V|=49,999  train_toks=2,268,210
+      step   1000  train_ce=5.046  val_bits/tok=8.4163
+      step   2000  train_ce=4.476  val_bits/tok=7.6286
+      step   3000  train_ce=4.293  val_bits/tok=7.1335
+      step   4000  train_ce=4.006  val_bits/tok=6.8058
+      step   5000  train_ce=3.712  val_bits/tok=6.4972
+
+==============================================================================
+  Turkish (agglutinative) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer          BPB       BPC  tok/byte  byte/tok  tok/sent
+  --------------------------------------------------------------
+  SP-Unigram      1.6523    1.8002    0.1939      5.16      43.3
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_tr_50000.csv
+
+--- AR: Arabic (templatic) ---
+
+    === SP-Unigram ===
+      |V|=49,999  train_toks=5,090,518
+      step   1000  train_ce=6.702  val_bits/tok=10.0789
+      step   2000  train_ce=6.030  val_bits/tok=9.1907
+      step   3000  train_ce=5.730  val_bits/tok=8.6934
+      step   4000  train_ce=5.597  val_bits/tok=8.3587
+      step   5000  train_ce=5.462  val_bits/tok=8.1244
+
+==============================================================================
+  Arabic (templatic) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer          BPB       BPC  tok/byte  byte/tok  tok/sent
+  --------------------------------------------------------------
+  SP-Unigram      1.0839    1.9500    0.1269      7.88      58.9
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_ar_50000.csv
+
+--- ZH: Chinese (logographic) ---
+
+    === SP-Unigram ===
+      |V|=49,999  train_toks=6,276,274
+      step   1000  train_ce=7.161  val_bits/tok=10.4461
+      step   2000  train_ce=6.509  val_bits/tok=9.6497
+      step   3000  train_ce=6.340  val_bits/tok=9.2151
+      step   4000  train_ce=5.893  val_bits/tok=8.8792
+      step   5000  train_ce=5.644  val_bits/tok=8.6463
+
+==============================================================================
+  Chinese (logographic) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer          BPB       BPC  tok/byte  byte/tok  tok/sent
+  --------------------------------------------------------------
+  SP-Unigram      1.9817    5.4331    0.2238      4.47      63.5
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_zh_50000.csv
+
+Done.
