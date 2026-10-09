@@ -55,8 +55,8 @@ LiB outperforms vocabulary size-matched BPE on trigram
 bits-per-character in six of seven languages and matches BPE on a
 tokenization-fair neural bits-per-byte evaluation in all seven, while
 outperforming SuperBPE, the leading frequency-based supra-word tokenizer, in
-five.
-Supra-word tokens help LiB on every metric in every language, and the
+four.
+Supra-word tokens help LiB on every metric in every space-delimited language, and the
 fraction it discovers doubles as a typological diagnostic, tracking
 script and word-internal morphological complexity.
 We release the Rust implementation, trained tokenizers, and all evaluation
@@ -146,8 +146,8 @@ psycholinguistically plausible \citep{wray2002formulaic,arnon2021starting}.
 Here, we study what it takes to make such an MDL tokenizer work at
 production scale, across typologically diverse languages, and under fair
 evaluation.
-We find that an MDL tokenizer is able to effectively achieve its goals by effective forgetting strategies.
-To be effective, an MDL lexicon needs to be able to shed units as readily as it admits them, in order to avoid the long-term storage of candidates that never repay their storage cost.
+We find that forgetting is what makes an MDL tokenizer effective.
+An MDL lexicon needs to be able to shed units as readily as it admits them, in order to avoid the long-term storage of candidates that never repay their storage cost.
 Following \citet{yang2020less}, our implementation combines two forgetting
 routes that mirror the active and passive forgetting observed in human
 memory: an active route that demotes, and eventually deletes, units
@@ -161,7 +161,7 @@ admission and forgetting reach a language-specific equilibrium.
 We evaluate on seven typologically diverse languages with a battery of
 metrics: description length (DL), Kneser--Ney $n$-gram bits-per-character
 (BPC), a tokenization-fair neural bits-per-byte (BPB) evaluation, sequence
-fertility, and encoding speed. Controls keep the comparison honest,
+fertility, and encoding speed. Controls keep the comparison fair,
 including a passive-forgetting ablation and budget-matched baselines
 trained at LiB's self-organized vocabulary sizes. The contributions offered by this study are the following:
 
@@ -181,12 +181,12 @@ trained at LiB's self-organized vocabulary sizes. The contributions offered by t
         on trigram BPC in six of seven languages.
   \item We provide a tokenization-fair neural evaluation: under
         bits-per-byte with a small Transformer LM, LiB is at parity with BPE
-        in all seven languages (with best performances on Turkish and Mandarin
-        Chinese) and ahead of SuperBPE in five, while supra-word tokens help
-        LiB on every metric in every language.
+        in all seven languages (marginally ahead of it on Turkish and Mandarin
+        Chinese) and ahead of SuperBPE in four, while supra-word tokens help
+        LiB on every metric in every space-delimited language.
   \item We introduce the supra-word ratio of the induced vocabulary as a
-        data-driven typological diagnostic, tracking the complexity of script 
-        word-internal morphology.
+        data-driven typological diagnostic, tracking script and the complexity
+        of word-internal morphology.
   \item We release LiB as a production HuggingFace-compatible Rust
         implementation with trained tokenizers and all evaluation code.
 \end{itemize}
@@ -197,7 +197,7 @@ trained at LiB's self-organized vocabulary sizes. The contributions offered by t
 \label{sec:related}
 %% ============================================================
 
-\paragraph{Subword tokenization}
+\paragraph{Subword tokenization.}
 BPE \citep{sennrich-etal-2016-neural}, WordPiece \citep{schuster2012japanese},
 and Unigram LM \citep{kudo-2018-subword} are the dominant subword tokenization
 methods; SentencePiece \citep{kudo-richardson-2018-sentencepiece} provides
@@ -213,7 +213,7 @@ morphology-aware tokenizer outperforms BPE on six downstream tasks.
 character-level to subword models and conclude that no single tokenization
 approach is optimal across all languages.
 
-\paragraph{Tokenization fairness and the cost of English bias}
+\paragraph{Tokenization fairness and the cost of English bias.}
 \citet{blasi2022overreliance} document cognitive science's over-reliance on
 English; the same critique applies to tokenization's design defaults, from
 whitespace pre-tokenization to the 32k--50k budget convention.
@@ -230,11 +230,11 @@ English.
 show that Rényi entropy of a tokenization predicts downstream quality,
 providing an information-theoretic basis for MDL-based tokenizers.
 
-\paragraph{MDL, segmentation, and forgetting}
+\paragraph{MDL, segmentation, and forgetting.}
 The connection between segmentation and MDL goes back to
 \citet{brent1999efficient}.
 \citet{yang2020less} formalised the LiB objective and built forgetting into
-the model as a first-class mechanism; \citet{yang2024rethinking} argued for
+the model as a mechanism; \citet{yang2024rethinking} argued for
 an integrated sub- and supra-word vocabulary grounded in the Principle of
 Least Effort, and \citet{yang2022eyefixations} showed that LiB segmentations
 predict human eye fixations during reading.
@@ -243,7 +243,7 @@ explicit active/passive algorithmic account, and the ablation evidence that
 the forgetting mechanism, rather than the objective alone, is what makes
 the approach competitive.
 
-\paragraph{Supra-word tokens}
+\paragraph{Supra-word tokens.}
 Multi-word expressions have a long history in NLP
 \citep{sag2002multiword,constant2017multiword}.
 \citet{gee2023multiword} enrich a pretrained tokenizer's vocabulary with
@@ -255,7 +255,7 @@ with 27\% less inference compute.
 LiB differs in mechanism and consequence: units are admitted by description
 length rather than frequency, retained only while they earn their keep, and
 the vocabulary size is discovered rather than imposed, yielding better
-predictive quality than SuperBPE at equal budgets, at the cost of SuperBPE's
+trigram BPC than SuperBPE at equal budgets, at the cost of SuperBPE's
 superior sequence compression.
 The psycholinguistic case for multi-word lexical units is made by
 \citet{wray2002formulaic}, \citet{siyanova2011collocation},
@@ -342,7 +342,7 @@ $d$ sentences ($d=\texttt{doc\_size}$). For each document, the following steps a
     with probability $\alpha$ (\texttt{memory\_in}) the concatenation of two
     adjacent chunks is proposed as a new candidate unit; an unknown character
     sequence of length ${\le}2$ may itself be a candidate. A candidate
-    sighted {\em twice}\/ within the same document is admitted, provided
+    sighted twice within the same document is admitted, provided
     $|L|$ is below the cap $|V|$. New units enter at the tail, the lowest
     rank, and must earn their way up.
   \item[Evaluate (active forgetting).] At each position the segmenter also
@@ -381,7 +381,7 @@ documents. A unit that stops being useful is first
 demoted out of the safe head region, then drifts into the watched tail, and
 finally expires.
 
-Crucially, the vocabulary size is not imposed by the cap $|V|$: it is an
+The vocabulary size is not imposed by the cap $|V|$: it is an
 emergent equilibrium between admission and the two forgetting routes, governed
 by $\omega$.
 %This is the mechanism behind the language-sensitive saturation reported in
@@ -485,8 +485,7 @@ We compare the following tokenizers, all with a vocabulary budget of 50k:
 \end{itemize}
 
 All tokenizers are trained on the per-language training set.
-SentencePiece handles Chinese naturally through its byte-level fallback; BPE
-and WordPiece are given character-split input for Chinese.
+All tokenizers receive Chinese text without word segmentation.
 
 \paragraph{LiB configuration.}
 Hyperparameters were selected by random search on held-out validation BPC for
@@ -684,7 +683,7 @@ the per-language configurations of Section~\ref{sec:setup}.
 \label{sec:budgetmatched}
 
 %The bottom block of Table~\ref{tab:dl_en} keeps this result honest.
-Baselines retrained at LiB's emergent size, for an honest comparison, all improve on their 50k
+Baselines retrained at LiB's emergent size all improve on their 50k
 versions, and all overtake LiB (WordPiece @28.4k: 7{,}405\,kb), as witnessed in the bottom block of Table~\ref{tab:dl_en}.
 LiB's DL advantage over standard baselines is therefore a
 vocabulary-size effect: at the corpus sizes used for training in this study, smaller vocabularies suit every tokenizer.
@@ -771,7 +770,7 @@ units.}
 \end{table}
 
 %Vocabulary self-regulation is not an accident of one language
-As Table~\ref{tab:supra} shows, the self-regulated vocabolaries for all languages settle well below the cap, from 27\%
+As Table~\ref{tab:supra} shows, the self-regulated vocabularies for all languages settle well below the cap, from 27\%
 of budget for Turkish to 57\% for English.%, and the size tracks the language
 %rather than the budget.
 Ablating passive forgetting inflates every lexicon (by 38--88\%), most
@@ -898,7 +897,7 @@ German   & 8,653 & 8,408 & 8,702 & \textbf{8,368} & 8,759 & 7,908 (WP) \\
 Spanish  & 5,140 & 4,946 & 5,248 & \textbf{4,694} & 5,072 & 4,340 (WP) \\
 Finnish  & 3,635 & 3,588 & 3,943 & \textbf{2,887} & 3,176 & 2,755 (WP) \\
 Turkish  & 6,658 & 6,510 & 6,794 & \textbf{6,306} & 6,431 & 5,908 (SP-U) \\
-Arabic   & 8,550 & 8,277 & 8,456 & \textbf{8,494}$^2$ & 8,886 & 7,983 (SP-U) \\
+Arabic   & 8,550 & 8,277 & 8,456 & \textbf{8,494}$^3$ & 8,886 & 7,983 (SP-U) \\
 Chinese  & 8,944 & 9,365 & 9,018 & \textbf{8,932} & 9,481 & 8,524 (SP-U) \\
 \bottomrule
 \end{tabular}
@@ -906,16 +905,16 @@ Chinese  & 8,944 & 9,365 & 9,018 & \textbf{8,932} & 9,481 & 8,524 (SP-U) \\
 50k budget; LiB at its emergent size; LiB\textsubscript{nf} = passive
 forgetting ablated; best@match = best baseline retrained at LiB's emergent
 size. Bold: LiB column, best against the 50k baselines ($^2$: second-best,
-behind WordPiece).}
+behind WordPiece; $^3$: third, behind WordPiece and SP-Unigram).}
 \label{tab:dl_multilingual}
 \end{table}
 
 Against the standard 50k-budget baselines (Table~\ref{tab:dl_multilingual}),
-LiB attains the best DL in five of seven languages, and is second, within
-1.4--2.6\% of WordPiece, in the other two, with vocabularies half the size
-or smaller.
-The margin is largest exactly where word-internal morphology is richest:
-$-19.5\%$ against the best baseline on Finnish and $-3.1\%$ on Turkish.
+LiB attains the best DL in five of seven languages, with vocabularies of
+27--57\% of the budget. It is second on English, 1.4\% behind WordPiece, and
+third on Arabic, 2.6\% behind WordPiece.
+The margin is largest on Finnish, $-19.5\%$ against the best baseline,
+followed by Spanish ($-5.1\%$) and Turkish ($-3.1\%$).
 The ablation column replicates the English mechanism result in every
 language: removing passive forgetting costs between $+2.0\%$ (Turkish) and
 $+10.0\%$ (Finnish) DL, and LiB's best-DL count drops from five languages to
@@ -951,12 +950,13 @@ BPE@m = BPE retrained at LiB's emergent vocabulary size.}
 \label{tab:bpc_multi}
 \end{table}
 
-On trigram BPC (Table~\ref{tab:bpc_multi}), LiB beats both BPE and SuperBPE
-in all seven languages, placing second overall on Turkish and Chinese and
-within 1--2\% of the WordPiece/SP-Unigram, again with
-half-size vocabularies.
-Supra-word tokens help in every language (LiB vs.\
-LiB\textsuperscript{--}), and unlike DL, the BPC advantage over BPE
+On trigram BPC (Table~\ref{tab:bpc_multi}), LiB beats SuperBPE in all seven
+languages and BPE in six, Finnish being the exception. It places second
+among the 50k tokenizers on Turkish and Chinese and stays within 0.4--3.9\%
+of the best tokenizer in every language, again with vocabularies of
+27--57\% of the budget.
+Supra-word tokens help in every space-delimited language (LiB vs.\
+LiB\textsuperscript{--}; on Chinese the two differ by 0.002), and unlike DL, the BPC advantage over BPE
 survives the budget-matched control in six of seven languages
 (column BPE@m; Finnish is the exception).
 SuperBPE, of which the supra-words are selected by frequency and of which the budget is
@@ -978,7 +978,7 @@ The forgetting ratio $\omega$ sets where the admission--forgetting equilibrium
 falls, within the range the admission rate allows
 (Section~\ref{sec:forgetting-results});
 $\alpha$ trades vocabulary size against a marginal BPC gain (the
-BPC-best $\alpha{=}0.5$ pins English at the cap for $\approx$0.01 bits over
+BPC-best $\alpha{=}0.5$ brings English to the cap for $\approx$0.01 bits over
 the self-regulating $\alpha{=}0.25$, which we prefer for its emergent size
 and faster training).
 Remaining hyperparameters affect validation BPC by under 0.03 bits across
@@ -1023,17 +1023,18 @@ Transformer LM per tokenizer, cross-entropy normalised by raw UTF-8 bytes.
 
 Under neural BPB (Table~\ref{tab:bpb}), SP-Unigram is the strongest baseline here, leading in six of seven languages. LiB is at parity with BPE in all
 seven languages: within $+1\%$ on four, $+3.4\%$ at worst (Finnish), and
-ahead outright on Turkish ($1.702$ vs.\ $1.703$, with a 13.6k vocabulary
-against BPE's 50k) and on Chinese, where LiB also outperforms WordPiece and
-SuperBPE.
-LiB is ahead of SuperBPE in five of seven languages.
+marginally ahead on Turkish ($1.702$ vs.\ $1.703$, with a 13.6k vocabulary
+against BPE's 50k) and on Chinese ($2.111$ vs.\ $2.129$), where LiB also
+outperforms WordPiece and SuperBPE.
+LiB is ahead of SuperBPE in four of seven languages (German, Turkish, Arabic,
+and Chinese).
 %and the subword leaders retain a 3.7--13.6\% margin over LiB (narrowest on
 %Turkish, widest on Finnish). 
 Supra-word tokenizers appear to pay a real and
 consistent predictive cost at this small neural model scale; but the
 supra-word units themselves are unambiguously beneficial within LiB:
-removing them costs 0.12--0.19 BPB in the six spaced languages and roughly
-$2.2$--$2.5\times$ the sequence length.
+removing them costs 0.08--0.19 BPB in the six space-delimited languages and
+lengthens the token sequence by a factor of $2.0$--$2.4$.
 
 \begin{table}[t]
 \centering
@@ -1058,11 +1059,12 @@ inference compute).}
 \end{table}
 
 The best fertility scores (Table~\ref{tab:fertility}) are produced by SuperBPE, which encodes the
-test text in the fewest tokens in five of seven languages; LiB is slightly
-above BPE everywhere.
-LiB's supra-word tokens clearly outperform the low-performing
-no-supra variant to the same range as the subword baselines, but they do not
-lead to efficiency: MDL admission optimises description length,
+test text in the fewest tokens in five of seven languages. LiB needs more
+tokens than BPE everywhere, from 7\% more on English to over a third more on Turkish.
+LiB's supra-word tokens bring its fertility from that of the no-supra
+variant, which produces 2.0--2.4 times as many tokens in the
+space-delimited languages, into the range of the
+subword baselines, but not below it: MDL admission optimises description length,
 not sequence length.
 SuperBPE appears to be the choice for raw sequence
 compression; LiB offers a principled, self-sizing vocabulary at BPE-level
@@ -1096,7 +1098,7 @@ enabled.}
 \label{tab:speed}
 \end{table}
 
-LiB encodes at 66--97\% of BPE's throughput across the seven languages
+LiB encodes at 78--97\% of BPE's throughput across the seven languages
 (Table~\ref{tab:speed}), nearly matching it on Arabic and Chinese, and
 $1.75\times$ faster than WordPiece on Chinese, while SP-Unigram is the
 fastest encoder throughout.
@@ -1114,7 +1116,7 @@ one-off cost.
 \label{sec:discussion}
 %% ============================================================
 
-Studying the effect of active and passive forgetting, we observed that With passive forgetting removed
+Studying the effect of active and passive forgetting, we observed that with passive forgetting removed
 and everything else held fixed, the lexicon inflates by 38--88\%, description
 length worsens by 2--10\% in every language, and trigram BPC does not move.
 Prediction-based metrics are insensitive to unproductive tokens in the vocabulary, since a unit that
@@ -1132,8 +1134,8 @@ length in five of seven languages; against baselines granted LiB's own
 vocabulary size, it loses in all seven.
 Both observations are informative.
 The first tells that the self-regulation is doing productive work,
-most dramatically on the agglutinative languages (Finnish
-$-19.5\%$).
+most dramatically on Finnish
+($-19.5\%$).
 The second observation says that LiB's per-budget encoding is not better than the baselines',
 and we do not claim it is.
 What we do claim is that LiB is the only system in the
@@ -1151,16 +1153,16 @@ Together the results of LiB and SuperBPE suggest that the supra-word level itsel
 problem. How units are admitted, and above all whether unproductive units are
 removed, determines whether crossing the whitespace border is useful.
 
-Among the tested space-delimited languages,
-word-internal morphological complexity shows a separation between the agglutinative and
-compounding languages (Finnish 14.7\%, German 17.5\%, Turkish 19.1\%)
-investing least above the word, and analytic, Romance, and templatic
-languages most (English 25.7\%, Spanish 29.6\%, Arabic 30.5\%).
+Among the tested space-delimited languages, the supra-word ratio separates
+the agglutinative and compounding languages (Finnish 14.7\%, German 17.5\%,
+Turkish 19.1\%), which invest least above the word, from the analytic,
+Romance, and templatic languages (English 25.7\%, Spanish 29.6\%, Arabic
+30.5\%), which invest most.
 The ratio operationalises where a language keeps its compressible
 redundancy, discovered by a single objective with no language-specific
 machinery.
 
-Finally, a note on the label "supra-word" which in itself encodes an English boas. Supra-word tokens are "supra" only relative to the English word, which is an unusually short and
+Finally, a note on the label ``supra-word'', which in itself encodes an English bias. Supra-word tokens are ``supra'' only relative to the English word, which is an unusually short and
 monomorphemic unit by cross-linguistic standards.
 What LiB discovers at the equivalent compression point in Finnish is
 morpheme-length, sub-word in English terms, but linguistically fundamental
@@ -1215,7 +1217,8 @@ untouched.
 Evaluated fairly, with budget-matched controls and a tokenization-fair
 neural metric, LiB does not beat the best subword tokenizers.
 It matches BPE's predictive quality with vocabularies half the size, beats
-the frequency-based supra-word alternative on every predictive metric,
+the frequency-based supra-word alternative on trigram BPC in every language
+and on neural BPB in four of seven,
 discovers where each language keeps its compressible redundancy, and sizes
 its own vocabulary, removing a hyperparameter of which the default values are an English-biased convention.
 
