@@ -1178,14 +1178,13 @@ Arabic   & 2.371 & \textbf{2.326} & 2.332 & 2.419 & 2.432 & 2.369 & 2.373 & 2.34
 Chinese  & 6.668 & 6.606 & 6.574 & 6.732 & 6.858 & 6.749 & 6.693 & \textbf{6.555} & 6.672 \\
 \midrule
 \multicolumn{10}{l}{\textbf{Neural BPB}} \\
-%JOINT-BPB-ROWS
-English  & 2.135 & \textbf{2.059} & 2.071 & 2.145 & -- & -- & -- & 2.282 & 2.140 \\
-German   & 2.085 & 2.007 & \textbf{1.996} & 2.105 & -- & -- & -- & 2.198 & 2.080 \\
-Spanish  & 1.937 & \textbf{1.855} & 1.882 & 1.943 & -- & -- & -- & 2.110 & 1.943 \\
-Finnish  & 1.746 & 1.693 & \textbf{1.666} & 1.756 & -- & -- & -- & 1.875 & 1.733 \\
-Turkish  & 2.232 & 2.182 & \textbf{2.178} & 2.250 & -- & -- & -- & 2.418 & 2.204 \\
-Arabic   & 1.412 & 1.384 & \textbf{1.361} & 1.424 & -- & -- & -- & 1.443 & 1.406 \\
-Chinese  & 2.467 & 2.471 & \textbf{2.412} & 2.455 & -- & -- & -- & 2.592 & 2.476 \\
+English  & 2.135 & 2.059 & 2.071 & 2.145 & 2.121 & 2.180 & \textbf{2.020} & 2.282 & 2.140 \\
+German   & 2.085 & 2.007 & 1.996 & 2.105 & 2.083 & 2.136 & \textbf{1.949} & 2.198 & 2.080 \\
+Spanish  & 1.937 & 1.855 & 1.882 & 1.943 & 1.924 & 2.017 & \textbf{1.833} & 2.110 & 1.943 \\
+Finnish  & 1.746 & 1.693 & 1.666 & 1.756 & 1.720 & 1.816 & \textbf{1.601} & 1.875 & 1.733 \\
+Turkish  & 2.232 & 2.182 & 2.178 & 2.250 & 2.221 & 2.317 & \textbf{2.131} & 2.418 & 2.204 \\
+Arabic   & 1.412 & 1.384 & 1.361 & 1.424 & 1.417 & 1.457 & \textbf{1.352} & 1.443 & 1.406 \\
+Chinese  & 2.467 & 2.471 & \textbf{2.412} & 2.455 & 2.496 & 2.645 & 2.417 & 2.592 & 2.476 \\
 \bottomrule
 \end{tabular}
 \caption{Joint tokenizers tested per language (lower is better). One trigram
@@ -1207,14 +1206,16 @@ except Finnish, which reflects the estimator sparsity discussed in
 Section~\ref{sec:bpb}, and LiB carries the same 116k vocabulary. On Chinese,
 LiB without supra-word lookup has the lowest trigram BPC of all tokenizers.
 
-Under neural BPB, SP-Unigram and WordPiece lead in every language, by
-1.2--4.7\% over LiB. LiB is ahead of 50k BPE on German, Finnish, Turkish,
+Under neural BPB, SP-Unigram leads in every language, at LiB's size in six
+of them, by 2.6--8.3\% over LiB. Given LiB's vocabulary size, SP-Unigram
+improves on its 50k score in six languages, BPE stays level with LiB (ahead on English,
+Spanish, and Finnish by 0.7--1.0\%, behind on the other four), and WordPiece
+falls behind LiB in all seven. LiB is ahead of 50k BPE on German, Finnish, Turkish,
 and Arabic, and at most 0.4\% behind on English, Spanish, and Chinese. It is
 ahead of SuperBPE in five languages, level on Spanish, and behind on Chinese.
 Supra-word lookup lowers LiB's BPB in all seven languages, by 0.04 (Arabic)
 to 0.21 (Turkish), and without it LiB needs 2.0--2.3 times as many tokens in
 the space-delimited languages.
-% TODO: matched-size BPB (BPE@m, WP@m, SP-U@m) once the run finishes.
 
 %% ============================================================
 \section{Throughput and Model Size}

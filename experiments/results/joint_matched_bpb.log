@@ -1,0 +1,62 @@
+device: mps; steps 5000
+
+=== BPE @m ===
+  |V|=116,321 train_toks=33,002,717
+      step    500  train_ce=8.532  val_bits/tok=12.4380
+      step   1000  train_ce=8.089  val_bits/tok=11.7933
+      step   1500  train_ce=7.730  val_bits/tok=11.3984
+      step   2000  train_ce=7.641  val_bits/tok=11.1069
+      step   2500  train_ce=7.532  val_bits/tok=10.8698
+      step   3000  train_ce=7.273  val_bits/tok=10.6967
+      step   3500  train_ce=7.141  val_bits/tok=10.5076
+      step   4000  train_ce=7.054  val_bits/tok=10.3603
+      step   4500  train_ce=7.091  val_bits/tok=10.2335
+      step   5000  train_ce=7.045  val_bits/tok=10.1186
+  en BPB=2.1209 tok/B=0.2143
+  de BPB=2.0835 tok/B=0.2043
+  es BPB=1.9236 tok/B=0.2093
+  fi BPB=1.7204 tok/B=0.1845
+  tr BPB=2.2209 tok/B=0.2073
+  ar BPB=1.4173 tok/B=0.1336
+  zh BPB=2.4957 tok/B=0.2196
+
+=== WordPiece @m ===
+  |V|=116,320 train_toks=34,849,658
+      step    500  train_ce=8.593  val_bits/tok=12.4159
+      step   1000  train_ce=7.867  val_bits/tok=11.4881
+      step   1500  train_ce=7.756  val_bits/tok=11.1081
+      step   2000  train_ce=7.338  val_bits/tok=10.8107
+      step   2500  train_ce=7.172  val_bits/tok=10.6024
+      step   3000  train_ce=7.201  val_bits/tok=10.4465
+      step   3500  train_ce=7.010  val_bits/tok=10.2751
+      step   4000  train_ce=6.904  val_bits/tok=10.1563
+      step   4500  train_ce=7.021  val_bits/tok=10.0647
+      step   5000  train_ce=6.919  val_bits/tok=10.0202
+  en BPB=2.1800 tok/B=0.2226
+  de BPB=2.1361 tok/B=0.2124
+  es BPB=2.0172 tok/B=0.2212
+  fi BPB=1.8163 tok/B=0.2047
+  tr BPB=2.3171 tok/B=0.2219
+  ar BPB=1.4569 tok/B=0.1364
+  zh BPB=2.6452 tok/B=0.2400
+
+=== SP-Unigram @m ===
+  |V|=116,325 train_toks=34,393,617
+      step    500  train_ce=7.756  val_bits/tok=11.2960
+      step   1000  train_ce=7.309  val_bits/tok=10.6931
+      step   1500  train_ce=6.982  val_bits/tok=10.3153
+      step   2000  train_ce=6.857  val_bits/tok=10.0463
+      step   2500  train_ce=6.855  val_bits/tok=9.8330
+      step   3000  train_ce=6.529  val_bits/tok=9.6812
+      step   3500  train_ce=6.464  val_bits/tok=9.5356
+      step   4000  train_ce=6.591  val_bits/tok=9.4191
+      step   4500  train_ce=6.556  val_bits/tok=9.3166
+      step   5000  train_ce=6.339  val_bits/tok=9.2327
+  en BPB=2.0201 tok/B=0.2241
+  de BPB=1.9491 tok/B=0.2105
+  es BPB=1.8329 tok/B=0.2204
+  fi BPB=1.6008 tok/B=0.1950
+  tr BPB=2.1305 tok/B=0.2151
+  ar BPB=1.3517 tok/B=0.1355
+  zh BPB=2.4171 tok/B=0.2371
+MATCHED BPB EXIT 0
