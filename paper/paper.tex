@@ -1072,6 +1072,151 @@ predictive quality.
 
 
 %% ============================================================
+\section{A Joint Multilingual Vocabulary}
+\label{sec:joint}
+%% ============================================================
+
+Here, we train a single tokenizer on the data of all seven languages and test
+it on each language separately.
+
+\paragraph{Setup.}
+The joint training set concatenates the seven 100,000-sentence training sets.
+BPE, WordPiece, SP-Unigram, and SuperBPE are trained on it with the 50k
+budget, and BPE, WordPiece, and SP-Unigram are trained again at LiB's emergent
+joint size. LiB uses the consensus configuration for all seven languages,
+Chinese included, with 35{,}000 document-epochs (seven times the monolingual
+schedule) and a cap of 350k, which it does not reach. Each LiB document holds
+100 sentences of a single language. A candidate is admitted when it occurs
+twice within one document, and documents that mix languages would dilute that
+evidence. Every tokenizer is tested on each language's own test set. The
+trigram and neural LMs are trained once per tokenizer on the joint training
+stream and scored per language. The neural LMs keep the 5{,}000-step schedule
+of Section~\ref{sec:bpb}, which gives each language about a seventh of its
+monolingual exposure, so the joint BPB figures are comparable with each other
+but not with Table~\ref{tab:bpb}.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+& \multicolumn{3}{c}{\textbf{LiB units used}} &
+\multicolumn{3}{c}{\textbf{fertility vs.\ monolingual}} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+\textbf{Language} & \textbf{all} & \textbf{exclusive} & \textbf{supra\%} &
+\textbf{LiB} & \textbf{BPE@m} & \textbf{SP-U@m} \\
+\midrule
+English  & 18,628 &  5,834 & 17.3 & $+1.4\%$ & $+7.1\%$  & $+4.7\%$ \\
+German   & 19,347 &  8,076 & 13.1 & $+1.7\%$ & $+9.4\%$  & $+5.6\%$ \\
+Spanish  & 16,255 &  6,574 & 19.4 & $-1.1\%$ & $+7.2\%$  & $+5.1\%$ \\
+Finnish  & 12,930 &  5,597 &  9.4 & $-1.4\%$ & $+11.5\%$ & $+4.3\%$ \\
+Turkish  & 14,022 &  4,749 & 12.4 & $\pm0.0\%$ & $+20.9\%$ & $+10.9\%$ \\
+Arabic   & 18,560 & 14,475 & 19.2 & $+2.4\%$ & $+11.3\%$ & $+6.8\%$ \\
+Chinese  & 24,679 & 19,837 &  1.6 & $-5.2\%$ & $+7.4\%$  & $+5.9\%$ \\
+\bottomrule
+\end{tabular}
+\caption{The joint LiB vocabulary (116,322 units) per language. All: units
+used on the language's test set; exclusive: units used by no other language's
+test set; supra\%: supra-word share of the units used. Fertility vs.\
+monolingual: change in tokens per byte of each joint tokenizer relative to
+the same tokenizer trained on that language alone (LiB at its emergent
+monolingual size, baselines at 50k). BPE@m and SP-U@m are the joint baselines
+trained at LiB's joint size.}
+\label{tab:joint_alloc}
+\end{table}
+
+\paragraph{Vocabulary.}
+The joint LiB vocabulary settles at 116,322 units, which is 33\% of the cap
+and 69\% of the 167,504 units of the seven monolingual vocabularies combined
+(Table~\ref{tab:supra}). Of these units, 16.8\% are supra-word.
+Table~\ref{tab:joint_alloc} breaks the vocabulary down by the units each
+language's test set uses. Chinese and Arabic, the two languages not written
+in Latin script, use the largest numbers of units that no other language
+uses. The supra-word share of the units each language uses keeps the
+typological split of Section~\ref{sec:multilingual}: Spanish, Arabic, and
+English use the most supra-word units (17--19\%), German, Turkish, and
+Finnish fewer (9--13\%), and Chinese almost none (1.6\%).
+
+\paragraph{Cross-testing.}
+Sharing the vocabulary leaves LiB's segmentation of each language almost
+unchanged. On the six space-delimited languages, the joint tokenizer's
+fertility lies within 2.4\% of the monolingual LiB tokenizer's. On Chinese it
+is 5.2\% lower; the joint run applies the consensus configuration, whose
+passive forgetting is weaker than that of the Chinese configuration
+($\omega{=}0.005$ and $\lambda{=}50$, against $0.01$ and $10$). The baselines
+trained at the same joint size need 4--21\% more tokens than their
+monolingual counterparts, and Turkish is the most affected language for
+each of them (BPE, WordPiece, and SP-Unigram). This comparison favours LiB,
+since each baseline goes from 50k units per language (350k in total) to 116k
+shared units, while LiB goes from 168k in total to 116k. It does show that
+the joint equilibrium preserves each language's monolingual segmentation
+without a per-language budget.
+
+\paragraph{Description length.}
+On the concatenated test set, LiB's DL\textsubscript{total} (53,793 kb) is
+second among the 50k tokenizers, 2.7\% behind SP-Unigram, and the three
+baselines trained at LiB's size all score lower (51,049--52,365 kb). This
+repeats the monolingual pattern of Section~\ref{sec:budgetmatched}.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+\textbf{Language} & \textbf{BPE} & \textbf{WP} & \textbf{SP-U} & \textbf{SBPE}
+& \textbf{BPE@m} & \textbf{WP@m} & \textbf{SP-U@m}
+& \textbf{LiB\textsuperscript{--}} & \textbf{LiB} \\
+\midrule
+\multicolumn{10}{l}{\textbf{3-gram BPC}} \\
+English  & 2.031 & \textbf{1.988} & 2.009 & 2.078 & 2.053 & 1.993 & 2.013 & 2.105 & 2.033 \\
+German   & 1.972 & \textbf{1.932} & 1.942 & 2.014 & 2.002 & 1.942 & 1.950 & 2.013 & 1.971 \\
+Spanish  & 1.821 & 1.784 & 1.804 & 1.872 & 1.840 & \textbf{1.779} & 1.800 & 1.941 & 1.831 \\
+Finnish  & 1.444 & 1.445 & 1.445 & 1.488 & 1.442 & \textbf{1.421} & 1.423 & 1.570 & 1.469 \\
+Turkish  & 2.195 & \textbf{2.152} & 2.181 & 2.231 & 2.243 & 2.177 & 2.209 & 2.292 & 2.208 \\
+Arabic   & 2.371 & \textbf{2.326} & 2.332 & 2.419 & 2.432 & 2.369 & 2.373 & 2.348 & 2.343 \\
+Chinese  & 6.668 & 6.606 & 6.574 & 6.732 & 6.858 & 6.749 & 6.693 & \textbf{6.555} & 6.672 \\
+\midrule
+\multicolumn{10}{l}{\textbf{Neural BPB}} \\
+%JOINT-BPB-ROWS
+English  & 2.135 & \textbf{2.059} & 2.071 & 2.145 & -- & -- & -- & 2.282 & 2.140 \\
+German   & 2.085 & 2.007 & \textbf{1.996} & 2.105 & -- & -- & -- & 2.198 & 2.080 \\
+Spanish  & 1.937 & \textbf{1.855} & 1.882 & 1.943 & -- & -- & -- & 2.110 & 1.943 \\
+Finnish  & 1.746 & 1.693 & \textbf{1.666} & 1.756 & -- & -- & -- & 1.875 & 1.733 \\
+Turkish  & 2.232 & 2.182 & \textbf{2.178} & 2.250 & -- & -- & -- & 2.418 & 2.204 \\
+Arabic   & 1.412 & 1.384 & \textbf{1.361} & 1.424 & -- & -- & -- & 1.443 & 1.406 \\
+Chinese  & 2.467 & 2.471 & \textbf{2.412} & 2.455 & -- & -- & -- & 2.592 & 2.476 \\
+\bottomrule
+\end{tabular}
+\caption{Joint tokenizers tested per language (lower is better). One trigram
+LM and one neural LM per tokenizer, trained on the joint training stream.
+@m: baseline trained at LiB's joint size (116k); LiB\textsuperscript{--}:
+LiB without supra-word lookup. Bold: best in the row.}
+\label{tab:joint_lm}
+\end{table}
+
+\paragraph{Language modelling.}
+On trigram BPC (Table~\ref{tab:joint_lm}), WordPiece is best in every
+space-delimited language, at 50k or at LiB's size. LiB stays within
+0.7--3.3\% of the best tokenizer. As in the monolingual setting, it beats
+SuperBPE in all seven languages and BPE at LiB's size in six, Finnish being
+the exception. Against 50k BPE it is ahead on German and Arabic and at most
+1.7\% behind elsewhere (Finnish). A larger vocabulary raises trigram BPC in
+the joint setting: BPE at LiB's size is worse than 50k BPE in every language
+except Finnish, which reflects the estimator sparsity discussed in
+Section~\ref{sec:bpb}, and LiB carries the same 116k vocabulary. On Chinese,
+LiB without supra-word lookup has the lowest trigram BPC of all tokenizers.
+
+Under neural BPB, SP-Unigram and WordPiece lead in every language, by
+1.2--4.7\% over LiB. LiB is ahead of 50k BPE on German, Finnish, Turkish,
+and Arabic, and at most 0.4\% behind on English, Spanish, and Chinese. It is
+ahead of SuperBPE in five languages, level on Spanish, and behind on Chinese.
+Supra-word lookup lowers LiB's BPB in all seven languages, by 0.04 (Arabic)
+to 0.21 (Turkish), and without it LiB needs 2.0--2.3 times as many tokens in
+the space-delimited languages.
+% TODO: matched-size BPB (BPE@m, WP@m, SP-U@m) once the run finishes.
+
+%% ============================================================
 \section{Throughput and Model Size}
 \label{sec:speed}
 %% ============================================================
@@ -1221,6 +1366,10 @@ the frequency-based supra-word alternative on trigram BPC in every language
 and on neural BPB in four of seven,
 discovers where each language keeps its compressible redundancy, and sizes
 its own vocabulary, removing a hyperparameter of which the default values are an English-biased convention.
+Trained jointly on all seven languages, it settles at 69\% of the size of
+its seven monolingual vocabularies combined and segments each language
+within 2.4\% of the fertility of its monolingual tokenizer (Chinese
+excepted, where it needs 5\% fewer tokens).
 
 Supra-word tokens, properly curated by forgetting, help on every metric in
 every spaced language; the supra-word ratio itself can be taken as a typological
@@ -1228,10 +1377,9 @@ diagnostic, inversely
 tracking word-internal morphological complexity among space-delimited languages.
 
 We release the Rust implementation, trained tokenizers, and evaluation
-suite, and see two clear next steps: downstream evaluation at scale, where
+suite. The clear next step is downstream evaluation at scale, where
 SuperBPE's results suggest supra-word tokenizers are undersold by intrinsic
-metrics, and multilingual joint vocabularies, where self-regulation may
-yield more equitable allocations than any fixed budget.
+metrics.
 
 
 %% ============================================================
