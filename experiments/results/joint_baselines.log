@@ -1,0 +1,322 @@
+  [bpe 50,000] done in 28s
+  [wordpiece 50,000] done in 18s
+sentencepiece_trainer.cc(78) LOG(INFO) Starts training with : 
+trainer_spec {
+  input: /Users/antalb/Experiments/LiB/experiments/data/joint/train.txt
+  input_format: 
+  model_prefix: /Users/antalb/Experiments/LiB/experiments/models/joint/sp_unigram_50000/sp_unigram
+  model_type: UNIGRAM
+  vocab_size: 50000
+  self_test_sample_size: 0
+  character_coverage: 1
+  input_sentence_size: 700000
+  shuffle_input_sentence: 1
+  seed_sentencepiece_size: 1000000
+  shrinking_factor: 0.75
+  max_sentence_length: 4192
+  num_threads: 16
+  num_sub_iterations: 2
+  max_sentencepiece_length: 16
+  split_by_unicode_script: 1
+  split_by_number: 1
+  split_by_whitespace: 1
+  split_digits: 0
+  pretokenization_delimiter: 
+  treat_whitespace_as_suffix: 0
+  allow_whitespace_only_pieces: 0
+  required_chars: 
+  byte_fallback: 0
+  vocabulary_output_piece_score: 1
+  train_extremely_large_corpus: 0
+  seed_sentencepieces_file: 
+  hard_vocab_limit: 1
+  use_all_vocab: 0
+  unk_id: 1
+  bos_id: 2
+  eos_id: 3
+  pad_id: 0
+  unk_piece: <unk>
+  bos_piece: <s>
+  eos_piece: </s>
+  pad_piece: <pad>
+  unk_surface:  ⁇ 
+  enable_differential_privacy: 0
+  differential_privacy_noise_level: 0
+  differential_privacy_clipping_threshold: 0
+}
+normalizer_spec {
+  name: nmt_nfkc
+  add_dummy_prefix: 1
+  remove_extra_whitespaces: 1
+  escape_whitespaces: 1
+  normalization_rule_tsv: 
+}
+denormalizer_spec {}
+trainer_interface.cc(355) LOG(INFO) SentenceIterator is not specified. Using MultiFileSentenceIterator.
+trainer_interface.cc(186) LOG(INFO) Loading corpus: /Users/antalb/Experiments/LiB/experiments/data/joint/train.txt
+trainer_interface.cc(382) LOG(WARNING) Found too long line (4743 > 4192).
+trainer_interface.cc(384) LOG(WARNING) Too long lines are skipped in the training.
+trainer_interface.cc(385) LOG(WARNING) The maximum length can be changed with --max_sentence_length=<size> flag.
+trainer_interface.cc(411) LOG(INFO) Loaded all 699849 sentences
+trainer_interface.cc(418) LOG(INFO) Skipped 151 too long sentences.
+trainer_interface.cc(427) LOG(INFO) Adding meta_piece: <pad>
+trainer_interface.cc(427) LOG(INFO) Adding meta_piece: <unk>
+trainer_interface.cc(427) LOG(INFO) Adding meta_piece: <s>
+trainer_interface.cc(427) LOG(INFO) Adding meta_piece: </s>
+trainer_interface.cc(432) LOG(INFO) Normalizing sentences...
+trainer_interface.cc(541) LOG(INFO) all chars count=132998927
+trainer_interface.cc(552) LOG(INFO) Done: 100% characters are covered.
+trainer_interface.cc(562) LOG(INFO) Alphabet size=11259
+trainer_interface.cc(563) LOG(INFO) Final character coverage=1
+trainer_interface.cc(594) LOG(INFO) Done! preprocessed 699849 sentences.
+unigram_model_trainer.cc(265) LOG(INFO) Making suffix array...
+unigram_model_trainer.cc(269) LOG(INFO) Extracting frequent sub strings... node_num=63794205
+unigram_model_trainer.cc(312) LOG(INFO) Initialized 1011259 seed sentencepieces
+trainer_interface.cc(600) LOG(INFO) Tokenizing input sentences with whitespace: 699849
+trainer_interface.cc(611) LOG(INFO) Done! 2004886
+unigram_model_trainer.cc(602) LOG(INFO) Using 2004886 sentences for EM training
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=575440 obj=19.2217 num_tokens=10850103 num_tokens/piece=18.8553
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=484334 obj=16.1824 num_tokens=10883242 num_tokens/piece=22.4705
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=363156 obj=16.1624 num_tokens=10991840 num_tokens/piece=30.2675
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=362863 obj=16.1427 num_tokens=10996846 num_tokens/piece=30.3058
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=272143 obj=16.2314 num_tokens=11221763 num_tokens/piece=41.2348
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=272129 obj=16.2041 num_tokens=11222110 num_tokens/piece=41.2382
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=204095 obj=16.4207 num_tokens=11583830 num_tokens/piece=56.757
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=204095 obj=16.364 num_tokens=11583901 num_tokens/piece=56.7574
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=153071 obj=16.691 num_tokens=11994849 num_tokens/piece=78.3613
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=153071 obj=16.6155 num_tokens=11994528 num_tokens/piece=78.3592
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=114803 obj=17.0277 num_tokens=12460449 num_tokens/piece=108.538
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=114802 obj=16.9419 num_tokens=12460550 num_tokens/piece=108.539
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=86101 obj=17.4384 num_tokens=12988277 num_tokens/piece=150.849
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=86101 obj=17.3432 num_tokens=12988076 num_tokens/piece=150.847
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=64575 obj=17.9383 num_tokens=13584227 num_tokens/piece=210.364
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=64575 obj=17.8279 num_tokens=13584175 num_tokens/piece=210.363
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=55000 obj=18.1907 num_tokens=13948924 num_tokens/piece=253.617
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=55000 obj=18.1259 num_tokens=13949484 num_tokens/piece=253.627
+trainer_interface.cc(689) LOG(INFO) Saving model: /Users/antalb/Experiments/LiB/experiments/models/joint/sp_unigram_50000/sp_unigram.model
+trainer_interface.cc(701) LOG(INFO) Saving vocabs: /Users/antalb/Experiments/LiB/experiments/models/joint/sp_unigram_50000/sp_unigram.vocab
+  [sp_unigram 50,000] done in 80s
+  [joint superbpe 50,000]  stage 1 ...Calling do_train_original()
+
+
+
+ 49s  stage 2 ...Calling do_train_extend()
+In do_train_extend()
+Step 1: Add special tokens
+Step 2: Compute alphabet
+Length of word_to_id: 206
+Printing 5 elements in word_to_id
+Word: K, ID: 42
+Word: ², ID: 110
+Word: s, ID: 82
+Word: Ń, ID: 205
+Word: ., ID: 13
+Word: |, ID: 91
+Word: Â, ID: 124
+Word: N, ID: 45
+Word: ¬, ID: 105
+Word: ê, ID: 162
+Step 3: Tokenize words
+
+Step 4: Count pairs in words
+
+Length of queue: 18787
+Step 5: Apply merges
+ÙİÙĳ + Ø© not found in queue
+ĠØ£ÙĨ + ÙİÙĳ not found in queue
+Ġ + Âł not found in queue
+ÙİÙĳ + Ø§ not found in queue
+ÙİÙĳ + Ùī not found in queue
+ĠÂł not found in word_to_id
+ĠÂł not found in word_to_id
+ÙİÙĳ + Ø§Ùħ not found in queue
+ÙİÙĳ + Ø¯ not found in queue
+ÙİÙĳ + ÙĦ not found in queue
+Ùĭ + ÙĳØ§ not found in queue
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳØ§Ùħ not found in word_to_id
+ÙıÙħ + ÙİÙĳ not found in queue
+ÙİÙĳØ¯ not found in word_to_id
+ÙİÙĳÙī not found in word_to_id
+ĠØ§ÙĦØ¹Ø¨ + ÙİÙĳ not found in queue
+ØŃÙħÙİÙĳØ¯ not found in word_to_id
+ÙİÙĳ + ÙĨ not found in queue
+ÙİÙĳ + Ø± not found in queue
+ÙıÙħÙİÙĳ not found in word_to_id
+ĠØ§ÙĦØ¹Ø¨ÙİÙĳ not found in word_to_id
+ÙİÙĳ + Øª not found in queue
+ÙıÙĳ + ÙĪÙĨ not found in queue
+ĠØ£ÙĨÙİÙĳ not found in word_to_id
+
+Length of merges: 24975
+Step 5: Do new merges
+Skipping merge : Ġ because of : special-casing
+Skipping merge : ĠThe because of : special-casing
+Skipping merge : ĠÂ« because of : special-casing
+Skipping merge : Ġ" because of : special-casing
+Skipping merge : ĠA because of : special-casing
+Skipping merge : ĠDie because of : special-casing
+Skipping merge : ĠâĢŀ because of : special-casing
+Skipping merge : Ġen because of : special-casing
+Skipping merge : Ġel because of : special-casing
+Skipping merge : ĠØŃØ¯Ø«ĠÙģÙĬ because of : special-casing
+Skipping merge ĠØŃØ¯Ø«ĠÙģÙĬ ĠÙħØ«ÙĦĠÙĩØ°Ø§ĠØ§ÙĦÙĬÙĪÙħ because it has 5 words
+Skipping merge ĠØŃØ¯Ø«ĠÙģÙĬ ĠÙħØ«ÙĦĠÙĩØ°Ø§ĠØ§ÙĦÙĬÙĪÙħ.Ċ because it has 5 words
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙģÙĬ because it has 5 words
+Skipping merge : Ġla because of : special-casing
+Skipping merge : ĠDer because of : special-casing
+Skipping merge : ĠS because of : special-casing
+Skipping merge : Ġthe because of : special-casing
+Skipping merge : ĠD because of : special-casing
+Skipping merge : ĠN because of : special-casing
+Skipping merge : ĠC because of : special-casing
+Skipping merge : Ġ. because of : special-casing
+Skipping merge : ĠL because of : special-casing
+Skipping merge : ĠB because of : special-casing
+Skipping merge : ĠT because of : special-casing
+Skipping merge : ĠDas because of : special-casing
+Skipping merge : ĠM because of : special-casing
+Skipping merge : ĠF because of : special-casing
+Skipping merge : ĠEl because of : special-casing
+Skipping merge : ĠP because of : special-casing
+Skipping merge : ĠK because of : special-casing
+Skipping merge : ĠR because of : special-casing
+Skipping merge : Ġ( because of : special-casing
+Skipping merge : ĠAn because of : special-casing
+Skipping merge : ĠIn because of : special-casing
+Skipping merge : ĠH because of : special-casing
+Skipping merge : ĠLa because of : special-casing
+Skipping merge ĠÙĪÙģÙĤÙĭØ§ĠÙĦÙĦØªÙĤÙĪÙĬÙħ ĠØ§ÙĦÙħÙĬÙĦØ§Ø¯ÙĬĠØ§ÙĦØºØ±Ø¨ÙĬĠ(Ø§ÙĦØºØ±ÙĬØºÙĪØ±ÙĬ because it has 5 words
+Skipping merge BBC: ĠØŃØ¯Ø«ĠÙģÙĬ because of : special-casing
+Skipping merge Ġ: ĠSie because of : special-casing
+Skipping merge ĠonĠgregoriaanisenĠkalenterinĠmukaan ĠvuodenĠ because it has 5 words
+Skipping merge : Ġ.Ċ because of : special-casing
+Skipping merge Ø©: ĠØŃØ¯Ø«ĠÙģÙĬ because of : special-casing
+Skipping merge : ĠG because of : special-casing
+Skipping merge KatsoĠmyÃ¶s: ĠkalenteriĠ~Ġ because of : special-casing
+Skipping merge : ĠE because of : special-casing
+Skipping merge Ø§ÙĦÙĨÙĬÙĪÙĬÙĪØ±ÙĥĠØªØ§ÙĬÙħØ²: ĠØŃØ¯Ø«ĠÙģÙĬ because of : special-casing
+Skipping merge : ĠJ because of : special-casing
+Skipping merge ĠØ£ÙħØ±ÙĬÙĥÙĬ ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ because it has 5 words
+Skipping merge : ĠV because of : special-casing
+Skipping merge : ĠØĮ because of : special-casing
+Skipping merge : ĠEs because of : special-casing
+Skipping merge : ĠW because of : special-casing
+Skipping merge : Ġa because of : special-casing
+Skipping merge ĠfutbolcuĠveĠteknikĠdirektÃ¶r Ġ(d.Ġ because it has 5 words
+Skipping merge : Ġse because of : special-casing
+Skipping merge : Ġlos because of : special-casing
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙģÙĬĠØ§ÙĦØ·Ø¨ĠØ¹Ø§ÙħĠ because it has 7 words
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙģÙĬĠØ§ÙĦÙģÙĬØ²ÙĬØ§Ø¡ĠØ¹Ø§ÙħĠ because it has 7 words
+Skipping merge Ġ: ĠSieĠkommt because of : special-casing
+Skipping merge : ĠI because of : special-casing
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙģÙĬĠØ§ÙĦÙĥÙĬÙħÙĬØ§Ø¡ĠØ¹Ø§ÙħĠ because it has 7 words
+Skipping merge : ĠAl because of : special-casing
+Skipping merge ĠesĠunĠgÃ©nero ĠdeĠplantas because it has 5 words
+Skipping merge : ĠEin because of : special-casing
+Skipping merge ĠØ§ÙĦÙĥØ¨ÙĬØ³Ø©ĠÙĪÙģÙĤÙĭØ§ĠÙĦÙĦØªÙĤÙĪÙĬÙħ ĠØ§ÙĦÙħÙĬÙĦØ§Ø¯ÙĬĠØ§ÙĦØºØ±Ø¨ÙĬĠ(Ø§ÙĦØºØ±ÙĬØºÙĪØ±ÙĬ because it has 6 words
+Skipping merge )ĠÙħÙĨĠØ§ÙĦØ³ÙĨÙĪØ§Øª ĠØ§ÙĦÙĥØ¨ÙĬØ³Ø©ĠÙĪÙģÙĤÙĭØ§ĠÙĦÙĦØªÙĤÙĪÙĬÙħ because it has 6 words
+Skipping merge : ĠâĢľ because of : special-casing
+Skipping merge : Ġlas because of : special-casing
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ ĠÙĪÙħØ¯Ø±Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ because it has 5 words
+Skipping merge ĠesĠunĠgÃ©nero ĠdeĠplantasĠherbÃ¡ceas because it has 6 words
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠØ¥ÙĨØ¬ÙĦÙĬØ²ÙĬ.Ċ because it has 5 words
+Skipping merge : ĠSe because of : special-casing
+Skipping merge ElĠgÃ©nero ĠfueĠdescritoĠpor because it has 5 words
+Skipping merge : ĠÙĩÙĪ because of : special-casing
+Skipping merge : ĠEn because of : special-casing
+Skipping merge ,ĠasĠwell ĠasĠthe because it has 5 words
+Skipping merge )ĠÙħÙĨĠØ§ÙĦØ³ÙĨÙĪØ§Øª ĠØ§ÙĦØ¨Ø³ÙĬØ·Ø©ØĮĠØ£ÙĪĠØ§ÙĦÙĬÙĪÙħ because it has 6 words
+Skipping merge : ĠY because of : special-casing
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙģÙĬĠØ§ÙĦØ£Ø¯Ø¨ĠØ¹Ø§ÙħĠ because it has 7 words
+Skipping merge : Ġdie because of : special-casing
+Skipping merge : ĠNomin because of : special-casing
+Skipping merge ĠdeĠlasĠpoÃ¡ceas .ĠEsĠorigin because it has 5 words
+
+ 209s  total 258s
+    → /Users/antalb/Experiments/LiB/experiments/models/joint/superbpe_50000/tokenizer.json
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/joint/lib_350000/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/joint/lib_350000/tokenizer.json not found
+device: mps; steps 5000
+
+=== BPE ===
+  |V|=49,999 train_toks=38,617,586
+      step    500  train_ce=7.748  val_bits/tok=11.2291
+      step   1000  train_ce=7.327  val_bits/tok=10.5636
+      step   1500  train_ce=7.043  val_bits/tok=10.1585
+      step   2000  train_ce=6.827  val_bits/tok=9.8375
+      step   2500  train_ce=6.629  val_bits/tok=9.5774
+      step   3000  train_ce=6.437  val_bits/tok=9.3461
+      step   3500  train_ce=6.358  val_bits/tok=9.1536
+      step   4000  train_ce=6.275  val_bits/tok=8.9748
+      step   4500  train_ce=6.210  val_bits/tok=8.8190
+      step   5000  train_ce=6.094  val_bits/tok=8.6728
+  en BPB=2.1354 tok/B=0.2449
+  de BPB=2.0850 tok/B=0.2390
+  es BPB=1.9368 tok/B=0.2433
+  fi BPB=1.7455 tok/B=0.2196
+  tr BPB=2.2323 tok/B=0.2504
+  ar BPB=1.4122 tok/B=0.1582
+  zh BPB=2.4670 tok/B=0.2524
+
+=== WordPiece ===
+  |V|=49,998 train_toks=41,423,765
+      step    500  train_ce=7.195  val_bits/tok=10.4247
+      step   1000  train_ce=6.733  val_bits/tok=9.7990
+      step   1500  train_ce=6.412  val_bits/tok=9.3782
+      step   2000  train_ce=6.344  val_bits/tok=9.0456
+      step   2500  train_ce=5.962  val_bits/tok=8.7709
+      step   3000  train_ce=5.861  val_bits/tok=8.5391
+      step   3500  train_ce=5.735  val_bits/tok=8.3419
+      step   4000  train_ce=5.672  val_bits/tok=8.1630
+      step   4500  train_ce=5.705  val_bits/tok=8.0175
+      step   5000  train_ce=5.527  val_bits/tok=7.8903
+  en BPB=2.0590 tok/B=0.2585
+  de BPB=2.0074 tok/B=0.2541
+  es BPB=1.8549 tok/B=0.2581
+  fi BPB=1.6929 tok/B=0.2464
+  tr BPB=2.1815 tok/B=0.2726
+  ar BPB=1.3842 tok/B=0.1660
+  zh BPB=2.4712 tok/B=0.2763
+
+=== SP-Unigram ===
+  |V|=50,003 train_toks=39,340,993
+      step    500  train_ce=7.135  val_bits/tok=10.4177
+      step   1000  train_ce=6.674  val_bits/tok=9.7874
+      step   1500  train_ce=6.534  val_bits/tok=9.4124
+      step   2000  train_ce=6.388  val_bits/tok=9.1231
+      step   2500  train_ce=6.120  val_bits/tok=8.9092
+      step   3000  train_ce=5.915  val_bits/tok=8.7369
+      step   3500  train_ce=5.975  val_bits/tok=8.5827
+      step   4000  train_ce=5.793  val_bits/tok=8.4490
+      step   4500  train_ce=5.849  val_bits/tok=8.3387
+      step   5000  train_ce=5.801  val_bits/tok=8.2385
+  en BPB=2.0710 tok/B=0.2526
+  de BPB=1.9962 tok/B=0.2422
+  es BPB=1.8819 tok/B=0.2497
+  fi BPB=1.6664 tok/B=0.2259
+  tr BPB=2.1779 tok/B=0.2554
+  ar BPB=1.3615 tok/B=0.1574
+  zh BPB=2.4121 tok/B=0.2621
+
+=== SuperBPE ===
+  |V|=50,003 train_toks=36,865,745
+      step    500  train_ce=8.235  val_bits/tok=11.9470
+      step   1000  train_ce=7.598  val_bits/tok=11.0865
+      step   1500  train_ce=7.282  val_bits/tok=10.6831
+      step   2000  train_ce=7.145  val_bits/tok=10.3770
+      step   2500  train_ce=6.879  val_bits/tok=10.0867
+      step   3000  train_ce=6.889  val_bits/tok=9.8452
+      step   3500  train_ce=6.678  val_bits/tok=9.6333
+      step   4000  train_ce=6.447  val_bits/tok=9.4569
+      step   4500  train_ce=6.495  val_bits/tok=9.2797
+      step   5000  train_ce=6.384  val_bits/tok=9.1317
+  en BPB=2.1450 tok/B=0.2236
+  de BPB=2.1048 tok/B=0.2269
+  es BPB=1.9432 tok/B=0.2219
+  fi BPB=1.7555 tok/B=0.2138
+  tr BPB=2.2498 tok/B=0.2506
+  ar BPB=1.4236 tok/B=0.1511
+  zh BPB=2.4546 tok/B=0.2572
+LANE B EXIT 0

@@ -1,0 +1,129 @@
+
+=== BPE ===
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpwku2g8ly/BPE.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+  en   bpc3=2.0313 tok/B=0.2449 DLcorp=7539.6 used=13840
+  de   bpc3=1.9723 tok/B=0.2390 DLcorp=8166.8 used=14119
+  es   bpc3=1.8205 tok/B=0.2433 DLcorp=4107.7 used=12991
+  fi   bpc3=1.4442 tok/B=0.2196 DLcorp=2445.1 used=10819
+  tr   bpc3=2.1952 tok/B=0.2504 DLcorp=6352.1 used=11327
+  ar   bpc3=2.3710 tok/B=0.1582 DLcorp=8262.5 used=11220
+  zh   bpc3=6.6676 tok/B=0.2524 DLcorp=8420.3 used=15730
+  all  bpc3=2.3920 tok/B=0.2219 DLcorp=53229.6 used=-
+
+=== WordPiece ===
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpc83q4d7y/WordPiece.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+  en   bpc3=1.9883 tok/B=0.2585 DLcorp=7544.8 used=11109
+  de   bpc3=1.9321 tok/B=0.2541 DLcorp=8193.5 used=11302
+  es   bpc3=1.7841 tok/B=0.2581 DLcorp=4112.5 used=10512
+  fi   bpc3=1.4449 tok/B=0.2464 DLcorp=2531.7 used=8949
+  tr   bpc3=2.1521 tok/B=0.2726 DLcorp=6513.0 used=9459
+  ar   bpc3=2.3257 tok/B=0.1660 DLcorp=8353.0 used=9162
+  zh   bpc3=6.6056 tok/B=0.2763 DLcorp=8948.1 used=16934
+  all  bpc3=2.3514 tok/B=0.2377 DLcorp=54386.1 used=-
+
+=== SP-Unigram ===
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpgej32fli/SP-Unigram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+  en   bpc3=2.0089 tok/B=0.2526 DLcorp=7198.8 used=12386
+  de   bpc3=1.9425 tok/B=0.2422 DLcorp=7646.9 used=12728
+  es   bpc3=1.8045 tok/B=0.2497 DLcorp=3895.8 used=11735
+  fi   bpc3=1.4454 tok/B=0.2259 DLcorp=2317.4 used=10096
+  tr   bpc3=2.1808 tok/B=0.2554 DLcorp=6067.3 used=10328
+  ar   bpc3=2.3317 tok/B=0.1574 DLcorp=7864.2 used=11807
+  zh   bpc3=6.5744 tok/B=0.2621 DLcorp=8288.2 used=15786
+  all  bpc3=2.3630 tok/B=0.2264 DLcorp=50814.5 used=-
+
+=== SuperBPE ===
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp9be64i9l/SuperBPE.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+  en   bpc3=2.0777 tok/B=0.2236 DLcorp=7371.4 used=15126
+  de   bpc3=2.0136 tok/B=0.2269 DLcorp=8068.4 used=15572
+  es   bpc3=1.8723 tok/B=0.2219 DLcorp=3997.7 used=14396
+  fi   bpc3=1.4880 tok/B=0.2138 DLcorp=2400.1 used=11293
+  tr   bpc3=2.2305 tok/B=0.2506 DLcorp=6371.0 used=12030
+  ar   bpc3=2.4192 tok/B=0.1511 DLcorp=8170.4 used=12186
+  zh   bpc3=6.7319 tok/B=0.2572 DLcorp=8545.0 used=13489
+  all  bpc3=2.4377 tok/B=0.2134 DLcorp=52324.0 used=-
+
+=== LiB (no supra) ===
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpgogtfu0h/LiB_(no_supra).arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+  en   bpc3=2.1046 tok/B=0.4968 DLcorp=9905.1 used=6541
+  de   bpc3=2.0127 tok/B=0.4493 DLcorp=10293.0 used=7986
+  es   bpc3=1.9412 tok/B=0.4962 DLcorp=5537.6 used=5661
+  fi   bpc3=1.5703 tok/B=0.4156 DLcorp=3237.5 used=5992
+  tr   bpc3=2.2918 tok/B=0.4627 DLcorp=8169.4 used=5938
+  ar   bpc3=2.3479 tok/B=0.2928 DLcorp=9723.0 used=6884
+  zh   bpc3=6.5552 tok/B=0.2353 DLcorp=8066.3 used=22813
+  all  bpc3=2.4385 tok/B=0.3862 DLcorp=63521.7 used=-
+
+=== LiB ===
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpyz7fm3ue/LiB.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+  en   bpc3=2.0328 tok/B=0.2177 DLcorp=7059.9 used=18628
+  de   bpc3=1.9714 tok/B=0.2148 DLcorp=7549.1 used=19347
+  es   bpc3=1.8313 tok/B=0.2174 DLcorp=3828.7 used=16255
+  fi   bpc3=1.4687 tok/B=0.1993 DLcorp=2246.2 used=12930
+  tr   bpc3=2.2081 tok/B=0.2339 DLcorp=5907.1 used=14022
+  ar   bpc3=2.3430 tok/B=0.1420 DLcorp=7687.8 used=18560
+  zh   bpc3=6.6719 tok/B=0.2310 DLcorp=7981.6 used=24679
+  all  bpc3=2.3919 tok/B=0.2007 DLcorp=49344.5 used=-
+
+=== BPE @m ===
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp1g9nxsu9/BPE_mm.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+  en   bpc3=2.0533 tok/B=0.2143 DLcorp=6880.2 used=26187
+  de   bpc3=2.0022 tok/B=0.2043 DLcorp=7383.4 used=27935
+  es   bpc3=1.8397 tok/B=0.2093 DLcorp=3687.8 used=23420
+  fi   bpc3=1.4421 tok/B=0.1845 DLcorp=2158.4 used=19069
+  tr   bpc3=2.2429 tok/B=0.2073 DLcorp=5646.9 used=19608
+  ar   bpc3=2.4317 tok/B=0.1336 DLcorp=7562.8 used=22901
+  zh   bpc3=6.8578 tok/B=0.2196 DLcorp=7900.2 used=27556
+  all  bpc3=2.4374 tok/B=0.1897 DLcorp=48487.2 used=-
+
+=== WordPiece @m ===
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp2aihlluw/WordPiece_mm.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+  en   bpc3=1.9932 tok/B=0.2226 DLcorp=6671.2 used=23059
+  de   bpc3=1.9415 tok/B=0.2124 DLcorp=7152.9 used=25362
+  es   bpc3=1.7788 tok/B=0.2212 DLcorp=3603.8 used=21250
+  fi   bpc3=1.4215 tok/B=0.2047 DLcorp=2167.0 used=17993
+  tr   bpc3=2.1767 tok/B=0.2219 DLcorp=5612.7 used=17987
+  ar   bpc3=2.3688 tok/B=0.1364 DLcorp=7441.3 used=21032
+  zh   bpc3=6.7487 tok/B=0.2400 DLcorp=8276.5 used=28677
+  all  bpc3=2.3746 tok/B=0.2002 DLcorp=48294.9 used=-
+
+=== SP-Unigram @m ===
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpy6i_v6f9/SP-Unigram_mm.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+  en   bpc3=2.0126 tok/B=0.2241 DLcorp=6625.1 used=23757
+  de   bpc3=1.9503 tok/B=0.2105 DLcorp=6956.5 used=26301
+  es   bpc3=1.7996 tok/B=0.2204 DLcorp=3538.1 used=21631
+  fi   bpc3=1.4230 tok/B=0.1950 DLcorp=2068.1 used=18516
+  tr   bpc3=2.2095 tok/B=0.2151 DLcorp=5414.7 used=19390
+  ar   bpc3=2.3726 tok/B=0.1355 DLcorp=7260.4 used=25149
+  zh   bpc3=6.6926 tok/B=0.2371 DLcorp=7879.6 used=25797
+  all  bpc3=2.3842 tok/B=0.1980 DLcorp=46764.3 used=-
+
+saved /Users/antalb/Experiments/LiB/experiments/results/joint_eval.csv
+EVAL EXIT 0

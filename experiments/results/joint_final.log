@@ -1,0 +1,149 @@
+  LiB joint size: 116,322
+  [bpe 116,322] done in 40s
+  [wordpiece 116,322] done in 30s
+sentencepiece_trainer.cc(78) LOG(INFO) Starts training with : 
+trainer_spec {
+  input: /Users/antalb/Experiments/LiB/experiments/data/joint/train.txt
+  input_format: 
+  model_prefix: /Users/antalb/Experiments/LiB/experiments/models/joint/sp_unigram_116322/sp_unigram
+  model_type: UNIGRAM
+  vocab_size: 116322
+  self_test_sample_size: 0
+  character_coverage: 1
+  input_sentence_size: 700000
+  shuffle_input_sentence: 1
+  seed_sentencepiece_size: 1000000
+  shrinking_factor: 0.75
+  max_sentence_length: 4192
+  num_threads: 16
+  num_sub_iterations: 2
+  max_sentencepiece_length: 16
+  split_by_unicode_script: 1
+  split_by_number: 1
+  split_by_whitespace: 1
+  split_digits: 0
+  pretokenization_delimiter: 
+  treat_whitespace_as_suffix: 0
+  allow_whitespace_only_pieces: 0
+  required_chars: 
+  byte_fallback: 0
+  vocabulary_output_piece_score: 1
+  train_extremely_large_corpus: 0
+  seed_sentencepieces_file: 
+  hard_vocab_limit: 1
+  use_all_vocab: 0
+  unk_id: 1
+  bos_id: 2
+  eos_id: 3
+  pad_id: 0
+  unk_piece: <unk>
+  bos_piece: <s>
+  eos_piece: </s>
+  pad_piece: <pad>
+  unk_surface:  ⁇ 
+  enable_differential_privacy: 0
+  differential_privacy_noise_level: 0
+  differential_privacy_clipping_threshold: 0
+}
+normalizer_spec {
+  name: nmt_nfkc
+  add_dummy_prefix: 1
+  remove_extra_whitespaces: 1
+  escape_whitespaces: 1
+  normalization_rule_tsv: 
+}
+denormalizer_spec {}
+trainer_interface.cc(355) LOG(INFO) SentenceIterator is not specified. Using MultiFileSentenceIterator.
+trainer_interface.cc(186) LOG(INFO) Loading corpus: /Users/antalb/Experiments/LiB/experiments/data/joint/train.txt
+trainer_interface.cc(382) LOG(WARNING) Found too long line (4743 > 4192).
+trainer_interface.cc(384) LOG(WARNING) Too long lines are skipped in the training.
+trainer_interface.cc(385) LOG(WARNING) The maximum length can be changed with --max_sentence_length=<size> flag.
+trainer_interface.cc(411) LOG(INFO) Loaded all 699849 sentences
+trainer_interface.cc(418) LOG(INFO) Skipped 151 too long sentences.
+trainer_interface.cc(427) LOG(INFO) Adding meta_piece: <pad>
+trainer_interface.cc(427) LOG(INFO) Adding meta_piece: <unk>
+trainer_interface.cc(427) LOG(INFO) Adding meta_piece: <s>
+trainer_interface.cc(427) LOG(INFO) Adding meta_piece: </s>
+trainer_interface.cc(432) LOG(INFO) Normalizing sentences...
+trainer_interface.cc(541) LOG(INFO) all chars count=132998927
+trainer_interface.cc(552) LOG(INFO) Done: 100% characters are covered.
+trainer_interface.cc(562) LOG(INFO) Alphabet size=11259
+trainer_interface.cc(563) LOG(INFO) Final character coverage=1
+trainer_interface.cc(594) LOG(INFO) Done! preprocessed 699849 sentences.
+unigram_model_trainer.cc(265) LOG(INFO) Making suffix array...
+unigram_model_trainer.cc(269) LOG(INFO) Extracting frequent sub strings... node_num=63794205
+unigram_model_trainer.cc(312) LOG(INFO) Initialized 1011259 seed sentencepieces
+trainer_interface.cc(600) LOG(INFO) Tokenizing input sentences with whitespace: 699849
+trainer_interface.cc(611) LOG(INFO) Done! 2004886
+unigram_model_trainer.cc(602) LOG(INFO) Using 2004886 sentences for EM training
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=575440 obj=19.2217 num_tokens=10850103 num_tokens/piece=18.8553
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=484334 obj=16.1824 num_tokens=10883242 num_tokens/piece=22.4705
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=363156 obj=16.1624 num_tokens=10991840 num_tokens/piece=30.2675
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=362863 obj=16.1427 num_tokens=10996846 num_tokens/piece=30.3058
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=272143 obj=16.2314 num_tokens=11221763 num_tokens/piece=41.2348
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=272129 obj=16.2041 num_tokens=11222110 num_tokens/piece=41.2382
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=204095 obj=16.4207 num_tokens=11583830 num_tokens/piece=56.757
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=204095 obj=16.364 num_tokens=11583901 num_tokens/piece=56.7574
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=153071 obj=16.691 num_tokens=11994849 num_tokens/piece=78.3613
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=153071 obj=16.6155 num_tokens=11994528 num_tokens/piece=78.3592
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=127954 obj=16.8508 num_tokens=12267885 num_tokens/piece=95.8773
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=127953 obj=16.8016 num_tokens=12268239 num_tokens/piece=95.8808
+trainer_interface.cc(689) LOG(INFO) Saving model: /Users/antalb/Experiments/LiB/experiments/models/joint/sp_unigram_116322/sp_unigram.model
+trainer_interface.cc(701) LOG(INFO) Saving vocabs: /Users/antalb/Experiments/LiB/experiments/models/joint/sp_unigram_116322/sp_unigram.vocab
+  [sp_unigram 116,322] done in 67s
+
+=== BPE ===
+Traceback (most recent call last):
+  File "/Users/antalb/Experiments/LiB/experiments/joint_multilingual.py", line 343, in <module>
+    main()
+  File "/Users/antalb/Experiments/LiB/experiments/joint_multilingual.py", line 338, in main
+    {"prepare": prepare, "baselines": baselines, "lib": lib, "matched": matched,
+  File "/Users/antalb/Experiments/LiB/experiments/joint_multilingual.py", line 243, in evaluate
+    lm = train_ngram_lm_kenlm([w.encode(l) for l in train_lines], 3,
+  File "/Users/antalb/Experiments/LiB/experiments/compute_metrics.py", line 222, in train_ngram_lm_kenlm
+    subprocess.run(
+  File "/Users/antalb/opt/miniconda3/lib/python3.9/subprocess.py", line 528, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/Users/antalb/bin/lmplz', '-o', '3', '--discount_fallback']' died with <Signals.SIGABRT: 6>.
+device: mps; steps 5000
+
+=== LiB (no supra) ===
+  |V|=116,325 train_toks=66,853,801
+      step    500  train_ce=5.089  val_bits/tok=7.2622
+      step   1000  train_ce=4.479  val_bits/tok=6.7473
+      step   1500  train_ce=4.370  val_bits/tok=6.3979
+      step   2000  train_ce=4.192  val_bits/tok=6.1143
+      step   2500  train_ce=3.906  val_bits/tok=5.8932
+      step   3000  train_ce=3.922  val_bits/tok=5.7251
+      step   3500  train_ce=4.142  val_bits/tok=5.6149
+      step   4000  train_ce=3.832  val_bits/tok=5.5035
+      step   4500  train_ce=3.792  val_bits/tok=5.4195
+      step   5000  train_ce=3.833  val_bits/tok=5.3379
+  en BPB=2.2823 tok/B=0.4968
+  de BPB=2.1981 tok/B=0.4493
+  es BPB=2.1099 tok/B=0.4962
+  fi BPB=1.8745 tok/B=0.4156
+  tr BPB=2.4181 tok/B=0.4627
+  ar BPB=1.4431 tok/B=0.2928
+  zh BPB=2.5919 tok/B=0.2353
+
+=== LiB ===
+  |V|=116,325 train_toks=34,191,361
+      step    500  train_ce=8.442  val_bits/tok=12.3499
+      step   1000  train_ce=7.892  val_bits/tok=11.4908
+      step   1500  train_ce=7.615  val_bits/tok=11.0941
+      step   2000  train_ce=7.468  val_bits/tok=10.8359
+      step   2500  train_ce=7.256  val_bits/tok=10.5915
+      step   3000  train_ce=7.146  val_bits/tok=10.3743
+      step   3500  train_ce=7.028  val_bits/tok=10.1807
+      step   4000  train_ce=6.991  val_bits/tok=10.0249
+      step   4500  train_ce=6.915  val_bits/tok=9.8839
+      step   5000  train_ce=6.824  val_bits/tok=9.7642
+  en BPB=2.1402 tok/B=0.2177
+  de BPB=2.0802 tok/B=0.2148
+  es BPB=1.9429 tok/B=0.2174
+  fi BPB=1.7329 tok/B=0.1993
+  tr BPB=2.2045 tok/B=0.2339
+  ar BPB=1.4062 tok/B=0.1420
+  zh BPB=2.4759 tok/B=0.2310
+JOINT ALL DONE

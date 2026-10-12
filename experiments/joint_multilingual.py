@@ -295,7 +295,7 @@ def bpb(args):
     done = set()
     if out.exists():
         done = {r["tokenizer"] for r in csv.DictReader(open(out))}
-    toks = joint_tokenizers(include_matched=False)
+    toks = joint_tokenizers(include_matched=True)
     if args.only:
         toks = [(n, w) for n, w in toks if n in args.only]
     print(f"device: {device}; steps {args.max_steps}", flush=True)

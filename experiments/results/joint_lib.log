@@ -1,0 +1,3 @@
+  [lib] training, cap 350,000, deterministic block order: {'num_epochs': 35000, 'doc_size': 100, 'max_len': 16, 'life': 50, 'memory_in': 0.25, 'memory_out': 0.005, 'update_rate': 0.4}
+  [lib] done in 2387 min -> /Users/antalb/Experiments/LiB/experiments/models/joint/lib_350000 | vocab=116,327 supra=16.8%
+LANE A EXIT 0
