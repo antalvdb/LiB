@@ -1,0 +1,316 @@
+device: mps
+
+############################################################
+  Vocab size: 28,423
+############################################################
+
+--- EN: English (analytic) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/en/lib_28423/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/en/lib_28423/tokenizer.json not found
+
+    === BPE ===
+      |V|=28,422  train_toks=5,070,274
+      step   1000  train_ce=6.602  val_bits/tok=9.7750
+      step   2000  train_ce=6.098  val_bits/tok=9.0001
+      step   3000  train_ce=5.694  val_bits/tok=8.4884
+      step   4000  train_ce=5.281  val_bits/tok=8.1254
+      step   5000  train_ce=5.262  val_bits/tok=7.8425
+
+    === WordPiece ===
+      |V|=28,421  train_toks=5,292,343
+      step   1000  train_ce=5.945  val_bits/tok=8.7911
+      step   2000  train_ce=5.345  val_bits/tok=8.1215
+      step   3000  train_ce=5.217  val_bits/tok=7.7084
+      step   4000  train_ce=5.004  val_bits/tok=7.3919
+      step   5000  train_ce=4.714  val_bits/tok=7.1734
+
+    === SP-Unigram ===
+      |V|=28,423  train_toks=5,302,199
+      step   1000  train_ce=5.951  val_bits/tok=8.7454
+      step   2000  train_ce=5.403  val_bits/tok=8.0736
+      step   3000  train_ce=4.936  val_bits/tok=7.6845
+      step   4000  train_ce=4.965  val_bits/tok=7.4063
+      step   5000  train_ce=4.617  val_bits/tok=7.1956
+
+==============================================================================
+  English (analytic) — neural BPB — 28k vocab
+==============================================================================
+  Tokenizer          BPB       BPC  tok/byte  byte/tok  tok/sent
+  --------------------------------------------------------------
+  BPE             1.7625    1.7672    0.2134      4.69      58.8
+  WordPiece       1.6826    1.6871    0.2205      4.54      60.8
+  SP-Unigram      1.6926    1.6972    0.2235      4.47      61.6
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_en_28423.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 26,579
+############################################################
+
+--- DE: German (fusional/compound) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/de/lib_26579/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/de/lib_26579/tokenizer.json not found
+
+    === BPE ===
+      |V|=26,578  train_toks=4,987,320
+      step   1000  train_ce=6.897  val_bits/tok=10.2008
+      step   2000  train_ce=6.147  val_bits/tok=9.2569
+      step   3000  train_ce=5.851  val_bits/tok=8.6485
+      step   4000  train_ce=5.402  val_bits/tok=8.2147
+      step   5000  train_ce=5.409  val_bits/tok=7.9134
+
+    === WordPiece ===
+      |V|=26,577  train_toks=5,155,378
+      step   1000  train_ce=6.225  val_bits/tok=9.2866
+      step   2000  train_ce=5.757  val_bits/tok=8.4443
+      step   3000  train_ce=5.296  val_bits/tok=7.9056
+      step   4000  train_ce=4.968  val_bits/tok=7.5742
+      step   5000  train_ce=4.846  val_bits/tok=7.3017
+
+    === SP-Unigram ===
+      |V|=26,578  train_toks=5,164,001
+      step   1000  train_ce=6.226  val_bits/tok=9.1149
+      step   2000  train_ce=5.602  val_bits/tok=8.3294
+      step   3000  train_ce=5.290  val_bits/tok=7.8670
+      step   4000  train_ce=5.107  val_bits/tok=7.5724
+      step   5000  train_ce=4.864  val_bits/tok=7.3375
+
+==============================================================================
+  German (fusional/compound) — neural BPB — 26k vocab
+==============================================================================
+  Tokenizer          BPB       BPC  tok/byte  byte/tok  tok/sent
+  --------------------------------------------------------------
+  BPE             1.6506    1.6807    0.2038      4.91      60.5
+  WordPiece       1.5800    1.6089    0.2104      4.75      62.5
+  SP-Unigram      1.5819    1.6108    0.2124      4.71      63.1
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_de_26579.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 25,106
+############################################################
+
+--- ES: Spanish (fusional) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/es/lib_25106/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/es/lib_25106/tokenizer.json not found
+
+    === BPE ===
+      |V|=25,105  train_toks=5,331,809
+      step   1000  train_ce=6.213  val_bits/tok=9.1904
+      step   2000  train_ce=5.484  val_bits/tok=8.2955
+      step   3000  train_ce=5.247  val_bits/tok=7.7389
+      step   4000  train_ce=4.979  val_bits/tok=7.3509
+      step   5000  train_ce=4.782  val_bits/tok=7.1081
+
+    === WordPiece ===
+      |V|=25,104  train_toks=5,472,139
+      step   1000  train_ce=5.770  val_bits/tok=8.4287
+      step   2000  train_ce=5.056  val_bits/tok=7.6421
+      step   3000  train_ce=4.781  val_bits/tok=7.1774
+      step   4000  train_ce=4.812  val_bits/tok=6.8688
+      step   5000  train_ce=4.445  val_bits/tok=6.6293
+
+    === SP-Unigram ===
+      |V|=25,105  train_toks=5,483,857
+      step   1000  train_ce=5.613  val_bits/tok=8.3033
+      step   2000  train_ce=5.087  val_bits/tok=7.5673
+      step   3000  train_ce=4.802  val_bits/tok=7.1617
+      step   4000  train_ce=4.584  val_bits/tok=6.8941
+      step   5000  train_ce=4.511  val_bits/tok=6.6972
+
+==============================================================================
+  Spanish (fusional) — neural BPB — 25k vocab
+==============================================================================
+  Tokenizer          BPB       BPC  tok/byte  byte/tok  tok/sent
+  --------------------------------------------------------------
+  BPE             1.5161    1.5481    0.2133      4.69      32.8
+  WordPiece       1.4490    1.4797    0.2226      4.49      34.2
+  SP-Unigram      1.4654    1.4964    0.2233      4.48      34.3
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_es_25106.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 20,262
+############################################################
+
+--- FI: Finnish (agglutinative) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/fi/lib_20262/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/fi/lib_20262/tokenizer.json not found
+
+    === BPE ===
+      |V|=20,261  train_toks=3,599,689
+      step   1000  train_ce=6.578  val_bits/tok=10.1954
+      step   2000  train_ce=5.789  val_bits/tok=9.0538
+      step   3000  train_ce=5.364  val_bits/tok=8.3065
+      step   4000  train_ce=4.992  val_bits/tok=7.8394
+      step   5000  train_ce=4.766  val_bits/tok=7.4995
+
+    === WordPiece ===
+      |V|=20,260  train_toks=3,728,843
+      step   1000  train_ce=5.935  val_bits/tok=9.3005
+      step   2000  train_ce=5.264  val_bits/tok=8.2587
+      step   3000  train_ce=4.845  val_bits/tok=7.6572
+      step   4000  train_ce=4.791  val_bits/tok=7.2347
+      step   5000  train_ce=4.519  val_bits/tok=6.9597
+
+    === SP-Unigram ===
+      |V|=20,261  train_toks=3,791,799
+      step   1000  train_ce=6.017  val_bits/tok=8.7750
+      step   2000  train_ce=5.309  val_bits/tok=7.9653
+      step   3000  train_ce=4.906  val_bits/tok=7.4764
+      step   4000  train_ce=4.621  val_bits/tok=7.1209
+      step   5000  train_ce=4.321  val_bits/tok=6.8933
+
+==============================================================================
+  Finnish (agglutinative) — neural BPB — 20k vocab
+==============================================================================
+  Tokenizer          BPB       BPC  tok/byte  byte/tok  tok/sent
+  --------------------------------------------------------------
+  BPE             1.1924    1.2462    0.1907      5.24      18.7
+  WordPiece       1.1443    1.1959    0.2084      4.80      20.4
+  SP-Unigram      1.1551    1.2072    0.2065      4.84      20.2
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_fi_20262.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 13,585
+############################################################
+
+--- TR: Turkish (agglutinative) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/tr/lib_13585/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/tr/lib_13585/tokenizer.json not found
+
+    === BPE ===
+      |V|=13,584  train_toks=2,409,284
+      step   1000  train_ce=5.422  val_bits/tok=8.9538
+      step   2000  train_ce=4.846  val_bits/tok=7.9406
+      step   3000  train_ce=4.456  val_bits/tok=7.3440
+      step   4000  train_ce=4.217  val_bits/tok=7.0047
+      step   5000  train_ce=4.071  val_bits/tok=6.7619
+
+    === WordPiece ===
+      |V|=13,583  train_toks=2,632,644
+      step   1000  train_ce=4.885  val_bits/tok=7.8107
+      step   2000  train_ce=4.400  val_bits/tok=7.0394
+      step   3000  train_ce=3.770  val_bits/tok=6.5575
+      step   4000  train_ce=3.869  val_bits/tok=6.2556
+      step   5000  train_ce=3.660  val_bits/tok=6.0340
+
+    === SP-Unigram ===
+      |V|=13,584  train_toks=2,588,190
+      step   1000  train_ce=4.809  val_bits/tok=7.8433
+      step   2000  train_ce=4.433  val_bits/tok=7.0976
+      step   3000  train_ce=4.019  val_bits/tok=6.6799
+      step   4000  train_ce=3.667  val_bits/tok=6.4085
+      step   5000  train_ce=3.667  val_bits/tok=6.1633
+
+==============================================================================
+  Turkish (agglutinative) — neural BPB — 13k vocab
+==============================================================================
+  Tokenizer          BPB       BPC  tok/byte  byte/tok  tok/sent
+  --------------------------------------------------------------
+  BPE             1.6552    1.8034    0.2124      4.71      47.5
+  WordPiece       1.6064    1.7502    0.2238      4.47      50.0
+  SP-Unigram      1.6235    1.7688    0.2241      4.46      50.1
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_tr_13585.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 27,315
+############################################################
+
+--- AR: Arabic (templatic) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/ar/lib_27315/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/ar/lib_27315/tokenizer.json not found
+
+    === BPE ===
+      |V|=27,314  train_toks=5,236,300
+      step   1000  train_ce=7.004  val_bits/tok=10.5635
+      step   2000  train_ce=6.465  val_bits/tok=9.5747
+      step   3000  train_ce=6.178  val_bits/tok=8.9353
+      step   4000  train_ce=5.849  val_bits/tok=8.5554
+      step   5000  train_ce=5.381  val_bits/tok=8.2673
+
+    === WordPiece ===
+      |V|=27,313  train_toks=5,342,096
+      step   1000  train_ce=6.765  val_bits/tok=9.9424
+      step   2000  train_ce=6.119  val_bits/tok=9.0822
+      step   3000  train_ce=5.773  val_bits/tok=8.5358
+      step   4000  train_ce=5.436  val_bits/tok=8.1681
+      step   5000  train_ce=5.226  val_bits/tok=7.9105
+
+    === SP-Unigram ===
+      |V|=27,314  train_toks=5,442,075
+      step   1000  train_ce=6.435  val_bits/tok=9.6480
+      step   2000  train_ce=5.819  val_bits/tok=8.7918
+      step   3000  train_ce=5.709  val_bits/tok=8.2867
+      step   4000  train_ce=5.406  val_bits/tok=7.9515
+      step   5000  train_ce=5.179  val_bits/tok=7.7131
+
+==============================================================================
+  Arabic (templatic) — neural BPB — 27k vocab
+==============================================================================
+  Tokenizer          BPB       BPC  tok/byte  byte/tok  tok/sent
+  --------------------------------------------------------------
+  BPE             1.1213    2.0173    0.1302      7.68      60.4
+  WordPiece       1.0891    1.9593    0.1325      7.55      61.5
+  SP-Unigram      1.0872    1.9560    0.1353      7.39      62.8
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_ar_27315.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 26,269
+############################################################
+
+--- ZH: Chinese (logographic) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/zh/lib_26269/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/zh/lib_26269/tokenizer.json not found
+
+    === BPE ===
+      |V|=26,268  train_toks=6,466,542
+      step   1000  train_ce=7.377  val_bits/tok=10.9656
+      step   2000  train_ce=6.747  val_bits/tok=10.0802
+      step   3000  train_ce=6.300  val_bits/tok=9.4688
+      step   4000  train_ce=6.020  val_bits/tok=9.0446
+      step   5000  train_ce=5.849  val_bits/tok=8.7217
+
+    === WordPiece ===
+      |V|=26,267  train_toks=7,730,231
+      step   1000  train_ce=6.458  val_bits/tok=9.5105
+      step   2000  train_ce=5.923  val_bits/tok=8.6215
+      step   3000  train_ce=5.625  val_bits/tok=8.1078
+      step   4000  train_ce=5.200  val_bits/tok=7.7233
+      step   5000  train_ce=5.032  val_bits/tok=7.4937
+
+    === SP-Unigram ===
+      |V|=26,268  train_toks=6,934,275
+      step   1000  train_ce=6.550  val_bits/tok=9.7602
+      step   2000  train_ce=6.166  val_bits/tok=8.9785
+      step   3000  train_ce=5.740  val_bits/tok=8.5456
+      step   4000  train_ce=5.517  val_bits/tok=8.2163
+      step   5000  train_ce=5.338  val_bits/tok=7.9661
+
+==============================================================================
+  Chinese (logographic) — neural BPB — 26k vocab
+==============================================================================
+  Tokenizer          BPB       BPC  tok/byte  byte/tok  tok/sent
+  --------------------------------------------------------------
+  BPE             2.0503    5.6212    0.2279      4.39      64.6
+  WordPiece       2.0588    5.6443    0.2676      3.74      75.9
+  SP-Unigram      1.9947    5.4686    0.2444      4.09      69.3
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_zh_26269.csv
+
+Done.
+MATCHED MONO BPB DONE
