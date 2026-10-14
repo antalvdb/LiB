@@ -1,0 +1,211 @@
+device: mps; steps 5000
+
+=== SuperBPE @m ===
+  |V|=116,325 train_toks=31,562,514
+      step    500  train_ce=9.077  val_bits/tok=13.3071
+      step   1000  train_ce=8.353  val_bits/tok=12.3725
+      step   1500  train_ce=8.226  val_bits/tok=11.9744
+      step   2000  train_ce=8.007  val_bits/tok=11.6953
+      step   2500  train_ce=7.802  val_bits/tok=11.4603
+      step   3000  train_ce=7.618  val_bits/tok=11.2682
+      step   3500  train_ce=7.703  val_bits/tok=11.0925
+      step   4000  train_ce=7.477  val_bits/tok=10.9457
+      step   4500  train_ce=7.524  val_bits/tok=10.8085
+      step   5000  train_ce=7.381  val_bits/tok=10.6886
+  en BPB=2.1464 tok/B=0.1930
+  de BPB=2.1102 tok/B=0.1939
+  es BPB=1.9592 tok/B=0.1891
+  fi BPB=1.7481 tok/B=0.1813
+  tr BPB=2.2656 tok/B=0.2132
+  ar BPB=1.4309 tok/B=0.1282
+  zh BPB=2.4818 tok/B=0.2277
+device: mps
+
+############################################################
+  Vocab size: 28,423
+############################################################
+
+--- EN: English (analytic) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/en/lib_28423/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/en/lib_28423/tokenizer.json not found
+
+    === SuperBPE ===
+      |V|=28,426  train_toks=4,532,456
+      step   1000  train_ce=7.328  val_bits/tok=11.0568
+      step   2000  train_ce=6.649  val_bits/tok=10.1316
+      step   3000  train_ce=6.305  val_bits/tok=9.5267
+      step   4000  train_ce=5.818  val_bits/tok=9.0691
+      step   5000  train_ce=5.527  val_bits/tok=8.7325
+
+==============================================================================
+  English (analytic) — neural BPB — 28k vocab
+==============================================================================
+  Tokenizer        BPB       BPC  tok/byte  byte/tok  tok/sent
+  ------------------------------------------------------------
+  SuperBPE      1.7555    1.7602    0.1919      5.21      52.9
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_en_28423.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 26,579
+############################################################
+
+--- DE: German (fusional/compound) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/de/lib_26579/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/de/lib_26579/tokenizer.json not found
+
+    === SuperBPE ===
+      |V|=26,582  train_toks=4,764,056
+      step   1000  train_ce=7.419  val_bits/tok=10.7964
+      step   2000  train_ce=6.534  val_bits/tok=9.8635
+      step   3000  train_ce=6.198  val_bits/tok=9.1499
+      step   4000  train_ce=5.928  val_bits/tok=8.6649
+      step   5000  train_ce=5.464  val_bits/tok=8.3144
+
+==============================================================================
+  German (fusional/compound) — neural BPB — 26k vocab
+==============================================================================
+  Tokenizer        BPB       BPC  tok/byte  byte/tok  tok/sent
+  ------------------------------------------------------------
+  SuperBPE      1.6583    1.6886    0.1931      5.18      57.4
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_de_26579.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 25,106
+############################################################
+
+--- ES: Spanish (fusional) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/es/lib_25106/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/es/lib_25106/tokenizer.json not found
+
+    === SuperBPE ===
+      |V|=25,109  train_toks=4,640,319
+      step   1000  train_ce=7.152  val_bits/tok=10.6987
+      step   2000  train_ce=6.606  val_bits/tok=9.6433
+      step   3000  train_ce=5.932  val_bits/tok=8.9459
+      step   4000  train_ce=5.693  val_bits/tok=8.4822
+      step   5000  train_ce=5.250  val_bits/tok=8.1451
+
+==============================================================================
+  Spanish (fusional) — neural BPB — 25k vocab
+==============================================================================
+  Tokenizer        BPB       BPC  tok/byte  byte/tok  tok/sent
+  ------------------------------------------------------------
+  SuperBPE      1.5102    1.5422    0.1946      5.14      29.9
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_es_25106.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 20,262
+############################################################
+
+--- FI: Finnish (agglutinative) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/fi/lib_20262/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/fi/lib_20262/tokenizer.json not found
+
+    === SuperBPE ===
+      |V|=20,265  train_toks=3,579,386
+      step   1000  train_ce=6.818  val_bits/tok=10.2613
+      step   2000  train_ce=5.931  val_bits/tok=9.1545
+      step   3000  train_ce=5.332  val_bits/tok=8.4006
+      step   4000  train_ce=5.215  val_bits/tok=7.9345
+      step   5000  train_ce=4.676  val_bits/tok=7.5885
+
+==============================================================================
+  Finnish (agglutinative) — neural BPB — 20k vocab
+==============================================================================
+  Tokenizer        BPB       BPC  tok/byte  byte/tok  tok/sent
+  ------------------------------------------------------------
+  SuperBPE      1.2098    1.2644    0.1857      5.38      18.2
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_fi_20262.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 13,585
+############################################################
+
+--- TR: Turkish (agglutinative) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/tr/lib_13585/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/tr/lib_13585/tokenizer.json not found
+
+    === SuperBPE ===
+      |V|=13,588  train_toks=2,387,005
+      step   1000  train_ce=5.658  val_bits/tok=9.2185
+      step   2000  train_ce=5.178  val_bits/tok=8.2100
+      step   3000  train_ce=4.619  val_bits/tok=7.5897
+      step   4000  train_ce=4.288  val_bits/tok=7.1798
+      step   5000  train_ce=4.129  val_bits/tok=6.9074
+
+==============================================================================
+  Turkish (agglutinative) — neural BPB — 13k vocab
+==============================================================================
+  Tokenizer        BPB       BPC  tok/byte  byte/tok  tok/sent
+  ------------------------------------------------------------
+  SuperBPE      1.6755    1.8254    0.2171      4.61      48.5
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_tr_13585.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 27,315
+############################################################
+
+--- AR: Arabic (templatic) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/ar/lib_27315/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/ar/lib_27315/tokenizer.json not found
+
+    === SuperBPE ===
+      |V|=27,318  train_toks=4,989,345
+      step   1000  train_ce=7.315  val_bits/tok=11.1410
+      step   2000  train_ce=6.956  val_bits/tok=10.2603
+      step   3000  train_ce=6.306  val_bits/tok=9.6007
+      step   4000  train_ce=5.814  val_bits/tok=9.1259
+      step   5000  train_ce=5.599  val_bits/tok=8.7951
+
+==============================================================================
+  Arabic (templatic) — neural BPB — 27k vocab
+==============================================================================
+  Tokenizer        BPB       BPC  tok/byte  byte/tok  tok/sent
+  ------------------------------------------------------------
+  SuperBPE      1.1358    2.0433    0.1242      8.05      57.7
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_ar_27315.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 26,269
+############################################################
+
+--- ZH: Chinese (logographic) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/zh/lib_26269/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/zh/lib_26269/tokenizer.json not found
+
+    === SuperBPE ===
+      |V|=26,272  train_toks=6,372,229
+      step   1000  train_ce=7.547  val_bits/tok=11.0507
+      step   2000  train_ce=6.826  val_bits/tok=10.1513
+      step   3000  train_ce=6.438  val_bits/tok=9.5544
+      step   4000  train_ce=6.049  val_bits/tok=9.1290
+      step   5000  train_ce=5.882  val_bits/tok=8.8150
+
+==============================================================================
+  Chinese (logographic) — neural BPB — 26k vocab
+==============================================================================
+  Tokenizer        BPB       BPC  tok/byte  byte/tok  tok/sent
+  ------------------------------------------------------------
+  SuperBPE      2.0437    5.6030    0.2257      4.43      64.0
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_zh_26269.csv
+
+Done.
+MPS LANE DONE

@@ -1,0 +1,465 @@
+
+=== SuperBPE @m ===
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp0mty3_ph/SuperBPE_mm.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+  en   bpc3=2.1162 tok/B=0.1930 DLcorp=6743.4 used=27126
+  de   bpc3=2.0552 tok/B=0.1939 DLcorp=7335.4 used=28650
+  es   bpc3=1.9112 tok/B=0.1891 DLcorp=3597.9 used=24690
+  fi   bpc3=1.5102 tok/B=0.1813 DLcorp=2134.2 used=18693
+  tr   bpc3=2.2866 tok/B=0.2132 DLcorp=5767.4 used=19786
+  ar   bpc3=2.4891 tok/B=0.1282 DLcorp=7499.2 used=23388
+  zh   bpc3=6.9002 tok/B=0.2277 DLcorp=8050.6 used=24519
+  all  bpc3=2.4941 tok/B=0.1834 DLcorp=47796.4 used=-
+
+saved /Users/antalb/Experiments/LiB/experiments/results/joint_eval.csv
+
+############################################################
+  Vocab size: 28,423
+############################################################
+
+--- EN: English (analytic) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/en/lib_28423/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/en/lib_28423/tokenizer.json not found
+    BPE …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_3e8i2pgw/en_BPE_28423_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_3e8i2pgw/en_BPE_28423_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    WordPiece …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_3e8i2pgw/en_WordPiece_28423_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_3e8i2pgw/en_WordPiece_28423_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    SP-Unigram …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_3e8i2pgw/en_SP-Unigram_28423_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_3e8i2pgw/en_SP-Unigram_28423_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    SuperBPE …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_3e8i2pgw/en_SuperBPE_28423_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_3e8i2pgw/en_SuperBPE_28423_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+
+==================================================================
+  English (analytic) — BPC — 28k vocab
+==================================================================
+  Tokenizer     2-gram BPC  3-gram BPC
+  ------------------------------------
+  BPE                2.012       1.935
+  WordPiece          1.963       1.880
+  SP-Unigram         1.987       1.896
+  SuperBPE           2.035       1.972
+
+Done.
+
+############################################################
+  Vocab size: 26,579
+############################################################
+
+--- DE: German (fusional/compound) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/de/lib_26579/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/de/lib_26579/tokenizer.json not found
+    BPE …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_ktj7u6yl/de_BPE_26579_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_ktj7u6yl/de_BPE_26579_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    WordPiece …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_ktj7u6yl/de_WordPiece_26579_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_ktj7u6yl/de_WordPiece_26579_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    SP-Unigram …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_ktj7u6yl/de_SP-Unigram_26579_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_ktj7u6yl/de_SP-Unigram_26579_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    SuperBPE …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_ktj7u6yl/de_SuperBPE_26579_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_ktj7u6yl/de_SuperBPE_26579_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+
+==================================================================
+  German (fusional/compound) — BPC — 26k vocab
+==================================================================
+  Tokenizer     2-gram BPC  3-gram BPC
+  ------------------------------------
+  BPE                1.950       1.859
+  WordPiece          1.911       1.806
+  SP-Unigram         1.928       1.815
+  SuperBPE           1.974       1.889
+
+Done.
+
+############################################################
+  Vocab size: 25,106
+############################################################
+
+--- ES: Spanish (fusional) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/es/lib_25106/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/es/lib_25106/tokenizer.json not found
+    BPE …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_ejd249tp/es_BPE_25106_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_ejd249tp/es_BPE_25106_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    WordPiece …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_ejd249tp/es_WordPiece_25106_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_ejd249tp/es_WordPiece_25106_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    SP-Unigram …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_ejd249tp/es_SP-Unigram_25106_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_ejd249tp/es_SP-Unigram_25106_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    SuperBPE …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_ejd249tp/es_SuperBPE_25106_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_ejd249tp/es_SuperBPE_25106_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+
+==================================================================
+  Spanish (fusional) — BPC — 25k vocab
+==================================================================
+  Tokenizer     2-gram BPC  3-gram BPC
+  ------------------------------------
+  BPE                1.880       1.758
+  WordPiece          1.841       1.701
+  SP-Unigram         1.868       1.713
+  SuperBPE           1.892       1.795
+
+Done.
+
+############################################################
+  Vocab size: 20,262
+############################################################
+
+--- FI: Finnish (agglutinative) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/fi/lib_20262/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/fi/lib_20262/tokenizer.json not found
+    BPE …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_mdw3wqoq/fi_BPE_20262_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_mdw3wqoq/fi_BPE_20262_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    WordPiece …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_mdw3wqoq/fi_WordPiece_20262_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_mdw3wqoq/fi_WordPiece_20262_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    SP-Unigram …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_mdw3wqoq/fi_SP-Unigram_20262_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_mdw3wqoq/fi_SP-Unigram_20262_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    SuperBPE …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_mdw3wqoq/fi_SuperBPE_20262_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_mdw3wqoq/fi_SuperBPE_20262_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+
+==================================================================
+  Finnish (agglutinative) — BPC — 20k vocab
+==================================================================
+  Tokenizer     2-gram BPC  3-gram BPC
+  ------------------------------------
+  BPE                1.558       1.348
+  WordPiece          1.569       1.317
+  SP-Unigram         1.586       1.333
+  SuperBPE           1.591       1.395
+
+Done.
+
+############################################################
+  Vocab size: 13,585
+############################################################
+
+--- TR: Turkish (agglutinative) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/tr/lib_13585/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/tr/lib_13585/tokenizer.json not found
+    BPE …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc___0xe4tb/tr_BPE_13585_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc___0xe4tb/tr_BPE_13585_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    WordPiece …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc___0xe4tb/tr_WordPiece_13585_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc___0xe4tb/tr_WordPiece_13585_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    SP-Unigram …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc___0xe4tb/tr_SP-Unigram_13585_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc___0xe4tb/tr_SP-Unigram_13585_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    SuperBPE …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc___0xe4tb/tr_SuperBPE_13585_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc___0xe4tb/tr_SuperBPE_13585_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+
+==================================================================
+  Turkish (agglutinative) — BPC — 13k vocab
+==================================================================
+  Tokenizer     2-gram BPC  3-gram BPC
+  ------------------------------------
+  BPE                2.150       2.028
+  WordPiece          2.112       1.976
+  SP-Unigram         2.148       1.993
+  SuperBPE           2.176       2.061
+
+Done.
+
+############################################################
+  Vocab size: 27,315
+############################################################
+
+--- AR: Arabic (templatic) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/ar/lib_27315/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/ar/lib_27315/tokenizer.json not found
+    BPE …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc__edpwwdq/ar_BPE_27315_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc__edpwwdq/ar_BPE_27315_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    WordPiece …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc__edpwwdq/ar_WordPiece_27315_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc__edpwwdq/ar_WordPiece_27315_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    SP-Unigram …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc__edpwwdq/ar_SP-Unigram_27315_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc__edpwwdq/ar_SP-Unigram_27315_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    SuperBPE …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc__edpwwdq/ar_SuperBPE_27315_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc__edpwwdq/ar_SuperBPE_27315_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+
+==================================================================
+  Arabic (templatic) — BPC — 27k vocab
+==================================================================
+  Tokenizer     2-gram BPC  3-gram BPC
+  ------------------------------------
+  BPE                2.336       2.258
+  WordPiece          2.278       2.203
+  SP-Unigram         2.297       2.212
+  SuperBPE           2.352       2.285
+
+Done.
+
+############################################################
+  Vocab size: 26,269
+############################################################
+
+--- ZH: Chinese (logographic) ---
+    [skip] LiB (no supra): /Users/antalb/Experiments/LiB/experiments/models/zh/lib_26269/tokenizer.json not found
+    [skip] LiB: /Users/antalb/Experiments/LiB/experiments/models/zh/lib_26269/tokenizer.json not found
+    BPE …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_6gp5iaz4/zh_BPE_26269_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_6gp5iaz4/zh_BPE_26269_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    WordPiece …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_6gp5iaz4/zh_WordPiece_26269_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_6gp5iaz4/zh_WordPiece_26269_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    SP-Unigram …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_6gp5iaz4/zh_SP-Unigram_26269_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_6gp5iaz4/zh_SP-Unigram_26269_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+    SuperBPE …
+      2-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_6gp5iaz4/zh_SuperBPE_26269_2gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+      3-gram LM …
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/lib_bpc_6gp5iaz4/zh_SuperBPE_26269_3gram.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+
+==================================================================
+  Chinese (logographic) — BPC — 26k vocab
+==================================================================
+  Tokenizer     2-gram BPC  3-gram BPC
+  ------------------------------------
+  BPE                6.588       6.373
+  WordPiece          6.647       6.321
+  SP-Unigram         6.511       6.244
+  SuperBPE           6.610       6.400
+
+Done.
+CPU LANE DONE

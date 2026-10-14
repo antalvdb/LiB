@@ -203,7 +203,7 @@ def joint_tokenizers(include_matched=True):
     if include_matched and (JMODELS / f"lib_{LIB_CAP}" / "tokenizer.json").exists():
         m = lib_size()
         cfgs += [("BPE @m", f"bpe_{m}", "hf"), ("WordPiece @m", f"wordpiece_{m}", "hf"),
-                 ("SP-Unigram @m", f"sp_unigram_{m}", "sp")]
+                 ("SP-Unigram @m", f"sp_unigram_{m}", "sp"), ("SuperBPE @m", f"superbpe_{m}", "hf")]
     out = []
     for name, sub, kind in cfgs:
         d = JMODELS / sub
@@ -231,7 +231,10 @@ def evaluate(args):
     tests["all"] = read_lines(JDATA / "test.txt")
 
     rows = []
-    for name, w in joint_tokenizers():
+    toks = joint_tokenizers()
+    if args.only:
+        toks = [(n, w) for n, w in toks if n in args.only]
+    for name, w in toks:
         print(f"\n=== {name} ===", flush=True)
         vocab = w.vocab()
         enc = {k: [w.encode(l) for l in ls] for k, ls in tests.items()}
@@ -270,6 +273,9 @@ def evaluate(args):
 
     RESULTS.mkdir(exist_ok=True)
     out = RESULTS / "joint_eval.csv"
+    if args.only and out.exists():
+        # keep the other tokenizers' rows and replace only those just scored
+        rows = [r for r in csv.DictReader(open(out)) if r["tokenizer"] not in args.only] + rows
     keys = sorted({k for r in rows for k in r}, key=lambda k: list(rows[0]).index(k)
                   if k in rows[0] else 99)
     with open(out, "w", newline="") as f:

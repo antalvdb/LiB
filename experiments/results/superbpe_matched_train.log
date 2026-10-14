@@ -1,0 +1,1226 @@
+  [joint superbpe 116,322]  stage 1 ...Calling do_train_original()
+
+
+
+ 53s  stage 2 ...Calling do_train_extend()
+In do_train_extend()
+Step 1: Add special tokens
+Step 2: Compute alphabet
+Length of word_to_id: 206
+Printing 5 elements in word_to_id
+Word: Ù, ID: 147
+Word: G, ID: 38
+Word: ĳ, ID: 189
+Word: K, ID: 42
+Word: Ċ, ID: 170
+Word: 0, ID: 15
+Word: \, ID: 59
+Word: Û, ID: 149
+Word: ×, ID: 145
+Word: n, ID: 77
+Step 3: Tokenize words
+
+Step 4: Count pairs in words
+
+Length of queue: 18787
+Step 5: Apply merges
+ÙİÙĳ + Ø© not found in queue
+ĠØ£ÙĨ + ÙİÙĳ not found in queue
+Ġ + Âł not found in queue
+ÙİÙĳ + Ø§ not found in queue
+ÙİÙĳ + Ùī not found in queue
+ĠÂł not found in word_to_id
+ĠÂł not found in word_to_id
+ÙİÙĳ + Ø§Ùħ not found in queue
+ÙİÙĳ + Ø¯ not found in queue
+ÙİÙĳ + ÙĦ not found in queue
+Ùĭ + ÙĳØ§ not found in queue
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳØ§Ùħ not found in word_to_id
+ÙıÙħ + ÙİÙĳ not found in queue
+ÙİÙĳØ¯ not found in word_to_id
+ÙİÙĳÙī not found in word_to_id
+ĠØ§ÙĦØ¹Ø¨ + ÙİÙĳ not found in queue
+ØŃÙħÙİÙĳØ¯ not found in word_to_id
+ÙİÙĳ + ÙĨ not found in queue
+ÙİÙĳ + Ø± not found in queue
+ÙıÙħÙİÙĳ not found in word_to_id
+ĠØ§ÙĦØ¹Ø¨ÙİÙĳ not found in word_to_id
+ÙİÙĳ + Øª not found in queue
+ÙıÙĳ + ÙĪÙĨ not found in queue
+ĠØ£ÙĨÙİÙĳ not found in word_to_id
+Ø±ÙĬÙİÙĳØ© not found in word_to_id
+ĠÂłĠÂł not found in word_to_id
+ĠÂłĠÂł not found in word_to_id
+ÙİÙĳ + Ùħ not found in queue
+ÙĲÙĳ + ÙĬ not found in queue
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳÙĦ not found in word_to_id
+ÙİÙĳ + ÙĩÙı not found in queue
+ÙİÙĳ + Ø§Øª not found in queue
+ÙİÙĳ + Ø¨ not found in queue
+ÙİÙĳØ§ not found in word_to_id
+ÙİÙĳ + Ø§Ø± not found in queue
+ÙİÙĳ + Ùĩ not found in queue
+ÙİÙĳ + Ùģ not found in queue
+ÙİÙĳ + Ø§ÙĨ not found in queue
+ÙĲÙĳ + Ø± not found in queue
+ÙİÙĳØ© not found in word_to_id
+ĠØ§ÙĦØ¹Ø¨ÙİÙĳØ§Ø³ÙĬ not found in word_to_id
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳ + Ø¹ not found in queue
+ĠÙĦÙĥÙĨ + ÙİÙĳ not found in queue
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳ + ÙĤ not found in queue
+ÙİÙĳØ© not found in word_to_id
+ĠØ¶Ø¯ + ÙİÙĳ not found in queue
+ÙİÙĳØ§ not found in word_to_id
+ÙĲÙĳ + Ùĩ not found in queue
+ÙİÙĳØ§ not found in word_to_id
+ÙĲÙĳ + ÙĦ not found in queue
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳØ§ not found in word_to_id
+ÙĲÙĳ + ÙĨ not found in queue
+ÙıÙĳ + Ùĩ not found in queue
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳÙĨ not found in word_to_id
+ÙĲÙĳ + Ø¯ not found in queue
+
+Length of merges: 58102
+Step 5: Do new merges
+Skipping merge : Ġ because of : special-casing
+Skipping merge : ĠThe because of : special-casing
+Skipping merge : ĠÂ« because of : special-casing
+Skipping merge : Ġ" because of : special-casing
+Skipping merge : ĠDie because of : special-casing
+Skipping merge : ĠâĢŀ because of : special-casing
+Skipping merge : ĠA because of : special-casing
+Skipping merge : Ġen because of : special-casing
+Skipping merge : Ġel because of : special-casing
+Skipping merge : ĠØŃØ¯Ø«ĠÙģÙĬ because of : special-casing
+Skipping merge ĠØŃØ¯Ø«ĠÙģÙĬ ĠÙħØ«ÙĦĠÙĩØ°Ø§ĠØ§ÙĦÙĬÙĪÙħ because it has 5 words
+Skipping merge ĠØŃØ¯Ø«ĠÙģÙĬ ĠÙħØ«ÙĦĠÙĩØ°Ø§ĠØ§ÙĦÙĬÙĪÙħ.Ċ because it has 5 words
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙģÙĬ because it has 5 words
+Skipping merge : Ġla because of : special-casing
+Skipping merge : ĠDer because of : special-casing
+Skipping merge : Ġthe because of : special-casing
+Skipping merge : Ġ. because of : special-casing
+Skipping merge : ĠDas because of : special-casing
+Skipping merge : Ġ( because of : special-casing
+Skipping merge : ĠEl because of : special-casing
+Skipping merge ĠÙĪÙģÙĤÙĭØ§ĠÙĦÙĦØªÙĤÙĪÙĬÙħ ĠØ§ÙĦÙħÙĬÙĦØ§Ø¯ÙĬĠØ§ÙĦØºØ±Ø¨ÙĬĠ(Ø§ÙĦØºØ±ÙĬØºÙĪØ±ÙĬ because it has 5 words
+Skipping merge BBC: ĠØŃØ¯Ø«ĠÙģÙĬ because of : special-casing
+Skipping merge Ġ: ĠSie because of : special-casing
+Skipping merge : ĠLa because of : special-casing
+Skipping merge ĠonĠgregoriaanisenĠkalenterinĠmukaan ĠvuodenĠ because it has 5 words
+Skipping merge : Ġ.Ċ because of : special-casing
+Skipping merge Ø©: ĠØŃØ¯Ø«ĠÙģÙĬ because of : special-casing
+Skipping merge : ĠAn because of : special-casing
+Skipping merge KatsoĠmyÃ¶s: ĠkalenteriĠ~Ġ because of : special-casing
+Skipping merge : ĠS because of : special-casing
+Skipping merge Ø§ÙĦÙĨÙĬÙĪÙĬÙĪØ±ÙĥĠØªØ§ÙĬÙħØ²: ĠØŃØ¯Ø«ĠÙģÙĬ because of : special-casing
+Skipping merge : ĠT because of : special-casing
+Skipping merge : ĠD because of : special-casing
+Skipping merge : ĠIn because of : special-casing
+Skipping merge ĠØ£ÙħØ±ÙĬÙĥÙĬ ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ because it has 5 words
+Skipping merge : ĠL because of : special-casing
+Skipping merge : ĠØĮ because of : special-casing
+Skipping merge : ĠC because of : special-casing
+Skipping merge ĠfutbolcuĠveĠteknikĠdirektÃ¶r Ġ(d.Ġ because it has 5 words
+Skipping merge : Ġse because of : special-casing
+Skipping merge : Ġlos because of : special-casing
+Skipping merge : Ġa because of : special-casing
+Skipping merge : ĠM because of : special-casing
+Skipping merge : ĠB because of : special-casing
+Skipping merge : ĠN because of : special-casing
+Skipping merge : ĠK because of : special-casing
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙģÙĬĠØ§ÙĦØ·Ø¨ĠØ¹Ø§ÙħĠ because it has 7 words
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙģÙĬĠØ§ÙĦÙģÙĬØ²ÙĬØ§Ø¡ĠØ¹Ø§ÙħĠ because it has 7 words
+Skipping merge : ĠEs because of : special-casing
+Skipping merge Ġ: ĠSieĠkommt because of : special-casing
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙģÙĬĠØ§ÙĦÙĥÙĬÙħÙĬØ§Ø¡ĠØ¹Ø§ÙħĠ because it has 7 words
+Skipping merge : ĠF because of : special-casing
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ ĠÙĪÙħØ¯Ø±Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ because it has 5 words
+Skipping merge ĠesĠunĠgÃ©nero ĠdeĠplantas because it has 5 words
+Skipping merge : ĠEin because of : special-casing
+Skipping merge ĠØ§ÙĦÙĥØ¨ÙĬØ³Ø©ĠÙĪÙģÙĤÙĭØ§ĠÙĦÙĦØªÙĤÙĪÙĬÙħ ĠØ§ÙĦÙħÙĬÙĦØ§Ø¯ÙĬĠØ§ÙĦØºØ±Ø¨ÙĬĠ(Ø§ÙĦØºØ±ÙĬØºÙĪØ±ÙĬ because it has 6 words
+Skipping merge : Ġlas because of : special-casing
+Skipping merge )ĠÙħÙĨĠØ§ÙĦØ³ÙĨÙĪØ§Øª ĠØ§ÙĦÙĥØ¨ÙĬØ³Ø©ĠÙĪÙģÙĤÙĭØ§ĠÙĦÙĦØªÙĤÙĪÙĬÙħ because it has 6 words
+Skipping merge : ĠP because of : special-casing
+Skipping merge : ĠâĢľ because of : special-casing
+Skipping merge : ĠG because of : special-casing
+Skipping merge : ĠE because of : special-casing
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠØ¥ÙĨØ¬ÙĦÙĬØ²ÙĬ.Ċ because it has 5 words
+Skipping merge ĠesĠunĠgÃ©nero ĠdeĠplantasĠherbÃ¡ceas because it has 6 words
+Skipping merge : ĠÙĩÙĪ because of : special-casing
+Skipping merge : Ġdie because of : special-casing
+Skipping merge : ĠH because of : special-casing
+Skipping merge ElĠgÃ©nero ĠfueĠdescritoĠpor because it has 5 words
+Skipping merge ,ĠasĠwell ĠasĠthe because it has 5 words
+Skipping merge : ĠAl because of : special-casing
+Skipping merge : ĠâĢĿ because of : special-casing
+Skipping merge : ĠV because of : special-casing
+Skipping merge : ĠSe because of : special-casing
+Skipping merge )ĠÙħÙĨĠØ§ÙĦØ³ÙĨÙĪØ§Øª ĠØ§ÙĦØ¨Ø³ÙĬØ·Ø©ØĮĠØ£ÙĪĠØ§ÙĦÙĬÙĪÙħ because it has 6 words
+Skipping merge ØĮĠØ¹ÙĦÙī ĠØ§ÙĦØ±ØºÙħĠÙħÙĨĠØ£ÙĨ because it has 5 words
+Skipping merge : ĠR because of : special-casing
+Skipping merge : ĠEn because of : special-casing
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙģÙĬĠØ§ÙĦØ£Ø¯Ø¨ĠØ¹Ø§ÙħĠ because it has 7 words
+Skipping merge ĠJaponya'nÄ±nĠgelenekselĠveraset ĠdÃ¼zenineĠgÃ¶reĠ because it has 5 words
+Skipping merge Ġ: ĠDie because of : special-casing
+Skipping merge : ĠÙĪÙĩÙĬ because of : special-casing
+Skipping merge : ĠW because of : special-casing
+Skipping merge : Ġ# because of : special-casing
+Skipping merge ĠCatalogueĠofĠNew ĠWorldĠGrasses because it has 5 words
+Skipping merge ĠCatalogueĠofĠNew ĠWorldĠGrassesĠ(Poaceae because it has 6 words
+Skipping merge : Ġun because of : special-casing
+Skipping merge ĠDavidse,ĠP.ĠM.ĠPeterson ,ĠF.ĠO.ĠZuloaga because it has 7 words
+Skipping merge GrassbaseĠ-ĠTheĠWorld ĠOnlineĠGrassĠFloraĊ because it has 7 words
+Skipping merge Ġ: Ġ because of : special-casing
+Skipping merge ĠdeĠlasĠpoÃ¡ceas .ĠEsĠoriginario because it has 5 words
+Skipping merge .ĠLaĠespecie ĠtipoĠes: because it has 5 words
+Skipping merge ĠNobelinĠlÃ¤Ã¤ketieteenĠpalkinnonĠsaanut Ġyhdysvaltalainen because it has 5 words
+Skipping merge : ĠI because of : special-casing
+Skipping merge : ĠJ because of : special-casing
+Skipping merge ĠpertenecienteĠaĠlaĠfamilia ĠdeĠlasĠpoÃ¡ceas because it has 7 words
+Skipping merge : ĠNominierung because of : special-casing
+Skipping merge : Ġi because of : special-casing
+Skipping merge : Ġuna because of : special-casing
+Skipping merge ,ĠTÃ¼rkĠtiyatro ,ĠsinemaĠveĠdizi because it has 6 words
+Skipping merge ,ĠAmericanĠbaseball ĠplayerĠand because it has 5 words
+Skipping merge : Ġmapa because of : special-casing
+Skipping merge ĠØ£ÙĦÙħØ§ÙĨÙĬ ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ because it has 5 words
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙĦÙĦØ³ÙĦØ§ÙħĠØ¹Ø§ÙħĠ because it has 6 words
+Skipping merge ĠØ¨ÙĨĠØ¹Ø¨Ø¯ĠØ§ÙĦØ¹Ø²ÙĬØ² ĠØ¢ÙĦĠØ³Ø¹ÙĪØ¯ because it has 5 words
+Skipping merge : ĠEr because of : special-casing
+Skipping merge . ĠØ¹ÙĦÙīĠØ§ÙĦØ±ØºÙħĠÙħÙĨĠØ£ÙĨ because it has 5 words
+Skipping merge : ĠO because of : special-casing
+Skipping merge ĠandĠacademic ,ĠNobelĠPrizeĠlaureate because it has 5 words
+Skipping merge ĠveĠNobel ĠFizyolojiĠveyaĠTÄ±p because it has 5 words
+Skipping merge background: Ġ# because of : special-casing
+Skipping merge ĠdeĠplantasĠherbÃ¡ceas ĠpertenecienteĠaĠlaĠfamilia because it has 7 words
+Skipping merge ĠdesdeĠel ĠpuntoĠdeĠvista because it has 5 words
+Skipping merge : ĠEine because of : special-casing
+Skipping merge ,Ġpor ĠloĠqueĠse because it has 5 words
+Skipping merge : ĠenĠel because of : special-casing
+Skipping merge : Ġ"The because of : special-casing
+Skipping merge Ġns. ĠNobelinĠtaloustieteenĠpalkinnonĠsaanut because it has 5 words
+Skipping merge : ĠY because of : special-casing
+Skipping merge . ĠMOĠGenericĠNamesĠin because it has 5 words
+Skipping merge ĠMOĠGenericĠNamesĠin ĠUseĊ because it has 5 words
+Skipping merge ĠfutbolcuĠveĠteknikĠdirektÃ¶r Ġ(Ã¶.Ġ because it has 5 words
+Skipping merge MissouriĠBotanicalĠGarden. ĠMOĠGenericĠNamesĠin because it has 7 words
+Skipping merge : ĠLe because of : special-casing
+Skipping merge Person ĠalsĠNamensgeberĠfÃ¼rĠeinen because it has 5 words
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠÙĥÙĪÙĬØªÙĬ.Ċ because it has 5 words
+Skipping merge Ø¯ÙĪÙĦĠØ£Ø¹Ø¶Ø§Ø¡ĠÙģÙĬ ĠØ§ÙĦØ£ÙħÙħĠØ§ÙĦÙħØªØŃØ¯Ø©Ċ because it has 5 words
+Skipping merge ,ĠJaponya'nÄ±nĠgelenekselĠveraset ĠdÃ¼zenineĠgÃ¶reĠ because it has 6 words
+Skipping merge . ĠContr.ĠU.S.ĠNatl.ĠHerb.Ġ because it has 5 words
+Skipping merge ,ĠNobelĠPrizeĠlaureate Ġ(d.Ġ because it has 5 words
+Skipping merge : ĠØ£ÙĨ because of : special-casing
+Skipping merge ĠalsĠNamensgeberĠfÃ¼rĠeinen ĠAsteroidenĊ because it has 5 words
+Skipping merge ØĮĠÙĪÙģÙĤÙĭØ§ĠÙĦÙĦØªÙĤÙĪÙĬÙħ ĠØ§ÙĦÙħÙĬÙĦØ§Ø¯ÙĬĠØ§ÙĦØºØ±Ø¨ÙĬĠ(Ø§ÙĦØºØ±ÙĬØºÙĪØ±ÙĬ because it has 6 words
+Skipping merge )ĠÙģÙĬĠØ§ÙĦØ³ÙĨÙĪØ§ØªĠØ§ÙĦÙĥØ¨ÙĬØ³Ø© ØĮĠÙĪÙģÙĤÙĭØ§ĠÙĦÙĦØªÙĤÙĪÙĬÙħ because it has 6 words
+Skipping merge ĠatĠthe ĠPerseusĠDigitalĠLibrary because it has 5 words
+Skipping merge ,ĠNobelĠPrizeĠlaureate Ġ(b.Ġ because it has 5 words
+Skipping merge ĠatĠthe ĠendĠofĠthe because it has 5 words
+Skipping merge Ġtiyatro,ĠsinemaĠveĠdizi ĠoyuncusuĠ(d.Ġ because it has 6 words
+Skipping merge : ĠÂ«Ø¥ÙĨ because of : special-casing
+Skipping merge .ĠLa ĠmayorÃŃaĠdeĠlos because it has 5 words
+Skipping merge ĠdeĠlaĠfamilia ĠdeĠlasĠpoÃ¡ceas because it has 6 words
+Skipping merge ĠfizikÃ§iĠveĠNobelĠFizik ĠÃĸdÃ¼lÃ¼ĠsahibiĠ(d.Ġ because it has 7 words
+Skipping merge : ĠLos because of : special-casing
+Skipping merge .ĠMissouriĠBotanicalĠGarden ,ĠSt.ĠLouis.Ċ because it has 6 words
+Skipping merge : ĠUn because of : special-casing
+Skipping merge ĠmillÃ® ĠfutbolcuĠveĠteknikĠdirektÃ¶rĊ because it has 5 words
+Skipping merge : ĠIm because of : special-casing
+Skipping merge : ĠenĠEspaÃ±a because of : special-casing
+Skipping merge : ĠAr because of : special-casing
+Skipping merge ØĮĠØ±Ø¦ÙĬØ³ĠÙĪØ²Ø±Ø§Ø¡ ĠØ§ÙĦÙħÙħÙĦÙĥØ©ĠØ§ÙĦÙħØªØŃØ¯Ø©.Ċ because it has 5 words
+Skipping merge TerminologÃŃa ĠdescriptivaĠdeĠlasĠplantasĊ because it has 5 words
+Skipping merge : ĠÙĩÙĬ because of : special-casing
+Skipping merge ĠNobelinĠtaloustieteenĠpalkinnonĠsaanut Ġyhdysvaltalainen because it has 5 words
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙģÙĬĠØ§ÙĦØ¹ÙĦÙĪÙħĠØ§ÙĦØ§ÙĤØªØµØ§Ø¯ÙĬØ©ĠØ¹Ø§ÙħĠ because it has 8 words
+Skipping merge ĠEnĠÄ°yi ĠErkekĠOyuncuĠAkademi because it has 5 words
+Skipping merge ogr.ĠSyst.ĠBot. ĠMissouriĠBot.ĠGard.Ġ because it has 6 words
+Skipping merge : ĠJohn because of : special-casing
+Skipping merge : ĠJuan because of : special-casing
+Skipping merge Ġ: ĠSieĠkommtĠin because of : special-casing
+Skipping merge ĠeskiĠmillÃ® ĠfutbolcuĠveĠteknikĠdirektÃ¶r because it has 6 words
+Skipping merge ĠfizikÃ§iĠveĠNobelĠFizik ĠÃĸdÃ¼lÃ¼ĠsahibiĠ(Ã¶.Ġ because it has 7 words
+Skipping merge ,Ġcon ĠnÃºmerosĠcromosÃ³micosĠsomÃ¡ticos because it has 5 words
+Skipping merge %ĠÙħÙĨ ĠØ§ÙĦÙĨØ§ØªØ¬ĠØ§ÙĦÙħØŃÙĦÙĬĠØ§ÙĦØ¥Ø¬ÙħØ§ÙĦÙĬ because it has 5 words
+Skipping merge : ĠAm because of : special-casing
+Skipping merge : ĠCon because of : special-casing
+Skipping merge : ĠSie because of : special-casing
+Skipping merge : Ġ"I because of : special-casing
+Skipping merge ,ĠsinemaĠveĠdizi ĠoyuncusuĊ because it has 5 words
+Skipping merge .ĠOnĠthe ĠotherĠhand because it has 5 words
+Skipping merge ĠdeĠplantasĠherbÃ¡ceas ĠdeĠlaĠfamilia because it has 6 words
+Skipping merge : ĠZ because of : special-casing
+Skipping merge : ĠØ¥ÙĨ because of : special-casing
+Skipping merge : ĠÙĪÙĩÙĪ because of : special-casing
+Skipping merge ØĮĠØ¹Ø§ÙĦÙħĠÙģÙĬØ²ÙĬØ§Ø¡ĠØ£ÙħØ±ÙĬÙĥÙĬ ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ because it has 8 words
+Skipping merge BaseĠ-ĠThe ĠOnlineĠWorld because it has 5 words
+Skipping merge .ĠIn ĠCatalogueĠofĠNew because it has 5 words
+Skipping merge Ġ(Stand: Ġ because of : special-casing
+Skipping merge ĠGrassBaseĠ-ĠThe ĠOnlineĠWorld because it has 5 words
+Skipping merge : Ġ' because of : special-casing
+Skipping merge : ĠâĢŀIch because of : special-casing
+Skipping merge ,Ġcon ĠnÃºmerosĠcromosÃ³micosĠsomÃ¡ticosĠdeĠ because it has 6 words
+Skipping merge ĠdÃ¼ÅŁtÃ¼: Ġ because of : special-casing
+Skipping merge : ĠCat because of : special-casing
+Skipping merge .Ġand ĠWilliamson,ĠH.Ġ( because it has 5 words
+Skipping merge ,ĠT.ĠS.ĠFilgueiras ,ĠE.ĠJ.ĠJudziewicz because it has 7 words
+Skipping merge ,ĠF.ĠO.ĠZuloaga ,ĠT.ĠS.ĠFilgueiras because it has 7 words
+Skipping merge ,ĠF.ĠO.ĠZuloaga ,ĠE.ĠJ.ĠJudziewicz because it has 7 words
+Skipping merge ,ĠE.ĠJ.ĠJudziewicz ,ĠT.ĠS.ĠFilgueiras because it has 7 words
+Skipping merge ,ĠG. ĠDavidse,ĠP.ĠM.ĠPeterson because it has 6 words
+Skipping merge ĠGrassBaseĠ-ĠThe ĠOnlineĠWorldĠGrassĠFlora because it has 7 words
+Skipping merge ĠInternetĠCat .ĠNewĠWorldĠGrasses because it has 5 words
+Skipping merge ĠR.ĠJ.ĠSoreng,ĠG. ĠDavidse,ĠP.ĠM.ĠPeterson because it has 8 words
+Skipping merge ĠHarman,ĠK.T.Ġand ĠWilliamson,ĠH.Ġ( because it has 6 words
+Skipping merge : ĠU because of : special-casing
+Skipping merge : ĠDe because of : special-casing
+Skipping merge : ĠVon because of : special-casing
+Skipping merge .ĠIn ĠR.ĠJ.ĠSoreng,ĠG. because it has 6 words
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠØ¥ÙĬØ·Ø§ÙĦÙĬ.Ċ because it has 5 words
+Skipping merge ,ĠporĠlo ĠqueĠel because it has 5 words
+Skipping merge .ĠEn: ĠGrassBaseĠ-ĠThe because of : special-casing
+Skipping merge .ĠNewĠWorldĠGrasses .ĠMissouriĠBotanicalĠGarden because it has 7 words
+Skipping merge : ĠÙħÙĨ because of : special-casing
+Skipping merge Ġ: ĠSieĠenthÃ¤lt because of : special-casing
+Skipping merge ĠÙģØ±ÙĨØ³ÙĬ ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ because it has 5 words
+Skipping merge ,Ġand ĠeditorialĠchangesĠsinceĠthe because it has 6 words
+Skipping merge ĠG. ĠDavidse,ĠP.ĠM.ĠPeterson because it has 5 words
+Skipping merge ĠContr.ĠU.S.ĠNatl.ĠHerb .Ġvols.Ġ because it has 5 words
+Skipping merge ĠveĠNobelĠKimya ĠÃĸdÃ¼lÃ¼ĠsahibiĠ(d.Ġ because it has 6 words
+Skipping merge DoÄŁduÄŁu ĠgÃ¼nĠveĠayĠbilinmeyenlerĊ because it has 5 words
+Skipping merge ĠvolumesĠofĠthe ĠCatalogueĠofĠNew because it has 6 words
+Skipping merge )ĠpublishedĠin ĠContr.ĠU.S.ĠNatl.ĠHerb because it has 7 words
+Skipping merge ĠfourĠpublished ĠvolumesĠofĠthe because it has 5 words
+Skipping merge ĠeditorialĠchangesĠsinceĠthe ĠfourĠpublished because it has 6 words
+Skipping merge .ĠOn-lineĠtaxonomic ĠnoveltiesĠandĠupdates, because it has 6 words
+Skipping merge ĠdistributionalĠadditionsĠandĠcorrections ,Ġand because it has 5 words
+Skipping merge ĠnoveltiesĠandĠupdates, ĠdistributionalĠadditionsĠandĠcorrections because it has 7 words
+Skipping merge : Ġdas because of : special-casing
+Skipping merge : ĠCambridge because of : special-casing
+Skipping merge : ĠâĢŀW because of : special-casing
+Skipping merge ĠØ¨Ø±ÙĬØ·Ø§ÙĨÙĬ ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ because it has 5 words
+Skipping merge ,Ġla ĠmayorÃŃaĠdeĠlos because it has 5 words
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠØ¥Ø³Ø¨Ø§ÙĨÙĬ.Ċ because it has 5 words
+Skipping merge ĠaĠloĠlargo ĠdeĠlaĠhistoria because it has 6 words
+Skipping merge ĠWorldĠGrassesĠ(Poaceae )ĠpublishedĠin because it has 5 words
+Skipping merge .ĠSousaĠSÃ¡nchez Ġ&ĠA because it has 5 words
+Skipping merge ĠandĠonwards.ĠOn-lineĠtaxonomic ĠnoveltiesĠandĠupdates, because it has 7 words
+Skipping merge : ĠMar because of : special-casing
+Skipping merge : ĠFrom because of : special-casing
+Skipping merge : ĠâĢŀDie because of : special-casing
+Skipping merge ,ĠAmericanĠsinger-songwriterĠand ĠguitaristĊ because it has 5 words
+Skipping merge : ĠUniversityĠof because of : special-casing
+Skipping merge ĠenĠla ĠmayorÃŃaĠdeĠlos because it has 5 words
+Skipping merge ĠsobreĠel ĠnivelĠdelĠmar because it has 5 words
+Skipping merge ElĠnÃºmeroĠcromosÃ³micoĠbÃ¡sico ĠdelĠgÃ©nero because it has 6 words
+Skipping merge : ĠCat.Ġ because of : special-casing
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠØ³Ø¹ÙĪØ¯ÙĬ.Ċ because it has 5 words
+Skipping merge .ĠC. ĠOrtiz,ĠR.ĠC because it has 5 words
+Skipping merge .ĠUniversidadĠde ĠAntioquia,ĠMedell because it has 5 words
+Skipping merge ĠAntioquia: ĠCat.Ġ because of : special-casing
+Skipping merge .ĠPoaceae.ĠMonocot.ĠMexic .ĠSinopsisĠFlorÃŃst.Ġ because it has 6 words
+Skipping merge ĠR.ĠD.ĠC. ĠOrtiz,ĠR.ĠCallejasĠPos because it has 7 words
+Skipping merge ,ĠAmerikalÄ±ĠoyuncuĠve ĠÅŁarkÄ±cÄ±Ċ because it has 5 words
+Skipping merge ĠdelĠgÃ©nero ĠesĠxĠ=Ġ because it has 5 words
+Skipping merge ,ĠasĠwell ĠasĠa because it has 5 words
+Skipping merge ĠGrayum,ĠC.ĠHerrera Ġ&ĠN.ĠZamora because it has 6 words
+Skipping merge .ĠUniversidadĠde ĠAntioquia,ĠMedellÃŃn.Ċ because it has 5 words
+Skipping merge .ĠFl.ĠAntioquia: ĠCat.Ġ because of : special-casing
+Skipping merge . ĠOnlineĠversionĠatĠthe because it has 5 words
+Skipping merge : Ġ, because of : special-casing
+Skipping merge : ĠLuis because of : special-casing
+Skipping merge : ĠÐ because of : special-casing
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠÙģØ±ÙĨØ³ÙĬ.Ċ because it has 5 words
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠØ£ÙĦÙħØ§ÙĨÙĬ.Ċ because it has 5 words
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠØ¨Ø±Ø§Ø²ÙĬÙĦÙĬ.Ċ because it has 5 words
+Skipping merge ĠveĠNobelĠKimya ĠÃĸdÃ¼lÃ¼ĠsahibiĠ(Ã¶.Ġ because it has 6 words
+Skipping merge ĠA.ĠR.ĠLÃ³pez-Ferrari Ġ&ĠJ.ĠValdÃ©s-Reyna.Ġ because it has 6 words
+Skipping merge ĠOrtiz,ĠR.ĠCallejasĠPos adaĠ&ĠM. because it has 6 words
+Skipping merge ,ĠAmerikalÄ± ĠfizikÃ§iĠveĠNobelĠFizik because it has 6 words
+Skipping merge ,Ġque ĠaĠsuĠvez because it has 5 words
+Skipping merge .ĠLa ĠmayorÃŃaĠdeĠlas because it has 5 words
+Skipping merge ,ĠporĠlo ĠqueĠla because it has 5 words
+Skipping merge adaĠ&ĠM. ĠMerello.Ġ(eds because it has 5 words
+Skipping merge : ĠSo because of : special-casing
+Skipping merge ĠmillÃ® ĠfutbolcuĠveĠteknikĠdirektÃ¶r because it has 5 words
+Skipping merge ĠasĠaĠresult ĠofĠthe because it has 5 words
+Skipping merge : Ġder because of : special-casing
+Skipping merge : ĠSon because of : special-casing
+Skipping merge : ĠAntonio because of : special-casing
+Skipping merge : ĠenĠla because of : special-casing
+Skipping merge ĠfilmĠyÃ¶netmeni ĠveĠsenaristĠ(d.Ġ because it has 5 words
+Skipping merge ĠListaĠdeĠespÃ©cies ĠFloraĠdoĠBrasil because it has 6 words
+Skipping merge : Ġsu because of : special-casing
+Skipping merge : ĠVer because of : special-casing
+Skipping merge : Ġtexto because of : special-casing
+Skipping merge ,ĠAustralian ĠrugbyĠleagueĠplayerĊ because it has 5 words
+Skipping merge .ĠSeĠtrata ĠdeĠun because it has 5 words
+Skipping merge ĠOnlineĠWorldĠGrassĠFlora Ġ(consultadoĠelĠ because it has 6 words
+Skipping merge Nasir,ĠE.Ġ& ĠS.ĠI.ĠAliĠ(eds because it has 7 words
+Skipping merge : ĠPer because of : special-casing
+Skipping merge : ĠDavid because of : special-casing
+Skipping merge : ĠiâĢĵxx because of : special-casing
+Skipping merge : ĠNominierungĠals because of : special-casing
+Skipping merge ĠØ¥ÙĨØ¬ÙĦÙĬØ²ÙĬ ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ because it has 5 words
+Skipping merge ,ĠCanadian ĠiceĠhockeyĠplayerĊ because it has 5 words
+Skipping merge .ĠÙĪØ¹ÙĦÙī ĠØ§ÙĦØ±ØºÙħĠÙħÙĨĠØ£ÙĨ because it has 5 words
+Skipping merge : ĠGeschichteĠder because of : special-casing
+Skipping merge ØĮĠÙħÙħØ«ÙĦ ĠØ£Ø¯Ø§Ø¡ĠØµÙĪØªÙĬĠÙĬØ§Ø¨Ø§ÙĨÙĬ.Ċ because it has 5 words
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ ĠÙĪÙħØ¯Ø±Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯ÙħĠØ¥ÙĨØ¬ÙĦÙĬØ²ÙĬ.Ċ because it has 6 words
+Skipping merge ,ĠAmerikalÄ±Ġsinema ĠoyuncusuĠ(d.Ġ because it has 5 words
+Skipping merge ĠWar: ĠThe because of : special-casing
+Skipping merge )ĠÙħÙĨĠØ§ÙĦØ³ÙĨØ© ĠÙĪÙģÙĤÙĭØ§ĠÙĦÙĦØªÙĤÙĪÙĬÙħ because it has 5 words
+Skipping merge ØĮĠØ¹Ø§ÙĦÙħĠÙĥÙĬÙħÙĬØ§Ø¡ĠØ£ÙħØ±ÙĬÙĥÙĬ ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ because it has 8 words
+Skipping merge : Ġes because of : special-casing
+Skipping merge : Ġan because of : special-casing
+Skipping merge ,ĠenĠel ĠqueĠse because it has 5 words
+Skipping merge ĠaĠloĠlargo ĠdeĠla because it has 5 words
+Skipping merge ĠaĠloĠlargo ĠdelĠtiempo because it has 5 words
+Skipping merge ĠÙĤØ§ÙĦ: Ġ.Ċ because of : special-casing
+Skipping merge : ĠJosÃ© because of : special-casing
+Skipping merge ,Ġla ĠmayorÃŃaĠdeĠlas because it has 5 words
+Skipping merge ,ĠAmerican ĠlawyerĠandĠpolitician,Ġ because it has 5 words
+Skipping merge .ĠpÃ¤ivÃ¤ .ĠVuodestaĠonĠjÃ¤ljellÃ¤Ġ because it has 5 words
+Skipping merge ĠFizyolojiĠveyaĠTÄ±p ĠÃĸdÃ¼lÃ¼ĠsahibiĠ(Ã¶.Ġ because it has 6 words
+Skipping merge : ĠLas because of : special-casing
+Skipping merge : ĠAuszeichnung because of : special-casing
+Skipping merge ÙħÙĨØ¸ÙħØ§Øª ĠÙħØµÙĨÙģØ©ĠØ¹ÙĦÙīĠØ£ÙĨÙĩØ§ĠØ¥Ø±ÙĩØ§Ø¨ÙĬØ© because it has 5 words
+Skipping merge ĠÙĤØ§ÙĦ: Ġ. because of : special-casing
+Skipping merge ĠØ±Ø³ÙĪÙĦĠØ§ÙĦÙĦÙĩ ĠØµÙĦÙīĠØ§ÙĦÙĦÙĩĠØ¹ÙĦÙĬÙĩĠÙĪØ³ÙĦÙħ because it has 6 words
+Skipping merge ĠFizyolojiĠveyaĠTÄ±p ĠÃĸdÃ¼lÃ¼ĠsahibiĠ(d.Ġ because it has 6 words
+Skipping merge ĠSieĠenthÃ¤lt ĠnurĠeineĠArt:Ċ because it has 5 words
+Skipping merge ĠOnlineĠversionĠatĠthe ĠPerseusĠDigitalĠLibrary.Ċ because it has 7 words
+Skipping merge .ĠFl.ĠPakistan ĠUniv.ĠofĠKarachi,ĠKarachi.Ċ because it has 7 words
+Skipping merge : ĠSh because of : special-casing
+Skipping merge : ĠAlexander because of : special-casing
+Skipping merge : ĠOxford because of : special-casing
+Skipping merge : ĠNominierungĠinĠderĠKategorie because of : special-casing
+Skipping merge ,ĠAmerikalÄ± ĠsinemaĠoyuncusuĠ(Ã¶.Ġ because it has 5 words
+Skipping merge ,ĠTÃ¼rkĠtiyatro ĠveĠsinema because it has 5 words
+Skipping merge ,Ġburied ĠinĠNewĠMosque because it has 5 words
+
+ 198s  total 251s
+    → /Users/antalb/Experiments/LiB/experiments/models/joint/superbpe_116322/tokenizer.json
+  [en superbpe 28,423]  stage 1 ...Calling do_train_original()
+
+
+
+ 2s  stage 2 ...Calling do_train_extend()
+In do_train_extend()
+Step 1: Add special tokens
+Step 2: Compute alphabet
+Length of word_to_id: 203
+Printing 5 elements in word_to_id
+Word: f, ID: 69
+Word: Ð, ID: 138
+Word: Ö, ID: 144
+Word: Ŀ, ID: 198
+Word: Ó, ID: 141
+Word: h, ID: 71
+Word: ä, ID: 155
+Word: Ù, ID: 147
+Word: 7, ID: 22
+Word: j, ID: 73
+Step 3: Tokenize words
+
+Step 4: Count pairs in words
+
+Length of queue: 8379
+Step 5: Apply merges
+
+Length of merges: 14211
+Step 5: Do new merges
+Skipping merge : ĠThe because of : special-casing
+Skipping merge : Ġ" because of : special-casing
+Skipping merge : Ġ because of : special-casing
+Skipping merge : Ġthe because of : special-casing
+Skipping merge : ĠA because of : special-casing
+Skipping merge ,ĠasĠwell ĠasĠthe because it has 5 words
+Skipping merge : Ġa because of : special-casing
+Skipping merge ,ĠAmericanĠbaseball ĠplayerĠand because it has 5 words
+Skipping merge ĠandĠacademic ,ĠNobelĠPrizeĠlaureate because it has 5 words
+Skipping merge : ĠAn because of : special-casing
+Skipping merge ,ĠNobelĠPrizeĠlaureate Ġ(d.Ġ because it has 5 words
+Skipping merge ĠatĠthe ĠPerseusĠDigitalĠLibrary because it has 5 words
+Skipping merge ĠatĠthe ĠendĠofĠthe because it has 5 words
+Skipping merge ,ĠNobelĠPrizeĠlaureate Ġ(b.Ġ because it has 5 words
+Skipping merge : Ġ"The because of : special-casing
+Skipping merge .ĠOnĠthe ĠotherĠhand because it has 5 words
+Skipping merge : Ġ"I because of : special-casing
+Skipping merge ,ĠAmericanĠsinger-songwriterĠand ĠguitaristĊ because it has 5 words
+Skipping merge ,ĠCanadianĠiceĠhockey ĠplayerĊ because it has 5 words
+Skipping merge ,ĠasĠwell ĠasĠa because it has 5 words
+Skipping merge . ĠOnlineĠversionĠatĠthe because it has 5 words
+Skipping merge ,ĠAustralian ĠrugbyĠleagueĠplayerĊ because it has 5 words
+Skipping merge ĠasĠaĠresult ĠofĠthe because it has 5 words
+Skipping merge : Ġ( because of : special-casing
+Skipping merge : ĠIn because of : special-casing
+Skipping merge ,ĠAmerican ĠlawyerĠandĠpolitician,Ġ because it has 5 words
+Skipping merge ĠWar: ĠThe because of : special-casing
+Skipping merge ĠOnlineĠversionĠatĠthe ĠPerseusĠDigitalĠLibrary.Ċ because it has 7 words
+Skipping merge : ĠS because of : special-casing
+Skipping merge ,Ġburied ĠinĠNewĠMosque because it has 5 words
+Skipping merge Ġis ĠoneĠofĠtheĠmost because it has 5 words
+Skipping merge ,Ġburied ĠinĠNewĠMosque,ĠIstanbul because it has 6 words
+Skipping merge ĠcomparisonĠtoĠtheĠworld: Ġ because of : special-casing
+Skipping merge : ĠUniversityĠof because of : special-casing
+Skipping merge : ĠD because of : special-casing
+Skipping merge ĠHarvardĠUniversityĠPress; ĠLondon,ĠWilliamĠHeinemann because it has 6 words
+Skipping merge : ĠT because of : special-casing
+Skipping merge : ĠP because of : special-casing
+Skipping merge : ĠR because of : special-casing
+Skipping merge : ĠB because of : special-casing
+Skipping merge ĠwithĠan ĠEnglishĠTranslationĠby because it has 5 words
+Skipping merge ĠphysicistĠandĠacademic ,ĠNobelĠPrizeĠlaureate because it has 6 words
+Skipping merge ,ĠAmericanĠbaseball ĠplayerĠandĠcoachĊ because it has 6 words
+Skipping merge : Ġan because of : special-casing
+Skipping merge ,ĠAmericanĠsinger-songwriterĠand ĠguitaristĠ(d.Ġ because it has 6 words
+Skipping merge : ĠL because of : special-casing
+Skipping merge : ĠOn because of : special-casing
+Skipping merge : ĠC because of : special-casing
+Skipping merge : Ġone because of : special-casing
+Skipping merge ĠatĠtheĠtime ĠofĠthe because it has 5 words
+Skipping merge : ĠV because of : special-casing
+Skipping merge ,Ġalso ĠknownĠasĠthe because it has 5 words
+Skipping merge ĠoneĠofĠtheĠmost Ġimportant because it has 5 words
+Skipping merge .ĠInĠthe ĠUnitedĠStates because it has 5 words
+Skipping merge ĠHarvardĠUniversityĠPress; ĠLondon,ĠWilliamĠHeinemannĠLtd.Ġ because it has 7 words
+Skipping merge : ĠM because of : special-casing
+Skipping merge : ĠE because of : special-casing
+Skipping merge : ĠG because of : special-casing
+Skipping merge : Ġ, because of : special-casing
+Skipping merge : ĠAprilĠ because of : special-casing
+
+ 25s  total 27s
+    → /Users/antalb/Experiments/LiB/experiments/models/en/superbpe_28423/tokenizer.json
+  [de superbpe 26,579]  stage 1 ...Calling do_train_original()
+
+
+
+ 4s  stage 2 ...Calling do_train_extend()
+In do_train_extend()
+Step 1: Add special tokens
+Step 2: Compute alphabet
+Length of word_to_id: 192
+Printing 5 elements in word_to_id
+Word: ®, ID: 106
+Word: V, ID: 53
+Word: Ī, ID: 166
+Word: Ç, ID: 129
+Word: ģ, ID: 159
+Word: ĵ, ID: 177
+Word: Ľ, ID: 185
+Word: Y, ID: 56
+Word: ĺ, ID: 182
+Word: d, ID: 67
+Step 3: Tokenize words
+
+Step 4: Count pairs in words
+
+Length of queue: 7921
+Step 5: Apply merges
+Ġ + Âł not found in queue
+ĠÂł not found in word_to_id
+ĠÂł not found in word_to_id
+ĠÂłĠÂł not found in word_to_id
+ĠÂłĠÂł not found in word_to_id
+ĠÂłĠÂłĠÂłĠÂł not found in word_to_id
+ĠÂłĠÂłĠÂłĠÂł not found in word_to_id
+
+Length of merges: 13285
+Step 5: Do new merges
+Skipping merge : ĠDie because of : special-casing
+Skipping merge : ĠâĢŀ because of : special-casing
+Skipping merge : Ġ because of : special-casing
+Skipping merge : ĠThe because of : special-casing
+Skipping merge : ĠDer because of : special-casing
+Skipping merge : ĠDas because of : special-casing
+Skipping merge Ġ: ĠSie because of : special-casing
+Skipping merge : ĠA because of : special-casing
+Skipping merge Ġ: ĠSieĠkommt because of : special-casing
+Skipping merge : ĠEin because of : special-casing
+Skipping merge : Ġdie because of : special-casing
+Skipping merge : ĠIn because of : special-casing
+Skipping merge : ĠC because of : special-casing
+Skipping merge Ġ: ĠDie because of : special-casing
+Skipping merge : ĠNominierung because of : special-casing
+Skipping merge : ĠL because of : special-casing
+Skipping merge : ĠF because of : special-casing
+Skipping merge : ĠEine because of : special-casing
+Skipping merge : ĠEr because of : special-casing
+Skipping merge : ĠD because of : special-casing
+Skipping merge : ĠS because of : special-casing
+Skipping merge : ĠT because of : special-casing
+Skipping merge : ĠH because of : special-casing
+Skipping merge Person ĠalsĠNamensgeberĠfÃ¼rĠeinen because it has 5 words
+Skipping merge : ĠB because of : special-casing
+Skipping merge : ĠIm because of : special-casing
+Skipping merge Ġ: ĠSieĠkommtĠin because of : special-casing
+Skipping merge : ĠN because of : special-casing
+Skipping merge ĠalsĠNamensgeberĠfÃ¼rĠeinen ĠAsteroidenĊ because it has 5 words
+Skipping merge : ĠAn because of : special-casing
+Skipping merge : ĠK because of : special-casing
+Skipping merge : ĠâĢŀDie because of : special-casing
+Skipping merge : ĠEs because of : special-casing
+Skipping merge : ĠW because of : special-casing
+Skipping merge : ĠâĢŀIch because of : special-casing
+Skipping merge : ĠM because of : special-casing
+Skipping merge Ġ(Stand: Ġ because of : special-casing
+Skipping merge : ĠVon because of : special-casing
+Skipping merge Ġ: ĠSieĠenthÃ¤lt because of : special-casing
+Skipping merge : ĠE because of : special-casing
+Skipping merge : ĠJ because of : special-casing
+Skipping merge : ĠR because of : special-casing
+Skipping merge : Ġdas because of : special-casing
+Skipping merge : ĠSie because of : special-casing
+Skipping merge : ĠSo because of : special-casing
+Skipping merge : ĠP because of : special-casing
+Skipping merge : ĠNominierungĠals because of : special-casing
+Skipping merge : Ġder because of : special-casing
+Skipping merge : ĠG because of : special-casing
+Skipping merge : ĠAuszeichnung because of : special-casing
+Skipping merge ĠSieĠenthÃ¤lt ĠnurĠeineĠArt:Ċ because it has 5 words
+Skipping merge : ĠNominierungĠinĠderĠKategorie because of : special-casing
+Skipping merge ĠAmericanĠAcademyĠof ĠArtsĠand because it has 5 words
+Skipping merge : ĠGeschichteĠder because of : special-casing
+Skipping merge : ĠâĢŀW because of : special-casing
+Skipping merge : ĠAl because of : special-casing
+Skipping merge : ĠBei because of : special-casing
+Skipping merge : ĠâĢŀDer because of : special-casing
+Skipping merge : ĠAm because of : special-casing
+Skipping merge : ĠI because of : special-casing
+Skipping merge : ĠVom because of : special-casing
+Skipping merge : ĠV because of : special-casing
+Skipping merge : Ġeine because of : special-casing
+Skipping merge .ĠSuhrkamp ,ĠFrankfurtĠamĠMainĠ because it has 5 words
+Skipping merge : ĠLe because of : special-casing
+Skipping merge : ĠO because of : special-casing
+Skipping merge : ĠMit because of : special-casing
+Skipping merge : ĠZur because of : special-casing
+Skipping merge Ġ: ĠDieĠetwa because of : special-casing
+Skipping merge : ĠWie because of : special-casing
+
+ 23s  total 27s
+    → /Users/antalb/Experiments/LiB/experiments/models/de/superbpe_26579/tokenizer.json
+  [es superbpe 25,106]  stage 1 ...Calling do_train_original()
+
+
+
+ 3s  stage 2 ...Calling do_train_extend()
+In do_train_extend()
+Step 1: Add special tokens
+Step 2: Compute alphabet
+Length of word_to_id: 197
+Printing 5 elements in word_to_id
+Word: Ã, ID: 125
+Word: M, ID: 44
+Word: -, ID: 12
+Word: U, ID: 52
+Word: J, ID: 41
+Word: ł, ID: 195
+Word: ², ID: 110
+Word: £, ID: 96
+Word: D, ID: 35
+Word: V, ID: 53
+Step 3: Tokenize words
+
+Step 4: Count pairs in words
+
+Length of queue: 8057
+Step 5: Apply merges
+
+Length of merges: 12553
+Step 5: Do new merges
+Skipping merge : Ġ because of : special-casing
+Skipping merge : Ġen because of : special-casing
+Skipping merge : Ġel because of : special-casing
+Skipping merge : Ġla because of : special-casing
+Skipping merge : ĠÂ« because of : special-casing
+Skipping merge : ĠEl because of : special-casing
+Skipping merge : ĠLa because of : special-casing
+Skipping merge : ĠA because of : special-casing
+Skipping merge : Ġlos because of : special-casing
+Skipping merge : Ġse because of : special-casing
+Skipping merge : Ġ" because of : special-casing
+Skipping merge ĠesĠunĠgÃ©nero ĠdeĠplantas because it has 5 words
+Skipping merge : Ġlas because of : special-casing
+Skipping merge : ĠS because of : special-casing
+Skipping merge ĠesĠunĠgÃ©nero ĠdeĠplantasĠherbÃ¡ceas because it has 6 words
+Skipping merge ElĠgÃ©nero ĠfueĠdescritoĠpor because it has 5 words
+Skipping merge : ĠM because of : special-casing
+Skipping merge : ĠEn because of : special-casing
+Skipping merge : ĠThe because of : special-casing
+Skipping merge : ĠB because of : special-casing
+Skipping merge : ĠD because of : special-casing
+Skipping merge ĠCatalogueĠof ĠNewĠWorldĠGrasses because it has 5 words
+Skipping merge ĠCatalogueĠof ĠNewĠWorldĠGrassesĠ(Poaceae because it has 6 words
+Skipping merge : ĠK because of : special-casing
+Skipping merge : ĠSe because of : special-casing
+Skipping merge ĠDavidse,ĠP.ĠM.ĠPeterson ,ĠF.ĠO.ĠZuloaga because it has 7 words
+Skipping merge GrassbaseĠ-ĠTheĠWorld ĠOnlineĠGrassĠFloraĊ because it has 7 words
+Skipping merge : ĠEs because of : special-casing
+Skipping merge ĠdeĠlasĠpoÃ¡ceas .ĠEsĠoriginario because it has 5 words
+Skipping merge .ĠLaĠespecie ĠtipoĠes: because it has 5 words
+Skipping merge : Ġun because of : special-casing
+Skipping merge : Ġuna because of : special-casing
+Skipping merge : ĠC because of : special-casing
+Skipping merge ĠpertenecienteĠaĠlaĠfamilia ĠdeĠlasĠpoÃ¡ceas because it has 7 words
+Skipping merge : Ġmapa because of : special-casing
+Skipping merge : Ġi because of : special-casing
+Skipping merge : ĠF because of : special-casing
+Skipping merge : ĠT because of : special-casing
+Skipping merge : ĠL because of : special-casing
+Skipping merge : ĠP because of : special-casing
+Skipping merge : ĠJ because of : special-casing
+Skipping merge : ĠE because of : special-casing
+Skipping merge ĠdeĠplantasĠherbÃ¡ceas ĠpertenecienteĠaĠlaĠfamilia because it has 7 words
+Skipping merge : ĠN because of : special-casing
+Skipping merge ĠdesdeĠel ĠpuntoĠdeĠvista because it has 5 words
+Skipping merge ,Ġpor ĠloĠqueĠse because it has 5 words
+Skipping merge : ĠMar because of : special-casing
+Skipping merge : ĠenĠel because of : special-casing
+Skipping merge ĠMOĠGeneric ĠNamesĠinĠUse because it has 5 words
+Skipping merge : ĠI because of : special-casing
+Skipping merge background: Ġ# because of : special-casing
+Skipping merge .ĠMOĠGeneric ĠNamesĠinĠUseĊ because it has 6 words
+Skipping merge : ĠAn because of : special-casing
+Skipping merge : ĠG because of : special-casing
+Skipping merge MissouriĠBotanicalĠGarden .ĠMOĠGeneric because it has 5 words
+Skipping merge . ĠContr.ĠU.S.ĠNatl.ĠHerb.Ġ because it has 5 words
+Skipping merge : ĠR because of : special-casing
+Skipping merge : ĠLos because of : special-casing
+Skipping merge : ĠJuan because of : special-casing
+Skipping merge .ĠLa ĠmayorÃŃaĠdeĠlos because it has 5 words
+Skipping merge ĠdeĠlaĠfamilia ĠdeĠlasĠpoÃ¡ceas because it has 6 words
+Skipping merge .ĠMissouriĠBotanicalĠGarden ,ĠSt.ĠLouis.Ċ because it has 6 words
+Skipping merge : ĠâĢľ because of : special-casing
+Skipping merge : ĠenĠEspaÃ±a because of : special-casing
+Skipping merge : ĠH because of : special-casing
+Skipping merge : ĠV because of : special-casing
+Skipping merge TerminologÃŃa ĠdescriptivaĠdeĠlasĠplantasĊ because it has 5 words
+Skipping merge : ĠAl because of : special-casing
+Skipping merge ĠMonogr.ĠSyst.ĠBot. ĠMissouriĠBot.ĠGard.Ġ because it has 6 words
+Skipping merge ,Ġcon ĠnÃºmerosĠcromosÃ³micosĠsomÃ¡ticos because it has 5 words
+Skipping merge ĠdeĠplantasĠherbÃ¡ceas ĠdeĠlaĠfamilia because it has 6 words
+Skipping merge BaseĠ-ĠThe ĠOnlineĠWorld because it has 5 words
+Skipping merge : ĠCat because of : special-casing
+Skipping merge ĠGrassBaseĠ-ĠThe ĠOnlineĠWorld because it has 5 words
+Skipping merge .ĠInĠCatalogueĠof ĠNewĠWorldĠGrassesĠ(Poaceae because it has 8 words
+Skipping merge : ĠO because of : special-casing
+Skipping merge : ĠnombreĠgenÃ©rico because of : special-casing
+Skipping merge ,Ġcon ĠnÃºmerosĠcromosÃ³micosĠsomÃ¡ticosĠdeĠ because it has 6 words
+Skipping merge ,ĠT.ĠS.ĠFilgueiras ,ĠE.ĠJ.ĠJudziewicz because it has 7 words
+Skipping merge ,ĠF.ĠO.ĠZuloaga ,ĠT.ĠS.ĠFilgueiras because it has 7 words
+Skipping merge ,ĠF.ĠO.ĠZuloaga ,ĠE.ĠJ.ĠJudziewicz because it has 7 words
+Skipping merge ,ĠE.ĠJ.ĠJudziewicz ,ĠT.ĠS.ĠFilgueiras because it has 7 words
+Skipping merge .Ġand ĠWilliamson,ĠH.Ġ( because it has 5 words
+Skipping merge ,ĠG. ĠDavidse,ĠP.ĠM.ĠPeterson because it has 6 words
+Skipping merge ĠGrassBaseĠ-ĠThe ĠOnlineĠWorldĠGrassĠFlora because it has 7 words
+Skipping merge ĠInternetĠCat .ĠNewĠWorldĠGrasses because it has 5 words
+Skipping merge ĠR.ĠJ.ĠSoreng,ĠG. ĠDavidse,ĠP.ĠM.ĠPeterson because it has 8 words
+Skipping merge ĠHarman,ĠK.T.Ġand ĠWilliamson,ĠH.Ġ( because it has 6 words
+Skipping merge .ĠIn ĠR.ĠJ.ĠSoreng,ĠG. because it has 6 words
+Skipping merge ,ĠporĠlo ĠqueĠel because it has 5 words
+Skipping merge .ĠEn: ĠGrassBaseĠ-ĠThe because of : special-casing
+Skipping merge .ĠNewĠWorldĠGrasses .ĠMissouriĠBotanicalĠGarden because it has 7 words
+Skipping merge ĠG. ĠDavidse,ĠP.ĠM.ĠPeterson because it has 5 words
+Skipping merge ĠContr.ĠU.S.ĠNatl.ĠHerb .Ġvols.Ġ because it has 5 words
+Skipping merge esĠofĠthe ĠCatalogueĠof because it has 5 words
+Skipping merge ĠsinceĠthe ĠfourĠpublishedĠvolum because it has 5 words
+Skipping merge )ĠpublishedĠin ĠContr.ĠU.S.ĠNatl.ĠHerb because it has 7 words
+Skipping merge ĠfourĠpublishedĠvolum esĠofĠthe because it has 5 words
+Skipping merge tions,ĠandĠeditorialĠchanges ĠsinceĠthe because it has 6 words
+Skipping merge ĠadditionsĠandĠcorrec tions,ĠandĠeditorialĠchanges because it has 6 words
+Skipping merge ĠandĠupdates,Ġdistributional ĠadditionsĠandĠcorrec because it has 6 words
+Skipping merge .ĠOn-lineĠtaxonomicĠnovelties ĠandĠupdates,Ġdistributional because it has 7 words
+Skipping merge ,Ġla ĠmayorÃŃaĠdeĠlos because it has 5 words
+Skipping merge ĠaĠloĠlargo ĠdeĠlaĠhistoria because it has 6 words
+Skipping merge ĠNewĠWorldĠGrassesĠ(Poaceae )ĠpublishedĠin because it has 6 words
+Skipping merge ĠandĠonwards .ĠOn-lineĠtaxonomicĠnovelties because it has 5 words
+Skipping merge ĠsobreĠel ĠnivelĠdelĠmar because it has 5 words
+Skipping merge ElĠnÃºmeroĠcromosÃ³micoĠbÃ¡sico ĠdelĠgÃ©nero because it has 6 words
+Skipping merge : ĠAr because of : special-casing
+Skipping merge : ĠJosÃ© because of : special-casing
+Skipping merge : ĠCat.Ġ because of : special-casing
+Skipping merge ĠenĠla ĠmayorÃŃaĠdeĠlos because it has 5 words
+Skipping merge .ĠUniversidadĠde ĠAntioquia,ĠMedellÃŃn because it has 5 words
+Skipping merge ĠR.ĠD .ĠC.ĠOrtiz,ĠR. because it has 5 words
+Skipping merge ĠAntioquia: ĠCat.Ġ because of : special-casing
+Skipping merge .ĠPoaceae.ĠMonocot.ĠMex ic.ĠSinopsisĠFlorÃŃst because it has 6 words
+Skipping merge .ĠC.ĠOrtiz,ĠR. ĠCallejasĠPos because it has 6 words
+Skipping merge .ĠPoaceae.ĠMonocot.ĠMex ic.ĠSinopsisĠFlorÃŃst.Ġ because it has 6 words
+Skipping merge ĠdelĠgÃ©nero ĠesĠxĠ=Ġ because it has 5 words
+Skipping merge yum,ĠC.ĠHerrera Ġ&ĠN.ĠZamora because it has 6 words
+Skipping merge .ĠUniversidadĠde ĠAntioquia,ĠMedellÃŃn.Ċ because it has 5 words
+Skipping merge .ĠFl.ĠAntioquia: ĠCat.Ġ because of : special-casing
+Skipping merge : ĠCon because of : special-casing
+Skipping merge : ĠJohn because of : special-casing
+Skipping merge ,Ġque ĠaĠsuĠvez because it has 5 words
+Skipping merge .ĠC.ĠOrtiz,ĠR. ĠCallejasĠPosadaĠ&ĠM. because it has 8 words
+Skipping merge ĠA.ĠR.ĠLÃ³pez-Ferrar iĠ&ĠJ. because it has 5 words
+Skipping merge ĠA.ĠR.ĠLÃ³pez-Ferrar iĠ&ĠJ.ĠValdÃ©s-Reyna.Ġ because it has 6 words
+Skipping merge ĠdeĠla ĠSegundaĠGuerraĠMundial because it has 5 words
+Skipping merge .ĠLa ĠmayorÃŃaĠdeĠlas because it has 5 words
+Skipping merge ,ĠporĠlo ĠqueĠla because it has 5 words
+Skipping merge ĠCallejasĠPosadaĠ&ĠM. ĠMerello.Ġ(eds because it has 6 words
+Skipping merge : ĠDe because of : special-casing
+Skipping merge : Ġtexto because of : special-casing
+Skipping merge : ĠesĠel because of : special-casing
+Skipping merge ĠListaĠdeĠesp Ã©ciesĠFloraĠdoĠBrasil because it has 6 words
+Skipping merge : ĠLas because of : special-casing
+Skipping merge : ĠenĠla because of : special-casing
+Skipping merge .ĠSeĠtrata ĠdeĠun because it has 5 words
+Skipping merge ĠOnlineĠWorldĠGrassĠFlora Ġ(consultadoĠelĠ because it has 6 words
+Skipping merge Nasir,ĠE.Ġ&ĠS .ĠI.ĠAliĠ(eds because it has 7 words
+Skipping merge : Ġsu because of : special-casing
+Skipping merge : ĠLuis because of : special-casing
+Skipping merge : ĠiâĢĵxx because of : special-casing
+Skipping merge : ĠSon because of : special-casing
+Skipping merge ,ĠenĠel ĠqueĠse because it has 5 words
+Skipping merge : ĠAntonio because of : special-casing
+Skipping merge ĠaĠloĠlargo ĠdelĠtiempo because it has 5 words
+Skipping merge : ĠY because of : special-casing
+Skipping merge ,Ġla ĠmayorÃŃaĠdeĠlas because it has 5 words
+Skipping merge : Ġa because of : special-casing
+Skipping merge : ĠCh because of : special-casing
+Skipping merge .ĠFl.ĠPakistan ĠUniv.ĠofĠKarachi,ĠKarachi.Ċ because it has 7 words
+Skipping merge : Ġson because of : special-casing
+Skipping merge ĠdeĠla ĠmayorÃŃaĠdeĠlos because it has 5 words
+Skipping merge ,ĠenĠla ĠqueĠse because it has 5 words
+Skipping merge ĠaĠloĠlargo ĠdeĠla because it has 5 words
+Skipping merge ,ĠE.ĠJ.ĠJudziewicz Ġ&ĠO.ĠMorrone because it has 7 words
+Skipping merge ĠManualĠdeĠPlantas ĠdeĠCostaĠRica.ĠVol.Ġ because it has 7 words
+Skipping merge .ĠB.E. ĠHammel,ĠM.H.ĠGra because it has 5 words
+Skipping merge ĠHammel,ĠM.H.ĠGra yum,ĠC.ĠHerrera because it has 5 words
+Skipping merge : ĠCom because of : special-casing
+Skipping merge : ĠCarlos because of : special-casing
+Skipping merge ,ĠconĠel ĠfinĠde because it has 5 words
+Skipping merge ,ĠT.ĠS.ĠFilgueiras Ġ&ĠO.ĠMorrone.Ġ because it has 7 words
+Skipping merge .ĠEn: ĠManualĠdeĠPlantas because of : special-casing
+Skipping merge ĠSousaĠSÃ¡nchezĠ& ĠA.O.ĠChater because it has 5 words
+Skipping merge yum,ĠC.ĠHerrera Ġ&ĠN.ĠZamoraĠ(eds because it has 7 words
+Skipping merge : ĠesĠun because of : special-casing
+Skipping merge Forzza,ĠR.ĠC .Ġ&ĠetĠal.Ġ because it has 6 words
+Skipping merge ĠespeciesĠdescritas ĠyĠdeĠestas because it has 5 words
+Skipping merge : ĠRe because of : special-casing
+Skipping merge : ĠnombreĠgenÃ©ricoĠque because of : special-casing
+Skipping merge Ġ: ĠGuerra because of : special-casing
+Skipping merge ĠdeĠla ĠRealĠAcademiaĠEspaÃ±ola because it has 5 words
+Skipping merge ,Ġes ĠunoĠdeĠlos because it has 5 words
+Skipping merge Ġ&ĠO.ĠMorrone ĠInternetĠCat because it has 5 words
+Skipping merge .ĠPoaceae.ĠEn: ĠManualĠdeĠPlantas because of : special-casing
+Skipping merge : Ġes because of : special-casing
+Skipping merge : Ġ( because of : special-casing
+Skipping merge ĠlaĠmayor ĠparteĠdeĠla because it has 5 words
+Skipping merge ,ĠyĠpor ĠloĠtanto because it has 5 words
+Skipping merge .ĠSeĠtrata ĠdeĠuna because it has 5 words
+Skipping merge ĠdeĠlasĠespecies ĠdelĠgÃ©nero because it has 5 words
+Skipping merge : ĠesĠla because of : special-casing
+Skipping merge ĠUniversidadĠNacional ĠAutÃ³nomaĠdeĠMÃ©xico because it has 5 words
+Skipping merge ĠespeciesĠdescritas ĠyĠdeĠestas,ĠsoloĠ because it has 6 words
+Skipping merge ĠhayĠespeciesĠdiploides ĠyĠunaĠserieĠpoliploide because it has 7 words
+Skipping merge : ĠW because of : special-casing
+Skipping merge : ĠDavid because of : special-casing
+Skipping merge : ĠDÃŃa because of : special-casing
+Skipping merge .ĠL.ĠWanderleyĠ& ĠG.ĠJ.ĠShepherd.Ġ because it has 7 words
+Skipping merge : Ġb because of : special-casing
+Skipping merge .ĠEnĠla ĠdÃ©cadaĠdeĠ because it has 5 words
+Skipping merge ĠseĠindica ĠelĠnombreĠbinomial because it has 5 words
+Skipping merge ĠelĠnombreĠbinomial ĠseguidoĠdelĠautor because it has 6 words
+Skipping merge ĠseguidoĠdelĠautor ,ĠabreviadoĠsegÃºnĠlas because it has 6 words
+Skipping merge .ĠParaĠcadaĠuna ĠseĠindica because it has 6 words
+Skipping merge ,ĠabreviadoĠsegÃºnĠlas ĠconvencionesĠyĠusos.Ċ because it has 7 words
+Skipping merge : ĠMa because of : special-casing
+Skipping merge : ĠManuel because of : special-casing
+Skipping merge : ĠEstudi because of : special-casing
+Skipping merge ĠdeĠla ĠteorÃŃaĠdeĠla because it has 5 words
+Skipping merge ĠdeĠlos ĠtestigosĠdeĠJehovÃ¡ because it has 5 words
+Skipping merge ,ĠordenadasĠalfabÃ©ticamente .ĠParaĠcadaĠuna because it has 6 words
+Skipping merge AĠcontinuaciÃ³nĠseĠbrinda ĠunĠlistado because it has 6 words
+Skipping merge ĠunĠlistado ĠdeĠlasĠespecies because it has 5 words
+Skipping merge : ĠenĠlosĠEstadosĠUnidos because of : special-casing
+Skipping merge : ĠGrassesĠof because of : special-casing
+Skipping merge : ĠiâĢĵxvi,Ġ because of : special-casing
+
+ 24s  total 26s
+    → /Users/antalb/Experiments/LiB/experiments/models/es/superbpe_25106/tokenizer.json
+  [fi superbpe 20,262]  stage 1 ...Calling do_train_original()
+
+
+
+ 4s  stage 2 ...Calling do_train_extend()
+In do_train_extend()
+Step 1: Add special tokens
+Step 2: Compute alphabet
+Length of word_to_id: 199
+Printing 5 elements in word_to_id
+Word: ^, ID: 61
+Word: ½, ID: 121
+Word: $, ID: 3
+Word: į, ID: 178
+Word: ¯, ID: 107
+Word: Ø, ID: 143
+Word: Ç, ID: 129
+Word: ë, ID: 158
+Word: 5, ID: 20
+Word: Ī, ID: 173
+Step 3: Tokenize words
+
+Step 4: Count pairs in words
+
+Length of queue: 7469
+Step 5: Apply merges
+
+Length of merges: 10131
+Step 5: Do new merges
+Skipping merge : Ġ because of : special-casing
+Skipping merge ĠonĠgregoriaanisenĠkalenterinĠmukaan ĠvuodenĠ because it has 5 words
+Skipping merge KatsoĠmyÃ¶s: ĠkalenteriĠ~Ġ because of : special-casing
+Skipping merge : ĠâĢĿ because of : special-casing
+Skipping merge ĠNobelinĠlÃ¤Ã¤ketieteenĠpalkinnonĠsaanut Ġyhdysvaltalainen because it has 5 words
+Skipping merge Ġns. ĠNobelinĠtaloustieteenĠpalkinnonĠsaanut because it has 5 words
+Skipping merge ,Ġyhdysvaltalainen ĠOscar-palkittuĠnÃ¤yttelijÃ¤Ġ( because it has 5 words
+Skipping merge : ĠS because of : special-casing
+Skipping merge : ĠA because of : special-casing
+Skipping merge ĠNobelinĠtaloustieteenĠpalkinnonĠsaanut Ġyhdysvaltalainen because it has 5 words
+Skipping merge : Ġ" because of : special-casing
+Skipping merge : ĠK because of : special-casing
+Skipping merge : ĠThe because of : special-casing
+Skipping merge : ĠM because of : special-casing
+Skipping merge .ĠpÃ¤ivÃ¤ .ĠVuodestaĠonĠjÃ¤ljellÃ¤Ġ because it has 5 words
+Skipping merge : ĠE because of : special-casing
+Skipping merge : Ġesimerkiksi because of : special-casing
+Skipping merge ĠNobelinĠfysiikanpalkinnonĠsaanutĠyhdysvaltalainen ĠfyysikkoĠ(k.Ġ because it has 6 words
+
+ 15s  total 19s
+    → /Users/antalb/Experiments/LiB/experiments/models/fi/superbpe_20262/tokenizer.json
+  [tr superbpe 13,585]  stage 1 ...Calling do_train_original()
+
+
+
+ 2s  stage 2 ...Calling do_train_extend()
+In do_train_extend()
+Step 1: Add special tokens
+Step 2: Compute alphabet
+Length of word_to_id: 196
+Printing 5 elements in word_to_id
+Word: s, ID: 81
+Word: <, ID: 27
+Word: ĳ, ID: 179
+Word: Ç, ID: 128
+Word: E, ID: 36
+Word: Ī, ID: 170
+Word: ķ, ID: 183
+Word: 2, ID: 17
+Word: ¤, ID: 96
+Word: e, ID: 67
+Step 3: Tokenize words
+
+Step 4: Count pairs in words
+
+Length of queue: 6319
+Step 5: Apply merges
+
+Length of merges: 6792
+Step 5: Do new merges
+Skipping merge : Ġ because of : special-casing
+Skipping merge ĠfutbolcuĠveĠteknikĠdirektÃ¶r Ġ(d.Ġ because it has 5 words
+Skipping merge ĠJaponya'nÄ±nĠgelenekselĠveraset ĠdÃ¼zenineĠgÃ¶reĠ because it has 5 words
+Skipping merge ĠveĠNobel ĠFizyolojiĠveyaĠTÄ±p because it has 5 words
+Skipping merge ,ĠTÃ¼rkĠtiyatro ,ĠsinemaĠveĠdizi because it has 6 words
+Skipping merge ĠfutbolcuĠveĠteknikĠdirektÃ¶r Ġ(Ã¶.Ġ because it has 5 words
+Skipping merge Ġtiyatro,ĠsinemaĠveĠdizi ĠoyuncusuĠ(d.Ġ because it has 6 words
+Skipping merge : Ġ" because of : special-casing
+Skipping merge ĠfizikÃ§iĠveĠNobelĠFizik ĠÃĸdÃ¼lÃ¼ĠsahibiĠ(d.Ġ because it has 7 words
+Skipping merge ĠmillÃ® ĠfutbolcuĠveĠteknikĠdirektÃ¶rĊ because it has 5 words
+Skipping merge ,ĠJaponya'nÄ±nĠgelenekselĠveraset ĠdÃ¼zenineĠgÃ¶reĠ because it has 6 words
+Skipping merge ĠEnĠÄ°yi ĠErkekĠOyuncuĠAkademi because it has 5 words
+Skipping merge ĠeskiĠmillÃ® ĠfutbolcuĠveĠteknikĠdirektÃ¶r because it has 6 words
+Skipping merge ĠfizikÃ§iĠveĠNobelĠFizik ĠÃĸdÃ¼lÃ¼ĠsahibiĠ(Ã¶.Ġ because it has 7 words
+Skipping merge ĠdÃ¼ÅŁtÃ¼: Ġ because of : special-casing
+Skipping merge DoÄŁduÄŁu ĠgÃ¼nĠveĠayĠbilinmeyenlerĊ because it has 5 words
+Skipping merge ĠveĠNobelĠKimya ĠÃĸdÃ¼lÃ¼ĠsahibiĠ(d.Ġ because it has 6 words
+Skipping merge ,ĠsinemaĠveĠdizi ĠoyuncusuĊ because it has 5 words
+Skipping merge ,ĠAmerikalÄ±ĠoyuncuĠve ĠÅŁarkÄ±cÄ±Ċ because it has 5 words
+Skipping merge ĠveĠNobelĠKimya ĠÃĸdÃ¼lÃ¼ĠsahibiĠ(Ã¶.Ġ because it has 6 words
+Skipping merge ĠmillÃ® ĠfutbolcuĠveĠteknikĠdirektÃ¶r because it has 5 words
+Skipping merge ĠfilmĠyÃ¶netmeni ĠveĠsenaristĠ(d.Ġ because it has 5 words
+Skipping merge : ĠThe because of : special-casing
+Skipping merge ĠFizyolojiĠveyaĠTÄ±p ĠÃĸdÃ¼lÃ¼ĠsahibiĠ(Ã¶.Ġ because it has 6 words
+Skipping merge ,ĠTÃ¼rkĠtiyatro ĠveĠsinema because it has 5 words
+Skipping merge ĠFizyolojiĠveyaĠTÄ±p ĠÃĸdÃ¼lÃ¼ĠsahibiĠ(d.Ġ because it has 6 words
+Skipping merge Ġeski ĠfutbolcuĠveĠteknikĠdirektÃ¶r because it has 5 words
+Skipping merge Ġeski ĠfutbolcuĠveĠteknikĠdirektÃ¶rĊ because it has 5 words
+Skipping merge ĠÅŁarkÄ±cÄ±Ġve ĠsÃ¶zĠyazarÄ±Ġ(d.Ġ because it has 5 words
+Skipping merge ,ĠAmerikalÄ±Ġsinema ĠoyuncusuĠ(d.Ġ because it has 5 words
+Skipping merge : ĠM because of : special-casing
+Skipping merge ,ĠTÃ¼rk ĠiÅŁĠinsanÄ±Ġve because it has 5 words
+Skipping merge ĠyazarĠveĠNobelĠEdebiyat ĠÃĸdÃ¼lÃ¼ĠsahibiĠ(Ã¶.Ġ because it has 7 words
+Skipping merge ĠEnĠÄ°yi ĠKadÄ±nĠOyuncuĠAkademi because it has 5 words
+Skipping merge ĠEnĠÄ°yiĠYardÄ±mcÄ± ĠErkekĠOyuncuĠAkademi because it has 6 words
+Skipping merge ,ĠAmerikalÄ± ĠfizikÃ§iĠveĠNobelĠFizik because it has 6 words
+Skipping merge ĠsinemaĠveĠdizi ĠoyuncusuĠ(d.Ġ because it has 5 words
+Skipping merge ĠErkekĠOyuncuĠAkademi ĠÃĸdÃ¼lÃ¼ĠsahibiĊ because it has 5 words
+Skipping merge ,ĠTÃ¼rk ĠsinemaĠveĠtiyatro because it has 5 words
+Skipping merge ĠsinemaĠveĠtiyatro ĠoyuncusuĠ(Ã¶.Ġ because it has 5 words
+Skipping merge ĠErkekĠOyuncuĠAkademi ĠÃĸdÃ¼lÃ¼ĠsahibiĠ(Ã¶.Ġ because it has 6 words
+Skipping merge ologĠveĠNobel ĠFizyolojiĠveyaĠTÄ±p because it has 6 words
+Skipping merge : ĠA because of : special-casing
+Skipping merge ,ĠTÃ¼rkĠsinema ĠoyuncusuĠ(d.Ġ because it has 5 words
+Skipping merge ĠyazarĠveĠNobelĠEdebiyat ĠÃĸdÃ¼lÃ¼ĠsahibiĠ(d.Ġ because it has 7 words
+Skipping merge , ĠII.ĠDÃ¼nyaĠSavaÅŁÄ±ĠsÄ±rasÄ±nda because it has 5 words
+Skipping merge ,ĠAmerikalÄ±Ġprofesyonel ĠgÃ¼reÅŁÃ§iĠ(d.Ġ because it has 5 words
+
+ 10s  total 12s
+    → /Users/antalb/Experiments/LiB/experiments/models/tr/superbpe_13585/tokenizer.json
+  [ar superbpe 27,315]  stage 1 ...Calling do_train_original()
+
+
+
+ 5s  stage 2 ...Calling do_train_extend()
+In do_train_extend()
+Step 1: Add special tokens
+Step 2: Compute alphabet
+Length of word_to_id: 201
+Printing 5 elements in word_to_id
+Word: C, ID: 34
+Word: Ò, ID: 140
+Word: $, ID: 3
+Word: ?, ID: 30
+Word: z, ID: 89
+Word: O, ID: 46
+Word: _, ID: 62
+Word: Ï, ID: 137
+Word: ¾, ID: 122
+Word: â, ID: 151
+Step 3: Tokenize words
+
+Step 4: Count pairs in words
+
+Length of queue: 7581
+Step 5: Apply merges
+ÙİÙĳ + Ø© not found in queue
+ĠØ£ÙĨ + ÙİÙĳ not found in queue
+ÙİÙĳ + Ø§ not found in queue
+ÙİÙĳ + Ùī not found in queue
+ÙİÙĳ + Ø§Ùħ not found in queue
+ÙİÙĳ + Ø¯ not found in queue
+ÙİÙĳ + ÙĦ not found in queue
+Ùĭ + ÙĳØ§ not found in queue
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳØ§Ùħ not found in word_to_id
+ÙıÙħ + ÙİÙĳ not found in queue
+ÙİÙĳØ¯ not found in word_to_id
+ÙİÙĳÙī not found in word_to_id
+ĠØ§ÙĦØ¹Ø¨ + ÙİÙĳ not found in queue
+ØŃÙħÙİÙĳØ¯ not found in word_to_id
+ÙİÙĳ + ÙĨ not found in queue
+ÙİÙĳ + Ø± not found in queue
+ÙıÙħÙİÙĳ not found in word_to_id
+ĠØ§ÙĦØ¹Ø¨ÙİÙĳ not found in word_to_id
+ÙİÙĳ + Øª not found in queue
+ÙıÙĳ + ÙĪÙĨ not found in queue
+ĠØ£ÙĨÙİÙĳ not found in word_to_id
+Ø±ÙĬÙİÙĳØ© not found in word_to_id
+ÙİÙĳ + Ùħ not found in queue
+ÙĲÙĳ + ÙĬ not found in queue
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳÙĦ not found in word_to_id
+ÙİÙĳ + ÙĩÙı not found in queue
+ÙİÙĳ + Ø§Øª not found in queue
+ÙİÙĳ + Ø¨ not found in queue
+ÙİÙĳØ§ not found in word_to_id
+ÙİÙĳ + Ø§Ø± not found in queue
+ÙİÙĳ + Ùĩ not found in queue
+ÙİÙĳ + Ùģ not found in queue
+ÙİÙĳ + Ø§ÙĨ not found in queue
+ÙĲÙĳ + Ø± not found in queue
+ÙİÙĳØ© not found in word_to_id
+ĠØ§ÙĦØ¹Ø¨ÙİÙĳØ§Ø³ÙĬ not found in word_to_id
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳ + Ø¹ not found in queue
+ĠÙĦÙĥÙĨ + ÙİÙĳ not found in queue
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳ + ÙĤ not found in queue
+ÙİÙĳØ© not found in word_to_id
+ĠØ¶Ø¯ + ÙİÙĳ not found in queue
+ÙİÙĳØ§ not found in word_to_id
+ÙĲÙĳ + Ùĩ not found in queue
+ÙİÙĳØ§ not found in word_to_id
+ÙĲÙĳ + ÙĦ not found in queue
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳØ§ not found in word_to_id
+ÙĲÙĳ + ÙĨ not found in queue
+ÙıÙĳ + Ùĩ not found in queue
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳÙĨ not found in word_to_id
+ÙĲÙĳ + Ø¯ not found in queue
+ÙİÙĳ + ØªÙĩ not found in queue
+ÙİÙĳØ§Ùħ not found in word_to_id
+ĠÙģØ¥ÙĨ + ÙİÙĳ not found in queue
+ÙıÙĳ + ÙĦ not found in queue
+ÙıÙĳ + ÙĪØ§ not found in queue
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳØ© not found in word_to_id
+ĠØ§ÙĦØ± + ÙıÙĳ not found in queue
+ÙİÙĳØ© not found in word_to_id
+ÙıÙĳ + Ø¹ not found in queue
+ÙİÙĳØ© not found in word_to_id
+ĠÙĪØ£ÙĨ + ÙİÙĳ not found in queue
+ÙİÙĳ + Ø§Ø¨ not found in queue
+ÙİÙĳØ§Ùħ not found in word_to_id
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳÙĦ not found in word_to_id
+ÙĲÙĳ + Ùħ not found in queue
+ÙİÙĳ + Ø¶ not found in queue
+ÙİÙĳ + ÙħØ§ not found in queue
+ÙıÙĳ + Ø± not found in queue
+ÙİÙĳØ© not found in word_to_id
+ĠØ¹Ø¨ + ÙİÙĳ not found in queue
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳØ© not found in word_to_id
+ÙİÙĳØ© not found in word_to_id
+Ø§ØªÙĬÙİÙĳØ© not found in word_to_id
+ÙıÙĳ + Ùħ not found in queue
+ÙıÙĳ + Ø¯ not found in queue
+ÙİÙĳ + ÙĩØ§ not found in queue
+ÙĲÙĳ + Ùģ not found in queue
+
+Length of merges: 13571
+Step 5: Do new merges
+Skipping merge : ĠÂ« because of : special-casing
+Skipping merge : ĠØŃØ¯Ø«ĠÙģÙĬ because of : special-casing
+Skipping merge ĠØŃØ¯Ø«ĠÙģÙĬ ĠÙħØ«ÙĦĠÙĩØ°Ø§ĠØ§ÙĦÙĬÙĪÙħ because it has 5 words
+Skipping merge ĠØŃØ¯Ø«ĠÙģÙĬ ĠÙħØ«ÙĦĠÙĩØ°Ø§ĠØ§ÙĦÙĬÙĪÙħ.Ċ because it has 5 words
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙģÙĬ because it has 5 words
+Skipping merge : Ġ because of : special-casing
+Skipping merge : Ġ. because of : special-casing
+Skipping merge ĠÙĪÙģÙĤÙĭØ§ĠÙĦÙĦØªÙĤÙĪÙĬÙħ ĠØ§ÙĦÙħÙĬÙĦØ§Ø¯ÙĬĠØ§ÙĦØºØ±Ø¨ÙĬĠ(Ø§ÙĦØºØ±ÙĬØºÙĪØ±ÙĬ because it has 5 words
+Skipping merge BBC: ĠØŃØ¯Ø«ĠÙģÙĬ because of : special-casing
+Skipping merge Ø©: ĠØŃØ¯Ø«ĠÙģÙĬ because of : special-casing
+Skipping merge Ø§ÙĦÙĨÙĬÙĪÙĬÙĪØ±ÙĥĠØªØ§ÙĬÙħØ²: ĠØŃØ¯Ø«ĠÙģÙĬ because of : special-casing
+Skipping merge : Ġ.Ċ because of : special-casing
+Skipping merge ĠØ£ÙħØ±ÙĬÙĥÙĬ ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ because it has 5 words
+Skipping merge : ĠØĮ because of : special-casing
+Skipping merge : Ġ( because of : special-casing
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙģÙĬĠØ§ÙĦØ·Ø¨ĠØ¹Ø§ÙħĠ because it has 7 words
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙģÙĬĠØ§ÙĦÙģÙĬØ²ÙĬØ§Ø¡ĠØ¹Ø§ÙħĠ because it has 7 words
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙģÙĬĠØ§ÙĦÙĥÙĬÙħÙĬØ§Ø¡ĠØ¹Ø§ÙħĠ because it has 7 words
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ ĠÙĪÙħØ¯Ø±Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ because it has 5 words
+Skipping merge ĠØ§ÙĦÙĥØ¨ÙĬØ³Ø©ĠÙĪÙģÙĤÙĭØ§ĠÙĦÙĦØªÙĤÙĪÙĬÙħ ĠØ§ÙĦÙħÙĬÙĦØ§Ø¯ÙĬĠØ§ÙĦØºØ±Ø¨ÙĬĠ(Ø§ÙĦØºØ±ÙĬØºÙĪØ±ÙĬ because it has 6 words
+Skipping merge )ĠÙħÙĨĠØ§ÙĦØ³ÙĨÙĪØ§Øª ĠØ§ÙĦÙĥØ¨ÙĬØ³Ø©ĠÙĪÙģÙĤÙĭØ§ĠÙĦÙĦØªÙĤÙĪÙĬÙħ because it has 6 words
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠØ¥ÙĨØ¬ÙĦÙĬØ²ÙĬ.Ċ because it has 5 words
+Skipping merge : ĠÙĩÙĪ because of : special-casing
+Skipping merge ØĮĠØ¹ÙĦÙī ĠØ§ÙĦØ±ØºÙħĠÙħÙĨĠØ£ÙĨ because it has 5 words
+Skipping merge )ĠÙħÙĨĠØ§ÙĦØ³ÙĨÙĪØ§Øª ĠØ§ÙĦØ¨Ø³ÙĬØ·Ø©ØĮĠØ£ÙĪĠØ§ÙĦÙĬÙĪÙħ because it has 6 words
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙģÙĬĠØ§ÙĦØ£Ø¯Ø¨ĠØ¹Ø§ÙħĠ because it has 7 words
+Skipping merge : ĠÙĪÙĩÙĬ because of : special-casing
+Skipping merge : Ġ" because of : special-casing
+Skipping merge ĠØ£ÙĦÙħØ§ÙĨÙĬ ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ because it has 5 words
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙĦÙĦØ³ÙĦØ§ÙħĠØ¹Ø§ÙħĠ because it has 6 words
+Skipping merge ĠØ¨ÙĨĠØ¹Ø¨Ø¯ĠØ§ÙĦØ¹Ø²ÙĬØ² ĠØ¢ÙĦĠØ³Ø¹ÙĪØ¯ because it has 5 words
+Skipping merge . ĠØ¹ÙĦÙīĠØ§ÙĦØ±ØºÙħĠÙħÙĨĠØ£ÙĨ because it has 5 words
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠÙĥÙĪÙĬØªÙĬ.Ċ because it has 5 words
+Skipping merge Ø¯ÙĪÙĦĠØ£Ø¹Ø¶Ø§Ø¡ĠÙģÙĬ ĠØ§ÙĦØ£ÙħÙħĠØ§ÙĦÙħØªØŃØ¯Ø©Ċ because it has 5 words
+Skipping merge : ĠÂ«Ø¥ÙĨ because of : special-casing
+Skipping merge ØĮĠÙĪÙģÙĤÙĭØ§ĠÙĦÙĦØªÙĤÙĪÙĬÙħ ĠØ§ÙĦÙħÙĬÙĦØ§Ø¯ÙĬĠØ§ÙĦØºØ±Ø¨ÙĬĠ(Ø§ÙĦØºØ±ÙĬØºÙĪØ±ÙĬ because it has 6 words
+Skipping merge )ĠÙģÙĬĠØ§ÙĦØ³ÙĨÙĪØ§ØªĠØ§ÙĦÙĥØ¨ÙĬØ³Ø© ØĮĠÙĪÙģÙĤÙĭØ§ĠÙĦÙĦØªÙĤÙĪÙĬÙħ because it has 6 words
+Skipping merge : ĠØ£ÙĨ because of : special-casing
+Skipping merge : ĠÙħÙĨ because of : special-casing
+Skipping merge ØĮĠØ±Ø¦ÙĬØ³ĠÙĪØ²Ø±Ø§Ø¡ ĠØ§ÙĦÙħÙħÙĦÙĥØ©ĠØ§ÙĦÙħØªØŃØ¯Ø©.Ċ because it has 5 words
+Skipping merge : ĠÙĩÙĬ because of : special-casing
+Skipping merge : ĠA because of : special-casing
+Skipping merge ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ ĠÙģÙĬĠØ§ÙĦØ¹ÙĦÙĪÙħĠØ§ÙĦØ§ÙĤØªØµØ§Ø¯ÙĬØ©ĠØ¹Ø§ÙħĠ because it has 8 words
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠØ¥ÙĬØ·Ø§ÙĦÙĬ.Ċ because it has 5 words
+Skipping merge : ĠØ¥ÙĨ because of : special-casing
+Skipping merge %ĠÙħÙĨ ĠØ§ÙĦÙĨØ§ØªØ¬ĠØ§ÙĦÙħØŃÙĦÙĬĠØ§ÙĦØ¥Ø¬ÙħØ§ÙĦÙĬ because it has 5 words
+Skipping merge : ĠÙĪÙĩÙĪ because of : special-casing
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠØ¥Ø³Ø¨Ø§ÙĨÙĬ.Ċ because it has 5 words
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠØ¨Ø±Ø§Ø²ÙĬÙĦÙĬ.Ċ because it has 5 words
+Skipping merge ØĮĠØ¹Ø§ÙĦÙħĠÙģÙĬØ²ÙĬØ§Ø¡ĠØ£ÙħØ±ÙĬÙĥÙĬ ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ because it has 8 words
+Skipping merge Ġ: Ġ because of : special-casing
+Skipping merge : ĠâĢľ because of : special-casing
+Skipping merge ĠÙģØ±ÙĨØ³ÙĬ ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ because it has 5 words
+Skipping merge ĠØ¨Ø±ÙĬØ·Ø§ÙĨÙĬ ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ because it has 5 words
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠØ³Ø¹ÙĪØ¯ÙĬ.Ċ because it has 5 words
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠÙģØ±ÙĨØ³ÙĬ.Ċ because it has 5 words
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠØ£ÙĦÙħØ§ÙĨÙĬ.Ċ because it has 5 words
+Skipping merge : ĠThe because of : special-casing
+Skipping merge ĠØ¥ÙĨØ¬ÙĦÙĬØ²ÙĬ ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ because it has 5 words
+Skipping merge .ĠÙĪØ¹ÙĦÙī ĠØ§ÙĦØ±ØºÙħĠÙħÙĨĠØ£ÙĨ because it has 5 words
+Skipping merge ØĮĠÙħÙħØ«ÙĦ ĠØ£Ø¯Ø§Ø¡ĠØµÙĪØªÙĬĠÙĬØ§Ø¨Ø§ÙĨÙĬ.Ċ because it has 5 words
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ ĠÙĪÙħØ¯Ø±Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯ÙħĠØ¥ÙĨØ¬ÙĦÙĬØ²ÙĬ.Ċ because it has 6 words
+Skipping merge )ĠÙħÙĨĠØ§ÙĦØ³ÙĨØ© ĠÙĪÙģÙĤÙĭØ§ĠÙĦÙĦØªÙĤÙĪÙĬÙħ because it has 5 words
+Skipping merge ØĮĠØ¹Ø§ÙĦÙħĠÙĥÙĬÙħÙĬØ§Ø¡ĠØ£ÙħØ±ÙĬÙĥÙĬ ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ because it has 8 words
+Skipping merge ĠÙĤØ§ÙĦ: Ġ.Ċ because of : special-casing
+Skipping merge ÙħÙĨØ¸ÙħØ§Øª ĠÙħØµÙĨÙģØ©ĠØ¹ÙĦÙīĠØ£ÙĨÙĩØ§ĠØ¥Ø±ÙĩØ§Ø¨ÙĬØ© because it has 5 words
+Skipping merge ĠÙĤØ§ÙĦ: Ġ. because of : special-casing
+Skipping merge ĠØ±Ø³ÙĪÙĦĠØ§ÙĦÙĦÙĩ ĠØµÙĦÙīĠØ§ÙĦÙĦÙĩĠØ¹ÙĦÙĬÙĩĠÙĪØ³ÙĦÙħ because it has 6 words
+Skipping merge ĠØ§ÙĦØ±Ø§Ø¨Ø·Ø©ĠØ§ÙĦÙĪØ·ÙĨÙĬØ© ĠÙĦÙĥØ±Ø©ĠØ§ÙĦØ³ÙĦØ©ĠØ§ÙĦØ£ÙħØ±ÙĬÙĥÙĬØ© because it has 5 words
+Skipping merge : ĠÙħØ§ because of : special-casing
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠÙĩÙĪÙĦÙĨØ¯ÙĬ.Ċ because it has 5 words
+Skipping merge : ĠÙģ because of : special-casing
+Skipping merge ĠÙĤØ§ÙĦ: ĠÂ« because of : special-casing
+Skipping merge ĠÙħØµÙĨÙģØ©ĠØ¹ÙĦÙīĠØ£ÙĨÙĩØ§ĠØ¥Ø±ÙĩØ§Ø¨ÙĬØ© ĠØŃØ³Ø¨ because it has 5 words
+Skipping merge : ĠÙģÙĬ because of : special-casing
+Skipping merge Ġ: ĠÙĪØ³Ø§Ùħ because of : special-casing
+Skipping merge )ĠÙħÙĨĠØ§ÙĦØ³ÙĨØ© ĠØ§ÙĦØ¨Ø³ÙĬØ·Ø©ØĮĠØ£ÙĪĠØ§ÙĦÙĬÙĪÙħ because it has 6 words
+Skipping merge ØĮĠÙĦØ§Ø¹Ø¨ĠÙĥØ±Ø©ĠÙĤØ¯Ùħ ĠÙĬÙĪÙĨØ§ÙĨÙĬ.Ċ because it has 5 words
+Skipping merge Ø¯ÙĪÙĦĠØ£Ø¹Ø¶Ø§Ø¡ĠÙģÙĬ ĠÙħØ¬ÙĦØ³ĠØ£ÙĪØ±ÙĪØ¨Ø§Ċ because it has 5 words
+Skipping merge ØĮĠØ¹Ø§ÙĦÙħĠÙģÙĬØ²ÙĬØ§Ø¡ĠØ£ÙĦÙħØ§ÙĨÙĬ ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ because it has 8 words
+Skipping merge : ĠM because of : special-casing
+Skipping merge ĠØ³ÙĪÙĬØ¯ÙĬ ĠØŃØ§ØµÙĦĠØ¹ÙĦÙīĠØ¬Ø§Ø¦Ø²Ø©ĠÙĨÙĪØ¨ÙĦ because it has 5 words
+Skipping merge ĠÙģÙĬĠØ£ÙĪØ§Ø®Ø± ĠØ§ÙĦÙĤØ±ÙĨĠØ§ÙĦØªØ§Ø³Ø¹ĠØ¹Ø´Ø± because it has 5 words
+Skipping merge Ø§ØĮĠÙħÙħØ«ÙĦ ĠØ£Ø¯Ø§Ø¡ĠØµÙĪØªÙĬĠÙĬØ§Ø¨Ø§ÙĨÙĬ.Ċ because it has 5 words
+Skipping merge Ø£Ø±Ø´ÙĬÙģĠÙħØµØ±: ĠØŃØ¯Ø«ĠÙģÙĬ because of : special-casing
+Skipping merge : ĠÂ«Ø£ because of : special-casing
+
+ 32s  total 38s
+    → /Users/antalb/Experiments/LiB/experiments/models/ar/superbpe_27315/tokenizer.json
+  [zh superbpe 26,269]  stage 1 ...Calling do_train_original()
+
+
+
+ 26s  stage 2 ...Calling do_train_extend()
+In do_train_extend()
+Step 1: Add special tokens
+Step 2: Compute alphabet
+Length of word_to_id: 201
+Printing 5 elements in word_to_id
+Word: ĭ, ID: 178
+Word: 4, ID: 19
+Word: », ID: 119
+Word: ¥, ID: 98
+Word: Ï, ID: 137
+Word: ŀ, ID: 197
+Word: ], ID: 60
+Word: Ł, ID: 198
+Word: ., ID: 13
+Word: ¯, ID: 107
+Step 3: Tokenize words
+
+Step 4: Count pairs in words
+
+Length of queue: 15192
+Step 5: Apply merges
+
+Length of merges: 13134
+Step 5: Do new merges
+Skipping merge : Ġ because of : special-casing
+Skipping merge : ĠThe because of : special-casing
+Skipping merge : ĠA because of : special-casing
+Skipping merge : ĠM because of : special-casing
+
+ 25s  total 51s
+    → /Users/antalb/Experiments/LiB/experiments/models/zh/superbpe_26269/tokenizer.json
+TRAIN EXIT 0
