@@ -31,37 +31,28 @@ A Self-Regulating Minimum Description Length Tokenizer}
 \affil[3]{\orgname{KNAW Humanities Cluster}, \city{Amsterdam},
 \country{The Netherlands}}
 
-\abstract{Almost every modern tokenizer treats whitespace as a hard delimiter:
-no token may span a word boundary, however frequent the collocation.
-The LiB (Less is Better) tokenizer crosses that border from first principles, learning
-sub-word and supra-word units jointly under a single Minimum Description
-Length (MDL) objective.
-We present a production HuggingFace-compatible implementation of LiB and show
-that what makes the MDL objective work in practice is a
-cognitively inspired memorise-and-forget loop combining
-an active route (reward re-ranking) and a passive route (decay of unused units).
-With both routes operating, the vocabulary size is no longer a hyperparameter
-but an emergent equilibrium: across seven typologically diverse languages,
-LiB settles at 13.6k--28.4k units under a 50k cap.
-Ablating passive forgetting inflates the lexicon by 38--88\% and worsens
-description length by 2--10\% in every language, while leaving trigram
-bits-per-character unchanged.%: the retained units are dead weight that only
-%MDL prices.
-%Budget-matched controls show that LiB's favourable description length stems
-%from its freedom to choose its own vocabulary size; 
-On predictive metrics,
-%which are size-robust, 
-LiB outperforms vocabulary size-matched BPE on trigram
-bits-per-character in six of seven languages and size-matched SuperBPE, the
-leading frequency-based supra-word tokenizer, in all seven. On a
-tokenization-fair neural bits-per-byte evaluation it matches 50k BPE with
-vocabularies of 27--57\% of that size, but every baseline retrained at LiB's
-size outperforms it, by 2.8--10.2\%.
-Supra-word tokens help LiB on every metric in every space-delimited language, and the
-fraction it discovers doubles as a typological diagnostic, tracking
-script and word-internal morphological complexity.
-We release the Rust implementation, trained tokenizers, and all evaluation
-code.}
+\abstract{Almost every modern tokenizer is told where words are and how many
+units to keep. Whitespace is a hard delimiter, the vocabulary size is fixed in
+advance, and the tokenizers that do cross word boundaries add a separate merge
+stage to do so. The LiB (Less is Better) tokenizer needs none of these
+settings: a single Minimum Description Length (MDL) objective learns
+sub-word and supra-word units jointly, and the space is an ordinary character.
+In a production HuggingFace-compatible implementation, we show that the
+objective works because of a memorise-and-forget loop inspired by models of
+human memory, combining an active route (reward re-ranking) and a
+passive route (decay of unused units). Ablating passive forgetting inflates
+the lexicon by 38--88\% and worsens description length in each of seven typologically diverse
+languages. With both routes operating, the vocabulary is an outcome of training.
+LiB settles at 13.6k--28.4k units under a 50k cap, its share of units above
+the word tracks script and word-internal morphology, and a single tokenizer
+trained on all seven languages segments each of them almost as its
+monolingual counterpart does. On trigram bits-per-character, LiB outperforms
+BPE retrained at its vocabulary size in six languages and SuperBPE retrained
+at that size in all seven. On a tokenization-fair neural bits-per-byte
+evaluation it matches BPE at the conventional 50k with 27--57\% of the
+vocabulary, while baselines retrained at LiB's size outperform it by
+2.8--10.2\%. We release the Rust implementation, trained tokenizers, and all
+evaluation code.}
 
 \keywords{Tokenization, Multilingual NLP, Minimum description length, Subword segmentation,
 Multiword expressions, Cognitively inspired modelling}
@@ -131,64 +122,72 @@ is asked to process.
 For the majority of the world's languages, whose compressible structure sits
 below the word (because of agglutination, compounding, or templatic morphology) or above it
 (collocation), that border is arguably in the wrong place.
+The vocabulary size is a second inherited setting. Values such as 32k or 50k
+are carried from one system to the next and applied to every language alike,
+although the number of units a language needs depends on how it builds words.
 
 Recent work has begun to question the border.
 SuperBPE \citep{liu2025superbpe} lets BPE merge across whitespace in a second
 training stage, reporting downstream gains with less LLM inference
-compute.
+compute. The supra-word units are thus added to a sub-word vocabulary by a
+separate procedure, and the point at which the second stage begins is a
+further hyperparameter.
 From a different tradition, the LiB tokenizer
 \citep{yang2020less,yang2024rethinking} derives sub- and supra-word units
 jointly from a single Minimum Description Length (MDL) objective
-\citep{rissanen1978modeling}. \citet{yang2022eyefixations} show that its
+\citep{rissanen1978modeling}, in which the space is an ordinary character.
+\citet{yang2022eyefixations} show that its
 segmentations predict human eye fixations during reading better than
 word-based ones, which they take as behavioural evidence that multi-word units are
 psycholinguistically plausible \citep{wray2002formulaic,arnon2021starting}.
 
-Here, we study what it takes to make such an MDL tokenizer work at
-production scale, across typologically diverse languages, and under fair
-evaluation.
-We find that forgetting is what makes an MDL tokenizer effective.
-An MDL lexicon needs to be able to shed units as readily as it admits them, in order to avoid the long-term storage of candidates that never repay their storage cost.
+Here, we ask what it takes to make such an MDL tokenizer work at production
+scale and across typologically diverse languages, and what it costs under
+controlled evaluation.
+We find that forgetting is what makes it work.
+An MDL lexicon needs to shed units as readily as it admits them, or it keeps
+candidates that never repay their storage cost.
 Following \citet{yang2020less}, our implementation combines two forgetting
 routes that mirror the active and passive forgetting observed in human
 memory: an active route that demotes, and eventually deletes, units
 that lose head-to-head segmentation comparisons, and a passive route
 that places rarely used units on probation and lets them expire.
-With both routes operating, the vocabulary size ceases to be a hyperparameter:
-admission and forgetting reach a language-specific equilibrium.
-%well below the
-%nominal budget, and the units that survive have earned their place.
+With both routes operating, admission and forgetting reach a
+language-specific equilibrium. The vocabulary is then an outcome of training
+in three respects. Its size is not set in advance. Its granularity, the share
+of units below, at, and above the word, follows from the data and not from a
+pre-tokenization step. Its allocation across languages, when several share
+one vocabulary, needs no per-language budget.
 
-We evaluate on seven typologically diverse languages with a battery of
-metrics: description length (DL), Kneser--Ney $n$-gram bits-per-character
-(BPC), a tokenization-fair neural bits-per-byte (BPB) evaluation, sequence
-fertility, and encoding speed. Controls keep the comparison fair,
-including a passive-forgetting ablation and budget-matched baselines
-trained at LiB's self-organized vocabulary sizes. The contributions offered by this study are the following:
+We evaluate on seven typologically diverse languages with description length
+(DL), Kneser--Ney $n$-gram bits-per-character (BPC), a tokenization-fair
+neural bits-per-byte (BPB) evaluation, sequence fertility, and encoding speed.
+Two controls separate the mechanism from its side effects: an ablation of
+passive forgetting, and baselines retrained at LiB's emergent vocabulary
+sizes. The second control matters because an emergent size is usually a
+smaller one, and a smaller vocabulary changes every metric.
+The contributions of this study are the following:
 
 \begin{itemize}
   \item We give an explicit algorithmic account of LiB's two-route
-        memorise-and-forget training loop. We show that passive forgetting is
-        functional: ablating the passive route inflates the lexicon by
-        38--88\% and worsens description length (DL) by 2--10\% in all seven languages, while
-        trigram BPC is unaffected. %The ablated lexicon carries dead weight
-        %that only a description-length lens reveals.
-  \item We show that the vocabulary size self-regulates (13.6k--28.4k under a
-        50k cap, tracking the language).% and we give an account of
-        %what that buys: 
-        Budget-matched baselines reveal that LiB's DL
-        advantage over standard 50k-vocabulary baselines is a
-        vocabulary-size effect. LiB beats size-matched BPE
-        on trigram BPC in six of seven languages and size-matched SuperBPE
-        in all seven.
-  \item We provide a tokenization-fair neural evaluation. Under
-        bits-per-byte with a small Transformer LM, LiB is level with 50k BPE
-        in all seven languages, but baselines retrained at LiB's vocabulary
-        size, SuperBPE included, outperform it in every language. Supra-word
-        tokens help LiB on every metric in every space-delimited language.
-  \item We introduce the supra-word ratio of the induced vocabulary as a
-        data-driven typological diagnostic, tracking script and the complexity
-        of word-internal morphology.
+        memorise-and-forget training loop and show that passive forgetting is
+        functional: ablating it inflates the lexicon by 38--88\% and worsens
+        DL by 2--10\% in all seven languages, while trigram BPC is unaffected.
+  \item We show that LiB's vocabulary self-regulates in size (13.6k--28.4k
+        under a 50k cap), in granularity, and in its allocation across
+        languages. The supra-word ratio tracks script and the complexity of
+        word-internal morphology, and a joint tokenizer for all seven
+        languages settles at 69\% of the combined size of the monolingual
+        vocabularies while segmenting each language within 2.4\% of the
+        fertility of its monolingual tokenizer (Chinese excepted, where it
+        needs 5\% fewer tokens).
+  \item We quantify what the self-regulation costs. LiB's DL advantage over
+        50k baselines is a vocabulary-size effect. On trigram BPC, LiB beats
+        BPE retrained at its size in six of seven languages and SuperBPE
+        retrained at its size in all seven. On neural BPB it is level with
+        50k BPE in all seven languages, but every baseline retrained at its
+        size outperforms it, by 2.8--10.2\%. Supra-word tokens help LiB on
+        every metric in every space-delimited language.
   \item We release LiB as a production HuggingFace-compatible Rust
         implementation with trained tokenizers and all evaluation code.
 \end{itemize}
