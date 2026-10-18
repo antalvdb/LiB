@@ -1,0 +1,118 @@
+CPU usage: 4.93% user, 10.9% sys, 84.96% idle 
+tokenizers extension: /Users/antalb/Experiments/LiB/tokenizers-fork/bindings/python/py_src/tokenizers/__init__.py
+en BPE               6.12 M chars/s   3.62 MB
+en WordPiece         7.47 M chars/s   1.16 MB
+en SP-Unigram       11.37 M chars/s   1.13 MB
+en LiB               6.77 M chars/s   1.63 MB
+en LiB (no supra)    4.27 M chars/s   1.63 MB
+de BPE               6.16 M chars/s   3.67 MB
+de WordPiece         7.45 M chars/s   1.21 MB
+de SP-Unigram       10.94 M chars/s   1.19 MB
+de LiB               7.17 M chars/s   1.52 MB
+de LiB (no supra)    4.98 M chars/s   1.52 MB
+es BPE               5.60 M chars/s   3.67 MB
+es WordPiece         6.56 M chars/s   1.18 MB
+es SP-Unigram        9.73 M chars/s   1.18 MB
+es LiB               6.10 M chars/s   1.44 MB
+es LiB (no supra)    4.17 M chars/s   1.44 MB
+fi BPE               5.87 M chars/s   3.67 MB
+fi WordPiece         6.61 M chars/s   1.21 MB
+fi SP-Unigram        9.25 M chars/s   1.21 MB
+fi LiB               6.28 M chars/s   1.16 MB
+fi LiB (no supra)    4.51 M chars/s   1.16 MB
+tr BPE               5.48 M chars/s   3.69 MB
+tr WordPiece         6.10 M chars/s   1.18 MB
+tr SP-Unigram        9.10 M chars/s   1.16 MB
+tr LiB               6.09 M chars/s   0.77 MB
+tr LiB (no supra)    3.88 M chars/s   0.77 MB
+ar BPE               4.01 M chars/s   3.97 MB
+ar WordPiece         5.16 M chars/s   1.34 MB
+ar SP-Unigram        8.95 M chars/s   1.31 MB
+ar LiB               5.07 M chars/s   1.69 MB
+ar LiB (no supra)    3.79 M chars/s   1.69 MB
+zh BPE               3.26 M chars/s   3.05 MB
+zh WordPiece         1.77 M chars/s   1.17 MB
+zh SP-Unigram        5.77 M chars/s   1.04 MB
+zh LiB               3.26 M chars/s   1.48 MB
+zh LiB (no supra)    3.29 M chars/s   1.48 MB
+tokenizers extension: /private/tmp/claude-501/-Users-antalb-Experiments-LiB/e11f4666-da4c-4a84-aced-cb740465d72b/scratchpad/oldpkg/tokenizers/__init__.py
+en LiB               5.22 M chars/s   1.63 MB
+en LiB (no supra)    3.61 M chars/s   1.63 MB
+de LiB               5.04 M chars/s   1.52 MB
+de LiB (no supra)    3.78 M chars/s   1.52 MB
+es LiB               4.43 M chars/s   1.44 MB
+es LiB (no supra)    3.38 M chars/s   1.44 MB
+fi LiB               4.67 M chars/s   1.16 MB
+fi LiB (no supra)    3.61 M chars/s   1.16 MB
+tr LiB               4.60 M chars/s   0.77 MB
+tr LiB (no supra)    3.44 M chars/s   0.77 MB
+ar LiB               3.85 M chars/s   1.69 MB
+ar LiB (no supra)    2.89 M chars/s   1.69 MB
+zh LiB               3.02 M chars/s   1.48 MB
+zh LiB (no supra)    3.03 M chars/s   1.48 MB
+tokenizers extension: /Users/antalb/Experiments/LiB/tokenizers-fork/bindings/python/py_src/tokenizers/__init__.py
+en LiB               7.16 M chars/s   1.63 MB
+en LiB (no supra)    4.46 M chars/s   1.63 MB
+de LiB               7.16 M chars/s   1.52 MB
+de LiB (no supra)    4.62 M chars/s   1.52 MB
+es LiB               5.83 M chars/s   1.44 MB
+es LiB (no supra)    4.02 M chars/s   1.44 MB
+fi LiB               6.12 M chars/s   1.16 MB
+fi LiB (no supra)    4.44 M chars/s   1.16 MB
+tr LiB               5.88 M chars/s   0.77 MB
+tr LiB (no supra)    3.93 M chars/s   0.77 MB
+ar LiB               5.05 M chars/s   1.69 MB
+ar LiB (no supra)    3.58 M chars/s   1.69 MB
+zh LiB               3.20 M chars/s   1.48 MB
+zh LiB (no supra)    3.13 M chars/s   1.48 MB
+{'lang': 'en', 'tokenizer': 'LiB', 'threads': 'default', 'seconds': '48.5', 'vocab_size': 28418, 'identical_to_paper': True}
+{'lang': 'en', 'tokenizer': 'BPE', 'threads': 'default', 'seconds': '3.7'}
+{'lang': 'en', 'tokenizer': 'BPE', 'threads': 1, 'seconds': '3.7'}
+{'lang': 'en', 'tokenizer': 'WordPiece', 'threads': 'default', 'seconds': '2.3'}
+{'lang': 'en', 'tokenizer': 'WordPiece', 'threads': 1, 'seconds': '2.1'}
+{'lang': 'en', 'tokenizer': 'SP-Unigram', 'threads': 'default', 'seconds': '9.3'}
+{'lang': 'en', 'tokenizer': 'SP-Unigram', 'threads': 1, 'seconds': '18.9'}
+{'lang': 'de', 'tokenizer': 'LiB', 'threads': 'default', 'seconds': '47.1', 'vocab_size': 26574, 'identical_to_paper': True}
+{'lang': 'de', 'tokenizer': 'BPE', 'threads': 'default', 'seconds': '5.1'}
+{'lang': 'de', 'tokenizer': 'BPE', 'threads': 1, 'seconds': '5.7'}
+{'lang': 'de', 'tokenizer': 'WordPiece', 'threads': 'default', 'seconds': '3.6'}
+{'lang': 'de', 'tokenizer': 'WordPiece', 'threads': 1, 'seconds': '3.6'}
+{'lang': 'de', 'tokenizer': 'SP-Unigram', 'threads': 'default', 'seconds': '13.5'}
+{'lang': 'de', 'tokenizer': 'SP-Unigram', 'threads': 1, 'seconds': '36.9'}
+{'lang': 'es', 'tokenizer': 'LiB', 'threads': 'default', 'seconds': '49.1', 'vocab_size': 25101, 'identical_to_paper': True}
+{'lang': 'es', 'tokenizer': 'BPE', 'threads': 'default', 'seconds': '3.9'}
+{'lang': 'es', 'tokenizer': 'BPE', 'threads': 1, 'seconds': '3.9'}
+{'lang': 'es', 'tokenizer': 'WordPiece', 'threads': 'default', 'seconds': '2.3'}
+{'lang': 'es', 'tokenizer': 'WordPiece', 'threads': 1, 'seconds': '2.3'}
+{'lang': 'es', 'tokenizer': 'SP-Unigram', 'threads': 'default', 'seconds': '10.1'}
+{'lang': 'es', 'tokenizer': 'SP-Unigram', 'threads': 1, 'seconds': '21.4'}
+{'lang': 'fi', 'tokenizer': 'LiB', 'threads': 'default', 'seconds': '31.5', 'vocab_size': 20257, 'identical_to_paper': True}
+{'lang': 'fi', 'tokenizer': 'BPE', 'threads': 'default', 'seconds': '4.9'}
+{'lang': 'fi', 'tokenizer': 'BPE', 'threads': 1, 'seconds': '4.7'}
+{'lang': 'fi', 'tokenizer': 'WordPiece', 'threads': 'default', 'seconds': '3.5'}
+{'lang': 'fi', 'tokenizer': 'WordPiece', 'threads': 1, 'seconds': '3.4'}
+{'lang': 'fi', 'tokenizer': 'SP-Unigram', 'threads': 'default', 'seconds': '11.2'}
+{'lang': 'fi', 'tokenizer': 'SP-Unigram', 'threads': 1, 'seconds': '32.0'}
+{'lang': 'tr', 'tokenizer': 'LiB', 'threads': 'default', 'seconds': '16.2', 'vocab_size': 13580, 'identical_to_paper': True}
+{'lang': 'tr', 'tokenizer': 'BPE', 'threads': 'default', 'seconds': '2.9'}
+{'lang': 'tr', 'tokenizer': 'BPE', 'threads': 1, 'seconds': '2.9'}
+{'lang': 'tr', 'tokenizer': 'WordPiece', 'threads': 'default', 'seconds': '2.1'}
+{'lang': 'tr', 'tokenizer': 'WordPiece', 'threads': 1, 'seconds': '2.3'}
+{'lang': 'tr', 'tokenizer': 'SP-Unigram', 'threads': 'default', 'seconds': '4.6'}
+{'lang': 'tr', 'tokenizer': 'SP-Unigram', 'threads': 1, 'seconds': '9.9'}
+{'lang': 'ar', 'tokenizer': 'LiB', 'threads': 'default', 'seconds': '48.9', 'vocab_size': 27310, 'identical_to_paper': True}
+{'lang': 'ar', 'tokenizer': 'BPE', 'threads': 'default', 'seconds': '4.0'}
+{'lang': 'ar', 'tokenizer': 'BPE', 'threads': 1, 'seconds': '4.0'}
+{'lang': 'ar', 'tokenizer': 'WordPiece', 'threads': 'default', 'seconds': '2.8'}
+{'lang': 'ar', 'tokenizer': 'WordPiece', 'threads': 1, 'seconds': '2.7'}
+{'lang': 'ar', 'tokenizer': 'SP-Unigram', 'threads': 'default', 'seconds': '10.5'}
+{'lang': 'ar', 'tokenizer': 'SP-Unigram', 'threads': 1, 'seconds': '23.5'}
+{'lang': 'zh', 'tokenizer': 'LiB', 'threads': 'default', 'seconds': '15.2', 'vocab_size': 26264, 'identical_to_paper': True}
+{'lang': 'zh', 'tokenizer': 'BPE', 'threads': 'default', 'seconds': '17.7'}
+{'lang': 'zh', 'tokenizer': 'BPE', 'threads': 1, 'seconds': '17.4'}
+{'lang': 'zh', 'tokenizer': 'WordPiece', 'threads': 'default', 'seconds': '13.4'}
+{'lang': 'zh', 'tokenizer': 'WordPiece', 'threads': 1, 'seconds': '13.1'}
+{'lang': 'zh', 'tokenizer': 'SP-Unigram', 'threads': 'default', 'seconds': '21.1'}
+{'lang': 'zh', 'tokenizer': 'SP-Unigram', 'threads': 1, 'seconds': '72.7'}
+exit=0
+CPU usage: 12.26% user, 8.30% sys, 79.43% idle 

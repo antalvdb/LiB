@@ -1,0 +1,15 @@
+label,lang,tokenizer,mchars_per_s,mtokens_per_s,model_mb
+new-rerun,en,LiB,7.163,1.537,1.63
+new-rerun,en,LiB (no supra),4.460,2.286,1.63
+new-rerun,de,LiB,7.157,1.505,1.52
+new-rerun,de,LiB (no supra),4.621,2.077,1.52
+new-rerun,es,LiB,5.832,1.471,1.44
+new-rerun,es,LiB (no supra),4.023,2.107,1.44
+new-rerun,fi,LiB,6.120,1.344,1.16
+new-rerun,fi,LiB (no supra),4.443,2.009,1.16
+new-rerun,tr,LiB,5.881,1.387,0.77
+new-rerun,tr,LiB (no supra),3.928,2.136,0.77
+new-rerun,ar,LiB,5.047,1.285,1.69
+new-rerun,ar,LiB (no supra),3.582,1.901,1.69
+new-rerun,zh,LiB,3.203,2.312,1.48
+new-rerun,zh,LiB (no supra),3.126,2.260,1.48

@@ -541,9 +541,11 @@ The proportion of vocabulary entries containing an internal space
 (a leading Metaspace marker does not count), a proxy for the degree to which
 LiB invests its vocabulary above rather than below the word.
 
-\paragraph{Encoding throughput.}
-Characters per second, measured on an otherwise idle machine over 3
-repetitions on 1,000 test lines after a warm-up pass.
+\paragraph{Encoding throughput and training time.}
+Encoding throughput is measured in characters per second over 3
+repetitions on 1,000 test lines after a warm-up pass, encoding one line
+per call. Training time is the wall-clock time to train on the full
+training set. Both are measured on an otherwise idle Apple M1 Max.
 
 
 %% ============================================================
@@ -869,7 +871,7 @@ Third, some units reflect the corpus rather than the language. The Finnish
 \texttt{\textvisiblespace (d. 18} units come from Wikipedia biography leads,
 where nationality predicates and birth--death parentheses recur in nearly
 fixed form. These are regularities of the register LiB was trained on,
-not of Finnish or Turkish generally, and they are a concrete instance of the
+not of Finnish or Turkish generally, and an instance of the
 register limitation noted in Section~\ref{sec:discussion}.
 
 %Chinese is left out of the table because there is nothing to show. Its
@@ -921,7 +923,7 @@ language: removing passive forgetting costs between $+2.0\%$ (Turkish) and
 $+10.0\%$ (Finnish) DL, and LiB's best-DL count drops from five languages to
 two.
 
-The budget-matched column confirms, like we observed in Section~\ref{sec:budgetmatched}, that baselines which are explicitly given LiB's vocabulary size beat LiB on DL in every language.
+The budget-matched column confirms, as in Section~\ref{sec:budgetmatched}, that baselines given LiB's vocabulary size beat LiB on DL in every language.
 %The DL story is therefore a story about finding the right size, which
 %the forgetting equilibrium does autonomously, per language, and which the
 %fixed 50k convention does not.
@@ -985,8 +987,8 @@ $\alpha$ trades vocabulary size against a marginal BPC gain (the
 BPC-best $\alpha{=}0.5$ brings English to the cap for $\approx$0.01 bits over
 the self-regulating $\alpha{=}0.25$, which we prefer for its emergent size
 and faster training).
-Remaining hyperparameters affect validation BPC by under 0.03 bits across
-the searched ranges.
+Other hyperparameters affect validation BPC by under 0.03 bits in the
+search.
 
 
 %% ============================================================
@@ -1235,9 +1237,9 @@ monolingually, every baseline retrained at LiB's size outperforms it
 (Section~\ref{sec:bpb}). LiB is ahead of 50k BPE on German, Finnish, Turkish,
 and Arabic, and at most 0.4\% behind on English, Spanish, and Chinese. It is
 ahead of SuperBPE in five languages, level on Spanish, and behind on Chinese.
-Supra-word lookup lowers LiB's BPB in all seven languages, by 0.04 (Arabic)
+Supra-word lookup lowers LiB's BPB in every language, by 0.04 (Arabic)
 to 0.21 (Turkish), and without it LiB needs 2.0--2.3 times as many tokens in
-the space-delimited languages.
+spaced languages.
 
 %% ============================================================
 \section{Throughput and Model Size}
@@ -1247,36 +1249,54 @@ the space-delimited languages.
 \begin{table}[t]
 \centering
 \small
-\begin{tabular}{lrrrr}
+\begin{tabular}{lrrrrrrrrr}
 \toprule
-\textbf{Language} & \textbf{BPE} & \textbf{WP} & \textbf{SP-U} & \textbf{LiB} \\
+ & \multicolumn{5}{c}{\textbf{Encoding (M chars/s)}} & \multicolumn{4}{c}{\textbf{Training (s)}} \\
+\cmidrule(lr){2-6}\cmidrule(lr){7-10}
+\textbf{Language} & \textbf{BPE} & \textbf{WP} & \textbf{SP-U} & \textbf{LiB} & \textbf{LiB$^{-}$} & \textbf{BPE} & \textbf{WP} & \textbf{SP-U} & \textbf{LiB} \\
 \midrule
-English  & 6.62 & 7.91 & \textbf{11.64} & 5.38 \\
-German   & 6.39 & 7.86 & \textbf{11.29} & 5.40 \\
-Spanish  & 5.50 & 6.28 &  \textbf{9.50} & 4.40 \\
-Finnish  & 6.06 & 6.65 &  \textbf{9.11} & 4.72 \\
-Turkish  & 5.59 & 6.28 &  \textbf{9.10} & 4.73 \\
-Arabic   & 4.28 & 5.59 &  \textbf{9.16} & 4.14 \\
-Chinese  & 3.33 & 1.82 &  \textbf{5.99} & 3.19 \\
+English  & 6.12 & 7.47 & \textbf{11.37} & 6.76 & 4.27 & 3.7 & \textbf{2.3} & 9.3 & 48.5 \\
+German   & 6.16 & 7.45 & \textbf{10.94} & 7.17 & 4.98 & 5.1 & \textbf{3.6} & 13.5 & 47.1 \\
+Spanish  & 5.60 & 6.56 &  \textbf{9.73} & 6.10 & 4.17 & 3.9 & \textbf{2.3} & 10.1 & 49.1 \\
+Finnish  & 5.87 & 6.61 &  \textbf{9.25} & 6.28 & 4.51 & 4.9 & \textbf{3.5} & 11.2 & 31.5 \\
+Turkish  & 5.48 & 6.10 &  \textbf{9.10} & 6.09 & 3.88 & 2.9 & \textbf{2.1} & 4.6 & 16.2 \\
+Arabic   & 4.01 & 5.16 &  \textbf{8.95} & 5.07 & 3.79 & 4.0 & \textbf{2.8} & 10.5 & 48.9 \\
+Chinese  & 3.26 & 1.77 &  \textbf{5.77} & 3.26 & 3.29 & 17.7 & \textbf{13.4} & 21.1 & 15.2 \\
 \bottomrule
 \end{tabular}
-\caption{Encoding throughput in million characters per second (1,000 test
-lines $\times$ 3 repetitions, idle machine). LiB with supra-word lookup
-enabled.}
+\caption{Encoding throughput (million characters per second, 1,000 test
+lines $\times$ 3 repetitions) and training time (seconds, full training set)
+on an idle Apple M1 Max. LiB$^{-}$: the same LiB model with supra-word
+lookup disabled. Baselines train at 50k with default thread pools, LiB on
+one thread. Repeated LiB runs varied by up to 6\%.}
 \label{tab:speed}
 \end{table}
 
-LiB encodes at 78--97\% of BPE's throughput across the seven languages
-(Table~\ref{tab:speed}), nearly matching it on Arabic and Chinese, and
-$1.75\times$ faster than WordPiece on Chinese, while SP-Unigram is the
-fastest encoder throughout.
-Supra-word lookup makes LiB faster per character, due to longer matches per
-trie descent.
-LiB's model files are also the smallest of the four (1.5--1.6\,MB vs.\
-3.5\,MB for BPE), reflecting its compact emergent vocabularies.
-Training a LiB tokenizer takes 27--90 minutes per language on a single CPU
-core, dominated by lexicon churn; this is slower than the baselines but a
-one-off cost.
+LiB encodes 7--27\% faster than BPE in the six space-delimited languages
+and at the same speed on Chinese (Table~\ref{tab:speed}).
+SP-Unigram is the fastest encoder throughout.
+Supra-word lookup accounts for LiB's lead over BPE: with it disabled, the
+same model encodes 1.3--1.6 times slower in the space-delimited languages,
+since a longer match covers more characters per trie descent.
+On Chinese, where supra-word units are almost absent, it makes no
+difference.
+
+Training a LiB tokenizer takes 15--49 seconds per language on a single
+thread.
+In the space-delimited languages this is 6--13 times as long as BPE and
+3--5 times as long as the multithreaded SP-Unigram; on Chinese it is
+shorter than both.
+An earlier version of the implementation produced the same tokenizers but
+took 27--90 minutes per language to train and encoded 4--21\% slower than
+BPE.
+The current version gives each unit a fixed integer handle, so that
+re-ranking (Section~\ref{sec:forgetting}) rotates a span of handles instead
+of re-hashing token strings, and passive forgetting needs no trie rebuild.
+In encoding, the lookahead after a candidate match stops at the first unit
+found.
+LiB's model files (0.8--1.7\,MB) are smaller than BPE's (3.0--4.0\,MB) and,
+except for Finnish and Turkish, larger than those of WordPiece and
+SP-Unigram (1.0--1.3\,MB).
 
 
 %% ============================================================
@@ -1400,9 +1420,9 @@ within 2.4\% of the fertility of its monolingual tokenizer (Chinese
 excepted, where it needs 5\% fewer tokens).
 
 Supra-word tokens, properly curated by forgetting, help on every metric in
-every spaced language; the supra-word ratio itself can be taken as a typological
+every spaced language; the supra-word ratio can serve as a typological
 diagnostic, inversely
-tracking word-internal morphological complexity among space-delimited languages.
+tracking word-internal morphological complexity in spaced languages.
 
 We release the Rust implementation, trained tokenizers, and evaluation
 suite. The clear next step is downstream evaluation at scale, where

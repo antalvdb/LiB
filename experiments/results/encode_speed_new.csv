@@ -1,0 +1,36 @@
+label,lang,tokenizer,mchars_per_s,mtokens_per_s,model_mb
+new,en,BPE,6.122,1.222,3.62
+new,en,WordPiece,7.468,1.559,1.16
+new,en,SP-Unigram,11.367,2.416,1.13
+new,en,LiB,6.765,1.452,1.63
+new,en,LiB (no supra),4.273,2.190,1.63
+new,de,BPE,6.163,1.161,3.67
+new,de,WordPiece,7.446,1.459,1.21
+new,de,SP-Unigram,10.941,2.200,1.19
+new,de,LiB,7.168,1.507,1.52
+new,de,LiB (no supra),4.980,2.239,1.52
+new,es,BPE,5.599,1.157,3.67
+new,es,WordPiece,6.561,1.503,1.18
+new,es,SP-Unigram,9.726,2.232,1.18
+new,es,LiB,6.098,1.538,1.44
+new,es,LiB (no supra),4.172,2.185,1.44
+new,fi,BPE,5.870,1.069,3.67
+new,fi,WordPiece,6.612,1.356,1.21
+new,fi,SP-Unigram,9.247,1.955,1.21
+new,fi,LiB,6.284,1.380,1.16
+new,fi,LiB (no supra),4.514,2.041,1.16
+new,tr,BPE,5.479,1.069,3.69
+new,tr,WordPiece,6.104,1.380,1.18
+new,tr,SP-Unigram,9.097,2.062,1.16
+new,tr,LiB,6.086,1.435,0.77
+new,tr,LiB (no supra),3.880,2.109,0.77
+new,ar,BPE,4.009,0.889,3.97
+new,ar,WordPiece,5.162,1.174,1.34
+new,ar,SP-Unigram,8.950,2.106,1.31
+new,ar,LiB,5.074,1.292,1.69
+new,ar,LiB (no supra),3.786,2.009,1.69
+new,zh,BPE,3.260,1.981,3.05
+new,zh,WordPiece,1.772,1.217,1.17
+new,zh,SP-Unigram,5.773,3.874,1.04
+new,zh,LiB,3.258,2.352,1.48
+new,zh,LiB (no supra),3.287,2.377,1.48
