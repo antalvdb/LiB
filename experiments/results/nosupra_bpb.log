@@ -1,0 +1,198 @@
+device: mps
+
+############################################################
+  Vocab size: 50,000
+############################################################
+
+--- EN: English (analytic) ---
+
+    === LiB (no supra) ===
+      |V|=28,421  train_toks=6,049,432
+      step   1000  train_ce=5.447  val_bits/tok=8.0953
+      step   2000  train_ce=5.067  val_bits/tok=7.4062
+      step   3000  train_ce=4.725  val_bits/tok=7.0356
+      step   4000  train_ce=4.485  val_bits/tok=6.7801
+      step   5000  train_ce=4.524  val_bits/tok=6.6044
+
+==============================================================================
+  English (analytic) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer              BPB       BPC  tok/byte  byte/tok  tok/sent
+  ------------------------------------------------------------------
+  LiB (no supra)      1.7429    1.7476    0.2552      3.92      70.4
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_en_50000.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 50,000
+############################################################
+
+--- DE: German (fusional/compound) ---
+
+    === LiB (no supra) ===
+      |V|=26,577  train_toks=5,874,615
+      step   1000  train_ce=5.752  val_bits/tok=8.5050
+      step   2000  train_ce=5.186  val_bits/tok=7.6868
+      step   3000  train_ce=4.831  val_bits/tok=7.2340
+      step   4000  train_ce=4.697  val_bits/tok=6.9797
+      step   5000  train_ce=4.506  val_bits/tok=6.7737
+
+==============================================================================
+  German (fusional/compound) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer              BPB       BPC  tok/byte  byte/tok  tok/sent
+  ------------------------------------------------------------------
+  LiB (no supra)      1.6501    1.6803    0.2405      4.16      71.5
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_de_50000.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 50,000
+############################################################
+
+--- ES: Spanish (fusional) ---
+
+    === LiB (no supra) ===
+      |V|=25,104  train_toks=6,496,946
+      step   1000  train_ce=5.057  val_bits/tok=7.4009
+      step   2000  train_ce=4.615  val_bits/tok=6.6972
+      step   3000  train_ce=4.203  val_bits/tok=6.3180
+      step   4000  train_ce=4.055  val_bits/tok=6.0881
+      step   5000  train_ce=3.917  val_bits/tok=5.9044
+
+==============================================================================
+  Spanish (fusional) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer              BPB       BPC  tok/byte  byte/tok  tok/sent
+  ------------------------------------------------------------------
+  LiB (no supra)      1.5234    1.5556    0.2647      3.78      40.6
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_es_50000.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 50,000
+############################################################
+
+--- FI: Finnish (agglutinative) ---
+
+    === LiB (no supra) ===
+      |V|=20,260  train_toks=4,238,459
+      step   1000  train_ce=5.669  val_bits/tok=8.3757
+      step   2000  train_ce=4.919  val_bits/tok=7.5022
+      step   3000  train_ce=4.552  val_bits/tok=7.0052
+      step   4000  train_ce=4.140  val_bits/tok=6.7087
+      step   5000  train_ce=4.410  val_bits/tok=6.4714
+
+==============================================================================
+  Finnish (agglutinative) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer              BPB       BPC  tok/byte  byte/tok  tok/sent
+  ------------------------------------------------------------------
+  LiB (no supra)      1.2164    1.2713    0.2399      4.17      23.5
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_fi_50000.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 50,000
+############################################################
+
+--- TR: Turkish (agglutinative) ---
+
+    === LiB (no supra) ===
+      |V|=13,583  train_toks=2,888,867
+      step   1000  train_ce=4.832  val_bits/tok=7.3624
+      step   2000  train_ce=4.322  val_bits/tok=6.5737
+      step   3000  train_ce=3.745  val_bits/tok=6.2017
+      step   4000  train_ce=3.488  val_bits/tok=5.9318
+      step   5000  train_ce=3.357  val_bits/tok=5.7515
+
+==============================================================================
+  Turkish (agglutinative) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer              BPB       BPC  tok/byte  byte/tok  tok/sent
+  ------------------------------------------------------------------
+  LiB (no supra)      1.6721    1.8217    0.2465      4.06      55.1
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_tr_50000.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 50,000
+############################################################
+
+--- AR: Arabic (templatic) ---
+
+    === LiB (no supra) ===
+      |V|=27,313  train_toks=6,329,278
+      step   1000  train_ce=5.609  val_bits/tok=8.6677
+      step   2000  train_ce=5.156  val_bits/tok=7.8147
+      step   3000  train_ce=4.976  val_bits/tok=7.3871
+      step   4000  train_ce=4.875  val_bits/tok=7.1232
+      step   5000  train_ce=4.711  val_bits/tok=6.9349
+
+==============================================================================
+  Arabic (templatic) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer              BPB       BPC  tok/byte  byte/tok  tok/sent
+  ------------------------------------------------------------------
+  LiB (no supra)      1.1207    2.0162    0.1579      6.33      73.3
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_ar_50000.csv
+
+Done.
+device: mps
+
+############################################################
+  Vocab size: 50,000
+############################################################
+
+--- ZH: Chinese (logographic) ---
+
+    === LiB (no supra) ===
+      |V|=26,267  train_toks=6,830,303
+      step   1000  train_ce=6.944  val_bits/tok=10.4676
+      step   2000  train_ce=6.504  val_bits/tok=9.5532
+      step   3000  train_ce=6.068  val_bits/tok=8.9854
+      step   4000  train_ce=5.921  val_bits/tok=8.5939
+      step   5000  train_ce=5.670  val_bits/tok=8.3482
+
+==============================================================================
+  Chinese (logographic) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer              BPB       BPC  tok/byte  byte/tok  tok/sent
+  ------------------------------------------------------------------
+  LiB (no supra)      2.0543    5.6320    0.2439      4.10      69.2
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_zh_50000.csv
+
+Done.
+MONO NOSUPRA BPB DONE
+device: mps; steps 5000
+
+=== LiB (no supra) ===
+  |V|=116,325 train_toks=38,406,399
+      step    500  train_ce=7.437  val_bits/tok=10.7151
+      step   1000  train_ce=6.912  val_bits/tok=10.0531
+      step   1500  train_ce=6.466  val_bits/tok=9.6879
+      step   2000  train_ce=6.418  val_bits/tok=9.3943
+      step   2500  train_ce=6.392  val_bits/tok=9.1656
+      step   3000  train_ce=6.221  val_bits/tok=8.9765
+      step   3500  train_ce=6.046  val_bits/tok=8.8243
+      step   4000  train_ce=6.135  val_bits/tok=8.6980
+      step   4500  train_ce=5.788  val_bits/tok=8.5932
+      step   5000  train_ce=5.937  val_bits/tok=8.4884
+  en BPB=2.0728 tok/B=0.2553
+  de BPB=2.0233 tok/B=0.2415
+  es BPB=1.8687 tok/B=0.2567
+  fi BPB=1.6878 tok/B=0.2371
+  tr BPB=2.1642 tok/B=0.2463
+  ar BPB=1.3643 tok/B=0.1597
+  zh BPB=2.4720 tok/B=0.2314
+JOINT NOSUPRA BPB DONE

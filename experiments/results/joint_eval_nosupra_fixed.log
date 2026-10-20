@@ -1,0 +1,16 @@
+
+=== LiB (no supra) ===
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpxm0l0bye/LiB_(no_supra).arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+  en   bpc3=2.0261 tok/B=0.2553 DLcorp=7323.6 used=15400
+  de   bpc3=1.9670 tok/B=0.2415 DLcorp=7772.8 used=16842
+  es   bpc3=1.8264 tok/B=0.2567 DLcorp=3998.4 used=13146
+  fi   bpc3=1.4680 tok/B=0.2371 DLcorp=2445.2 used=11764
+  tr   bpc3=2.2033 tok/B=0.2463 DLcorp=6027.3 used=12353
+  ar   bpc3=2.3379 tok/B=0.1597 DLcorp=7935.7 used=15049
+  zh   bpc3=6.6698 tok/B=0.2314 DLcorp=7991.9 used=24352
+  all  bpc3=2.3873 tok/B=0.2225 DLcorp=51263.6 used=-
+
+saved /Users/antalb/Experiments/LiB/experiments/results/joint_eval.csv

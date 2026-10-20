@@ -1,0 +1,25 @@
+device: mps
+
+############################################################
+  Vocab size: 50,000
+############################################################
+
+--- ZH: Chinese (logographic) ---
+
+    === LiB ===
+      |V|=26,267  train_toks=6,818,721
+      step   1000  train_ce=6.976  val_bits/tok=10.4778
+      step   2000  train_ce=6.585  val_bits/tok=9.5613
+      step   3000  train_ce=5.966  val_bits/tok=9.0078
+      step   4000  train_ce=5.759  val_bits/tok=8.6092
+      step   5000  train_ce=5.458  val_bits/tok=8.3489
+
+==============================================================================
+  Chinese (logographic) — neural BPB — 50k vocab
+==============================================================================
+  Tokenizer       BPB       BPC  tok/byte  byte/tok  tok/sent
+  -------------------------------------------------------
+  LiB      2.0557    5.6359    0.2437      4.10      69.1
+    saved /Users/antalb/Experiments/LiB/experiments/results/neural_bpb_zh_50000.csv
+
+Done.

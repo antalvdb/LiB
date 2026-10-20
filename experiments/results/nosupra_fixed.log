@@ -1,0 +1,126 @@
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpxfrv45ui/en_True_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpxfrv45ui/en_True_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+{'lang': 'en', 'tokenizer': 'LiB', 'V': 28418, 'avg_len': '4.66', 'supra_pct': '26', 'dl_lex_kb': '971.3', 'dl_corp_kb': '6952.1', 'dl_tot_kb': '7923.5', 'tokens': 592114, 'tok_per_byte': '0.215', 'bpc2': '2.050', 'bpc3': '1.914'}
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpmmrmo2hg/en_False_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpmmrmo2hg/en_False_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+{'lang': 'en', 'tokenizer': 'LiB (no supra)', 'V': 28418, 'avg_len': '3.92', 'supra_pct': '26', 'dl_lex_kb': '971.3', 'dl_corp_kb': '7257.5', 'dl_tot_kb': '8228.9', 'tokens': 703553, 'tok_per_byte': '0.255', 'bpc2': '2.049', 'bpc3': '1.910'}
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpz6qnajiq/de_True_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpz6qnajiq/de_True_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+{'lang': 'de', 'tokenizer': 'LiB', 'V': 26574, 'avg_len': '4.66', 'supra_pct': '18', 'dl_lex_kb': '943.4', 'dl_corp_kb': '7424.5', 'dl_tot_kb': '8367.9', 'tokens': 627569, 'tok_per_byte': '0.211', 'bpc2': '1.992', 'bpc3': '1.836'}
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpgxdgjwyt/de_False_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpgxdgjwyt/de_False_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+{'lang': 'de', 'tokenizer': 'LiB (no supra)', 'V': 26574, 'avg_len': '4.09', 'supra_pct': '18', 'dl_lex_kb': '943.4', 'dl_corp_kb': '7676.7', 'dl_tot_kb': '8620.1', 'tokens': 714604, 'tok_per_byte': '0.240', 'bpc2': '1.995', 'bpc3': '1.834'}
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpdr2a2kl9/es_True_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpdr2a2kl9/es_True_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+{'lang': 'es', 'tokenizer': 'LiB', 'V': 25101, 'avg_len': '4.46', 'supra_pct': '30', 'dl_lex_kb': '864.7', 'dl_corp_kb': '3828.9', 'dl_tot_kb': '4693.6', 'tokens': 337703, 'tok_per_byte': '0.220', 'bpc2': '1.971', 'bpc3': '1.754'}
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp8yqsylce/es_False_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp8yqsylce/es_False_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+{'lang': 'es', 'tokenizer': 'LiB (no supra)', 'V': 25101, 'avg_len': '3.71', 'supra_pct': '30', 'dl_lex_kb': '864.7', 'dl_corp_kb': '4027.3', 'dl_tot_kb': '4892.0', 'tokens': 406497, 'tok_per_byte': '0.265', 'bpc2': '1.977', 'bpc3': '1.748'}
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp38rl5z7i/fi_True_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp38rl5z7i/fi_True_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+{'lang': 'fi', 'tokenizer': 'LiB', 'V': 20257, 'avg_len': '4.74', 'supra_pct': '15', 'dl_lex_kb': '671.6', 'dl_corp_kb': '2215.6', 'dl_tot_kb': '2887.2', 'tokens': 198323, 'tok_per_byte': '0.202', 'bpc2': '1.676', 'bpc3': '1.364'}
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp5j0dkye6/fi_False_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp5j0dkye6/fi_False_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+{'lang': 'fi', 'tokenizer': 'LiB (no supra)', 'V': 20257, 'avg_len': '3.99', 'supra_pct': '15', 'dl_lex_kb': '671.6', 'dl_corp_kb': '2412.3', 'dl_tot_kb': '3083.9', 'tokens': 235245, 'tok_per_byte': '0.240', 'bpc2': '1.698', 'bpc3': '1.367'}
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpo_hti4nx/tr_True_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpo_hti4nx/tr_True_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+{'lang': 'tr', 'tokenizer': 'LiB', 'V': 13580, 'avg_len': '3.94', 'supra_pct': '19', 'dl_lex_kb': '441.2', 'dl_corp_kb': '5864.3', 'dl_tot_kb': '6305.5', 'tokens': 522645, 'tok_per_byte': '0.234', 'bpc2': '2.196', 'bpc3': '2.009'}
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp0hcs6s9u/tr_False_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp0hcs6s9u/tr_False_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+{'lang': 'tr', 'tokenizer': 'LiB (no supra)', 'V': 13580, 'avg_len': '3.74', 'supra_pct': '19', 'dl_lex_kb': '441.2', 'dl_corp_kb': '5996.6', 'dl_tot_kb': '6437.9', 'tokens': 550872, 'tok_per_byte': '0.247', 'bpc2': '2.204', 'bpc3': '2.010'}
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpmavdf9qb/ar_True_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpmavdf9qb/ar_True_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+{'lang': 'ar', 'tokenizer': 'LiB', 'V': 27310, 'avg_len': '4.03', 'supra_pct': '31', 'dl_lex_kb': '856.4', 'dl_corp_kb': '7637.7', 'dl_tot_kb': '8494.1', 'tokens': 643547, 'tok_per_byte': '0.139', 'bpc2': '2.383', 'bpc3': '2.222'}
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp3rkx_ue5/ar_False_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmp3rkx_ue5/ar_False_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+{'lang': 'ar', 'tokenizer': 'LiB (no supra)', 'V': 27310, 'avg_len': '3.54', 'supra_pct': '31', 'dl_lex_kb': '856.4', 'dl_corp_kb': '7928.8', 'dl_tot_kb': '8785.2', 'tokens': 732790, 'tok_per_byte': '0.158', 'bpc2': '2.383', 'bpc3': '2.218'}
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpzogo3q76/zh_True_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpzogo3q76/zh_True_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+{'lang': 'zh', 'tokenizer': 'LiB', 'V': 26264, 'avg_len': '1.69', 'supra_pct': '1', 'dl_lex_kb': '660.9', 'dl_corp_kb': '8271.6', 'dl_tot_kb': '8932.4', 'tokens': 690998, 'tok_per_byte': '0.244', 'bpc2': '6.594', 'bpc3': '6.310'}
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpm2eb8a2o/zh_False_2.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Loading the LM will be faster if you build a binary file.
+Reading /var/folders/nv/8q0fly2j1d52pbfg7wdfn0lc0000gn/T/tmpm2eb8a2o/zh_False_3.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+{'lang': 'zh', 'tokenizer': 'LiB (no supra)', 'V': 26264, 'avg_len': '1.68', 'supra_pct': '1', 'dl_lex_kb': '660.9', 'dl_corp_kb': '8276.4', 'dl_tot_kb': '8937.2', 'tokens': 691609, 'tok_per_byte': '0.244', 'bpc2': '6.594', 'bpc3': '6.310'}
